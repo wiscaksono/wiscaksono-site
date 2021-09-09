@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.1",
+    "tailwindcss": "^2.2.14"
+  },
+  "name": "portofolio",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "tailwindcss build -i src/style.css -o public/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
