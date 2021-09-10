@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "main": "tailwind.config.js",
   "scripts": {
-    "build": "tailwindcss build -i style.css -o public/style.css"
+    "build": "tailwindcss build -i src/style.css -o style.css"
   },
   "keywords": [],
   "author": "",
