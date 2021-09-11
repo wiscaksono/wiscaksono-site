@@ -2,9 +2,15 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      poppins: ["Poppins", "Open-Sans"],
+    },
+
     extend: {
       colors: {
         darkgray: "#8C8C8C",
+        contactbg: "#333333",
+        orangebg: "#FF8E70",
       },
 
       backgroundImage: (theme) => ({
