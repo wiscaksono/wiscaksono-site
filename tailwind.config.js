@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         darkgray: "#8C8C8C",
         contactbg: "#333333",
-        orangebg: "#FF8E70",
+        orangebg: "#FF5B38",
       },
 
       backgroundImage: (theme) => ({
