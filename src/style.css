@@ -2,3 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@layer components {
+  .card {
+    @apply bg-contactbg rounded overflow-hidden shadow-md relative;
+  }
+
+  .badge {
+    @apply text-xs
+    uppercase
+    font-bold
+    bg-gray-200
+    rounded-full
+    p-2
+    absolute
+    top-0
+    ml-2
+    mt-2;
+  }
+
+  .btn {
+    @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider bg-gray-200;
+  }
+
+  .aspect {
+    @apply aspect-w-1 aspect-h-1;
+  }
+}
