@@ -39,7 +39,7 @@
           >
         </div>
 
-        <div class="flex justify-center items-center flex-col">
+        <div class="flex justify-center items-center flex-col atasan">
           <div class="lg:w-1/2 w-80 mb-10 mt-10">
             <img src="/images/Artwork-img-01.svg" alt="" />
           </div>
@@ -50,12 +50,12 @@
             </p>
           </div>
         </div>
-        <div class="flex justify-center items-center mb-10">
+        <div class="flex justify-center items-center mb-10 atasan">
           <div class="lg:w-1/2 w-72">
             <img src="/images/line.svg" alt="" />
           </div>
         </div>
-        <div class="grid gap-6 mt-8 lg:grid-cols-3 pb-20 px-6 lg:px-0 md:grid-cols-2">
+        <div class="grid gap-6 mt-8 lg:grid-cols-3 pb-20 px-6 lg:px-0 md:grid-cols-2 atasan">
           <!-- Cards go here -->
           <div class="rounded overflow-hidden hover:shadow-lg lg:col-span-3 sm:col-span-1 ">
             <div class="aspect-h-1 aspect-w-1 lg:aspect-none">
@@ -358,5 +358,16 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+
+    <script>
+      gsap.from(".atasan", {
+        duration: 1,
+        delay: 0.5,
+        y: 100,
+        opacity: 0,
+        ease: "power4",
+      });
+    </script>
   </body>
 </html>

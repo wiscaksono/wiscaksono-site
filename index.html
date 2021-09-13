@@ -47,6 +47,7 @@
               items-center
               flex-col
               text-gray-100
+              atasan
             "
           >
             <div><p class="text-xl text-darkgray">Hello, i'm</p></div>
@@ -54,12 +55,12 @@
               <img src="/images/Wisnu-Wicaksono.svg" alt="" />
             </div>
             <div>
-              <p class="text-xl text-darkgray mb-4 text-center">
-                An electrical student who likes to code.
-              </p>
+              <p class="text-xl text-darkgray mb-4 text-center animated"></p>
             </div>
           </div>
-          <div class="flex justify-center gap-4 text-white opacity-70">
+          <div
+            class="flex justify-center gap-4 text-white opacity-70 social-media"
+          >
             <a href="https://www.facebook.com/wiscaksono/" target="_blank"
               ><i class="fab fa-facebook"></i
             ></a>
@@ -81,5 +82,29 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/TextPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      gsap.from(".atasan", {
+        duration: 1,
+        delay: 0.5,
+        y: 100,
+        opacity: 0,
+        ease: "power4",
+      });
+      gsap.from(".social-media", {
+        duration: 1,
+        delay: 3.5,
+        y: 100,
+        opacity: 0,
+        ease: "power4",
+      });
+      gsap.to(".animated", {
+        duration: 2,
+        delay: 1.5,
+        text: "An electrical student who likes to code.",
+      });
+    </script>
   </body>
 </html>

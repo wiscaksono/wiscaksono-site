@@ -36,7 +36,7 @@
             >Contact</a
           >
         </div>
-        <div class="mt-10">
+        <div class="mt-10 atasan">
           <div
             class="
               flex flex-col
@@ -71,12 +71,12 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-center items-center mb-10">
+        <div class="flex justify-center items-center mb-10 atasan">
           <div class="lg:w-1/2 w-72">
             <img src="/images/line.svg" alt="" />
           </div>
         </div>
-        <div class="pb-10">
+        <div class="pb-10 atasan">
           <div class="flex justify-center mb-10">
             <div class="lg:w-1/2 w-72">
               <img src="/images/organisasi-01.svg" alt="" />
@@ -129,5 +129,16 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+
+    <script>
+      gsap.from(".atasan", {
+        duration: 1,
+        delay: 0.5,
+        y: 100,
+        opacity: 0,
+        ease: "power4",
+      });
+    </script>
   </body>
 </html>
