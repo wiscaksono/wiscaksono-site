@@ -1,16 +1,20 @@
 {
   "dependencies": {
-    "@tailwindcss/aspect-ratio": "^0.2.1",
-    "tailwindcss": "^2.2.14"
+    "@tailwindcss/aspect-ratio": "^0.2.1"
   },
   "name": "portofolio",
   "version": "1.0.0",
   "main": "tailwind.config.js",
   "scripts": {
-    "build": "tailwindcss build -i src/style.css -o style.css"
+    "build": "npx tailwindcss -i src/style.css -o style.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.23"
+  }
 }

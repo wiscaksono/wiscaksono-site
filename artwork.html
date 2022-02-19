@@ -16,7 +16,7 @@
     <link rel="icon" href="/images/icon.svg" />
   </head>
   <body class="font-poppins">
-    <div class="h-full min-h-screen bg-cover bg-background">
+    <div class="h-full min-h-screen bg-fixed bg-background">
       <div class="max-w-4xl mx-auto">
         <div class="flex justify-center gap-10 py-10 text-gray-100">
           <a
@@ -41,7 +41,7 @@
 
         <div class="flex flex-col items-center justify-center atasan">
           <div class="mt-10 mb-10 lg:w-1/2 w-80">
-            <img src="/images/Artwork-img-01.svg" alt="" />
+            <img src="/images/Artwork-img-01.svg" alt="" class="myImage"/>
           </div>
           <div class="px-6 mb-10 text-center lg:px-0">
             <p class="text-darkgray">
@@ -52,7 +52,7 @@
         </div>
         <div class="flex items-center justify-center mb-10 atasan">
           <div class="lg:w-1/2 w-72">
-            <img src="/images/line.svg" alt="" />
+            <img src="/images/line.svg" alt="" class="myImage"/>
           </div>
         </div>
         <div class="grid gap-6 px-6 pb-10 mt-8 lg:grid-cols-3 lg:px-0 md:grid-cols-2 atasan">
@@ -62,7 +62,7 @@
               <img
                 src="images/artworks/Deer Final.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -100,7 +100,7 @@
               <img
                 src="images/artworks/wikwok.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -138,7 +138,7 @@
               <img
                 src="images/artworks/exit.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -176,7 +176,7 @@
               <img
                 src="images/artworks/deer.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -214,7 +214,7 @@
               <img
                 src="images/artworks/chair.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -252,7 +252,7 @@
               <img
                 src="images/artworks/santai.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -290,7 +290,7 @@
               <img
                 src="images/artworks/untitled.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -328,7 +328,7 @@
               <img
                 src="images/artworks/majalah1.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -365,7 +365,7 @@
               <img
                 src="images/artworks/majalah2.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -402,13 +402,13 @@
               <img
                 src="images/artworks/majalah4.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
               <div>
                 <h1 class="font-bold text-white">Majalah Charger</h1>
-<p class="text-darkgray">By: Me</p>
+                <p class="text-darkgray">By: Me</p>
               </div>
               <div
               class="inline-block cursor-pointer "
@@ -439,7 +439,7 @@
               <img
                 src="images/artworks/majalah3.jpg"
                 alt="deer"
-                class="object-cover"
+                class="object-cover myImage"
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
@@ -472,16 +472,12 @@
             </div>
             </div>
           </div>
-          
         </div>
-        
-
-          
         </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-
+    <script src="DisableDrag.js"></script>
     <script>
       gsap.from(".atasan", {
         duration: 1,

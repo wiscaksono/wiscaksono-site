@@ -15,8 +15,28 @@
     />
     <link rel="icon" href="/images/icon.svg" />
   </head>
-  <body class="font-poppins">
-    <div class="min-h-screen bg-cover bg-background">
+  <body class="font-poppins cursor-none">
+    <div class="cursor" id="cursor">
+      <style>
+        .cursor {
+          position: fixed;
+          border-radius: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          pointer-events: none;
+          left: -100px;
+          top: 50%;
+          mix-blend-mode: difference;
+          background-color: transparent;
+          z-index: 10000;
+          border: 2px solid white;
+          height: 25px;
+          width: 25px;
+          transition: all 20ms ease-out;
+        }
+      </style>
+    </div>
+
+    <div class="min-h-screen bg-fixed bg-background">
       <div class="max-w-4xl mx-auto">
         <div class="flex justify-center gap-10 py-10 text-gray-100">
           <a
@@ -38,11 +58,15 @@
         </div>
         <div class="mt-10 atasan">
           <div
-            class="flex flex-col items-center justify-center gap-12  lg:flex-col-reverse"
+            class="flex flex-col items-center justify-center gap-12 lg:flex-col-reverse"
           >
             <div class="flex flex-col items-center justify-center">
               <div class="w-1/3 mb-10 lg:w-1/3">
-                <img class="w-full" src="images/About-me-01.svg" alt="" />
+                <img
+                  class="w-full myImage"
+                  src="images/About-me-01.svg"
+                  alt=""
+                />
               </div>
               <div class="max-w-xl px-6 lg:mb-20 lg:px-0">
                 <p class="leading-relaxed text-center align text-darkgray">
@@ -58,7 +82,7 @@
             </div>
             <div class="mb-10 lg:w-1/2 w-72 lg:mb-0 md:w-1/2">
               <img
-                class="w-full h-full"
+                class="w-full h-full myImage"
                 src="/images/Wisnu profile-01-01.webp"
                 alt=""
               />
@@ -67,17 +91,17 @@
         </div>
         <div class="flex items-center justify-center mb-10 atasan">
           <div class="lg:w-1/2 w-72">
-            <img src="/images/line.svg" alt="" />
+            <img src="/images/line.svg" alt="" class="myImage" />
           </div>
         </div>
         <div class="pb-10 atasan">
           <div class="flex justify-center mb-10">
             <div class="lg:w-1/2 w-72">
-              <img src="/images/organisasi-01.svg" alt="" />
+              <img src="/images/organisasi-01.svg" alt="" class="myImage" />
             </div>
           </div>
           <ul
-            class="max-w-md px-6 mx-auto list-disc  text-darkgray lg:px-0 lg:max-w-xl"
+            class="max-w-md px-6 mx-auto list-disc text-darkgray lg:px-0 lg:max-w-xl"
           >
             <li>
               Head of the PDD Division 2021 student leadership basic training
@@ -117,8 +141,21 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-
+    <script src="DisableDrag.js"></script>
     <script>
+      var cursor = document.getElementById("cursor");
+      document.body.addEventListener("mousemove", function (e) {
+        (cursor.style.left = e.clientX + "px"),
+          (cursor.style.top = e.clientY + "px");
+      });
+
+      window.addEventListener(
+        "contextmenu",
+        function (e) {
+          e.preventDefault();
+        },
+        false
+      );
       gsap.from(".atasan", {
         duration: 1,
         delay: 0.5,

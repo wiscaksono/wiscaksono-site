@@ -15,68 +15,75 @@
     />
     <link rel="icon" href="/images/icon.svg" />
   </head>
-  <body class="font-poppins">
-    <div class="bg-background bg-cover min-h-screen object-cover">
+  <body class="font-poppins cursor-none">
+    <div class="cursor">
+      <div class="cursor__ball cursor__ball--big">
+        <svg height="30" width="30">
+          <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
+        </svg>
+      </div>
+
+      <div class="cursor__ball cursor__ball--small">
+        <svg height="10" width="10">
+          <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="bg-background bg-fixed min-h-screen object-cover">
       <div class="max-w-4xl mx-auto relative">
         <div
           class="flex gap-10 justify-center text-gray-100 pt-10 absolute w-full"
         >
-          <a href="./index.html" class="border-b-2">Home</a>
+          <a href="./index.html" class="border-b-2 hoverable cursor-none"
+            >Home</a
+          >
           <a
             href="./about.html"
-            class="opacity-50 hover:opacity-100 transition-all"
+            class="opacity-50 hover:opacity-100 transition-all hoverable cursor-none"
             >About</a
           >
           <a
             href="./artwork.html"
-            class="opacity-50 hover:opacity-100 transition-all"
+            class="opacity-50 hover:opacity-100 transition-all hoverable cursor-none"
             >Artworks</a
           >
           <a
             href="contact.html"
-            class="opacity-50 hover:opacity-100 transition-all"
+            class="opacity-50 hover:opacity-100 transition-all hoverable cursor-none"
             >Contact</a
           >
         </div>
         <div class="min-h-screen flex flex-col justify-center">
           <div
-            class="
-              flex
-              gap-4
-              justify-center
-              items-center
-              flex-col
-              text-gray-100
-              atasan
-            "
+            class="flex gap-4 justify-center items-center flex-col text-gray-100 atasan"
           >
             <div><p class="text-xl text-darkgray">Hello, i'm</p></div>
             <div class="lg:w-2/3 w-full px-6 lg:px-0">
-              <img src="/images/Wisnu-Wicaksono.svg" alt="" />
+              <img src="/images/Wisnu-Wicaksono.svg" class="myImage" alt="" />
             </div>
             <div>
               <p class="text-xl text-darkgray mb-4 text-center animated"></p>
             </div>
           </div>
           <div
-            class="flex justify-center gap-4 text-white opacity-70 social-media"
+            class="flex justify-center gap-10 text-white opacity-70 social-media"
           >
             <a href="https://www.facebook.com/wiscaksono/" target="_blank"
-              ><i class="fab fa-facebook"></i
+              ><i class="fab fa-facebook hoverable"></i
             ></a>
             <a href="https://www.instagram.com/wisnu.png/" target="_blank"
-              ><i class="fab fa-instagram"></i
+              ><i class="fab fa-instagram hoverable"></i
             ></a>
             <a
               href="https://www.linkedin.com/in/wisnu-wicaksono-294a75167/"
               target="_blank"
-              ><i class="fab fa-linkedin"></i
+              ><i class="fab fa-linkedin hoverable"></i
             ></a>
             <a href="https://twitter.com/wiscaksono" target="_blank"
-              ><i class="fab fa-twitter"></i
+              ><i class="fab fa-twitter hoverable"></i
             ></a>
             <a href="https://github.com/wiscaksono" target="_blank"
-              ><i class="fab fa-github"></i
+              ><i class="fab fa-github hoverable"></i
             ></a>
           </div>
         </div>
@@ -84,7 +91,18 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/TextPlugin.min.js"></script>
+    <script src="cursor.js"></script>
+    <script src="DisableDrag.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
+      //right click disabled
+      window.addEventListener(
+        "contextmenu",
+        function (e) {
+          e.preventDefault();
+        },
+        false
+      );
       gsap.registerPlugin(TextPlugin);
       gsap.from(".atasan", {
         duration: 1,

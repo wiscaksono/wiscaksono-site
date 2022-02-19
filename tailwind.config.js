@@ -1,11 +1,6 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./*.html"],
   theme: {
-    fontFamily: {
-      poppins: ["Poppins", "Open-Sans"],
-    },
-
     extend: {
       colors: {
         darkgray: "#8C8C8C",
@@ -17,9 +12,6 @@ module.exports = {
         background: "url('/images/background.svg')",
       }),
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
 };
