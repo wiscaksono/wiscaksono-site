@@ -15,26 +15,45 @@
     />
     <link rel="icon" href="/images/icon.svg" />
   </head>
-  <body class="font-poppins">
+  <body class="font-poppins cursor-none">
+<div class="cursor" id="cursor">
+      <style>
+        .cursor {
+          position: fixed;
+          border-radius: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          pointer-events: none;
+          left: -100px;
+          top: 50%;
+          mix-blend-mode: difference;
+          background-color: transparent;
+          z-index: 10000;
+          border: 2px solid white;
+          height: 25px;
+          width: 25px;
+          transition: all 20ms ease-out;
+        }
+      </style>
+    </div>
     <div class="h-full min-h-screen bg-fixed bg-background">
       <div class="max-w-4xl mx-auto">
         <div class="flex justify-center gap-10 py-10 text-gray-100">
           <a
             href="./index.html"
-            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1"
+            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1 cursor-none"
             >Home</a
           >
           <a
             href="./about.html"
-            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1"
+            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1 cursor-none"
             >About</a
           >
-          <a href="#" class="transition-all border-b-2 hover:opacity-100 hover:-translate-y-1"
+          <a href="#" class="transition-all border-b-2 hover:opacity-100 hover:-translate-y-1 cursor-none"
             >Artworks</a
           >
           <a
             href="contact.html"
-            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-2 "
+            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-2  cursor-none"
             >Contact</a
           >
         </div>
@@ -92,6 +111,78 @@
                   ></path>
                 </svg>
               </a>
+            </div>
+            </div>
+          </div>
+<div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all">
+            <div class="aspect-w-1 aspect-h-1">
+              <img
+                src="images/aplus.png"
+                alt="deer"
+                class="object-cover myImage"
+              />
+            </div>
+            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+              <div>
+                <h1 class="font-bold text-white">A+ Studio</h1>
+                <p class="text-darkgray">By: Me</p>
+              </div>
+              <div
+              class="inline-block cursor-pointer "
+              >
+              <a
+              class="text-orangebg font-semibold"
+              target="_blank"
+                href="https://aplus-studio.netlify.app/"
+              >
+               Demo 
+              </a>
+            </div>
+            </div>
+          </div><div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all">
+            <div class="aspect-w-1 aspect-h-1">
+              <img
+                src="images/siosiotech.png"
+                alt="deer"
+                class="object-cover myImage"
+              />
+            </div>
+            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+              <div>
+                <h1 class="font-bold text-white">Sosiotech</h1>
+                <p class="text-darkgray">By: Me</p>
+              </div>
+              <div
+              class="inline-block cursor-pointer "
+              >
+              <a
+              class="text-orangebg font-semibold"
+              target="_blank"
+              href="https://sisotech.netlify.app/"
+              >Demo</a>
+            </div>
+            </div>
+          </div><div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all">
+            <div class="aspect-w-1 aspect-h-1">
+              <img
+                src="images/nft-market.png"
+                alt="deer"
+                class="object-cover myImage"
+              />
+            </div>
+            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+              <div>
+                <h1 class="font-bold text-white">Nft Marketplace</h1>
+                <p class="text-darkgray">By: Me</p>
+              </div>
+              <div
+              class="inline-block cursor-pointer "
+              >
+              <a
+              class="font-semibold text-orangebg"
+              target="_blank"
+                href="https://nft-wisnu.netlify.app/"
+              >Demo</a>
             </div>
             </div>
           </div>
@@ -479,6 +570,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script src="DisableDrag.js"></script>
     <script>
+      
+      var cursor = document.getElementById("cursor");
+      document.body.addEventListener("mousemove", function (e) {
+        (cursor.style.left = e.clientX + "px"),
+          (cursor.style.top = e.clientY + "px");
+      });
+
+      window.addEventListener(
+        "contextmenu",
+        function (e) {
+          e.preventDefault();
+        },
+        false
+      );
+
       gsap.from(".atasan", {
         duration: 1,
         delay: 0.5,
