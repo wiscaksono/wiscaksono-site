@@ -3,4 +3,4 @@
 # Portofolio
 
 Website Portofolio Wisnu Wicaksono
-Dibuat menggunakan tailwind dan gsap, dan untuk contact formnya menggunakan form to google sheets.
+Dibuat menggunakan tailwindcss dan gsap, dan untuk contact formnya menggunakan form to google sheets.
