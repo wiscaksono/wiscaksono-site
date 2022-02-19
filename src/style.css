@@ -3,6 +3,12 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+@layer base {
+  html {
+    font-family: Poppins, system-ui, sans-serif;
+  }
+}
+
 @layer components {
   .card {
     @apply bg-contactbg rounded overflow-hidden shadow-md relative;
@@ -29,6 +35,7 @@
     @apply aspect-w-1 aspect-h-1;
   }
 }
+
 .cursor {
   pointer-events: none;
 }
