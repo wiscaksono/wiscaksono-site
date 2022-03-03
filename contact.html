@@ -16,47 +16,28 @@
     <link rel="icon" href="/images/icon.svg" />
     <link rel="stylesheet" href="loader.css" />
   </head>
-  <body class="font-poppins cursor-none">
-    <div class="cursor sm:hidden md:hidden lg:hidden" id="cursor">
-      <style>
-        .cursor {
-          position: fixed;
-          border-radius: 50%;
-          transform: translateX(-50%) translateY(-50%);
-          pointer-events: none;
-          left: -100px;
-          top: 50%;
-          mix-blend-mode: difference;
-          background-color: transparent;
-          z-index: 10000;
-          border: 2px solid white;
-          height: 25px;
-          width: 25px;
-          transition: all 20ms ease-out;
-        }
-      </style>
-    </div>
+  <body class="font-poppins">
     <div class="bg-background bg-fixed min-h-screen">
       <div class="max-w-4xl mx-auto">
         <div class="flex gap-10 justify-center text-gray-100 py-10">
           <a
             href="./index.html"
-            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1 cursor-none"
+            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1"
             >Home</a
           >
           <a
             href="./about.html"
-            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1 cursor-none"
+            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1"
             >About</a
           >
           <a
             href="./artwork.html"
-            class="transition-all opacity-50 hover:-translate-y-1 cursor-none"
+            class="transition-all opacity-50 hover:-translate-y-1"
             >Artworks</a
           >
           <a
             href="./contact.html"
-            class="transition-all border-b-2 opacity-100 hover:-translate-y-2 cursor-none"
+            class="transition-all border-b-2 opacity-100 hover:-translate-y-2"
             >Contact</a
           >
         </div>
@@ -104,7 +85,7 @@
                   </label>
                   <input
                     name="firstname"
-                    class="appearance-none cursor-none block w-full bg-contactbg text-darkgray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-orangebg transition-all"
+                    class="appearance-none block w-full bg-contactbg text-darkgray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-orangebg transition-all"
                     id="grid-first-name"
                     type="text"
                     required
@@ -119,7 +100,7 @@
                   </label>
                   <input
                     name="lastname"
-                    class="appearance-none cursor-none block w-full bg-contactbg text-darkgray rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-orangebg transition-all"
+                    class="appearance-none block w-full bg-contactbg text-darkgray rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-orangebg transition-all"
                     id="grid-last-name"
                     type="text"
                     required
@@ -136,7 +117,7 @@
                   </label>
                   <input
                     name="email"
-                    class="appearance-none cursor-none block w-full bg-contactbg text-darkgray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-orangebg transition-all"
+                    class="appearance-none block w-full bg-contactbg text-darkgray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-orangebg transition-all"
                     id="email"
                     type="email"
                     required
@@ -153,7 +134,7 @@
                   </label>
                   <textarea
                     name="message"
-                    class="no-resize cursor-none appearance-none block w-full bg-contactbg text-darkgray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-orangebg transition-all h-48 resize-none"
+                    class="no-resize appearance-none block w-full bg-contactbg text-darkgray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-orangebg transition-all h-48 resize-none"
                     id="message"
                     required
                   ></textarea>
@@ -164,7 +145,7 @@
               >
                 <div class="md:w-1/3 hover:-translate-y-2 transition-transform">
                   <button
-                    class="shadow bg-contactbg cursor-none focus:outline-none focus:ring-2 focus:ring-orangebg transition-all text-darkgray font-bold py-2 px-4 rounded btn-kirim"
+                    class="shadow bg-contactbg focus:outline-none focus:ring-2 focus:ring-orangebg transition-all text-darkgray font-bold py-2 px-4 rounded btn-kirim"
                     type="submit"
                   >
                     Send Message
@@ -232,12 +213,6 @@
     <script src="DisableDrag.js"></script>
 
     <script>
-      var cursor = document.getElementById("cursor");
-      document.body.addEventListener("mousemove", function (e) {
-        (cursor.style.left = e.clientX + "px"),
-          (cursor.style.top = e.clientY + "px");
-      });
-
       window.addEventListener(
         "contextmenu",
         function (e) {

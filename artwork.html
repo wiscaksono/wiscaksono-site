@@ -15,106 +15,97 @@
     />
     <link rel="icon" href="/images/icon.svg" />
   </head>
-  <body class="font-poppins cursor-none">
-<div class="cursor sm:hidden md:hidden lg:hidden" id="cursor">
-      <style>
-        .cursor {
-          position: fixed;
-          border-radius: 50%;
-          transform: translateX(-50%) translateY(-50%);
-          pointer-events: none;
-          left: -100px;
-          top: 50%;
-          mix-blend-mode: difference;
-          background-color: transparent;
-          z-index: 10000;
-          border: 2px solid white;
-          height: 25px;
-          width: 25px;
-          transition: all 20ms ease-out;
-        }
-      </style>
-    </div>
+  <body class="font-poppins relative">
     <div class="h-full min-h-screen bg-fixed bg-background">
       <div class="max-w-4xl mx-auto">
         <div class="flex justify-center gap-10 py-10 text-gray-100">
           <a
             href="./index.html"
-            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1 cursor-none"
+            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1"
             >Home</a
           >
           <a
             href="./about.html"
-            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1 cursor-none"
+            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-1"
             >About</a
           >
-          <a href="#" class="transition-all border-b-2 hover:opacity-100 hover:-translate-y-1 cursor-none"
+          <a
+            href="#"
+            class="transition-all border-b-2 hover:opacity-100 hover:-translate-y-1"
             >Artworks</a
           >
           <a
             href="contact.html"
-            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-2  cursor-none"
+            class="transition-all opacity-50 hover:opacity-100 hover:-translate-y-2"
             >Contact</a
           >
         </div>
 
         <div class="flex flex-col items-center justify-center atasan">
-          <div class="mt-10 mb-10 lg:w-1/2 w-80 hover:-translate-y-2 transition-transform">
-            <img src="/images/Artwork-img-01.svg" alt="" class="myImage"/>
+          <div
+            class="mt-10 mb-10 lg:w-1/2 w-80 hover:-translate-y-2 transition-transform"
+          >
+            <img src="/images/Artwork-img-01.svg" alt="" class="myImage" />
           </div>
           <div class="px-6 mb-10 text-center lg:px-0">
             <p class="text-darkgray">
-              I like to learn about things related to 3d design and editing. these are some
-              of my works!.
+              I like to learn about things related to 3d design and editing.
+              these are some of my works!.
             </p>
           </div>
         </div>
         <div class="flex items-center justify-center mb-10 atasan">
           <div class="lg:w-1/2 w-72">
-            <img src="/images/line.svg" alt="" class="myImage"/>
+            <img src="/images/line.svg" alt="" class="myImage" />
           </div>
         </div>
-        <div class="grid gap-6 px-6 pb-10 mt-8 lg:grid-cols-3 lg:px-0 md:grid-cols-2 atasan">
+        <div
+          class="grid gap-6 px-6 pb-10 mt-8 lg:grid-cols-3 lg:px-0 md:grid-cols-2 atasan"
+        >
           <!-- Cards go here -->
-          <div class="overflow-hidden rounded hover:shadow-2xl lg:col-span-3 sm:col-span-1 hover:scale-105 transition-transform">
+          <div
+            class="overflow-hidden rounded hover:shadow-2xl lg:col-span-3 sm:col-span-1 hover:scale-105 transition-transform"
+          >
             <div class="aspect-h-1 aspect-w-1 lg:aspect-none">
               <img
-                src="images/artworks/Deer Final.jpg"
+                src="images/artworks/Deer Final.webp"
                 alt="deer"
                 class="object-cover myImage"
               />
             </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+            <div
+              class="flex items-center justify-between px-4 py-2 bg-contactbg"
+            >
               <div>
                 <h1 class="font-bold text-white">The Portal</h1>
                 <p class="text-darkgray">By: Me & Habibi</p>
               </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/16mwWPNsXXwSDnxrV8KpidrdHnUTMF1KE/edit"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div class="inline-block cursor-pointer">
+                <a
+                  target="_blank"
+                  href="https://drive.google.com/file/d/16mwWPNsXXwSDnxrV8KpidrdHnUTMF1KE/edit"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
+                  <svg
+                    class="inline-block w-6 h-6 text-orangebg"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-<div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all">
+          <div
+            class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all"
+          >
             <div class="aspect-w-1 aspect-h-1">
               <img
                 src="images/aplus.png"
@@ -122,24 +113,27 @@
                 class="object-cover myImage"
               />
             </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+            <div
+              class="flex items-center justify-between px-4 py-2 bg-contactbg"
+            >
               <div>
                 <h1 class="font-bold text-white">A+ Studio</h1>
                 <p class="text-darkgray">By: Me</p>
               </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              class="text-orangebg font-semibold"
-              target="_blank"
-                href="https://aplus-studio.netlify.app/"
-              >
-               Demo 
-              </a>
+              <div class="inline-block cursor-pointer">
+                <a
+                  class="text-orangebg font-semibold"
+                  target="_blank"
+                  href="https://aplus-studio.netlify.app/"
+                >
+                  Demo
+                </a>
+              </div>
             </div>
-            </div>
-          </div><div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all">
+          </div>
+          <div
+            class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all"
+          >
             <div class="aspect-w-1 aspect-h-1">
               <img
                 src="images/siosiotech.png"
@@ -147,22 +141,26 @@
                 class="object-cover myImage"
               />
             </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+            <div
+              class="flex items-center justify-between px-4 py-2 bg-contactbg"
+            >
               <div>
                 <h1 class="font-bold text-white">Sosiotech</h1>
                 <p class="text-darkgray">By: Me</p>
               </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              class="text-orangebg font-semibold"
-              target="_blank"
-              href="https://sisotech.netlify.app/"
-              >Demo</a>
+              <div class="inline-block cursor-pointer">
+                <a
+                  class="text-orangebg font-semibold"
+                  target="_blank"
+                  href="https://sisotech.netlify.app/"
+                  >Demo</a
+                >
+              </div>
             </div>
-            </div>
-          </div><div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all">
+          </div>
+          <div
+            class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all"
+          >
             <div class="aspect-w-1 aspect-h-1">
               <img
                 src="images/nft-market.png"
@@ -170,407 +168,169 @@
                 class="object-cover myImage"
               />
             </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+            <div
+              class="flex items-center justify-between px-4 py-2 bg-contactbg"
+            >
               <div>
                 <h1 class="font-bold text-white">Nft Marketplace</h1>
                 <p class="text-darkgray">By: Me</p>
               </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              class="font-semibold text-orangebg"
-              target="_blank"
-                href="https://nft-wisnu.netlify.app/"
-              >Demo</a>
-            </div>
+              <div class="inline-block cursor-pointer">
+                <a
+                  class="font-semibold text-orangebg"
+                  target="_blank"
+                  href="https://nft-wisnu.netlify.app/"
+                  >Demo</a
+                >
+              </div>
             </div>
           </div>
-          <div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all">
+          <div
+            class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-all"
+          >
             <div class="aspect-w-1 aspect-h-1">
               <img
-                src="images/artworks/wikwok.jpg"
+                src="images/artworks/wikwok.webp"
                 alt="deer"
                 class="object-cover myImage"
               />
             </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+            <div
+              class="flex items-center justify-between px-4 py-2 bg-contactbg"
+            >
               <div>
                 <h1 class="font-bold text-white">Moonlight</h1>
                 <p class="text-darkgray">By: Me</p>
               </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1Y-h7nYkoN1_0DGtaq41r4KVk-QGj30nA/view?usp=sharing"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div class="inline-block cursor-pointer">
+                <a
+                  target="_blank"
+                  href="https://drive.google.com/file/d/1Y-h7nYkoN1_0DGtaq41r4KVk-QGj30nA/view?usp=sharing"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
+                  <svg
+                    class="inline-block w-6 h-6 text-orangebg"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform">
+          <div
+            class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform"
+          >
             <div class="aspect-w-1 aspect-h-1">
               <img
-                src="images/artworks/exit.jpg"
+                src="images/artworks/exit.webp"
                 alt="deer"
                 class="object-cover myImage"
               />
             </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+            <div
+              class="flex items-center justify-between px-4 py-2 bg-contactbg"
+            >
               <div>
                 <h1 class="font-bold text-white">Exit</h1>
                 <p class="text-darkgray">By: Me</p>
               </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1ObX_XuQXoOVhIK_6CM99Lh31Dz2cT_0W/view"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div class="inline-block cursor-pointer">
+                <a
+                  target="_blank"
+                  href="https://drive.google.com/file/d/1ObX_XuQXoOVhIK_6CM99Lh31Dz2cT_0W/view"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
+                  <svg
+                    class="inline-block w-6 h-6 text-orangebg"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform">
+          <div
+            class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform"
+          >
             <div class="aspect-w-1 aspect-h-1">
               <img
-                src="images/artworks/deer.jpg"
+                src="images/artworks/deer.webp"
                 alt="deer"
                 class="object-cover myImage"
               />
             </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
+            <div
+              class="flex items-center justify-between px-4 py-2 bg-contactbg"
+            >
               <div>
                 <h1 class="font-bold text-white">The Deer</h1>
                 <p class="text-darkgray">By: Me & Habibi</p>
               </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1OyqNvx7T-yPSqBG8qSlrgKGrrO0CqJ21/view?usp=sharing"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div class="inline-block cursor-pointer">
+                <a
+                  target="_blank"
+                  href="https://drive.google.com/file/d/1OyqNvx7T-yPSqBG8qSlrgKGrrO0CqJ21/view?usp=sharing"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
+                  <svg
+                    class="inline-block w-6 h-6 text-orangebg"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform">
-            <div class="aspect-w-1 aspect-h-1">
-              <img
-                src="images/artworks/chair.jpg"
-                alt="deer"
-                class="object-cover myImage"
-              />
-            </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
-              <div>
-                <h1 class="font-bold text-white">The Chair</h1>
-                <p class="text-darkgray">By: Me</p>
-              </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1KlqfDSWkwlL5n78PBD_24ACLCzYnBosL/view"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-            </div>
-          </div>
-          <div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform">
-            <div class="aspect-w-1 aspect-h-1">
-              <img
-                src="images/artworks/santai.jpg"
-                alt="deer"
-                class="object-cover myImage"
-              />
-            </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
-              <div>
-                <h1 class="font-bold text-white">Santai Sejenak</h1>
-                <p class="text-darkgray">By: Me & Bilal</p>
-              </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1W_mizmR-S7eLWDq2Z2ckK36mgimAgi0B/view?usp=sharing"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-            </div>
-          </div>
-          <div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform">
-            <div class="aspect-w-1 aspect-h-1">
-              <img
-                src="images/artworks/untitled.jpg"
-                alt="deer"
-                class="object-cover myImage"
-              />
-            </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
-              <div>
-                <h1 class="font-bold text-white">Lonely</h1>
-                <p class="text-darkgray">By: Me</p>
-              </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1-qZj-VTDyMrU4zG-qZ89e3Pby3TLErH8/view?usp=sharing"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-            </div>
-          </div>
-          <div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform">
-            <div class="aspect-w-1 aspect-h-1">
-              <img
-                src="images/artworks/majalah1.jpg"
-                alt="deer"
-                class="object-cover myImage"
-              />
-            </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
-              <div>
-                <h1 class="font-bold text-white">Majalah Charger</h1>
-<p class="text-darkgray">By: Me</p>
-              </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1KBPzdjGZGJFofNm-Gc3oI-Pc2ao18gdP/view?usp=sharing"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-            </div>
-          </div><div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform">
-            <div class="aspect-w-1 aspect-h-1">
-              <img
-                src="images/artworks/majalah2.jpg"
-                alt="deer"
-                class="object-cover myImage"
-              />
-            </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
-              <div>
-                <h1 class="font-bold text-white">Majalah Charger</h1>
-                <p class="text-darkgray">By: Me</p>
-              </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1KBPzdjGZGJFofNm-Gc3oI-Pc2ao18gdP/view?usp=sharing"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-            </div>
-          </div><div class="overflow-hidden rounded hover:shadow-2xl hover:scale-105 transition-transform">
-            <div class="aspect-w-1 aspect-h-1">
-              <img
-                src="images/artworks/majalah4.jpg"
-                alt="deer"
-                class="object-cover myImage"
-              />
-            </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
-              <div>
-                <h1 class="font-bold text-white">Majalah Charger</h1>
-                <p class="text-darkgray">By: Me</p>
-              </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1KBPzdjGZGJFofNm-Gc3oI-Pc2ao18gdP/view?usp=sharing"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-            </div>
-          </div><div class="overflow-hidden rounded hover:shadow-lg lg:col-span-3 hover:scale-105 transition-transform">
-            <div class="aspect-w-1 aspect-h-1 lg:aspect-none">
-              <img
-                src="images/artworks/majalah3.jpg"
-                alt="deer"
-                class="object-cover myImage"
-              />
-            </div>
-            <div class="flex items-center justify-between px-4 py-2 bg-contactbg">
-              <div>
-                <h1 class="font-bold text-white">Majalah Charger</h1>
-                <p class="text-darkgray">By: Me</p>
-              </div>
-              <div
-              class="inline-block cursor-pointer "
-              >
-              <a
-              target="_blank"
-                href="https://drive.google.com/file/d/1KBPzdjGZGJFofNm-Gc3oI-Pc2ao18gdP/view?usp=sharing"
-              >
-                <svg
-                  class="inline-block w-6 h-6 text-orangebg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-            </div>
-          </div>
-        </div>
         </div>
       </div>
+      <div
+        class="hover:-translate-y-2 transition-transform items-center flex justify-center pt-5 pb-10"
+      >
+        <button
+          class="shadow bg-contactbg focus:outline-none focus:ring-2 focus:ring-orangebg transition-all text-darkgray font-bold py-2 px-4 rounded btn-kirim"
+          type="submit"
+        >
+          Load More
+        </button>
+      </div>
+      <!-- <button
+        onclick="topFunction()"
+        id="myBtn"
+        title="Go to top"
+        class="hidden fixed bg-red-500 bottom-[99px] right-[30px] text-[18px] border-none outline-none text-white border-[4px] p-[15px] cursor-pointer hover:bg-[#555]"
+      >
+        Top
+      </button> -->
     </div>
+
+    <script src="gotop.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script src="DisableDrag.js"></script>
     <script>
-      
       var cursor = document.getElementById("cursor");
       document.body.addEventListener("mousemove", function (e) {
         (cursor.style.left = e.clientX + "px"),
