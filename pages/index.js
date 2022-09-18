@@ -12,21 +12,9 @@ import Head from "next/head";
 import { projects } from "/json/data.json";
 import { Dialog, Transition } from "@headlessui/react";
 
-export default function Home({ newsData }) {
+export default function Home() {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-
-  // Get 4 data
-  const personalProjects = [];
-  for (let i = 0; i < 4; i++) {
-    const getAllData = {
-      title: `${newsData[i].title}`,
-      description: `${newsData[i].description}`,
-      url: `${newsData[i].url}`,
-      image: `${newsData[i].urlToImage}`,
-    };
-    personalProjects.push(getAllData);
-  }
 
   useEffect(() => {
     setMounted(true);
@@ -129,11 +117,9 @@ export default function Home({ newsData }) {
             <Swiper
               slidesPerView={4}
               spaceBetween={20}
-              // grabCursor={true}
               modules={[Autoplay]}
               autoplay={{
                 delay: 2000,
-                // disableOnInteraction: false,
               }}
             >
               {projects.map((project, idx) => {
@@ -146,41 +132,6 @@ export default function Home({ newsData }) {
             </Swiper>
           </div>
         </section>
-
-        {/* <section className="border-b-2 border-b-[#E7E7E7]" id="projects">
-          <div className="w-[90%] mx-auto my-[174px]">
-            <div className="flex flex-col justify-end gap-2 mb-24">
-              <h3 className="font-extrabold text-3xl text-end">
-                personal projects
-              </h3>
-              <div className="w-[90px] h-[7px] bg-black self-end dark:bg-white" />
-            </div>
-
-            <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-rows-2 gap-[87px] mb-[87px]">
-              {projects.map((project, idx) => {
-                return (
-                  <Project
-                    judul={project.name}
-                    desc={project.description}
-                    url={project.url}
-                    image={`/projects/${project.image}`}
-                    key={idx}
-                  />
-                );
-              })}
-            </div>
-
-            <div className="flex items-center justify-center">
-              <button>
-                <Link href="posts" className="font-semibold text-lg">
-                  show more project
-                </Link>
-                <div className="w-6 h-[2px] bg-black dark:bg-white" />
-              </button>
-            </div>
-          </div>
-        </section> */}
-
         <section className="border-b-2 border-b-[#E7E7E7]" id="about-me">
           <div className="w-[90%] mx-auto mt-[161px]">
             <div className="flex flex-col gap-2 mb-24">
@@ -319,6 +270,7 @@ export default function Home({ newsData }) {
                   alt="Figma"
                   width={"100%"}
                   height={"100%"}
+                  className="dark:invert"
                 />
               </a>
               <a href="#" className="w-[35px] h-[35px]">
@@ -327,6 +279,7 @@ export default function Home({ newsData }) {
                   alt="Figma"
                   width={"100%"}
                   height={"100%"}
+                  className="dark:invert"
                 />
               </a>
               <a
@@ -363,6 +316,7 @@ export default function Home({ newsData }) {
                   alt="Dribble"
                   width={"100%"}
                   height={"100%"}
+                  className="dark:invert"
                 />
               </a>
               <a href="#" className="w-[35px] h-[35px]">
@@ -371,6 +325,7 @@ export default function Home({ newsData }) {
                   alt="Youtube"
                   width={"100%"}
                   height={"100%"}
+                  className="dark:invert"
                 />
               </a>
             </div>
@@ -548,19 +503,4 @@ const Project = ({ judul, desc, url, image }) => {
       </Transition>
     </div>
   );
-};
-
-export const getServerSideProps = async (context) => {
-  let newsData;
-  await axios
-    .get(
-      `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.API_KEY}`
-    )
-    .then((res) => {
-      newsData = res.data.articles;
-    });
-
-  return {
-    props: { newsData },
-  };
 };
