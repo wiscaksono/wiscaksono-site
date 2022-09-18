@@ -1,17 +1,12 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.html"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "class",
   theme: {
-    extend: {
-      colors: {
-        darkgray: "#8C8C8C",
-        contactbg: "#333333",
-        orangebg: "#FF5B38",
-      },
-
-      backgroundImage: (theme) => ({
-        background: "url('/images/background.svg')",
-      }),
-    },
+    extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
