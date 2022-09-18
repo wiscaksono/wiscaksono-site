@@ -44,3 +44,15 @@ html {
 .writing-mode-tb {
   writing-mode: tb;
 }
+
+.writing-mode-tb-nav {
+  writing-mode: tb;
+  rotate: -180deg;
+}
+
+@media (max-width: 768px) {
+  .writing-mode-tb-nav {
+    writing-mode: unset;
+    rotate: unset;
+  }
+}

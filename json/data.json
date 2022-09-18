@@ -46,15 +46,6 @@
       "stack": "Next.Js, Tailwindcss, Testing"
     },
     {
-      "name": "Santai Sejenak",
-      "slug": "",
-      "category": "3D",
-      "image": "santai-sejenak.jpg",
-      "description": "The KRL access app is an application that is used to help commuter line users view schedules, routes, prices, positions, density, and news about the commuter line.",
-      "featured": false,
-      "stack": "Next.Js, Tailwindcss, Testing"
-    },
-    {
       "name": "The Chair",
       "slug": "",
       "category": "3D",
