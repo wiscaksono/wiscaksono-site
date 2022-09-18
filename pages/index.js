@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
@@ -57,10 +58,10 @@ export default function Home() {
       >
         <div className="w-full h-full">
           <nav className="flex items-center justify-between w-[90%] mx-auto mt-11">
-            <a href="#main" className="text-4xl font-extrabold">
+            <a href="/" className="text-4xl font-extrabold">
               wsn.
             </a>
-            <h6 className="font-semibold">portofolio</h6>
+            <h6 className="font-semibold">personal site</h6>
           </nav>
           <div className="w-[95%] relative flex items-center justify-center h-[calc(100vh-90px)] mx-auto">
             <div>
@@ -104,10 +105,10 @@ export default function Home() {
       </header>
       <main>
         <section className="border-b-2 border-b-[#E7E7E7]" id="cases">
-          <div className=" ml-[5%] flex items-start my-[182px] gap-[92px] ">
-            <div className="flex flex-col gap-2 writing-mode-tb -rotate-180 flex-grow-0">
+          <div className=" ml-[5%] flex flex-col md:flex-row items-start my-[182px] gap-[92px] overflow-hidden">
+            <div className="flex flex-col gap-2 writing-mode-tb-case flex-grow-0">
               <h3 className="font-extrabold text-3xl ">amazing cases</h3>
-              <div className="w-[7px] h-[90px] bg-black dark:bg-white self-end" />
+              <div className="md:w-[7px] md:h-[90px] w-[90px] h-[7px] bg-black dark:bg-white lg:self-end" />
             </div>
 
             <Swiper
@@ -146,7 +147,7 @@ export default function Home() {
               <div className="w-[90px] h-[7px] bg-black dark:bg-white" />
             </div>
 
-            <div className="w-[90%] mx-auto flex items-center gap-[71px] mb-[74px]">
+            <div className="w-[90%] mx-auto flex flex-col lg:flex-row items-center gap-[71px] mb-[74px]">
               <Image
                 src="/profile-pict2.png"
                 width={198}
@@ -353,8 +354,9 @@ export default function Home() {
               wsn.
             </a>
             <p className="text-xs font-light text-[#808080] absolute bottom-5 right-0">
-              design by <span className="font-bold">marcos oliveira</span> &
-              coding by <span className="font-bold">me</span>
+              design by <span className="font-bold">marcos oliveira</span>{" "}
+              <br className="block md:hidden" /> & coding by{" "}
+              <span className="font-bold">me</span>
             </p>
           </div>
         </footer>

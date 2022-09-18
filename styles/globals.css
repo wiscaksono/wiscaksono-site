@@ -56,3 +56,15 @@ html {
     rotate: unset;
   }
 }
+
+.writing-mode-tb-case {
+  writing-mode: tb;
+  rotate: -180deg;
+}
+
+@media (max-width: 768px) {
+  .writing-mode-tb-case {
+    writing-mode: unset;
+    rotate: unset;
+  }
+}
