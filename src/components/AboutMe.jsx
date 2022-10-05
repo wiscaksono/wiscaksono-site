@@ -226,7 +226,7 @@ function PersonalInfo({ setRender, render }) {
                       onClick={() => setRender("my-bio")}
                     >
                       <SiMarkdown />
-                      <span>my-bio.md</span>
+                      <span className="truncate">my-bio.md</span>
                     </Popover.Panel>
                   </Transition>
                 </>
@@ -249,7 +249,7 @@ function PersonalInfo({ setRender, render }) {
                         isOpenInterests ? "text-[#E99287]" : "text-[#b36d64]"
                       } transition-colors`}
                     />
-                    <span>interests</span>
+                    <span className="truncate">interests</span>
                   </Popover.Button>
 
                   <Transition

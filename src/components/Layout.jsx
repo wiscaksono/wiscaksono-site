@@ -229,7 +229,7 @@ export default function Layout({ children, setIsNavbar, isNavbar }) {
         </AnimatePresence>
         <footer className="lg:grid grid-cols-12 text-[#607B96] border-t border-[#1E2D3D] hidden">
           <div className="col-span-2 flex items-center">
-            <p className="px-4 py-1.5">find me in:</p>
+            <p className="px-4 py-1.5 truncate">find me in:</p>
             <a
               href="https://twitter.com/wiscaksono"
               target="_blank"
