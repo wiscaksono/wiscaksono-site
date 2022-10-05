@@ -1,30 +1,57 @@
 {
-  "name": "wiscaksono",
+  "name": "learn-react",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
   "dependencies": {
-    "@headlessui/react": "^1.7.2",
-    "axios": "^0.27.2",
-    "next": "12.3.0",
-    "next-themes": "^0.2.1",
+    "@emailjs/browser": "^3.7.0",
+    "@headlessui/react": "1.7.2",
+    "@react-icons/all-files": "^4.1.0",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "framer-motion": "^7.5.2",
+    "i": "^0.3.7",
+    "moment": "^2.29.4",
+    "npm": "^8.19.2",
     "react": "^18.2.0",
-    "react-dom": "18.2.0",
-    "swiper": "^8.4.2",
-    "swr": "^1.3.0",
-    "typewriter-effect": "^2.19.0"
+    "react-big-calendar": "^1.5.0",
+    "react-code-blocks": "^0.0.9-0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1",
+    "react-scripts": "5.0.1",
+    "typewriter-effect": "^2.19.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@tailwindcss/line-clamp": "^0.4.2",
-    "autoprefixer": "^10.4.11",
-    "eslint": "8.23.1",
-    "eslint-config-next": "12.3.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "autoprefixer": "^10.4.12",
     "postcss": "^8.4.16",
+    "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.1.8"
   }
 }
