@@ -50,8 +50,8 @@ export default function Projects() {
           >
             <div className="flex items-center gap-6 ">
               <button
-                className={`flex items-center text-[#607B96] gap-2.5 cursor-pointer transition-colors hover:text-white w-full text-left ${
-                  filter === "all" ? "text-white" : null
+                className={`flex items-center gap-2.5 cursor-pointer transition-colors hover:text-white w-full text-left ${
+                  filter === "all" ? "text-white" : "text-[#607B96]"
                 }`}
                 onClick={() => setFilter("all")}
               >
@@ -61,8 +61,8 @@ export default function Projects() {
             </div>
             <div className="flex items-center gap-6 ">
               <button
-                className={`flex items-center text-[#607B96] gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
-                  filter === "HTML" ? "text-white" : null
+                className={`flex items-center gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
+                  filter === "HTML" ? "text-white" : "text-[#607B96]"
                 }`}
                 onClick={() => setFilter("HTML")}
               >
@@ -72,8 +72,8 @@ export default function Projects() {
             </div>
             <div className="flex items-center gap-6">
               <button
-                className={`flex items-center text-[#607B96] gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
-                  filter === "NextJS" ? "text-white" : null
+                className={`flex items-center gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
+                  filter === "NextJS" ? "text-white" : "text-[#607B96]"
                 }`}
                 onClick={() => setFilter("NextJS")}
               >
@@ -83,8 +83,8 @@ export default function Projects() {
             </div>
             <div className="flex items-center gap-6 ">
               <button
-                className={`flex items-center text-[#607B96] gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
-                  filter === "ReactJS" ? "text-white" : null
+                className={`flex items-center gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
+                  filter === "ReactJS" ? "text-white" : "text-[#607B96]"
                 }`}
                 onClick={() => setFilter("ReactJS")}
               >
@@ -94,8 +94,8 @@ export default function Projects() {
             </div>
             <div className="flex items-center gap-6">
               <button
-                className={`flex items-center text-[#607B96] gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
-                  filter === "Vue" ? "text-white" : null
+                className={`flex items-center gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
+                  filter === "Vue" ? "text-white" : "text-[#607B96]"
                 }`}
                 onClick={() => setFilter("Vue")}
               >
@@ -105,8 +105,8 @@ export default function Projects() {
             </div>
             <div className="flex items-center gap-6">
               <button
-                className={`flex items-center text-[#607B96] gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
-                  filter === "Angular" ? "text-white" : null
+                className={`flex items-center gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
+                  filter === "Angular" ? "text-white" : "text-[#607B96]"
                 }`}
                 onClick={() => setFilter("Angular")}
               >
@@ -116,8 +116,8 @@ export default function Projects() {
             </div>
             <div className="flex items-center gap-6">
               <button
-                className={`flex items-center text-[#607B96] gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
-                  filter === "Blender" ? "text-white" : null
+                className={`flex items-center gap-2.5 cursor-pointer transition-colors hover:text-white w-full ${
+                  filter === "Blender" ? "text-white" : "text-[#607B96]"
                 }`}
                 onClick={() => setFilter("Blender")}
               >
