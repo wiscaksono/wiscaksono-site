@@ -32,7 +32,7 @@ export default function AboutMe() {
     >
       <div className="lg:grid grid-cols-12 h-full flex flex-col ">
         <div className="col-span-2 grid lg:grid-cols-6">
-          <div className="col-span-6 lg:border-r border-b border-[#1E2D3D] text-white gap-2.5 relative overflow-hidden">
+          <div className="col-span-6 lg:border-r lg:border-b-0 border-b border-[#1E2D3D] text-white gap-2.5 relative overflow-hidden">
             <PersonalInfo setRender={setRender} render={render} />
           </div>
         </div>

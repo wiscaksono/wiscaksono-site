@@ -183,7 +183,7 @@ export default function Layout({ children, setIsNavbar, isNavbar }) {
                 </button>
               </div>
 
-              <footer className=" block lg:hidden">
+              <footer className="block lg:hidden">
                 <div className="grid grid-cols-12 px-5 text-[#607B96] border-t border-[#1E2D3D]">
                   <div className="col-span-11 flex items-center">
                     <p className="pr-4 py-1.5">find me in:</p>
@@ -227,9 +227,9 @@ export default function Layout({ children, setIsNavbar, isNavbar }) {
             </main>
           )}
         </AnimatePresence>
-        <footer className="lg:grid grid-cols-12 px-5 text-[#607B96] border-t border-[#1E2D3D] hidden">
+        <footer className="lg:grid grid-cols-12 text-[#607B96] border-t border-[#1E2D3D] hidden">
           <div className="col-span-2 flex items-center">
-            <p className="pr-4 py-1.5">find me in:</p>
+            <p className="px-4 py-1.5">find me in:</p>
             <a
               href="https://twitter.com/wiscaksono"
               target="_blank"
@@ -249,10 +249,10 @@ export default function Layout({ children, setIsNavbar, isNavbar }) {
               <FaFacebookF />
             </a>
           </div>
-          <div className="col-span-10 flex items-center justify-end">
+          <div className="col-span-10 flex items-center justify-end ">
             <a
               href="https://github.com/wiscaksono"
-              className="flex items-center justify-center gap-1.5 pl-4 border-l border-[#1E2D3D] py-1.5 hover:text-white transition-colors"
+              className="flex items-center justify-center gap-1.5 pl-4 border-l border-[#1E2D3D] py-1.5 hover:text-white transition-colors pr-4"
               target="_blank"
               rel="noreferrer"
               aria-label="Follow me on github"

@@ -211,8 +211,8 @@ function Contacts() {
       <>
         <Popover.Button
           className={`
-                ${isOpen ? "text-white" : "text-white/50"}
-               flex items-center gap-2.5 border-b border-[#1E2D3D] py-2.5 px-4 w-full`}
+                ${isOpen ? "text-white " : "text-white/50 border-b-0"}
+               flex items-center gap-2.5  border-b border-[#1E2D3D] py-2.5 px-4 w-full`}
           onClick={openPopover}
         >
           <GoTriangleDown
