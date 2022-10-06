@@ -9,6 +9,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { CopyBlock, nord } from "react-code-blocks";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import gearData from "../data/GearData.json";
 
 export default function AboutMe() {
   const [render, setRender] = useState("my-bio");
@@ -20,6 +21,8 @@ export default function AboutMe() {
       return <MyBio closeBio={setRender} />;
     } else if (value === "interests") {
       return <Interests closeInterests={setRender} />;
+    } else if (value === "gear") {
+      return <Gear closeGear={setRender} />;
     }
   }
 
@@ -132,6 +135,72 @@ function Interests({ closeInterests }) {
   );
 }
 
+function Gear({ closeGear }) {
+  console.log(gearData.gearType[0].gearList[1].type);
+  function Content({ title, item, desc, list }) {
+    return (
+      <div className="mb-10">
+        <h1 className="text-2xl font-medium text-white mb-5">{title}</h1>
+        <div className="pl-10">
+          <ul className="list-disc text-white/80">
+            {list.map((data, index) => {
+              return (
+                <div key={index}>
+                  <li className="font-medium text-lg text-white/90">
+                    {data.item}
+                  </li>
+                  <p className="mb-2.5">{data.desc}</p>
+                  <div className="flex gap-2.5 mb-5">
+                    {data.type?.map((data, index) => {
+                      return (
+                        <div
+                          className="text-xs bg-[#1b2b3a] py-1 px-2 rounded-full flex items-center gap-1.5 w-max "
+                          key={index}
+                        >
+                          <div className="w-1 h-1 rounded-full bg-white" />
+                          <span>{data}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      className="col-span-10 h-full flex  justify-center overflow-hidden flex-col"
+      initial={{ x: -50, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: 50, opacity: 0 }}
+    >
+      <div className="w-full">
+        <div className="grid grid-cols-12 border-b border-[#1E2D3D]">
+          <div className="lg:col-span-2 col-span-4 text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
+            <button
+              className="absolute top-1/2 -translate-y-1/2 right-4"
+              onClick={() => closeGear("/")}
+            >
+              <AiOutlineClose />
+            </button>
+            <p>gear</p>
+          </div>
+        </div>
+      </div>
+      <div className="overflow-y-auto scrollbar-thin h-full lg:p-16 md:p-8 p-4">
+        {gearData.gearType.map((data, index) => {
+          return <Content title={data.gear} key={index} list={data.gearList} />;
+        })}
+      </div>
+    </motion.div>
+  );
+}
+
 function PersonalInfo({ setRender, render }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isOpenBio, setIsOpenBio] = useState(false);
@@ -217,6 +286,7 @@ function PersonalInfo({ setRender, render }) {
                     leave="transition ease-linear duration-150"
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 -translate-y-1"
+                    className="flex flex-col"
                   >
                     <Popover.Panel
                       className={`px-4 my-1 ml-2.5 inline-flex items-center gap-2.5 transition-colors ${
@@ -226,7 +296,17 @@ function PersonalInfo({ setRender, render }) {
                       onClick={() => setRender("my-bio")}
                     >
                       <SiMarkdown />
-                      <span className="truncate">my-bio.md</span>
+                      <span className="truncate">my-bio</span>
+                    </Popover.Panel>
+                    <Popover.Panel
+                      className={`px-4 my-1 ml-2.5 inline-flex items-center gap-2.5 transition-colors ${
+                        render === "gear" ? "text-white" : "text-[#607B96]"
+                      }`}
+                      as="button"
+                      onClick={() => setRender("gear")}
+                    >
+                      <SiMarkdown />
+                      <span className="truncate">gear</span>
                     </Popover.Panel>
                   </Transition>
                 </>
@@ -269,7 +349,7 @@ function PersonalInfo({ setRender, render }) {
                       onClick={() => setRender("interests")}
                     >
                       <SiMarkdown />
-                      <span className="pr-5 truncate">interests.md</span>
+                      <span className="pr-5 truncate">interests</span>
                     </Popover.Panel>
                   </Transition>
                 </>

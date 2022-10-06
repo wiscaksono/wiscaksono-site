@@ -8,7 +8,7 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 export default function App() {
-  const [isNavbar, setIsNavbar] = useState("/");
+  const [isNavbar, setIsNavbar] = useState("about-me");
 
   function render(value) {
     if (value === "/") {
