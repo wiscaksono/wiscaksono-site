@@ -19,10 +19,10 @@ export default function AboutMe() {
       return <Root />;
     } else if (value === "my-bio") {
       return <MyBio closeBio={setRender} />;
-    } else if (value === "interests") {
-      return <Interests closeInterests={setRender} />;
     } else if (value === "gear") {
       return <Gear closeGear={setRender} />;
+    } else if (value === "work") {
+      return <Work closeGear={setRender} />;
     }
   }
 
@@ -77,7 +77,7 @@ function MyBio({ closeBio }) {
             >
               <AiOutlineClose />
             </button>
-            <p className="pr-5 truncate">my-bio</p>
+            <p className="pr-5 truncate">personal.js</p>
           </div>
         </div>
       </div>
@@ -85,11 +85,16 @@ function MyBio({ closeBio }) {
         <CopyBlock
           language={`jsx`}
           text={`
-/*
-I am Wisnu Wicaksono, a web developer, an electrical engineer and VIM pilot who lives in Jakarta, Indonesia.
-I am a freelancer who is now working with an amazing team from different regions around the world. 
-I like sports, new technology and games.
-*/
+const name = 'Wisnu Wicaksono'
+let location = 'Jakarta, Indonesia'
+
+let hobbies = [
+  "Game"
+  "Programming", 
+  "Eating food", 
+  "Baseketball", 
+  "More programming", 
+]
           `}
           showLineNumbers={true}
           theme={nord}
@@ -100,7 +105,7 @@ I like sports, new technology and games.
   );
 }
 
-function Interests({ closeInterests }) {
+function Work({ closeWork }) {
   return (
     <motion.div
       className="col-span-10 h-full flex  justify-center overflow-hidden flex-col"
@@ -110,24 +115,42 @@ function Interests({ closeInterests }) {
     >
       <div className="w-full">
         <div className="grid grid-cols-12 border-b border-[#1E2D3D]">
-          <div className="lg:col-span-2 col-span-4 text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
+          <div className="lg:col-span-2 col-span-5 text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
             <button
               className="absolute top-1/2 -translate-y-1/2 right-4"
-              onClick={() => closeInterests("/")}
+              onClick={() => {
+                closeWork("/");
+              }}
             >
               <AiOutlineClose />
             </button>
-            <p>interests</p>
+            <p className="pr-5 truncate">work.js</p>
           </div>
         </div>
       </div>
       <div className="overflow-y-auto scrollbar-thin h-full">
         <CopyBlock
           language={`jsx`}
-          text={`belom`}
+          text={`// Work Information
+let profession = 'Web Developer',
+let employer = 'Falah Inovasi Teknologi',
+
+// Most important skills
+let languanges = [
+  "C",
+  "C++",
+  "CSS",
+  "HTML",
+  "Python",
+  "JavaScript",
+]
+let frameworks = [
+  "React",
+  "Tailwind",
+  "Laravel", // am still learning this...
+]`}
           showLineNumbers={true}
           theme={nord}
-          wrapLines={true}
           codeBlock
         />
       </div>
@@ -136,8 +159,7 @@ function Interests({ closeInterests }) {
 }
 
 function Gear({ closeGear }) {
-  console.log(gearData.gearType[0].gearList[1].type);
-  function Content({ title, item, desc, list }) {
+  function Content({ title, list }) {
     return (
       <div className="mb-10">
         <h1 className="text-2xl font-medium text-white mb-5">{title}</h1>
@@ -188,7 +210,7 @@ function Gear({ closeGear }) {
             >
               <AiOutlineClose />
             </button>
-            <p>gear</p>
+            <p>gear.md (preview)</p>
           </div>
         </div>
       </div>
@@ -196,6 +218,7 @@ function Gear({ closeGear }) {
         {gearData.gearType.map((data, index) => {
           return <Content title={data.gear} key={index} list={data.gearList} />;
         })}
+        <img src="setup.jpg" alt="My personal setup" />
       </div>
     </motion.div>
   );
@@ -203,24 +226,18 @@ function Gear({ closeGear }) {
 
 function PersonalInfo({ setRender, render }) {
   const [isOpen, setIsOpen] = useState(true);
-  const [isOpenBio, setIsOpenBio] = useState(false);
-  const [isOpenInterests, setIsOpenInterests] = useState(false);
+  const [isOpenBio, setIsOpenBio] = useState(true);
 
   function openPopover() {
     setIsOpen(!isOpen);
   }
 
   function CollapseAll() {
-    setIsOpenInterests(false);
     setIsOpenBio(false);
   }
 
   function openPopoverBio() {
     setIsOpenBio(!isOpenBio);
-  }
-
-  function openPopoverInterests() {
-    setIsOpenInterests(!isOpenInterests);
   }
 
   return (
@@ -296,7 +313,17 @@ function PersonalInfo({ setRender, render }) {
                       onClick={() => setRender("my-bio")}
                     >
                       <SiMarkdown />
-                      <span className="truncate">my-bio</span>
+                      <span className="truncate">personal.js</span>
+                    </Popover.Panel>
+                    <Popover.Panel
+                      className={`px-4 my-1 ml-2.5 inline-flex items-center gap-2.5 transition-colors ${
+                        render === "work" ? "text-white" : "text-[#607B96]"
+                      }`}
+                      as="button"
+                      onClick={() => setRender("work")}
+                    >
+                      <SiMarkdown />
+                      <span className="truncate">work.js</span>
                     </Popover.Panel>
                     <Popover.Panel
                       className={`px-4 my-1 ml-2.5 inline-flex items-center gap-2.5 transition-colors ${
@@ -306,50 +333,7 @@ function PersonalInfo({ setRender, render }) {
                       onClick={() => setRender("gear")}
                     >
                       <SiMarkdown />
-                      <span className="truncate">gear</span>
-                    </Popover.Panel>
-                  </Transition>
-                </>
-              </Popover>
-              <Popover>
-                <>
-                  <Popover.Button
-                    className={`
-                ${isOpenInterests ? "text-white" : "text-white/50"}
-               flex items-center gap-2.5  w-full transition-colors`}
-                    onClick={openPopoverInterests}
-                  >
-                    <HiChevronRight
-                      className={`${
-                        isOpenInterests ? "rotate-90" : ""
-                      } transition-all`}
-                    />
-                    <RiFolder3Fill
-                      className={`${
-                        isOpenInterests ? "text-[#E99287]" : "text-[#b36d64]"
-                      } transition-colors`}
-                    />
-                    <span className="truncate">interests</span>
-                  </Popover.Button>
-
-                  <Transition
-                    show={isOpenInterests}
-                    enter="transition ease-out duration-200"
-                    enterFrom="opacity-0 -translate-y-1"
-                    enterTo="opacity-100 translate-y-0"
-                    leave="transition ease-linear duration-150"
-                    leaveFrom="opacity-100 translate-y-0"
-                    leaveTo="opacity-0 -translate-y-1"
-                  >
-                    <Popover.Panel
-                      className={`px-4 my-1 ml-2.5 inline-flex items-center gap-2.5 transition-colors ${
-                        render === "interests" ? "text-white" : "text-[#607B96]"
-                      }`}
-                      as="button"
-                      onClick={() => setRender("interests")}
-                    >
-                      <SiMarkdown />
-                      <span className="pr-5 truncate">interests</span>
+                      <span className="truncate">gear.md</span>
                     </Popover.Panel>
                   </Transition>
                 </>

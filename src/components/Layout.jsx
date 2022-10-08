@@ -34,10 +34,13 @@ export default function Layout({ children, setIsNavbar, isNavbar }) {
       window.removeEventListener("resize", detectSize);
     };
   }, [windowDimenion]);
-
+  // bg-[#010c15]
   return (
-    <div className="h-screen  bg-[#010c15] flex items-center justify-center">
-      <div className="custom-size bg-[#011627] rounded-lg border border-[#1E2D3D] flex justify-between flex-col overflow-hidden">
+    <div
+      className="h-screen flex bg-[#010c15] items-center justify-center bg-no-repeat bg-cover bg-center"
+      style={{ backgroundImage: `url("tower-nord.webp")` }}
+    >
+      <div className="custom-size bg-[#011627]/[85%] backdrop-blur-md rounded-lg border border-[#1E2D3D] flex justify-between flex-col overflow-hidden">
         <header className="grid grid-cols-12  text-[#607B96] border-b border-[#1E2D3D] items-center">
           <div className="lg:col-span-2 col-span-11 lg:border-r border-[#1E2D3D] py-4 pl-4">
             <span>Wisnu Wicaksono</span>
@@ -222,7 +225,7 @@ export default function Layout({ children, setIsNavbar, isNavbar }) {
               </footer>
             </motion.div>
           ) : (
-            <main className="self-center h-full w-full overflow-hidden ">
+            <main className="self-center h-full w-full overflow-hidden">
               {children}
             </main>
           )}

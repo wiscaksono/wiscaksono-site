@@ -23,8 +23,8 @@
 }
 
 .custom-size {
-  height: calc(100vh - 2.5rem);
-  width: calc(100vw - 2.5rem);
+  height: calc(100vh - 5.5rem);
+  width: calc(100vw - 5.5rem);
 }
 
 .x-button-snake {

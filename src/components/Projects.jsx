@@ -46,7 +46,7 @@ export default function Projects() {
             leave="transition ease-out duration-150"
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 -translate-y-1"
-            className="flex flex-col gap-4 overflow-hidden absolute md:static z-10 top-[6rem] md:top-0 py-2.5 md:py-0 px-4 md:px-0 w-full md:w-auto left-0 bg-[#011627]"
+            className="flex flex-col gap-4 overflow-hidden absolute md:static z-10 top-[6rem] md:top-0 py-2.5 md:py-0 px-4 md:px-0 w-full md:w-auto left-0 bg-[#011627] md:bg-transparent"
           >
             <div className="flex items-center gap-6 ">
               <button
@@ -176,7 +176,7 @@ const Card = ({ data }) => {
   return (
     <>
       <motion.div
-        className="rounded-2xl border border-[#1E2D3D] bg-[#001221] flex items-center flex-col overflow-hidden hover:shadow-sm hover:shadow-[#607B96] transition-colors h-[400px]"
+        className="rounded-2xl border border-[#1E2D3D] bg-[#001221]/50 flex items-center flex-col overflow-hidden hover:shadow-sm hover:shadow-[#607B96] transition-colors h-[400px]"
         whileHover={{ scale: 1.01 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
@@ -220,14 +220,14 @@ const Card = ({ data }) => {
         >
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-100"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 backdrop-blur-0"
+            enterTo="opacity-100 backdrop-blur-sm"
+            leave="ease-in duration-300"
+            leaveFrom="opacity-100 backdrop-blur-sm"
+            leaveTo="opacity-0 backdrop-blur-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-70" />
+            <div className="fixed inset-0 bg-black bg-opacity-40" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
