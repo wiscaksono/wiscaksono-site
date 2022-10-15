@@ -9,7 +9,7 @@ import { ImSteam } from "@react-icons/all-files/im/ImSteam";
 import { GrLinkedinOption } from "@react-icons/all-files/gr/GrLinkedinOption";
 import { CopyBlock, nord } from "react-code-blocks";
 import { Popover, Transition } from "@headlessui/react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -45,7 +45,7 @@ export default function ContactMe() {
         form.current,
         "9g7j_MsAChUn3sYNO"
       )
-      .then((result) => {
+      .then(() => {
         setLoader(false);
         setShowNotif(true);
         setTimeout(() => setShowNotif(false), 3000);
@@ -178,34 +178,6 @@ function Contacts() {
     setIsOpen(!isOpen);
   }
 
-  const [windowDimenion, detectHW] = useState({
-    winWidth: window.innerWidth,
-    winHeight: window.innerHeight,
-  });
-
-  const detectSize = () => {
-    detectHW({
-      winWidth: window.innerWidth,
-      winHeight: window.innerHeight,
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", detectSize);
-
-    if (windowDimenion.winWidth > 768) {
-      setIsOpen(() => setIsOpen(true));
-    }
-
-    if (windowDimenion.winWidth < 768) {
-      setIsOpen(() => setIsOpen(false));
-    }
-
-    return () => {
-      window.removeEventListener("resize", detectSize);
-    };
-  }, [windowDimenion]);
-
   return (
     <Popover>
       <>
@@ -287,34 +259,6 @@ function FindMeAlso() {
   function openModal() {
     setIsOpen(!isOpen);
   }
-
-  const [windowDimenion, detectHW] = useState({
-    winWidth: window.innerWidth,
-    winHeight: window.innerHeight,
-  });
-
-  const detectSize = () => {
-    detectHW({
-      winWidth: window.innerWidth,
-      winHeight: window.innerHeight,
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", detectSize);
-
-    if (windowDimenion.winWidth < 768) {
-      setIsOpen(() => setIsOpen(false));
-    }
-
-    if (windowDimenion.winWidth > 768) {
-      setIsOpen(() => setIsOpen(true));
-    }
-
-    return () => {
-      window.removeEventListener("resize", detectSize);
-    };
-  }, [windowDimenion]);
 
   return (
     <Popover>

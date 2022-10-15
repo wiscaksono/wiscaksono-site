@@ -130,24 +130,22 @@ export default function Projects() {
 
         <div className="lg:col-span-10 md:col-span-9 col-span-full flex items-start justify-center lg:p-16 md:p-8 p-4 overflow-y-auto scrollbar-none">
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10 h-max w-full">
-            <AnimatePresence>
-              {filter === "all" ? (
-                datas.map((data, index) => {
+            {filter === "all" ? (
+              datas.map((data, index) => {
+                return <Card data={data} key={index} />;
+              })
+            ) : datas.filter((tech) => tech.technology === filter).length ===
+              0 ? (
+              <div className="w-full flex items-center justify-center col-span-4 h-full text-white">
+                Not yet, comeback again later!
+              </div>
+            ) : (
+              datas
+                .filter((tech) => tech.technology === filter)
+                .map((data, index) => {
                   return <Card data={data} key={index} />;
                 })
-              ) : datas.filter((tech) => tech.technology === filter).length ===
-                0 ? (
-                <div className="w-full flex items-center justify-center col-span-4 h-full text-white">
-                  Not yet, comeback again later!
-                </div>
-              ) : (
-                datas
-                  .filter((tech) => tech.technology === filter)
-                  .map((data, index) => {
-                    return <Card data={data} key={index} />;
-                  })
-              )}
-            </AnimatePresence>
+            )}
           </div>
         </div>
       </div>

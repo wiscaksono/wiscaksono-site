@@ -39,7 +39,7 @@ export default function AboutMe() {
             <PersonalInfo setRender={setRender} render={render} />
           </div>
         </div>
-        <AnimatePresence>{Render(render)}</AnimatePresence>
+        <AnimatePresence initial={false}>{Render(render)}</AnimatePresence>
       </div>
     </motion.div>
   );
