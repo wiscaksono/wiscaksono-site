@@ -120,24 +120,30 @@ export default function Home() {
                   </div>
 
                   <div
-                    className={`bg-[#010C15] border border-[#1E2D3D] rounded-lg w-max py-2.5 px-5 ${
-                      pressed.includes("ArrowLeft") ? "scale-105" : ""
+                    className={`border border-[#1E2D3D] rounded-lg w-max py-2.5 px-5 transition-all duration-0  shadow-sm shadow-[#607B96] ${
+                      pressed.includes("ArrowLeft")
+                        ? "scale-105 bg-[#071c2e]"
+                        : "bg-[#010C15]"
                     }`}
                   >
                     <VscTriangleUp className="-rotate-90" />
                   </div>
 
                   <div
-                    className={`bg-[#010C15] border border-[#1E2D3D] rounded-lg w-max py-2.5 px-5 ${
-                      pressed.includes("ArrowDown") ? "scale-105" : ""
+                    className={`border border-[#1E2D3D] rounded-lg w-max py-2.5 px-5 transition-all duration-0  shadow-sm shadow-[#607B96] ${
+                      pressed.includes("ArrowDown")
+                        ? "scale-105 bg-[#071c2e]"
+                        : "bg-[#010C15]"
                     }`}
                   >
                     <VscTriangleUp className="rotate-180" />
                   </div>
 
                   <div
-                    className={`bg-[#010C15] border border-[#1E2D3D] rounded-lg w-max py-2.5 px-5 ${
-                      pressed.includes("ArrowRight") ? "scale-105" : ""
+                    className={`border border-[#1E2D3D] rounded-lg w-max py-2.5 px-5 transition-all duration-0  shadow-sm shadow-[#607B96] ${
+                      pressed.includes("ArrowRight")
+                        ? "scale-105 bg-[#071c2e]"
+                        : "bg-[#010C15]"
                     }`}
                   >
                     <VscTriangleUp className="rotate-90" />

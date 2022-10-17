@@ -4,7 +4,6 @@ import AboutMe from "./components/AboutMe";
 import Projects from "./components/Projects";
 import ContactMe from "./components/ContactMe";
 import { useState } from "react";
-
 import { AnimatePresence } from "framer-motion";
 
 export default function App() {
