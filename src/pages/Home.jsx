@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import { useState, useEffect } from "react";
 import { RiCloseLine } from "@react-icons/all-files/ri/RiCloseLine";
 import { VscTriangleUp } from "@react-icons/all-files/vsc/VscTriangleUp";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
-import Snake from "./snake/snake";
+import Snake from "../components/snake";
 
 export default function Home() {
   const [score, setScore] = useState();

@@ -1,14 +1,14 @@
 // React icons
-import { RiFolder3Fill } from "@react-icons/all-files/ri/RiFolder3Fill";
+import { Popover, Transition } from "@headlessui/react";
+import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
 import { GoTriangleDown } from "@react-icons/all-files/go/GoTriangleDown";
 import { HiChevronRight } from "@react-icons/all-files/hi/HiChevronRight";
+import { RiFolder3Fill } from "@react-icons/all-files/ri/RiFolder3Fill";
 import { SiMarkdown } from "@react-icons/all-files/si/SiMarkdown";
 import { VscCollapseAll } from "@react-icons/all-files/vsc/VscCollapseAll";
-import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
-import { Popover, Transition } from "@headlessui/react";
-import { CopyBlock, nord } from "react-code-blocks";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { CopyBlock, nord } from "react-code-blocks";
 import gearData from "../data/GearData.json";
 
 export default function AboutMe() {
@@ -68,7 +68,7 @@ function MyBio({ closeBio }) {
     >
       <div className="w-full">
         <div className="grid grid-cols-12 border-b border-[#1E2D3D]">
-          <div className="lg:col-span-2 col-span-5 text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
+          <div className="lg:col-span-2 md:col-span-6 col-span-12  text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
             <button
               className="absolute top-1/2 -translate-y-1/2 right-4"
               onClick={() => {
@@ -115,7 +115,7 @@ function Work({ closeWork }) {
     >
       <div className="w-full">
         <div className="grid grid-cols-12 border-b border-[#1E2D3D]">
-          <div className="lg:col-span-2 col-span-5 text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
+          <div className="lg:col-span-2 md:col-span-6 col-span-12 text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
             <button
               className="absolute top-1/2 -translate-y-1/2 right-4"
               onClick={() => {
@@ -203,7 +203,7 @@ function Gear({ closeGear }) {
     >
       <div className="w-full">
         <div className="grid grid-cols-12 border-b border-[#1E2D3D]">
-          <div className="lg:col-span-2 col-span-4 text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
+          <div className="lg:col-span-3 md:col-span-6 col-span-12 text-white border-r border-[#1E2D3D] py-2.5 relative px-4">
             <button
               className="absolute top-1/2 -translate-y-1/2 right-4"
               onClick={() => closeGear("/")}

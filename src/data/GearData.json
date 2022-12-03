@@ -14,6 +14,11 @@
           "type": ["computer", "infinix"]
         },
         {
+          "item": "Logitech MX Keys Mini",
+          "desc": "My smol keeb.",
+          "type": ["keyboard"]
+        },
+        {
           "item": "Keychron K2",
           "desc": "A low profile mechanical keyboard with brown gateron switches.",
           "type": ["keyboard"]

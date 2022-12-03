@@ -1,10 +1,10 @@
-import Layout from "./components/Layout";
-import Home from "./components/Home";
-import AboutMe from "./components/AboutMe";
-import Projects from "./components/Projects";
-import ContactMe from "./components/ContactMe";
-import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import AboutMe from "./pages/AboutMe";
+import ContactMe from "./pages/ContactMe";
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
+import Projects from "./pages/Projects";
 
 export default function App() {
   const [isNavbar, setIsNavbar] = useState("/");

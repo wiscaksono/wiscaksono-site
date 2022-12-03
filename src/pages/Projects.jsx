@@ -1,14 +1,15 @@
+import { Dialog, Transition } from "@headlessui/react";
+import { AiFillHtml5 } from "@react-icons/all-files/ai/AiFillHtml5";
+import { BsFiles } from "@react-icons/all-files/bs/BsFiles";
 import { GoTriangleDown } from "@react-icons/all-files/go/GoTriangleDown";
 import { GrReactjs } from "@react-icons/all-files/gr/GrReactjs";
-import { SiNextDotJs } from "@react-icons/all-files/si/SiNextDotJs";
-import { SiBlender } from "@react-icons/all-files/si/SiBlender";
-import { BsFiles } from "@react-icons/all-files/bs/BsFiles";
-import { SiAngular } from "@react-icons/all-files/si/SiAngular";
 import { RiVuejsFill } from "@react-icons/all-files/ri/RiVuejsFill";
-import { AiFillHtml5 } from "@react-icons/all-files/ai/AiFillHtml5";
-import { Dialog, Transition } from "@headlessui/react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, Fragment } from "react";
+import { SiAngular } from "@react-icons/all-files/si/SiAngular";
+import { SiBlender } from "@react-icons/all-files/si/SiBlender";
+import { SiNextDotJs } from "@react-icons/all-files/si/SiNextDotJs";
+import { motion } from "framer-motion";
+import { Fragment, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import datas from "../data/ProjectData.json";
 
 export default function Projects() {
@@ -171,6 +172,7 @@ const Card = ({ data }) => {
       return <AiFillHtml5 />;
     }
   }
+
   return (
     <>
       <motion.div

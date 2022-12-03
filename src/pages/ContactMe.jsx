@@ -1,17 +1,17 @@
 // React icons
-import { GoTriangleDown } from "@react-icons/all-files/go/GoTriangleDown";
-import { MdEmail } from "@react-icons/all-files/md/MdEmail";
-import { MdCall } from "@react-icons/all-files/md/MdCall";
-import { HiExternalLink } from "@react-icons/all-files/hi/HiExternalLink";
+import emailjs from "@emailjs/browser";
+import { Popover, Transition } from "@headlessui/react";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
 import { FiInstagram } from "@react-icons/all-files/fi/FiInstagram";
-import { ImSteam } from "@react-icons/all-files/im/ImSteam";
+import { GoTriangleDown } from "@react-icons/all-files/go/GoTriangleDown";
 import { GrLinkedinOption } from "@react-icons/all-files/gr/GrLinkedinOption";
-import { CopyBlock, nord } from "react-code-blocks";
-import { Popover, Transition } from "@headlessui/react";
-import { useState, useRef } from "react";
+import { HiExternalLink } from "@react-icons/all-files/hi/HiExternalLink";
+import { ImSteam } from "@react-icons/all-files/im/ImSteam";
+import { MdCall } from "@react-icons/all-files/md/MdCall";
+import { MdEmail } from "@react-icons/all-files/md/MdEmail";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
+import { CopyBlock, nord } from "react-code-blocks";
 
 export default function ContactMe() {
   const d = new Date();
@@ -27,7 +27,7 @@ export default function ContactMe() {
     "Sep",
     "Oct",
     "Nov",
-    "ember",
+    "Dec",
   ];
 
   const form = useRef();
