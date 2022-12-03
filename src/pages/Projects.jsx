@@ -9,7 +9,6 @@ import { SiBlender } from "@react-icons/all-files/si/SiBlender";
 import { SiNextDotJs } from "@react-icons/all-files/si/SiNextDotJs";
 import { motion } from "framer-motion";
 import { Fragment, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import datas from "../data/ProjectData.json";
 
 export default function Projects() {
