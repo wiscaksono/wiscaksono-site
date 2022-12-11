@@ -1,4 +1,3 @@
-// React icons
 import { Popover, Transition } from "@headlessui/react";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
 import { GoTriangleDown } from "@react-icons/all-files/go/GoTriangleDown";
@@ -10,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { CopyBlock, nord } from "react-code-blocks";
 import gearData from "../data/GearData.json";
+import { IoLogoJavascript } from "@react-icons/all-files/io5/IoLogoJavascript";
 
 export default function AboutMe() {
   const [render, setRender] = useState("my-bio");
@@ -312,7 +312,7 @@ function PersonalInfo({ setRender, render }) {
                       as="button"
                       onClick={() => setRender("my-bio")}
                     >
-                      <SiMarkdown />
+                      <IoLogoJavascript />
                       <span className="truncate">personal.js</span>
                     </Popover.Panel>
                     <Popover.Panel
@@ -322,7 +322,7 @@ function PersonalInfo({ setRender, render }) {
                       as="button"
                       onClick={() => setRender("work")}
                     >
-                      <SiMarkdown />
+                      <IoLogoJavascript />
                       <span className="truncate">work.js</span>
                     </Popover.Panel>
                     <Popover.Panel

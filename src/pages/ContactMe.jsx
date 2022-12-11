@@ -1,4 +1,3 @@
-// React icons
 import emailjs from "@emailjs/browser";
 import { Popover, Transition } from "@headlessui/react";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
@@ -30,26 +29,35 @@ export default function ContactMe() {
     "Dec",
   ];
 
-  const form = useRef();
+  const formRef = useRef();
   const [loader, setLoader] = useState(false);
   const [showNotif, setShowNotif] = useState(false);
+  const [formData, setFormData] = useState({
+    form_name: "",
+    message: "",
+    email: "",
+  });
 
   const sendEmail = (e) => {
     e.preventDefault();
     setLoader(true);
 
     emailjs
-      .sendForm(
+      .send(
         "service_8ldb1yk",
-        "template_bvqlwzq",
-        form.current,
+        "template_sac4tzm",
+        {
+          from_name: formData.form_name,
+          message: formData.message,
+          email: formData.email,
+        },
         "9g7j_MsAChUn3sYNO"
       )
       .then(() => {
         setLoader(false);
         setShowNotif(true);
         setTimeout(() => setShowNotif(false), 3000);
-        form.current.reset();
+        formRef.current.reset();
       });
   };
 
@@ -82,7 +90,7 @@ export default function ContactMe() {
               <div className="lg:w-1/2 w-full flex items-center justify-center lg:border-r border-[#1E2D3D] overflow-y-auto scrollbar-thin h-full">
                 <form
                   onSubmit={sendEmail}
-                  ref={form}
+                  ref={formRef}
                   className="text-[#607B96] md:w-[80%] w-[90%] flex flex-col gap-6 relative"
                 >
                   <div className="flex flex-col gap-2.5">
@@ -94,6 +102,9 @@ export default function ContactMe() {
                       className="bg-[#011221] rounded-lg border-[#1E2D3D] focus:ring-[#607B96] focus:border-[#607B96]/30 text-white placeholder:text-[#465E77]"
                       autoComplete="off"
                       required
+                      onChange={(e) => {
+                        setFormData({ ...formData, form_name: e.target.value });
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -105,6 +116,9 @@ export default function ContactMe() {
                       className="bg-[#011221] rounded-lg border-[#1E2D3D]  focus:ring-[#607B96] focus:border-[#607B96]/30 text-white placeholder:text-[#465E77]"
                       autoComplete="off"
                       required
+                      onChange={(e) => {
+                        setFormData({ ...formData, email: e.target.value });
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -116,7 +130,10 @@ export default function ContactMe() {
                       placeholder="Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. Lerned a few nice tips. Thanks!"
                       autoComplete="off"
                       required
-                    ></textarea>
+                      onChange={(e) => {
+                        setFormData({ ...formData, message: e.target.value });
+                      }}
+                    />
                   </div>
                   <button
                     className={`text-white py-[10px] px-[14px] rounded-lg bg-[#1C2B3A] w-max  hover:shadow-sm hover:shadow-[#607B96] transition-all flex items-end gap-2`}

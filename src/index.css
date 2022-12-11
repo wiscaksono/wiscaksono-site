@@ -70,6 +70,7 @@ code .token {
 .loHkWQ {
   @apply bg-transparent p-0 !important;
 }
+
 .loHkWQ span {
   @apply bg-transparent !important;
 }
