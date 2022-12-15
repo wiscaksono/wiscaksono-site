@@ -54,5 +54,9 @@
     "postcss": "^8.4.16",
     "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.1.8"
+  },
+  "engines": {
+    "node": "^16.10",
+    "yarn": "🍑 This project uses NPM, Please do not use YARN 🍑"
   }
 }

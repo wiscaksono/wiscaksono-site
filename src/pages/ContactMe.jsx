@@ -44,14 +44,14 @@ export default function ContactMe() {
 
     emailjs
       .send(
-        "service_8ldb1yk",
-        "template_sac4tzm",
+        process.env.REACT_APP_EMAIL_SERVICE,
+        process.env.REACT_APP_EMAIL_TEMPLATE,
         {
           from_name: formData.form_name,
           message: formData.message,
           email: formData.email,
         },
-        "9g7j_MsAChUn3sYNO"
+        process.env.REACT_APP_EMAIL_JS_USER_ID
       )
       .then(() => {
         setLoader(false);
