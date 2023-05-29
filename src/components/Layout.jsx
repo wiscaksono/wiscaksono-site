@@ -11,7 +11,7 @@ export default function Layout({ children, setIsNavbar, isNavbar }) {
   // For toggle navbar on mobile
   const [navbar, setNavbar] = useState(false);
 
-  const [windowDimenion, detectHW] = useState({
+  const [windowDimension, detectHW] = useState({
     winWidth: window.innerWidth,
     winHeight: window.innerHeight,
   });
@@ -26,14 +26,14 @@ export default function Layout({ children, setIsNavbar, isNavbar }) {
   useEffect(() => {
     window.addEventListener("resize", detectSize);
 
-    if (windowDimenion.winHeight > 768) {
+    if (windowDimension.winHeight > 768) {
       setNavbar(() => setNavbar(false));
     }
 
     return () => {
       window.removeEventListener("resize", detectSize);
     };
-  }, [windowDimenion]);
+  }, [windowDimension]);
   // bg-[#010c15]
   return (
     <div
