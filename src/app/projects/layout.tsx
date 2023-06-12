@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import AsideLink from "@/components/ui/aside-link";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { RiReactjsLine, RiHtml5Fill } from "react-icons/ri";
 import { TbBrandNextjs } from "react-icons/tb";

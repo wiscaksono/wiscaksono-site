@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+
 import projectData from "./projectData.json";
 import capitalizeWords from "@/lib/capitalizeWords";
 
@@ -27,7 +28,7 @@ export default function ProjectTech({ params }: ParamsProps) {
   }
 
   return (
-    <div className="grid md:grid-cols-3 2xl:grid-cols-4 gap-5 p-5 cursor-pointer">
+    <div className="grid md:grid-cols-3 2xl:grid-cols-4 gap-5 p-5 ">
       {filteredData.map((data, i) => (
         <Card data={data} key={i} />
       ))}
