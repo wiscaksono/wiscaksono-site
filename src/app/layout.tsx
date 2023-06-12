@@ -4,6 +4,7 @@ import { Fira_Code } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
+import { AnalyticsWrapper } from "@/components/Analytics";
 
 import "@code-hike/mdx/dist/index.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
         <div className="absolute w-full h-full bg-black/70 z-[2]" />
         <div className="noise" />
         <TailwindIndicator />
+        <AnalyticsWrapper />
       </body>
     </html>
   );
