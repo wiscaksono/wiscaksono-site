@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 
-import projectData from "@/data/projectData.json";
+import projectData from "../app/projects/[tech]/projectData.json";
 
 type CardProps = (typeof projectData)[0];
 
