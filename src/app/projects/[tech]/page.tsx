@@ -1,5 +1,5 @@
 import Card from "@/components/Card";
-import projectData from "@/data/projectData.json";
+import projectData from "../../../data/projectData.json";
 import capitalizeWords from "@/lib/capitalizeWords";
 
 type ParamsProps = {
