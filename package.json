@@ -1,58 +1,47 @@
 {
-  "name": "learn-react",
+  "name": "wiscaksono-site",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@emailjs/browser": "^3.7.0",
-    "@headlessui/react": "1.7.2",
-    "@react-icons/all-files": "^4.1.0",
-    "@tailwindcss/line-clamp": "^0.4.2",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.1.3",
-    "dotenv": "^16.0.3",
-    "framer-motion": "^7.5.2",
-    "i": "^0.3.7",
-    "moment": "^2.29.4",
-    "npm": "^8.19.2",
-    "react": "^18.2.0",
-    "react-code-blocks": "^0.0.9-0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "6",
-    "react-scripts": "5.0.1",
-    "typewriter-effect": "^2.19.0",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@code-hike/mdx": "^0.8.3-next.2",
+    "@emailjs/browser": "^3.11.0",
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@next/mdx": "^13.4.4",
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-dialog": "^1.0.4",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/mdx": "^2.0.5",
+    "@types/node": "20.2.5",
+    "@types/react": "18.2.7",
+    "@types/react-dom": "18.2.4",
+    "autoprefixer": "10.4.14",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.4",
+    "lucide-react": "^0.241.0",
+    "next": "13.4.5",
+    "postcss": "8.4.24",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.9.0",
+    "shiki": "^0.14.2",
+    "tailwind-merge": "^1.13.0",
+    "tailwindcss": "3.3.2",
+    "tailwindcss-animate": "^1.0.5",
+    "typescript": "5.0.4",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.3",
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.16",
-    "tailwind-scrollbar": "^2.0.1",
-    "tailwindcss": "^3.1.8"
+    "tailwind-scrollbar": "^3.0.4"
   }
 }

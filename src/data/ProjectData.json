@@ -1,113 +1,99 @@
 [
   {
-    "title": "Arve's Personal Site",
-    "description": "Websitenya bilal dah",
-    "technology": "NextJS",
-    "image": "../projects/bilal-arve.webp",
-    "link": "https://bilal-arve.netlify.app/"
+    "title": "Agenone",
+    "image": "/projects/agenone.gif",
+    "technology": ["Next", "TailwindCSS", "GSAP"],
+    "description": "This digital agency landing website features a bold hero section with clear benefits, a comprehensive services section to showcase their offerings, an experience statistic to highlight their expertise, a portfolio of their past projects, testimonials from satisfied clients, and a prominent call-to-action to encourage potential clients to take the next step."
   },
   {
-    "title": "Sosiotech",
-    "description": "This is a free Figma template brought to you by the Flowbase Team! Copy the template to your dashboard and customise it in seconds for your next project! If you like our content, check out more at flowbase.co and follow us on Twitter.",
-    "technology": "HTML",
-    "image": "../projects/sosiotech.webp",
-    "link": "https://sisotech.netlify.app/"
+    "title": "PracSuite",
+    "image": "/projects/pracsuite.gif",
+    "technology": ["Next", "TailwindCSS", "GSAP"],
+    "description": "Seco2 is a carbon footprint calculator for film and audiovisual productions. It is homologated by the CNC (Centre National du Cinéma et de l'Image Animée), the French national agency for cinema and the moving image. Seco2 allows producers of film and audiovisual works to calculate the carbon footprint of their productions and to take steps to reduce it.\n\nThe website provides a step-by-step guide to calculating the carbon footprint of a production, from the conception of the project to the distribution of the finished work. It also includes a database of carbon emission factors for a wide range of activities, such as transportation, filming, and post-production.\n\nSeco2 is a valuable tool for producers who want to reduce the environmental impact of their work. It is also a requirement for producers who want to receive funding from the CNC.\n\n",
+    "features": [
+      "Carbon footprint calculator: Seco2 provides a step-by-step guide to calculating the carbon footprint of a production.",
+      "Database of carbon emission factors: Seco2 includes a database of carbon emission factors for a wide range of activities, such as transportation, filming, and post-production.",
+      "Reporting tool: Seco2 provides a reporting tool that allows producers to track their progress in reducing the carbon footprint of their productions.",
+      "Certification: Seco2 is homologated by the CNC, which means that it meets the requirements of the French government for carbon footprint calculators."
+    ]
   },
   {
-    "title": "Old Personal Site",
-    "description": "This is a free Figma template brought to you by the Flowbase Team! Copy the template to your dashboard and customise it in seconds for your next project! If you like our content, check out more at flowbase.co and follow us on Twitter.",
-    "technology": "ReactJS",
-    "image": "../projects/old-personal-site.webp",
-    "link": "https://wiscaksono-github-pj8mlew0c-wiscaksono.vercel.app/"
+    "title": "Chat n' rechat",
+    "image": "/projects/chat-n-rechat.gif",
+    "technology": ["HTML", "CSS"],
+    "description": "Chat n' Rechat is a landing page for a mobile chatting app, featuring a clean and modern design with a hero component showcasing the app illustration. The page includes several sections, including a list of key features, a call-to-action for users to download the app, and a frequently asked questions section."
   },
   {
-    "title": "Confab Virtual Conferences",
-    "description": "This is a free Figma template brought to you by the Flowbase Team! Copy the template to your dashboard and customise it in seconds for your next project! If you like our content, check out more at flowbase.co and follow us on Twitter.",
-    "technology": "NextJS",
-    "image": "../projects/confab.webp",
-    "link": "https://confab-omega.vercel.app/"
+    "title": "Seco2",
+    "image": "/projects/seco2.gif",
+    "technology": ["React", "Next", "Redux", "TailwindCSS"],
+    "description": "Seco2 is a carbon footprint calculator for film and audiovisual productions. It is homologated by the CNC (Centre National du Cinéma et de l'Image Animée), the French national agency for cinema and the moving image. Seco2 allows producers of film and audiovisual works to calculate the carbon footprint of their productions and to take steps to reduce it.\n\nThe website provides a step-by-step guide to calculating the carbon footprint of a production, from the conception of the project to the distribution of the finished work. It also includes a database of carbon emission factors for a wide range of activities, such as transportation, filming, and post-production.\n\nSeco2 is a valuable tool for producers who want to reduce the environmental impact of their work. It is also a requirement for producers who want to receive funding from the CNC.\n\n",
+    "features": [
+      "Carbon footprint calculator: Seco2 provides a step-by-step guide to calculating the carbon footprint of a production.",
+      "Database of carbon emission factors: Seco2 includes a database of carbon emission factors for a wide range of activities, such as transportation, filming, and post-production.",
+      "Reporting tool: Seco2 provides a reporting tool that allows producers to track their progress in reducing the carbon footprint of their productions.",
+      "Certification: Seco2 is homologated by the CNC, which means that it meets the requirements of the French government for carbon footprint calculators."
+    ]
   },
   {
-    "title": "News Site",
-    "description": "iseng ae pak",
-    "technology": "ReactJS",
-    "image": "../projects/news-site.webp"
+    "title": "Electron",
+    "image": "/projects/electron.webp",
+    "technology": ["React", "Zustand", "TailwindCSS", "Mapbox GL"],
+    "description": "Electron's platform uses data from a variety of sources, including satellites, ground sensors, and weather models. This data is then processed and analyzed to provide insights into a variety of environmental indicators, such as carbon emissions, deforestation, and air quality.\n\nElectron's platform is used by a variety of organizations, including governments, businesses, and NGOs. They use it to track their progress on climate change goals, identify areas where they can reduce their carbon emissions, and make informed decisions about how to manage their resources.\n\n",
+    "features": [
+      "Data visualization: Electron's platform provides users with a variety of tools for visualizing data, such as maps, charts, and graphs. This makes it easy to understand complex environmental data and identify trends.",
+      "Reporting: Electron's platform generates automated reports that summarize key findings from the data. These reports can be used to track progress, identify areas for improvement, and communicate with stakeholders.",
+      "Use cases: Electron has a library of use cases that demonstrate how its platform can be used to solve real-world problems. These use cases cover a wide range of industries, including energy, agriculture, and transportation."
+    ]
   },
   {
-    "title": "My First Personal Site",
-    "description": "This is a free Figma template brought to you by the Flowbase Team! Copy the template to your dashboard and customise it in seconds for your next project! If you like our content, check out more at flowbase.co and follow us on Twitter.",
-    "technology": "NextJS",
-    "image": "../projects/first-personal-site.webp",
-    "link": "https://wiscaksono.vercel.app/"
+    "title": "Hodlcards",
+    "image": "/projects/kontol.gif",
+    "technology": ["React", "TailwindCSS", "React Slick"],
+    "description": "HodlCards is a website that sells physical collectible cards that represent Bitcoin and other cryptocurrencies. The cards are designed to look like trading cards, and each card features a unique design and information about the cryptocurrency it represents. HodlCards was founded in 2017 by two brothers, and the company has since sold over 1 million cards.\n\nThe website has a simple design, and it is easy to browse the different cards that are available. Users can search for cards by cryptocurrency, rarity, or price. The cards are sold in packs of 10, and each pack costs $10. HodlCards also offers a subscription service that allows users to receive a monthly pack of cards.\n\nHodlCards is a unique way to collect and learn about cryptocurrencies. The cards are a great way to introduce people to the world of cryptocurrency, and they can also be used as a way to store and secure cryptocurrency.\n\n",
+    "features": [
+      "Collectible physical cards that represent Bitcoin and other cryptocurrencies",
+      "Unique designs and information about each cryptocurrency",
+      "Easy to browse and purchase cards",
+      "Subscription service that delivers a monthly pack of cards",
+      "Great way to learn about cryptocurrencies",
+      "Secure way to store and hold cryptocurrency"
+    ]
   },
   {
-    "title": "The Deer",
-    "description": "Praesent ac rhoncus tortor. Proin et interdum libero. Vestibulum ac dui ullamcorper, porta odio sed, ornare quam. Mauris tempor molestie felis non pharetra. Donec nec nisi sit amet libero aliquam varius eu quis erat. Ut varius sagittis urna, non interdum nisl fringilla semper. Morbi tristique sodales eros quis cursus. Pellentesque in euismod lorem. Morbi facilisis nunc eu odio bibendum tempor. Nulla in orci et ante dignissim aliquam non id metus. Integer a vestibulum nunc, at placerat ex. Nam non metus placerat, laoreet ante eu, interdum magna. Nunc lacinia ipsum tortor, at malesuada massa egestas lobortis. Phasellus dictum dui justo, pretium eleifend orci posuere sit amet.",
-    "technology": "Blender",
-    "image": "../projects/the-deer.webp",
-    "link": "https://drive.google.com/file/d/1OyqNvx7T-yPSqBG8qSlrgKGrrO0CqJ21/view?usp=sharing"
+    "title": "BigFriend",
+    "image": "/projects/bigfriend.gif",
+    "technology": ["React", "Next", "TailwindCSS", "Redux"],
+    "description": "Bigfriend is a community of communication agencies and consulting firms that are dedicated to providing advice and support to businesses and individuals. The website provides information about Bigfriend's services, as well as a blog with articles on a variety of topics related to communication and marketing.\n\n",
+    "features": [
+      "Communication strategy: Bigfriend can help businesses develop and implement communication strategies that are aligned with their overall business goals.",
+      "Content creation: Bigfriend can create content for businesses, including website content, blog posts, social media posts, and marketing materials.",
+      "Public relations: Bigfriend can help businesses manage their public relations efforts, including media relations, crisis communications, and event planning.",
+      "Digital marketing: Bigfriend can help businesses develop and implement digital marketing campaigns, including search engine optimization (SEO), pay-per-click (PPC) advertising, and social media marketing."
+    ]
   },
   {
-    "title": "Finsweet Landing Page",
-    "description": "Praesent ac rhoncus tortor. Proin et interdum libero. Vestibulum ac dui ullamcorper, porta odio sed, ornare quam. Mauris tempor molestie felis non pharetra. Donec nec nisi sit amet libero aliquam varius eu quis erat. Ut varius sagittis urna, non interdum nisl fringilla semper. Morbi tristique sodales eros quis cursus. Pellentesque in euismod lorem. Morbi facilisis nunc eu odio bibendum tempor. Nulla in orci et ante dignissim aliquam non id metus. Integer a vestibulum nunc, at placerat ex. Nam non metus placerat, laoreet ante eu, interdum magna. Nunc lacinia ipsum tortor, at malesuada massa egestas lobortis. Phasellus dictum dui justo, pretium eleifend orci posuere sit amet.",
-    "technology": "NextJS",
-    "image": "../projects/finsweet.webp",
-    "link": "https://finsweet-nu.vercel.app/"
-  },
-  {
-    "title": "Moon",
-    "description": "Praesent ac rhoncus tortor. Proin et interdum libero. Vestibulum ac dui ullamcorper, porta odio sed, ornare quam. Mauris tempor molestie felis non pharetra. Donec nec nisi sit amet libero aliquam varius eu quis erat. Ut varius sagittis urna, non interdum nisl fringilla semper. Morbi tristique sodales eros quis cursus. Pellentesque in euismod lorem. Morbi facilisis nunc eu odio bibendum tempor. Nulla in orci et ante dignissim aliquam non id metus. Integer a vestibulum nunc, at placerat ex. Nam non metus placerat, laoreet ante eu, interdum magna. Nunc lacinia ipsum tortor, at malesuada massa egestas lobortis. Phasellus dictum dui justo, pretium eleifend orci posuere sit amet.",
-    "technology": "Blender",
-    "image": "../projects/moon.webp",
-    "link": "https://drive.google.com/file/d/1Y-h7nYkoN1_0DGtaq41r4KVk-QGj30nA/view?usp=sharing"
-  },
-  {
-    "title": "Lonely",
-    "description": "Sendirian bae",
-    "technology": "Blender",
-    "image": "../projects/lonely.webp",
-    "link": "https://drive.google.com/file/d/1-qZj-VTDyMrU4zG-qZ89e3Pby3TLErH8/view?usp=sharing"
-  },
-  {
-    "title": "Sistem Kontrol Laboratory Site",
-    "description": "This is a free Figma template brought to you by the Flowbase Team! Copy the template to your dashboard and customise it in seconds for your next project! If you like our content, check out more at flowbase.co and follow us on Twitter.",
-    "technology": "NextJS",
-    "image": "../projects/siskon-rev.webp",
-    "link": "https://siskon-rev.vercel.app/"
-  },
-  {
-    "title": "Exit",
-    "description": "Keluar sini ye",
-    "technology": "Blender",
-    "image": "../projects/exit.webp",
-    "link": "https://drive.google.com/file/d/1ObX_XuQXoOVhIK_6CM99Lh31Dz2cT_0W/view?usp=sharing"
+    "title": "Bilal Arve",
+    "image": "/projects/bilal-arve.gif",
+    "technology": ["Next", "TailwindCSS", "Lottie"],
+    "description": "A personal website of Bilal Arve, a UI/UX designer based in Banda Aceh, Indonesia. The website is built with Next.js and TailwindCSS, and it uses Lottie animations to add some visual interest.\n\n",
+    "features": [
+      "Animation: The website uses Lottie animations to add some visual interest.",
+      "Responsive design: The website is responsive and works well on mobile devices.",
+      "Accessibility: The website is accessible and works well with screen readers."
+    ]
   },
   {
     "title": "Travel Awal",
-    "description": "A travel site",
-    "technology": "NextJS",
-    "image": "../projects/travelawal.webp",
-    "link": "https://www.travelawal.com/"
-  },
-  {
-    "title": "NFT Landing Page",
-    "description": "Sliced",
-    "technology": "HTML",
-    "image": "../projects/nft-landing.webp",
-    "link": "https://nft-wisnu.netlify.app/"
-  },
-  {
-    "title": "The Chair",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non metus imperdiet, tempus dui vel, dictum ligula. In urna nisi, suscipit in accumsan sed, venenatis ac mi. Vivamus tempus orci ipsum, ac blandit tortor aliquet non. Vivamus laoreet diam et eros sollicitudin, eu venenatis felis placerat. Ut laoreet metus non ligula tincidunt, eget efficitur felis euismod. Sed ornare luctus porta. Phasellus urna sem, pulvinar sit amet volutpat sodales, semper dictum nunc.",
-    "technology": "Blender",
-    "image": "../projects/the-chair.webp",
-    "link": "https://drive.google.com/file/d/1KlqfDSWkwlL5n78PBD_24ACLCzYnBosL/view?usp=sharing"
-  },
-  {
-    "title": "The Portal",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non metus imperdiet, tempus dui vel, dictum ligula. In urna nisi, suscipit in accumsan sed, venenatis ac mi. Vivamus tempus orci ipsum, ac blandit tortor aliquet non. Vivamus laoreet diam et eros sollicitudin, eu venenatis felis placerat. Ut laoreet metus non ligula tincidunt, eget efficitur felis euismod. Sed ornare luctus porta. Phasellus urna sem, pulvinar sit amet volutpat sodales, semper dictum nunc.",
-    "technology": "Blender",
-    "image": "../projects/the-portal.webp",
-    "link": "https://drive.google.com/file/d/16mwWPNsXXwSDnxrV8KpidrdHnUTMF1KE/view?usp=sharing"
+    "image": "/projects/travelawal.gif",
+    "technology": ["HTML", "CSS"],
+    "description": "Travelawal is a travel planning website that helps users find the best deals on flights, hotels, and other travel expenses. The website also offers a variety of travel guides and articles to help users plan their trips.\n\nThe website is easy to use and navigate. Users can search for flights and hotels by destination, date, and price. The website also allows users to compare prices from different travel agencies.\n\nTravelawal also offers a variety of travel guides and articles. These guides provide information on popular tourist destinations, as well as lesser-known gems. The articles cover a variety of topics, such as travel tips, packing lists, and cultural insights.\n\nOverall, Travelawal is a comprehensive travel planning website that can help users save money and plan their trips with ease.",
+    "features": [
+      "Search for flights and hotels: Users can search for flights and hotels by destination, date, and price.",
+      "Compare prices from different travel agencies: Travelawal allows users to compare prices from different travel agencies.",
+      "Read travel guides and articles: Travelawal offers a variety of travel guides and articles that provide information on popular tourist destinations, as well as lesser-known gems.",
+      "Save money: Travelawal can help users save money on their travel expenses.",
+      "Plan trips with ease: Travelawal can help users plan their trips with ease."
+    ]
   }
 ]
