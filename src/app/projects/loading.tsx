@@ -15,7 +15,7 @@ export default function ProjectLayout() {
         </div>
       </aside>
       <section className="col-span-10 overflow-y-auto">
-        <div className="grid md:grid-cols-3 2xl:grid-cols-4 gap-5 p-5 ">
+        <div className="grid md:grid-cols-3 2xl:grid-cols-4 gap-5 p-5 h-full">
           {Array(10).map((_, i) => (
             <CardLoading key={i} />
           ))}
