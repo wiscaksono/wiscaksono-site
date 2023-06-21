@@ -110,19 +110,6 @@
     margin: 0 !important;
     color: #607b96 !important;
   }
-
-  .noise::before {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    content: "";
-    opacity: 0.03;
-    z-index: 1;
-    pointer-events: none;
-    background: url("../../public/noise.gif");
-  }
 }
 
 .ch-code {

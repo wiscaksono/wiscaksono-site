@@ -153,19 +153,15 @@ const MobileSheets = () => {
                 {menu.child && (
                   <AccordionContent className="text-left ml-2.5">
                     {menu.child.map((child, i) => (
-                      <>
-                        <Link
-                          className="flex gap-x-2.5 items-center mb-2 last:mb-0"
-                          href={child.path}
-                          key={i}
-                          target={
-                            menu.name === "_contacts" ? "_blank" : "_self"
-                          }
-                        >
-                          {child.icon}
-                          {child.name}
-                        </Link>
-                      </>
+                      <Link
+                        className="flex gap-x-2.5 items-center mb-2 last:mb-0"
+                        href={child.path}
+                        key={i}
+                        target={menu.name === "_contacts" ? "_blank" : "_self"}
+                      >
+                        {child.icon}
+                        {child.name}
+                      </Link>
                     ))}
                   </AccordionContent>
                 )}
