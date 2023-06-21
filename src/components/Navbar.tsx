@@ -138,7 +138,7 @@ const MobileSheets = () => {
           <Menu />
         </button>
       </SheetTrigger>
-      <SheetContent size="lg">
+      <SheetContent size="xl">
         <SheetHeader>
           <SheetTitle className="mb-10">Wiscaksono</SheetTitle>
           <Accordion type="multiple" className="space-y-4">

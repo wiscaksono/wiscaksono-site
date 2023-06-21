@@ -47,7 +47,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed max-h-[calc(100vh-10%)] overflow-y-auto z-50 grid w-full gap-4 rounded-b-lg border border-lines bg-layout p-6 shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:max-w-2xl sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0 duration-500",
+        "fixed max-h-[calc(100vh-10%)] top-1/2 -translate-y-1/2 overflow-y-auto z-50 grid w-full gap-4 rounded-b-lg border border-lines bg-layout p-6 shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 max-w-[calc(100vw-10%)] sm:max-w-2xl rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0 duration-500",
         className
       )}
       {...props}
@@ -67,10 +67,7 @@ const DialogHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      "flex flex-col text-white space-y-1.5 text-center sm:text-left",
-      className
-    )}
+    className={cn("flex flex-col text-white space-y-1.5 text-left", className)}
     {...props}
   />
 );

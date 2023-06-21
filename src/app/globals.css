@@ -23,7 +23,7 @@
   }
 
   main {
-    @apply md:h-[calc(100vh-10%)] md:w-[calc(100vw-5%)] h-[calc(100vh-10%)] w-[calc(100vw-10%)] bg-layout backdrop-blur rounded-lg overflow-hidden border border-lines flex flex-col relative z-50 transition-all;
+    @apply md:h-[calc(100vh-10%)] md:w-[calc(100vw-5%)] h-[calc(100vh-20%)] w-[calc(100vw-10%)] bg-layout backdrop-blur rounded-lg overflow-hidden border border-lines flex flex-col relative z-50 transition-all;
   }
 
   section {
