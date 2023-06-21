@@ -24,7 +24,7 @@ export default function AsideLink({
       href={href}
       className={cn(
         isActive && "text-white",
-        "w-full hover:text-white transition-colors flex items-center gap-x-2.5"
+        "w-full hover:text-white transition-colors flex items-center gap-x-2.5 hover:bg-off-white/10 px-5 py-1"
       )}
       {...props}
     >

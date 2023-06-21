@@ -41,10 +41,10 @@ export default function Contacts() {
   };
 
   return (
-    <section className="grid grid-cols-2 h-full">
+    <section className="md:grid md:grid-cols-2 h-full flex flex-col">
       <form
         ref={form}
-        className="flex items-center justify-center p-5 border-r border-lines flex-col gap-y-5"
+        className="flex items-center justify-center p-5 md:border-r border-b border-lines flex-col gap-y-5 flex-1"
         onSubmit={sendEmail}
       >
         <div className="w-[80%] space-y-2">
@@ -79,7 +79,7 @@ export default function Contacts() {
           )}
         </div>
       </form>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center flex-1 flex-grow-0">
         <Contact />
       </div>
     </section>

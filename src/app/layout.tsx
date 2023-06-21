@@ -28,9 +28,6 @@ export default function RootLayout({
           {children}
           <Footer />
         </main>
-
-        <div className="absolute w-full h-full bg-black/70 z-[2]" />
-        <div className="noise" />
         <TailwindIndicator />
         <AnalyticsWrapper />
       </body>

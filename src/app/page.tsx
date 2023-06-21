@@ -1,17 +1,19 @@
 export default function Home() {
   return (
-    <section className="flex items-center justify-center gap-20">
-      <div className="space-y-10">
+    <section className="flex items-center justify-center gap-20 p-5">
+      <div className="md:space-y-10 space-y-8">
         <div>
           <p className="text-white text-lg font-extralight">Hi all. I am</p>
-          <h1 className="text-white text-6xl font-light">Wisnu Wicaksono</h1>
-          <h2 className="text-purple text-3xl">
+          <h1 className="text-white md:text-6xl text-4xl font-light">
+            Wisnu Wicaksono
+          </h1>
+          <h2 className="text-purple md:text-3xl text-xl">
             <span className="animate-pulse">&gt; </span>
             Front-end developer
           </h2>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 text-xs">
           <p className="text-off-white">{`// complete the game to continue`}</p>
           <p className="text-off-white">
             {`// you can also see it on my Github page`}

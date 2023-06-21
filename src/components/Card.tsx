@@ -27,7 +27,7 @@ const Card = ({ data }: { data: CardProps }) => {
               priority
             />
             <div className="w-full h-full absolute z-30 flex items-center justify-center bg-layout/80 backdrop-blur-sm rounded-t-lg overflow-hidden group-hover:opacity-0 transition-opacity duration-500">
-              <p className="text-white text-4xl italic font-semibold uppercase">
+              <p className="text-white text-3xl italic font-semibold uppercase">
                 {data.title}
               </p>
             </div>

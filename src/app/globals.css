@@ -15,15 +15,15 @@
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    @apply w-2.5 bg-black/50;
+    @apply w-2 bg-black/20;
   }
 
   *::-webkit-scrollbar-thumb {
-    @apply bg-black border border-lines rounded-lg;
+    @apply bg-black/30 border border-lines rounded-lg;
   }
 
   main {
-    @apply md:h-[calc(100vh-10%)] md:w-[calc(100vw-5%)] h-[calc(100vh-5%)] w-[calc(100vw-10%)] bg-layout/50 backdrop-blur rounded-lg overflow-hidden border border-lines flex flex-col relative z-50 transition-all;
+    @apply md:h-[calc(100vh-10%)] md:w-[calc(100vw-5%)] h-[calc(100vh-10%)] w-[calc(100vw-10%)] bg-layout backdrop-blur rounded-lg overflow-hidden border border-lines flex flex-col relative z-50 transition-all;
   }
 
   section {

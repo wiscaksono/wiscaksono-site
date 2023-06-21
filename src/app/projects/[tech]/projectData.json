@@ -9,12 +9,13 @@
     "title": "PracSuite",
     "image": "/projects/pracsuite.gif",
     "technology": ["Next", "TailwindCSS", "GSAP"],
-    "description": "Seco2 is a carbon footprint calculator for film and audiovisual productions. It is homologated by the CNC (Centre National du Cinéma et de l'Image Animée), the French national agency for cinema and the moving image. Seco2 allows producers of film and audiovisual works to calculate the carbon footprint of their productions and to take steps to reduce it.\n\nThe website provides a step-by-step guide to calculating the carbon footprint of a production, from the conception of the project to the distribution of the finished work. It also includes a database of carbon emission factors for a wide range of activities, such as transportation, filming, and post-production.\n\nSeco2 is a valuable tool for producers who want to reduce the environmental impact of their work. It is also a requirement for producers who want to receive funding from the CNC.\n\n",
+    "description": "PracSuite is a cloud-based practice management software that is designed to make health professionals more productive and improve their workday\n\nThe website is designed to be user-friendly and easy to navigate. The homepage features a clear call to action, inviting visitors to Try PracSuite for Free. The website also includes a number of testimonials from satisfied customers, which help to build trust and credibility.\n\n",
     "features": [
-      "Carbon footprint calculator: Seco2 provides a step-by-step guide to calculating the carbon footprint of a production.",
-      "Database of carbon emission factors: Seco2 includes a database of carbon emission factors for a wide range of activities, such as transportation, filming, and post-production.",
+      "Patient scheduling and management: This feature allows you to schedule appointments, track patient visits, and manage patient records.",
+      "Billing and payments: This feature allows you to process payments, track billing, and generate reports.",
       "Reporting tool: Seco2 provides a reporting tool that allows producers to track their progress in reducing the carbon footprint of their productions.",
-      "Certification: Seco2 is homologated by the CNC, which means that it meets the requirements of the French government for carbon footprint calculators."
+      "Communication and collaboration tools: This feature allows you to communicate with patients and colleagues, and collaborate on projects.",
+      "Reporting and analytics: This feature allows you to generate reports and track your practice's performance."
     ]
   },
   {

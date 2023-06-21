@@ -16,17 +16,17 @@ const data = [
       {
         title: "personal.ts",
         href: "/about/personal",
-        icon: <SiTypescript className="w-4 h-4" />,
+        icon: <SiTypescript className="w-4 h-4 shrink-0" />,
       },
       {
         title: "work.ts",
         href: "/about/work",
-        icon: <SiTypescript className="w-4 h-4" />,
+        icon: <SiTypescript className="w-4 h-4 shrink-0" />,
       },
       {
         title: "gear.md",
         href: "/about/gear",
-        icon: <FaMarkdown className="w-4 h-4" />,
+        icon: <FaMarkdown className="w-4 h-4 shrink-0" />,
       },
     ],
   },
@@ -39,13 +39,15 @@ export default function AboutLayout({
 }) {
   return (
     <section className="grid grid-cols-12 overflow-hidden">
-      <aside className="col-span-2 border-r border-lines">
+      <aside className="col-span-2 border-r border-lines md:block hidden">
         <Accordion type="single" collapsible defaultValue="item-0">
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
-              <AccordionTrigger>{item.title}</AccordionTrigger>
-              <AccordionContent>
-                <ul className="space-y-2">
+              <AccordionTrigger className="border-b border-lines px-5 py-2.5">
+                {item.title}
+              </AccordionTrigger>
+              <AccordionContent className="mt-5">
+                <ul className="space-y-1">
                   {item.list.map((listItem, j) => (
                     <AsideLink href={listItem.href} key={j} startWith="/about">
                       {listItem.icon}
@@ -58,7 +60,9 @@ export default function AboutLayout({
           ))}
         </Accordion>
       </aside>
-      <section className="col-span-10 overflow-y-auto">{children}</section>
+      <section className="md:col-span-10 col-span-12 overflow-y-auto">
+        {children}
+      </section>
     </section>
   );
 }

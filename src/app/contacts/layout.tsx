@@ -55,21 +55,18 @@ export default function AboutLayout({
 }) {
   return (
     <section className="grid grid-cols-12 overflow-hidden">
-      <aside className="col-span-2 border-r border-lines">
+      <aside className="col-span-2 border-r border-lines hidden md:block">
         <Accordion type="single" collapsible defaultValue="item-0">
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
-              <AccordionTrigger>{item.title}</AccordionTrigger>
-              <AccordionContent>
-                <ul className="space-y-2">
+              <AccordionTrigger className="border-b border-lines px-5 py-2.5">
+                {item.title}
+              </AccordionTrigger>
+              <AccordionContent className="mt-5">
+                <ul className="space-y-1">
                   {item.list.map((listItem, j) => (
-                    <AsideLink
-                      href={listItem.href}
-                      key={j}
-                      startWith="/about"
-                      target="_blank"
-                    >
-                      {listItem.icon}
+                    <AsideLink href={listItem.href} key={j} startWith="/about">
+                      <span className="shrink-0">{listItem.icon}</span>
                       {listItem.title}
                     </AsideLink>
                   ))}
@@ -79,7 +76,9 @@ export default function AboutLayout({
           ))}
         </Accordion>
       </aside>
-      <section className="col-span-10 overflow-y-auto">{children}</section>
+      <section className="md:col-span-10 col-span-12 overflow-y-auto">
+        {children}
+      </section>
     </section>
   );
 }
