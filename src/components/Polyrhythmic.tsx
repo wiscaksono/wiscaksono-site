@@ -132,8 +132,8 @@ export default function Polyrythmic() {
 
   useEffect(() => {
     draw();
-    document.onvisibilitychange = () => setAudioEnabled(false);
-  }, []);
+    document.onvisibilitychange = () => setAudioEnabled(!audioEnabled);
+  }, [audioEnabled]);
 
   return (
     <>
