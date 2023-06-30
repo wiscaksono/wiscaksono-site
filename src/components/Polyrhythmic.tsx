@@ -1,9 +1,13 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
+import useSound from "use-sound";
+import { BsMusicNote } from "react-icons/bs";
+
 import { cn } from "@/lib/utils";
 
 export default function Polyrythmic() {
-  const [audioEnabled, setAudioEnabled] = useState(true);
+  const [audioEnabled, setAudioEnabled] = useState(false);
+
   const paper = useRef<HTMLCanvasElement>(null);
   const startTime = new Date().getTime();
   const calculateNextImpactTime = (
@@ -14,30 +18,31 @@ export default function Polyrythmic() {
   };
 
   const arcs = [
-    "#D0E7F5",
-    "#D9E7F4",
-    "#D6E3F4",
-    "#BCDFF5",
-    "#B7D9F4",
-    "#C3D4F0",
-    "#9DC1F3",
-    "#9AA9F4",
-    "#8D83EF",
-    "#AE69F0",
-    "#D46FF1",
-    "#DB5AE7",
-    "#D911DA",
-    "#D601CB",
-    "#E713BF",
-    "#F24CAE",
-    "#FB79AB",
-    "#FFB6C1",
-    "#FED2CF",
-    "#FDDFD5",
-    "#FEDCD1",
+    "rgba(30, 45, 61, 1)",
+    "rgba(30, 45, 61, 0.95)",
+    "rgba(30, 45, 61, 0.90)",
+    "rgba(30, 45, 61, 0.85)",
+    "rgba(30, 45, 61, 0.80)",
+    "rgba(30, 45, 61, 0.75)",
+    "rgba(30, 45, 61, 0.70)",
+    "rgba(30, 45, 61, 0.65)",
+    "rgba(30, 45, 61, 0.60)",
+    "rgba(30, 45, 61, 0.55)",
+    "rgba(30, 45, 61, 0.50)",
+    "rgba(30, 45, 61, 0.45)",
+    "rgba(30, 45, 61, 0.40)",
+    "rgba(30, 45, 61, 0.35)",
+    "rgba(30, 45, 61, 0.30)",
+    "rgba(30, 45, 61, 0.25)",
+    "rgba(30, 45, 61, 0.20)",
+    "rgba(30, 45, 61, 0.15)",
+    "rgba(30, 45, 61, 0.10)",
+    "rgba(30, 45, 61, 0.05)",
   ].map((color, index) => {
-    const audio = new Audio(`/notes/vibraphone-key-${index}.wav`);
-    audio.volume = 0.02;
+    const audio = `/notes/vibraphone-key-${index}.wav`;
+    const [playAudio] = useSound(audio, {
+      volume: 0.02,
+    });
 
     const oneFullLoop = 2 * Math.PI,
       numberOfLoops = 50 - index,
@@ -45,7 +50,7 @@ export default function Polyrythmic() {
 
     return {
       color,
-      audio,
+      playAudio,
       velocity,
       nextImpactTime: calculateNextImpactTime(startTime, velocity),
     };
@@ -71,17 +76,12 @@ export default function Polyrythmic() {
       y: paper.current.height * 0.9,
     };
 
-    pen.strokeStyle = "white";
-    pen.lineWidth = 6;
-
-    pen.beginPath();
-    pen.moveTo(start.x, start.y);
-    pen.lineTo(end.x, end.y);
-    pen.stroke();
+    pen.strokeStyle = arcs[0].color;
+    pen.lineWidth = 1;
 
     const center = {
       x: paper.current.width * 0.5,
-      y: paper.current.height * 0.9,
+      y: paper.current.height * 0.925,
     };
 
     const length = end.x - start.x,
@@ -92,6 +92,7 @@ export default function Polyrythmic() {
     arcs.forEach((arc, index) => {
       const arcRadius = initialArcRadius + spacing * index;
 
+      // ARC
       pen.beginPath();
       pen.strokeStyle = arc.color;
       pen.arc(center.x, center.y, arcRadius, Math.PI, 2 * Math.PI);
@@ -110,14 +111,14 @@ export default function Polyrythmic() {
       const y = center.y + arcRadius * Math.sin(adjustedDistance);
 
       // CIRCLE
-      pen.fillStyle = "white";
+      pen.fillStyle = arc.color;
       pen.beginPath();
-      pen.arc(x, y, length * 0.0065, 0, 2 * Math.PI);
+      pen.arc(x, y, length * 0.0025, 0, 2 * Math.PI);
       pen.fill();
 
       if (currentTime >= arc.nextImpactTime) {
         if (audioEnabled) {
-          arc.audio.play();
+          arc.playAudio();
         }
         arc.nextImpactTime = calculateNextImpactTime(
           arc.nextImpactTime,
@@ -131,6 +132,7 @@ export default function Polyrythmic() {
 
   useEffect(() => {
     draw();
+    document.onvisibilitychange = () => setAudioEnabled(false);
   }, []);
 
   return (
@@ -142,11 +144,11 @@ export default function Polyrythmic() {
       <button
         onClick={() => setAudioEnabled(!audioEnabled)}
         className={cn(
-          "absolute bottom-0",
-          audioEnabled ? "text-white" : "line-through"
+          "absolute bottom-10",
+          audioEnabled ? "text-white" : "text-lines"
         )}
       >
-        Audio
+        <BsMusicNote size={32} />
       </button>
     </>
   );
