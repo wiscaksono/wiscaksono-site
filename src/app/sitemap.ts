@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const WEBSITE_URL = "https://wiscaksono.me";
+
   const routes = [
     "",
     "/about/personal",
@@ -12,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projects/html",
     "/contacts",
   ].map((route) => ({
-    url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}${route}`,
+    url: `${WEBSITE_URL}${route}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));
 

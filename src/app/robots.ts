@@ -1,11 +1,12 @@
 export default function robots() {
+  const WEBSITE_URL = "https://wiscaksono.me";
   return {
     rules: [
       {
         userAgent: "*",
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/sitemap.xml`,
-    host: `${process.env.NEXT_PUBLIC_WEBSITE_URL}`,
+    sitemap: `${WEBSITE_URL}/sitemap.xml`,
+    host: `${WEBSITE_URL}`,
   };
 }
