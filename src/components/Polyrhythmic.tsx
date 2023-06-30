@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import useSound from "use-sound";
 import { BsMusicNote } from "react-icons/bs";
 
@@ -17,46 +17,25 @@ export default function Polyrythmic() {
     return currentImpactTime + (Math.PI / velocity) * 1000;
   };
 
-  const arcs = [
-    "rgba(30, 45, 61, 1)",
-    "rgba(30, 45, 61, 0.95)",
-    "rgba(30, 45, 61, 0.90)",
-    "rgba(30, 45, 61, 0.85)",
-    "rgba(30, 45, 61, 0.80)",
-    "rgba(30, 45, 61, 0.75)",
-    "rgba(30, 45, 61, 0.70)",
-    "rgba(30, 45, 61, 0.65)",
-    "rgba(30, 45, 61, 0.60)",
-    "rgba(30, 45, 61, 0.55)",
-    "rgba(30, 45, 61, 0.50)",
-    "rgba(30, 45, 61, 0.45)",
-    "rgba(30, 45, 61, 0.40)",
-    "rgba(30, 45, 61, 0.35)",
-    "rgba(30, 45, 61, 0.30)",
-    "rgba(30, 45, 61, 0.25)",
-    "rgba(30, 45, 61, 0.20)",
-    "rgba(30, 45, 61, 0.15)",
-    "rgba(30, 45, 61, 0.10)",
-    "rgba(30, 45, 61, 0.05)",
-  ].map((color, index) => {
+  const arcs = Array.from(Array(20)).map((_, index) => {
     const audio = `/notes/vibraphone-key-${index}.wav`;
     const [playAudio] = useSound(audio, {
       volume: 0.02,
     });
 
-    const oneFullLoop = 2 * Math.PI,
-      numberOfLoops = 50 - index,
-      velocity = (oneFullLoop * numberOfLoops) / 900;
+    const oneFullLoop = 2 * Math.PI;
+    const numberOfLoops = 50 - index;
+    const velocity = (oneFullLoop * numberOfLoops) / 900;
 
     return {
-      color,
+      color: `rgba(30, 45, 61, ${1 - index * 0.05})`,
       playAudio,
       velocity,
       nextImpactTime: calculateNextImpactTime(startTime, velocity),
     };
   });
 
-  const draw = () => {
+  const draw = useCallback(() => {
     const pen = paper.current?.getContext("2d");
     if (!pen || !paper.current) return;
 
@@ -128,7 +107,7 @@ export default function Polyrythmic() {
     });
 
     requestAnimationFrame(draw);
-  };
+  }, []);
 
   useEffect(() => {
     draw();
@@ -142,7 +121,11 @@ export default function Polyrythmic() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-screen h-screen"
       />
       <button
-        onClick={() => setAudioEnabled(!audioEnabled)}
+        onClick={() => {
+          setAudioEnabled(!audioEnabled);
+          arcs[0].playAudio();
+        }}
+        // onClick={() => setAudioEnabled(!audioEnabled)}
         className={cn(
           "absolute bottom-10",
           audioEnabled ? "text-white" : "text-lines"
