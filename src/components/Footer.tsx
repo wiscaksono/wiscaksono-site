@@ -3,7 +3,7 @@ import { IoWarningOutline, IoLogoGithub } from "react-icons/io5";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-lines text-off-white text-xs flex items-center justify-between select-none">
+    <footer className="border-t border-lines text-off-white text-xs flex items-center justify-between select-none bg-layout relative z-10">
       <div className="flex items-center border-r border-lines divide-x divide-lines">
         <a
           target="_blank"

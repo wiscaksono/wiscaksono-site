@@ -111,7 +111,7 @@ const navMenu = [
 
 export default function Navbar() {
   return (
-    <nav className="md:grid grid-cols-12 border-b border-lines flex items-center justify-between">
+    <nav className="md:grid grid-cols-12 border-b border-lines flex items-center justify-between relative z-10 bg-layout">
       <Link
         href="/"
         className="md:border-r border-lines md:px-5 px-2.5 py-4 text-off-white md:col-span-3 lg:col-span-2 shrink-0 hover:text-white transition-colors"

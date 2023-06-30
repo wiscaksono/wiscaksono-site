@@ -6,7 +6,7 @@ export default function Home() {
       <div className="md:space-y-10 space-y-8 relative z-10">
         <div>
           <p className="text-white text-lg font-extralight">Hi all. I am</p>
-          <h1 className="text-white md:text-6xl text-4xl font-light">
+          <h1 className="text-white md:text-6xl text-4xl font-medium">
             Wisnu Wicaksono
           </h1>
           <h2 className="text-purple md:text-3xl text-xl">
@@ -15,8 +15,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="space-y-2 text-xs">
-          <p className="text-off-white">{`// complete the game to continue`}</p>
+        <div className="space-y-2 text-sm">
           <p className="text-off-white">
             {`// you can also see it on my Github page`}
           </p>

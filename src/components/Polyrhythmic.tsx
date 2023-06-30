@@ -1,6 +1,9 @@
+// Thanks to https://www.youtube.com/@Hyperplexed
+
 "use client";
-import { useRef, useEffect, useState, useCallback } from "react";
 import useSound from "use-sound";
+import { useRef, useEffect, useState, useCallback } from "react";
+
 import { BsMusicNote } from "react-icons/bs";
 
 import { cn } from "@/lib/utils";
@@ -10,6 +13,7 @@ export default function Polyrythmic() {
 
   const paper = useRef<HTMLCanvasElement>(null);
   const startTime = new Date().getTime();
+
   const calculateNextImpactTime = (
     currentImpactTime: number,
     velocity: number
