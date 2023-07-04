@@ -51,6 +51,7 @@ export default function Contacts() {
           <Label htmlFor="name">_name</Label>
           <Input name="name" type="text" placeholder="John Doe" required />
         </div>
+
         <div className="w-[80%] space-y-2">
           <Label htmlFor="email">_email</Label>
           <Input
@@ -60,6 +61,7 @@ export default function Contacts() {
             required
           />
         </div>
+
         <div className="w-[80%] space-y-2">
           <Label htmlFor="message">_message</Label>
           <Textarea
@@ -68,6 +70,7 @@ export default function Contacts() {
             required
           />
         </div>
+
         <div className="w-[80%] flex items-center gap-x-5">
           <Button type="submit" className="self-start" loading={isLoading}>
             send-message
