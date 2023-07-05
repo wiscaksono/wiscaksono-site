@@ -9,13 +9,13 @@
     "title": "PracSuite",
     "image": "/projects/pracsuite.gif",
     "technology": ["Next", "TailwindCSS", "GSAP"],
-    "description": "PracSuite is a cloud-based practice management software that is designed to make health professionals more productive and improve their workday\n\nThe website is designed to be user-friendly and easy to navigate. The homepage features a clear call to action, inviting visitors to Try PracSuite for Free. The website also includes a number of testimonials from satisfied customers, which help to build trust and credibility.\n\n",
+    "description": "PracSuite is a cloud-based practice management software for healthcare professionals. It offers a wide range of features, including appointment booking, clinical notes, patient records, online forms, and invoicing. PracSuite is designed to help healthcare professionals improve their efficiency and productivity, while also providing a better experience for their patients.\n\n",
     "features": [
-      "Patient scheduling and management: This feature allows you to schedule appointments, track patient visits, and manage patient records.",
-      "Billing and payments: This feature allows you to process payments, track billing, and generate reports.",
-      "Reporting tool: Seco2 provides a reporting tool that allows producers to track their progress in reducing the carbon footprint of their productions.",
-      "Communication and collaboration tools: This feature allows you to communicate with patients and colleagues, and collaborate on projects.",
-      "Reporting and analytics: This feature allows you to generate reports and track your practice's performance."
+      "Appointment booking: PracSuite's appointment book makes it easy to schedule appointments for patients, both in-person and online.",
+      "Clinical notes: PracSuite's clinical notes system makes it easy to create and store detailed notes about patient visits.",
+      "Patient records: PracSuite's patient records system provides a central repository for all of a patient's medical information.",
+      "Online forms: PracSuite's online forms make it easy to collect patient information and obtain consent.",
+      "Invoicing: PracSuite's invoicing system makes it easy to send invoices to patients and track payments."
     ]
   },
   {
@@ -49,16 +49,13 @@
   },
   {
     "title": "Hodlcards",
-    "image": "/projects/kontol.gif",
+    "image": "/projects/hodlcards.gif",
     "technology": ["React", "TailwindCSS", "React Slick"],
-    "description": "HodlCards is a website that sells physical collectible cards that represent Bitcoin and other cryptocurrencies. The cards are designed to look like trading cards, and each card features a unique design and information about the cryptocurrency it represents. HodlCards was founded in 2017 by two brothers, and the company has since sold over 1 million cards.\n\nThe website has a simple design, and it is easy to browse the different cards that are available. Users can search for cards by cryptocurrency, rarity, or price. The cards are sold in packs of 10, and each pack costs $10. HodlCards also offers a subscription service that allows users to receive a monthly pack of cards.\n\nHodlCards is a unique way to collect and learn about cryptocurrencies. The cards are a great way to introduce people to the world of cryptocurrency, and they can also be used as a way to store and secure cryptocurrency.\n\n",
+    "description": "is a website that allows users to mint NFTs (non-fungible tokens) that represent physical poker decks. Each NFT gives the user access to a private Discord server and regular whitelist spots for other crypto projects. The website also offers a spinwheel game where users can win real poker decks.\n\n",
     "features": [
-      "Collectible physical cards that represent Bitcoin and other cryptocurrencies",
-      "Unique designs and information about each cryptocurrency",
-      "Easy to browse and purchase cards",
-      "Subscription service that delivers a monthly pack of cards",
-      "Great way to learn about cryptocurrencies",
-      "Secure way to store and hold cryptocurrency"
+      "NFTs: HODLCards.net allows users to mint NFTs that represent physical poker decks. These NFTs can be used to access a private Discord server and regular whitelist spots for other crypto projects.",
+      "Spinwheel: HODLCards.net also offers a spinwheel game where users can win real poker decks. The spinwheel game is free to play and users can win a deck of cards with every spin.",
+      "Community: HODLCards.net has a growing community of crypto enthusiasts who are passionate about poker. The community is active on Discord and users can connect with other players to participate in tournaments and discuss strategies."
     ]
   },
   {
