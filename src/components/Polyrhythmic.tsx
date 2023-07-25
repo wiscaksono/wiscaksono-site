@@ -1,15 +1,9 @@
 // Thanks to https://www.youtube.com/@Hyperplexed
-
 "use client";
-import useSound from "use-sound";
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
-import { BsMusicNote } from "react-icons/bs";
-
-import { cn } from "@/lib/utils";
 
 export default function Polyrythmic() {
-  const [audioEnabled, setAudioEnabled] = useState(false);
 
   const paper = useRef<HTMLCanvasElement>(null);
   const startTime = new Date().getTime();
@@ -21,19 +15,14 @@ export default function Polyrythmic() {
     return currentImpactTime + (Math.PI / velocity) * 1000;
   };
 
-  const arcs = Array.from(Array(20)).map((_, index) => {
-    const audio = `/notes/vibraphone-key-${index}.wav`;
-    const [playAudio] = useSound(audio, {
-      volume: 0.02,
-    });
 
+  const arcs = Array.from(Array(20)).map((_, index) => {
     const oneFullLoop = 2 * Math.PI;
     const numberOfLoops = 50 - index;
     const velocity = (oneFullLoop * numberOfLoops) / 900;
 
     return {
       color: `rgba(30, 45, 61, ${1 - index * 0.05})`,
-      playAudio,
       velocity,
       nextImpactTime: calculateNextImpactTime(startTime, velocity),
     };
@@ -99,15 +88,6 @@ export default function Polyrythmic() {
       pen.arc(x, y, length * 0.0025, 0, 2 * Math.PI);
       pen.fill();
 
-      if (currentTime >= arc.nextImpactTime) {
-        if (audioEnabled) {
-          arc.playAudio();
-        }
-        arc.nextImpactTime = calculateNextImpactTime(
-          arc.nextImpactTime,
-          arc.velocity
-        );
-      }
     });
 
     requestAnimationFrame(draw);
@@ -115,28 +95,12 @@ export default function Polyrythmic() {
 
   useEffect(() => {
     draw();
-    document.onvisibilitychange = () => setAudioEnabled(!audioEnabled);
-  }, [audioEnabled]);
+  }, []);
 
   return (
-    <>
       <canvas
         ref={paper}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-screen h-screen"
       />
-      <button
-        onClick={() => {
-          setAudioEnabled(!audioEnabled);
-          arcs[0].playAudio();
-        }}
-        // onClick={() => setAudioEnabled(!audioEnabled)}
-        className={cn(
-          "absolute bottom-10",
-          audioEnabled ? "text-white" : "text-lines"
-        )}
-      >
-        <BsMusicNote size={32} />
-      </button>
-    </>
   );
 }
