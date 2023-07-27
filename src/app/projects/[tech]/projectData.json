@@ -2,13 +2,22 @@
   {
     "title": "Agenone",
     "image": "/projects/agenone.gif",
-    "technology": ["Next", "TailwindCSS", "GSAP"],
-    "description": "This digital agency landing website features a bold hero section with clear benefits, a comprehensive services section to showcase their offerings, an experience statistic to highlight their expertise, a portfolio of their past projects, testimonials from satisfied clients, and a prominent call-to-action to encourage potential clients to take the next step."
+    "technology": [
+      "Next",
+      "TailwindCSS",
+      "GSAP"
+    ],
+    "description": "This digital agency landing website features a bold hero section with clear benefits, a comprehensive services section to showcase their offerings, an experience statistic to highlight their expertise, a portfolio of their past projects, testimonials from satisfied clients, and a prominent call-to-action to encourage potential clients to take the next step.",
+    "url": "https://agenone.vercel.app/"
   },
   {
     "title": "PracSuite",
     "image": "/projects/pracsuite.gif",
-    "technology": ["Next", "TailwindCSS", "GSAP"],
+    "technology": [
+      "Next",
+      "TailwindCSS",
+      "GSAP"
+    ],
     "description": "PracSuite is a cloud-based practice management software for healthcare professionals. It offers a wide range of features, including appointment booking, clinical notes, patient records, online forms, and invoicing. PracSuite is designed to help healthcare professionals improve their efficiency and productivity, while also providing a better experience for their patients.\n\n",
     "features": [
       "Appointment booking: PracSuite's appointment book makes it easy to schedule appointments for patients, both in-person and online.",
@@ -16,30 +25,46 @@
       "Patient records: PracSuite's patient records system provides a central repository for all of a patient's medical information.",
       "Online forms: PracSuite's online forms make it easy to collect patient information and obtain consent.",
       "Invoicing: PracSuite's invoicing system makes it easy to send invoices to patients and track payments."
-    ]
+    ],
+    "url": "https://www.pracsuite.com/"
   },
   {
     "title": "Chat n' rechat",
     "image": "/projects/chat-n-rechat.gif",
-    "technology": ["HTML", "CSS"],
-    "description": "Chat n' Rechat is a landing page for a mobile chatting app, featuring a clean and modern design with a hero component showcasing the app illustration. The page includes several sections, including a list of key features, a call-to-action for users to download the app, and a frequently asked questions section."
+    "technology": [
+      "HTML",
+      "CSS"
+    ],
+    "description": "Chat n' Rechat is a landing page for a mobile chatting app, featuring a clean and modern design with a hero component showcasing the app illustration. The page includes several sections, including a list of key features, a call-to-action for users to download the app, and a frequently asked questions section.",
+    "url": "https://chat-n-rechat-wiscaksono.vercel.app/"
   },
   {
     "title": "Seco2",
     "image": "/projects/seco2.gif",
-    "technology": ["React", "Next", "Redux", "TailwindCSS"],
+    "technology": [
+      "React",
+      "Next",
+      "Redux",
+      "TailwindCSS"
+    ],
     "description": "Seco2 is a carbon footprint calculator for film and audiovisual productions. It is homologated by the CNC (Centre National du Cinéma et de l'Image Animée), the French national agency for cinema and the moving image. Seco2 allows producers of film and audiovisual works to calculate the carbon footprint of their productions and to take steps to reduce it.\n\nThe website provides a step-by-step guide to calculating the carbon footprint of a production, from the conception of the project to the distribution of the finished work. It also includes a database of carbon emission factors for a wide range of activities, such as transportation, filming, and post-production.\n\nSeco2 is a valuable tool for producers who want to reduce the environmental impact of their work. It is also a requirement for producers who want to receive funding from the CNC.\n\n",
     "features": [
       "Carbon footprint calculator: Seco2 provides a step-by-step guide to calculating the carbon footprint of a production.",
       "Database of carbon emission factors: Seco2 includes a database of carbon emission factors for a wide range of activities, such as transportation, filming, and post-production.",
       "Reporting tool: Seco2 provides a reporting tool that allows producers to track their progress in reducing the carbon footprint of their productions.",
       "Certification: Seco2 is homologated by the CNC, which means that it meets the requirements of the French government for carbon footprint calculators."
-    ]
+    ],
+    "url": "https://www.seco2.fr/"
   },
   {
     "title": "Electron",
     "image": "/projects/electron.webp",
-    "technology": ["React", "Zustand", "TailwindCSS", "Mapbox GL"],
+    "technology": [
+      "React",
+      "Zustand",
+      "TailwindCSS",
+      "Mapbox GL"
+    ],
     "description": "Electron's platform uses data from a variety of sources, including satellites, ground sensors, and weather models. This data is then processed and analyzed to provide insights into a variety of environmental indicators, such as carbon emissions, deforestation, and air quality.\n\nElectron's platform is used by a variety of organizations, including governments, businesses, and NGOs. They use it to track their progress on climate change goals, identify areas where they can reduce their carbon emissions, and make informed decisions about how to manage their resources.\n\n",
     "features": [
       "Data visualization: Electron's platform provides users with a variety of tools for visualizing data, such as maps, charts, and graphs. This makes it easy to understand complex environmental data and identify trends.",
@@ -50,41 +75,60 @@
   {
     "title": "Hodlcards",
     "image": "/projects/hodlcards.gif",
-    "technology": ["React", "TailwindCSS", "React Slick"],
+    "technology": [
+      "React",
+      "TailwindCSS",
+      "React Slick"
+    ],
     "description": "is a website that allows users to mint NFTs (non-fungible tokens) that represent physical poker decks. Each NFT gives the user access to a private Discord server and regular whitelist spots for other crypto projects. The website also offers a spinwheel game where users can win real poker decks.\n\n",
     "features": [
       "NFTs: HODLCards.net allows users to mint NFTs that represent physical poker decks. These NFTs can be used to access a private Discord server and regular whitelist spots for other crypto projects.",
       "Spinwheel: HODLCards.net also offers a spinwheel game where users can win real poker decks. The spinwheel game is free to play and users can win a deck of cards with every spin.",
       "Community: HODLCards.net has a growing community of crypto enthusiasts who are passionate about poker. The community is active on Discord and users can connect with other players to participate in tournaments and discuss strategies."
-    ]
+    ],
+    "url": "https://astagfirullah.vercel.app/"
   },
   {
     "title": "BigFriend",
     "image": "/projects/bigfriend.gif",
-    "technology": ["React", "Next", "TailwindCSS", "Redux"],
+    "technology": [
+      "React",
+      "Next",
+      "TailwindCSS",
+      "Redux"
+    ],
     "description": "Bigfriend is a community of communication agencies and consulting firms that are dedicated to providing advice and support to businesses and individuals. The website provides information about Bigfriend's services, as well as a blog with articles on a variety of topics related to communication and marketing.\n\n",
     "features": [
       "Communication strategy: Bigfriend can help businesses develop and implement communication strategies that are aligned with their overall business goals.",
       "Content creation: Bigfriend can create content for businesses, including website content, blog posts, social media posts, and marketing materials.",
       "Public relations: Bigfriend can help businesses manage their public relations efforts, including media relations, crisis communications, and event planning.",
       "Digital marketing: Bigfriend can help businesses develop and implement digital marketing campaigns, including search engine optimization (SEO), pay-per-click (PPC) advertising, and social media marketing."
-    ]
+    ],
+    "url": "https://bigfriend.fr/"
   },
   {
     "title": "Bilal Arve",
     "image": "/projects/bilal-arve.gif",
-    "technology": ["Next", "TailwindCSS", "Lottie"],
+    "technology": [
+      "Next",
+      "TailwindCSS",
+      "Lottie"
+    ],
     "description": "A personal website of Bilal Arve, a UI/UX designer based in Banda Aceh, Indonesia. The website is built with Next.js and TailwindCSS, and it uses Lottie animations to add some visual interest.\n\n",
     "features": [
       "Animation: The website uses Lottie animations to add some visual interest.",
       "Responsive design: The website is responsive and works well on mobile devices.",
       "Accessibility: The website is accessible and works well with screen readers."
-    ]
+    ],
+    "url": "https://www.bilalarve.com/"
   },
   {
     "title": "Travel Awal",
     "image": "/projects/travelawal.gif",
-    "technology": ["HTML", "CSS"],
+    "technology": [
+      "HTML",
+      "CSS"
+    ],
     "description": "Travelawal is a travel planning website that helps users find the best deals on flights, hotels, and other travel expenses. The website also offers a variety of travel guides and articles to help users plan their trips.\n\nThe website is easy to use and navigate. Users can search for flights and hotels by destination, date, and price. The website also allows users to compare prices from different travel agencies.\n\nTravelawal also offers a variety of travel guides and articles. These guides provide information on popular tourist destinations, as well as lesser-known gems. The articles cover a variety of topics, such as travel tips, packing lists, and cultural insights.\n\nOverall, Travelawal is a comprehensive travel planning website that can help users save money and plan their trips with ease.",
     "features": [
       "Search for flights and hotels: Users can search for flights and hotels by destination, date, and price.",
@@ -92,6 +136,7 @@
       "Read travel guides and articles: Travelawal offers a variety of travel guides and articles that provide information on popular tourist destinations, as well as lesser-known gems.",
       "Save money: Travelawal can help users save money on their travel expenses.",
       "Plan trips with ease: Travelawal can help users plan their trips with ease."
-    ]
+    ],
+    "url": "https://travelawal.vercel.app/"
   }
 ]

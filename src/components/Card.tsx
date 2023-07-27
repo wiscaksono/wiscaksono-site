@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -6,8 +7,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogFooter
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "./ui/button";
 
 import projectData from "../app/projects/[tech]/projectData.json";
 
@@ -39,7 +42,7 @@ const Card = ({ data }: { data: CardProps }) => {
           </div>
         </article>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="shadow-2xl shadow-lines/50">
         <DialogHeader>
           <DialogTitle>{data.title}</DialogTitle>
           <DialogDescription>
@@ -73,6 +76,13 @@ const Card = ({ data }: { data: CardProps }) => {
             )}
           </DialogDescription>
         </DialogHeader>
+        {data.url && (
+          <DialogFooter>
+            <Link href={data.url} target="_blank" className={buttonVariants({ variant: "default" })}>
+              Live Preview
+            </Link>
+          </DialogFooter>
+        )}
       </DialogContent>
     </Dialog>
   );
