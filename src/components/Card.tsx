@@ -25,11 +25,14 @@ const Card = ({ data }: { data: CardProps }) => {
             <Image
               src={data.image}
               alt={data.title}
+              blurDataURL={data.image}
+              placeholder="blur"
+              quality={10}
               fill
               className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
               priority
             />
-            <div className="w-full h-full absolute z-30 flex items-center justify-center bg-layout/80 backdrop-blur-sm rounded-t-lg overflow-hidden group-hover:opacity-0 transition-opacity duration-500">
+            <div className="w-full h-full absolute z-30 flex items-center justify-center rounded-t-lg bg-layout/80 backdrop-blur-sm overflow-hidden group-hover:opacity-0 transition-opacity duration-500">
               <p className="text-white text-3xl italic font-semibold uppercase">
                 {data.title}
               </p>
@@ -42,7 +45,7 @@ const Card = ({ data }: { data: CardProps }) => {
           </div>
         </article>
       </DialogTrigger>
-      <DialogContent className="shadow-2xl shadow-lines/50">
+      <DialogContent className="shadow-2xl shadow-lines/80">
         <DialogHeader>
           <DialogTitle>{data.title}</DialogTitle>
           <DialogDescription>
