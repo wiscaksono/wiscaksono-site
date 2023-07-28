@@ -138,5 +138,21 @@
       "Plan trips with ease: Travelawal can help users plan their trips with ease."
     ],
     "url": "https://travelawal.vercel.app/"
+  },
+  {
+    "title": "FKM Mobilite",
+    "image": "/projects/fkm-mobilite.gif",
+    "technology": [
+      "Next",
+      "TailwindCSS"
+    ],
+    "description": "The website you linked is for a company called FKM Mobilité, which is a transportation company that specializes in providing transportation services for people with disabilities. The company was founded by Nadia Aftis and Bentaleb Khelil, who are both parents of children with disabilities. \n\n They were inspired to start the company after experiencing the challenges of finding accessible transportation for their children.FKM Mobilité is committed to providing its customers with a safe, comfortable, and reliable transportation service. The company's mission is to 'make it easier for people with disabilities to get around and participate in all aspects of life.'\n\n",
+    "features": [
+      "The website is easy to use and navigate.",
+      "The website provides clear and concise information about the company's services.",
+      "The website includes a testimonials section where customers can share their experiences with the company.",
+      "The website is available in both French and English."
+    ],
+    "url": "https://fkmmobilite.fr/"
   }
 ]
