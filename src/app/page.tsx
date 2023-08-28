@@ -28,7 +28,7 @@ export default function Home() {
               href="https://github.com/wiscaksono/wiscaksono-site"
               className="text-light-brown hover:underline"
             >
-              “https://github.com/example/url”
+              “https://github.com/wiscaksono/wiscaksono-site”
             </a>
           </p>
         </div>
