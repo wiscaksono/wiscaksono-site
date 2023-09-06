@@ -1,10 +1,10 @@
 import "./globals.css";
 import { Fira_Code } from "next/font/google";
+import Script from "next/script";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
-import { AnalyticsWrapper } from "@/components/Analytics";
 
 import "@code-hike/mdx/dist/index.css";
 
@@ -32,8 +32,12 @@ export default function RootLayout({
           <Footer />
         </main>
         <TailwindIndicator />
-        <AnalyticsWrapper />
       </body>
+      <Script
+        async
+        src="https://umami-wiscaksono.vercel.app/script.js"
+        data-website-id="1f3b0505-7366-47bd-8757-95ad25395088"
+      />
     </html>
   );
 }
