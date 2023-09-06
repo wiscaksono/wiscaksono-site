@@ -25,6 +25,11 @@ const data = [
         icon: <RiReactjsLine className="w-4 h-4" />,
       },
       {
+        title: "React Native",
+        href: "/projects/react-native",
+        icon: <RiReactjsLine className="w-4 h-4" />,
+      },
+      {
         title: "Next",
         href: "/projects/next",
         icon: <TbBrandNextjs className="w-4 h-4" />,
@@ -55,7 +60,11 @@ export default function AboutLayout({
               <AccordionContent className="mt-5">
                 <ul className="space-y-1">
                   {item.list.map((listItem, j) => (
-                    <AsideLink href={listItem.href} key={j} startWith="/about">
+                    <AsideLink
+                      href={listItem.href}
+                      key={j}
+                      startWith="/projects"
+                    >
                       {listItem.icon}
                       {listItem.title}
                     </AsideLink>
