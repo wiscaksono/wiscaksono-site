@@ -71,7 +71,7 @@ export default function AboutLayout({
                       href={listItem.href}
                       key={j}
                       startWith="/about"
-                      event={listItem.title + "link"}
+                      event={`${listItem.title} link`}
                     >
                       <span className="shrink-0">{listItem.icon}</span>
                       {listItem.title}

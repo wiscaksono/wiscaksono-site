@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogFooter
+  DialogFooter,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "./ui/button";
@@ -19,7 +19,7 @@ type CardProps = (typeof projectData)[0];
 const Card = ({ data }: { data: CardProps }) => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger data-umami-event={`${data.title} Card`}>
         <article className="bg-layout rounded-lg overflow-hidden group shadow-2xl hover:shadow-lines/50 transition-shadow duration-500 border border-lines">
           <figure className="relative aspect-video overflow-hidden">
             <Image
@@ -81,7 +81,11 @@ const Card = ({ data }: { data: CardProps }) => {
         </DialogHeader>
         {data.url && (
           <DialogFooter>
-            <Link href={data.url} target="_blank" className={buttonVariants({ variant: "default" })}>
+            <Link
+              href={data.url}
+              target="_blank"
+              className={buttonVariants({ variant: "default" })}
+            >
               Live Preview
             </Link>
           </DialogFooter>
