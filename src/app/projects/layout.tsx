@@ -78,7 +78,7 @@ export default function AboutLayout({
           ))}
         </Accordion>
       </aside>
-      <section className="md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative">
+      <section className="md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[80vh] md:h-auto">
         {children}
       </section>
     </section>
