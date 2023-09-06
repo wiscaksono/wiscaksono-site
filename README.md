@@ -1,27 +1,14 @@
 # Wisnu's Homepage
 
-[https://www.wiscaksono.me/](https://www.wiscaksono.me/)
+## Preview
 
-![wiscaksono](/thumbnail.png)
+![Preview 1](./public/preview-1.png)
+![Preview 2](./public/preview-2.png)
+![Preview 3](./public/preview-3.png)
 
 ## Stack
 
-- [React.js](https://reactjs.org/) - A JavaScript liblary for building user interfaces.
-- [Tailwindcss](https://tailwindcss.com) - A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
-- [Framer Motion](https://www.framer.com/motion/) - An animation library for React
-- [Type Writter JS](https://github.com/tameemsafi/typewriterjs) - A simple JS plugin for cool typewritter effect
+- [NextJS 13 (App Router)](https://nextjs.org) - Next.js is a React framework for building full-stack web applications
+- [TailwindCSS](https://tailwindcss.com) - A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
+- [Radix UI](https://www.radix-ui.com/) - An open source component library optimized for fast development, easy maintenance, and accessibility.
 - [Email JS](https://www.emailjs.com/) - A plugin to send email directly from javaScript to your email
-
-## Project structure
-
-```
-wiscaksono-site
-│   # Page files
-├─ src
-│   │ # React pages
-│   ├─ components
-│   │  └── # React component files
-│   └─ data
-│      └── # data in JSON
-└── public
-```
