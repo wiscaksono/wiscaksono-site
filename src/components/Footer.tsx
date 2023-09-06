@@ -34,6 +34,7 @@ export default function Footer() {
             href="https://www.behance.net/darelova"
             target="_blank"
             className="hover:text-white transition-colors"
+            data-umami-event="Yanka Darelova link"
           >
             Yanka Darelova
           </a>
@@ -42,6 +43,7 @@ export default function Footer() {
           target="_blank"
           href="https://github.com/wiscaksono"
           className="flex items-center gap-x-1 px-2 py-1 hover:text-white transition-colors"
+          data-umami-event="GitHub link footer"
         >
           <p>Wiscaksono</p>
           <IoLogoGithub className="text-lg" />

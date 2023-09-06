@@ -72,7 +72,12 @@ export default function Contacts() {
         </div>
 
         <div className="w-[80%] flex items-center gap-x-5">
-          <Button type="submit" className="self-start" loading={isLoading}>
+          <Button
+            type="submit"
+            className="self-start"
+            loading={isLoading}
+            data-umami-event="Send email button"
+          >
             send-message
           </Button>
           {isSuccess && (

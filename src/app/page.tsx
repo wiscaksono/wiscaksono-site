@@ -27,6 +27,7 @@ export default function Home() {
               target="_blank"
               href="https://github.com/wiscaksono/wiscaksono-site"
               className="text-light-brown hover:underline"
+              data-umami-event="GitHub link"
             >
               “https://github.com/wiscaksono/wiscaksono-site”
             </a>

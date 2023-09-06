@@ -43,7 +43,10 @@ export default function AboutLayout({
         <Accordion type="single" collapsible defaultValue="item-0">
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
-              <AccordionTrigger className="border-b border-lines px-5 py-2.5">
+              <AccordionTrigger
+                className="border-b border-lines px-5 py-2.5"
+                event="About me accordion"
+              >
                 {item.title}
               </AccordionTrigger>
               <AccordionContent className="mt-5">

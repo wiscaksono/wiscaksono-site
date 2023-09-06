@@ -58,13 +58,21 @@ export default function AboutLayout({
         <Accordion type="single" collapsible defaultValue="item-0">
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
-              <AccordionTrigger className="border-b border-lines px-5 py-2.5">
+              <AccordionTrigger
+                className="border-b border-lines px-5 py-2.5"
+                event="Contact accordion"
+              >
                 {item.title}
               </AccordionTrigger>
               <AccordionContent className="mt-5">
                 <ul className="space-y-1">
                   {item.list.map((listItem, j) => (
-                    <AsideLink href={listItem.href} key={j} startWith="/about">
+                    <AsideLink
+                      href={listItem.href}
+                      key={j}
+                      startWith="/about"
+                      event={listItem.title + "link"}
+                    >
                       <span className="shrink-0">{listItem.icon}</span>
                       {listItem.title}
                     </AsideLink>
