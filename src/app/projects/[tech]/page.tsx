@@ -23,7 +23,9 @@ export default function ProjectTech({ params }: ParamsProps) {
   if (params.tech !== "all-projects") {
     const param = params.tech.toLowerCase();
     filteredData = projectData.filter((obj) =>
-      obj.technology.some((tech) => tech.toLowerCase() === param)
+      obj.technology.some(
+        (tech) => tech.toLowerCase().replace(" ", "-") === param
+      )
     );
   }
 
