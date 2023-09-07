@@ -1,4 +1,5 @@
 import Polyrhythmic from "@/components/Polyrhythmic";
+import CustomName from "@/components/CustomName";
 
 export default function Home() {
   return (
@@ -6,9 +7,7 @@ export default function Home() {
       <div className="md:space-y-10 space-y-8 relative z-10">
         <div>
           <p className="text-white text-lg font-extralight">Hi all. I am</p>
-          <h1 className="text-white md:text-6xl sm:text-4xl text-xl font-medium">
-            Wisnu Wicaksono
-          </h1>
+          <CustomName />
           <h2 className="text-purple md:text-3xl sm:text-xl text-base">
             <span className="animate-pulse">&gt; </span>
             Front-end developer
