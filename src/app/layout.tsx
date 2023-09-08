@@ -62,7 +62,7 @@ export default function RootLayout({
       {process.env.NODE_ENV === "production" && (
         <Script
           async
-          src="https://umami-wiscaksono.vercel.app/script.js"
+          src="https://umami.wiscaksono.com/script.js"
           data-website-id="1f3b0505-7366-47bd-8757-95ad25395088"
         />
       )}
