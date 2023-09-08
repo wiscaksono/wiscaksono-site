@@ -42,6 +42,9 @@ export const metadata: Metadata = {
     title: "Wisnu Wicaksono",
     card: "summary_large_image",
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({
