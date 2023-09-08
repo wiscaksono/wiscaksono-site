@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about/gear",
     "/projects/all-projects",
     "/projects/react",
+    "/projects/react-native",
     "/projects/next",
     "/projects/html",
     "/contacts",
