@@ -46,8 +46,8 @@ const data = [
 const title = "Contact";
 const description =
   "Contact Wisnu Wicaksono via email, WhatsApp, LinkedIn, Instagram, or Upwork.";
-const url = `${process.env.WEBSITE_URL}/about/work`;
-const image = `${process.env.WEBSITE_URL}/og?title=${title}`;
+const url = `${process.env.NEXT_PUBLIC_WEBSITE_URL}/about/work`;
+const image = `${process.env.NEXT_PUBLIC_WEBSITE_URL}/og?title=${title}`;
 
 export const metadata: Metadata = {
   title,

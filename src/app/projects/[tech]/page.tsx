@@ -11,7 +11,7 @@ type ParamsProps = {
 
 export async function generateMetadata({ params }: ParamsProps) {
   const title = `${capitalizeWords(params.tech.replace(/-/g, " "))}`;
-  const ogImage = `${process.env.WEBSITE_URL}/og?title=${title}`;
+  const ogImage = `${process.env.NEXT_PUBLIC_WEBSITE_URL}/og?title=${title}`;
   const description = `Projects using ${title} technologies`;
 
   return {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: ParamsProps) {
       title,
       description,
       type: "article",
-      url: `${process.env.WEBSITE_URL}/projects/${params.tech}`,
+      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects/${params.tech}`,
       images: {
         url: ogImage,
       },

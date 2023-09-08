@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Wiscaksono",
     description:
       "I'm a passionate Front End Developer with a background in Electrical Engineering. With expertise in React.js and Next.js, I transform design masterpieces into flawless code. My skills in TailwindCSS ensure visually stunning and responsive websites. Get ready to witness the magic as I bring high-quality work to make the internet a brighter and funnier place!",
-    url: process.env.WEBSITE_URL,
+    url: process.env.NEXT_PUBLIC_WEBSITE_URL,
     siteName: "Wiscaksono",
     locale: "en_US",
     type: "website",

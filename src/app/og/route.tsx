@@ -3,7 +3,8 @@ import { ImageResponse, NextRequest } from "next/server";
 export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
-  const WEBSITE_URL = process.env.WEBSITE_URL || "http://localhost:3000";
+  const WEBSITE_URL =
+    process.env.NEXT_PUBLIC_WEBSITE_URL || "http://localhost:3000";
   const { searchParams } = req.nextUrl;
   const postTitle = searchParams.get("title");
   const font = fetch(

@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const WEBSITE_URL = "https://wiscaksono.me";
+  const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
   const routes = [
     "",
