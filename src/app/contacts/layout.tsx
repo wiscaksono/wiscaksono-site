@@ -43,8 +43,29 @@ const data = [
   },
 ];
 
+const title = "Contact";
+const description =
+  "Contact Wisnu Wicaksono via email, WhatsApp, LinkedIn, Instagram, or Upwork.";
+const url = `${process.env.WEBSITE_URL}/about/work`;
+const image = `${process.env.WEBSITE_URL}/og?title=${title}`;
+
 export const metadata: Metadata = {
-  title: "Wiscaksono - Contacts",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url,
+    images: {
+      url,
+    },
+  },
+  twitter: {
+    title,
+    description,
+    card: "summary_large_image",
+    images: [image],
+  },
 };
 
 export default function AboutLayout({

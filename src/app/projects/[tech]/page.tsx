@@ -9,11 +9,29 @@ type ParamsProps = {
   };
 };
 
-export async function generateMetadata({ params }: ParamsProps, parent?: any) {
-  const site = (await parent)?.title?.absolute;
+export async function generateMetadata({ params }: ParamsProps) {
+  const title = `${capitalizeWords(params.tech.replace(/-/g, " "))}`;
+  const ogImage = `${process.env.WEBSITE_URL}/og?title=${title}`;
+  const description = `Projects using ${title} technologies`;
 
   return {
-    title: `${site} - ${capitalizeWords(params.tech.replace(/-/g, " "))}`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `${process.env.WEBSITE_URL}/projects/${params.tech}`,
+      images: {
+        url: ogImage,
+      },
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
