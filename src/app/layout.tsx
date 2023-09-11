@@ -7,8 +7,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 
-import "@code-hike/mdx/dist/index.css";
-
 const firaCode = Fira_Code({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

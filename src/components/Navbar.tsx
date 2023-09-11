@@ -35,7 +35,7 @@ const navMenu = [
     child: [
       {
         name: "personal.ts",
-        path: "/about/personal",
+        path: "/about/personal.ts",
         icon: <SiTypescript className="w-4 h-4 shrink-0" />,
       },
       {
@@ -56,7 +56,7 @@ const navMenu = [
     child: [
       {
         name: "All Projects",
-        path: "/projects/all-projects",
+        path: "/projects",
         icon: <HiTerminal className="w-4 h-4" />,
       },
       {

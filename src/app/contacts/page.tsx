@@ -1,18 +1,20 @@
 "use client";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { useMDXComponent } from "next-contentlayer/hooks";
 
 import {
   EMAILJS_PUBLIC_KEY,
   EMAILJS_SERVICE_ID,
   EMAILJS_TEMPLATE_ID,
 } from "@/lib/constants";
+import { allContacts } from "contentlayer/generated";
 
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import Contact from "../content/contact.mdx";
+import { Mdx } from "@/components/MdxComponent";
 
 export default function Contacts() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -27,7 +29,7 @@ export default function Contacts() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         e.currentTarget,
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_PUBLIC_KEY,
       );
       setIsLoading(false);
       setIsSuccess(true);
@@ -88,7 +90,7 @@ export default function Contacts() {
         </div>
       </form>
       <div className="flex items-center justify-center flex-1 flex-grow-0">
-        <Contact />
+        <Mdx code={allContacts[0].body.code} />
       </div>
     </section>
   );

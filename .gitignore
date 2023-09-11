@@ -21,6 +21,7 @@
 **/.DS_Store
 .DS_Store
 *.pem
+.contentlayer
 
 # debug
 npm-debug.log*
@@ -35,3 +36,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
