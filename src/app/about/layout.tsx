@@ -28,7 +28,12 @@ export default function AboutLayout({
             <AccordionContent className="mt-5">
               <ul className="space-y-1">
                 {allAbouts.map(({ title }) => (
-                  <AsideLink href={title} key={title} startWith="/about">
+                  <AsideLink
+                    href={title}
+                    key={title}
+                    startWith="/about"
+                    title={title}
+                  >
                     <SiTypescript className="w-4 h-4 shrink-0" />
                     {title}
                   </AsideLink>

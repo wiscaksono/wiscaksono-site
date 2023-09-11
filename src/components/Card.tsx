@@ -11,12 +11,9 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "./ui/button";
+import { Projects } from "contentlayer/generated";
 
-import projectData from "../app/projects/[tech]/projectData.json";
-
-type CardProps = (typeof projectData)[0];
-
-const Card = ({ data }: { data: CardProps }) => {
+const Card = ({ data }: { data: Projects }) => {
   return (
     <Dialog>
       <DialogTrigger data-umami-event={`${data.title} Card`}>
@@ -38,9 +35,10 @@ const Card = ({ data }: { data: CardProps }) => {
               </p>
             </div>
           </figure>
-          <div className="p-5">
+
+          <div className="p-3">
             <p className="line-clamp-3 text-off-white text-left">
-              {data.description}
+              {data.summary}
             </p>
           </div>
         </article>
@@ -57,39 +55,24 @@ const Card = ({ data }: { data: CardProps }) => {
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            {data.technology && (
+            {data.tag && (
               <div className="space-x-1">
-                {data.technology.map((tech, i) => (
+                {data.tag.map((tech, i) => (
                   <Badge key={i}>{tech}</Badge>
                 ))}
               </div>
             )}
-            <p className="whitespace-pre-line mt-2">{data.description}</p>
-            {data.features && (
-              <>
-                <p className="mb-2">
-                  Here are some of the features of {data.title}&apos;s platform:
-                </p>
-                <ul className="list-disc list-outside ml-4 space-y-2">
-                  {data.features.map((feature, i) => (
-                    <li key={i}>{feature}</li>
-                  ))}
-                </ul>
-              </>
-            )}
+            <p className="whitespace-pre-line mt-2">{data.summary}</p>
           </DialogDescription>
         </DialogHeader>
-        {data.url && (
-          <DialogFooter>
-            <Link
-              href={data.url}
-              target="_blank"
-              className={buttonVariants({ variant: "default" })}
-            >
-              Live Preview
-            </Link>
-          </DialogFooter>
-        )}
+        <DialogFooter>
+          <Link
+            href={`/projects/${data.title.toLowerCase()}`}
+            className={buttonVariants({ variant: "default" })}
+          >
+            Details
+          </Link>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

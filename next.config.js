@@ -9,11 +9,6 @@ const nextConfig = {
         destination: "/about/personal.ts",
         permanent: true,
       },
-      {
-        source: "/projects",
-        destination: "/projects/all-projects",
-        permanent: true,
-      },
     ];
   },
 };

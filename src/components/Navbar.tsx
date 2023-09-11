@@ -56,7 +56,7 @@ const navMenu = [
     child: [
       {
         name: "All Projects",
-        path: "/projects/all-projects",
+        path: "/projects",
         icon: <HiTerminal className="w-4 h-4" />,
       },
       {

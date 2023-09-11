@@ -30,6 +30,12 @@ const Projects = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     summary: { type: "string", required: true },
+    image: { type: "string", required: true },
+    tag: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
   },
   computedFields,
 }));
@@ -38,10 +44,6 @@ const Contacts = defineDocumentType(() => ({
   name: "Contacts",
   filePathPattern: `contacts/**/*.mdx`,
   contentType: "mdx",
-  fields: {
-    title: { type: "string", required: true },
-    summary: { type: "string", required: true },
-  },
   computedFields,
 }));
 

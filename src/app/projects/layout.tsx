@@ -16,27 +16,27 @@ const data = [
     list: [
       {
         title: "All Projects",
-        href: "/projects/all-projects",
+        href: "/projects",
         icon: <HiTerminal className="w-4 h-4" />,
       },
       {
         title: "React",
-        href: "/projects/react",
+        href: "/projects?tag=React",
         icon: <RiReactjsLine className="w-4 h-4" />,
       },
       {
         title: "React Native",
-        href: "/projects/react-native",
+        href: "/projects?tag=React Native",
         icon: <RiReactjsLine className="w-4 h-4" />,
       },
       {
         title: "Next",
-        href: "/projects/next",
+        href: "/projects?tag=Next",
         icon: <TbBrandNextjs className="w-4 h-4" />,
       },
       {
         title: "HTML",
-        href: "/projects/html",
+        href: "/projects?tag=HTML",
         icon: <RiHtml5Fill className="w-4 h-4" />,
       },
     ],
@@ -67,6 +67,7 @@ export default function AboutLayout({
                       href={listItem.href}
                       key={j}
                       startWith="/projects"
+                      title={listItem.title}
                     >
                       {listItem.icon}
                       {listItem.title}

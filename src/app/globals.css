@@ -132,6 +132,14 @@
     height: 100%;
   }
 
+  .prose img {
+    margin-inline: auto;
+  }
+
+  .prose a {
+    color: white;
+  }
+
   .prose li p:first-child {
     margin-bottom: 0 !important;
   }

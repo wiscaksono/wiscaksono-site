@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { allAbouts } from "contentlayer/generated";
+import { allProjects } from "contentlayer/generated";
 
 import { Mdx } from "@/components/MdxComponent";
 
@@ -10,30 +10,30 @@ type ParamsProps = {
   };
 };
 
-async function getAboutFromParams(params: ParamsProps["params"]) {
+async function getProjectFromParams(params: ParamsProps["params"]) {
   const title = params.title.join("/");
-  const post = allAbouts.find((post) => post.title === title);
+  const post = allProjects.find((post) => post.title.toLowerCase() === title);
   if (!post) null;
   return post;
 }
 
 export async function generateStaticParams(): Promise<ParamsProps["params"][]> {
-  return allAbouts.map((about) => ({
-    title: about.title.split("/"),
+  return allProjects.map((project) => ({
+    title: project.title.split("/").map((title) => title.toLowerCase()),
   }));
 }
 
 export async function generateMetadata({
   params,
 }: ParamsProps): Promise<Metadata> {
-  const about = await getAboutFromParams(params);
+  const project = await getProjectFromParams(params);
 
-  if (!about) {
+  if (!project) {
     return {};
   }
 
-  const title = about.title;
-  const description = about.summary;
+  const title = project.title;
+  const description = project.summary;
   const ogImage = `${process.env.NEXT_PUBLIC_WEBSITE_URL}/og?title=${title}`;
 
   return {
@@ -57,8 +57,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function AboutDetail({ params }: ParamsProps) {
-  const about = await getAboutFromParams(params);
+export default async function ProjectDetail({ params }: ParamsProps) {
+  const about = await getProjectFromParams(params);
   if (!about) {
     notFound();
   }
