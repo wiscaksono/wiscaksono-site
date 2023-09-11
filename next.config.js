@@ -1,5 +1,4 @@
-const { remarkCodeHike } = require("@code-hike/mdx");
-const theme = require("shiki/themes/nord.json");
+const { withContentlayer } = require("next-contentlayer");
 
 const nextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
@@ -7,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: "/about",
-        destination: "/about/personal",
+        destination: "/about/personal.ts",
         permanent: true,
       },
       {
@@ -19,12 +18,4 @@ const nextConfig = {
   },
 };
 
-const withMDX = require("@next/mdx")({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [[remarkCodeHike, { theme, lineNumbers: true }]],
-    rehypePlugins: [],
-  },
-});
-
-module.exports = withMDX(nextConfig);
+module.exports = withContentlayer(nextConfig);
