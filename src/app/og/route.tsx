@@ -1,15 +1,19 @@
-import { ImageResponse, NextRequest } from "next/server";
+import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
   const WEBSITE_URL =
     process.env.NEXT_PUBLIC_WEBSITE_URL || "http://localhost:3000";
+
   const { searchParams } = req.nextUrl;
   const postTitle = searchParams.get("title");
+
   const font = fetch(
-    new URL("../../../public/fonts/outfit-semibold.ttf", import.meta.url)
+    new URL("../../../public/fonts/outfit-semibold.ttf", import.meta.url),
   ).then((res) => res.arrayBuffer());
+
   const fontData = await font;
 
   return new ImageResponse(
@@ -53,6 +57,6 @@ export async function GET(req: NextRequest) {
           style: "normal",
         },
       ],
-    }
+    },
   );
 }

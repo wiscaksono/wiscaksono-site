@@ -26,7 +26,7 @@ const Card = ({ data }: { data: Projects }) => {
               placeholder="blur"
               quality={10}
               fill
-              className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
               priority
             />
             <div className="w-full h-full absolute z-30 flex items-center justify-center rounded-t-lg bg-layout/80 backdrop-blur-sm overflow-hidden group-hover:opacity-0 transition-opacity duration-500">

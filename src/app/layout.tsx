@@ -10,6 +10,13 @@ import { TailwindIndicator } from "@/components/TailwindIndicator";
 const firaCode = Fira_Code({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_URL!),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+    },
+  },
   title: {
     default: "Wiscaksono",
     template: "%s | Wiscaksono",

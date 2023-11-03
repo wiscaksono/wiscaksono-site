@@ -2,19 +2,16 @@
 "use client";
 import { useRef, useEffect, useCallback } from "react";
 
-
 export default function Polyrythmic() {
-
   const paper = useRef<HTMLCanvasElement>(null);
   const startTime = new Date().getTime();
 
   const calculateNextImpactTime = (
     currentImpactTime: number,
-    velocity: number
+    velocity: number,
   ) => {
     return currentImpactTime + (Math.PI / velocity) * 1000;
   };
-
 
   const arcs = Array.from(Array(20)).map((_, index) => {
     const oneFullLoop = 2 * Math.PI;
@@ -87,7 +84,6 @@ export default function Polyrythmic() {
       pen.beginPath();
       pen.arc(x, y, length * 0.0025, 0, 2 * Math.PI);
       pen.fill();
-
     });
 
     requestAnimationFrame(draw);
@@ -98,9 +94,9 @@ export default function Polyrythmic() {
   }, []);
 
   return (
-      <canvas
-        ref={paper}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-screen h-screen"
-      />
+    <canvas
+      ref={paper}
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-screen h-screen"
+    />
   );
 }
