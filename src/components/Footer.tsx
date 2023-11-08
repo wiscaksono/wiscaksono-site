@@ -13,7 +13,7 @@ export default function Footer() {
           <BiGitBranch className="text-lg" />
           <p>main</p>
         </a>
-        <button className="items-center gap-x-2 px-2 py-1 md:flex hidden group">
+        <button className="items-center gap-x-2 px-2 py-1 md:flex hidden group hover:text-white transition-colors">
           <BiRefresh className="text-xl group-active:rotate-180 transition-transform" />
         </button>
         <div className="items-center gap-x-1 px-2 py-1 md:flex hidden">
