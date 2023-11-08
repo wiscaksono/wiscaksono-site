@@ -1,29 +1,28 @@
 // Thanks to https://www.youtube.com/@Hyperplexed
 "use client";
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useMemo } from "react";
 
 export default function Polyrythmic() {
   const paper = useRef<HTMLCanvasElement>(null);
   const startTime = new Date().getTime();
 
-  const calculateNextImpactTime = (
-    currentImpactTime: number,
-    velocity: number,
-  ) => {
+  const calculateNextImpactTime = (currentImpactTime: number, velocity: number) => {
     return currentImpactTime + (Math.PI / velocity) * 1000;
   };
 
-  const arcs = Array.from(Array(20)).map((_, index) => {
-    const oneFullLoop = 2 * Math.PI;
-    const numberOfLoops = 50 - index;
-    const velocity = (oneFullLoop * numberOfLoops) / 900;
+  const arcs = useMemo(() => {
+    return Array.from(Array(20)).map((_, index) => {
+      const oneFullLoop = 2 * Math.PI;
+      const numberOfLoops = 50 - index;
+      const velocity = (oneFullLoop * numberOfLoops) / 900;
 
-    return {
-      color: `rgba(30, 45, 61, ${1 - index * 0.05})`,
-      velocity,
-      nextImpactTime: calculateNextImpactTime(startTime, velocity),
-    };
-  });
+      return {
+        color: `rgba(30, 45, 61, ${1 - index * 0.05})`,
+        velocity,
+        nextImpactTime: calculateNextImpactTime(startTime, velocity),
+      };
+    });
+  }, [startTime]);
 
   const draw = useCallback(() => {
     const pen = paper.current?.getContext("2d");
@@ -73,8 +72,7 @@ export default function Polyrythmic() {
         maxAngle = 2 * Math.PI,
         distance = Math.PI + elapsedTime * velocity,
         modDistance = distance % maxAngle,
-        adjustedDistance =
-          modDistance >= Math.PI ? modDistance : maxAngle - modDistance;
+        adjustedDistance = modDistance >= Math.PI ? modDistance : maxAngle - modDistance;
 
       const x = center.x + arcRadius * Math.cos(adjustedDistance);
       const y = center.y + arcRadius * Math.sin(adjustedDistance);
@@ -93,10 +91,5 @@ export default function Polyrythmic() {
     draw();
   }, []);
 
-  return (
-    <canvas
-      ref={paper}
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-screen h-screen"
-    />
-  );
+  return <canvas ref={paper} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-screen h-screen" />;
 }

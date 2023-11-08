@@ -11,12 +11,6 @@ const firaCode = Fira_Code({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_URL!),
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en-US": "/en-US",
-    },
-  },
   title: {
     default: "Wiscaksono",
     template: "%s | Wiscaksono",
@@ -52,11 +46,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={firaCode.className}>
@@ -67,13 +57,7 @@ export default function RootLayout({
         </main>
         <TailwindIndicator />
       </body>
-      {process.env.NODE_ENV === "production" && (
-        <Script
-          async
-          src="https://umami.wiscaksono.com/script.js"
-          data-website-id="1f3b0505-7366-47bd-8757-95ad25395088"
-        />
-      )}
+      {process.env.NODE_ENV === "production" && <Script async src="https://umami.wiscaksono.com/script.js" data-website-id="1f3b0505-7366-47bd-8757-95ad25395088" />}
     </html>
   );
 }
