@@ -1,6 +1,6 @@
 // Thanks to https://www.youtube.com/@Hyperplexed
 "use client";
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useMemo } from "react";
 
 export default function Polyrythmic() {
   const paper = useRef<HTMLCanvasElement>(null);
@@ -13,17 +13,19 @@ export default function Polyrythmic() {
     return currentImpactTime + (Math.PI / velocity) * 1000;
   };
 
-  const arcs = Array.from(Array(20)).map((_, index) => {
-    const oneFullLoop = 2 * Math.PI;
-    const numberOfLoops = 50 - index;
-    const velocity = (oneFullLoop * numberOfLoops) / 900;
+  const arcs = useMemo(() => {
+    return Array.from(Array(20)).map((_, index) => {
+      const oneFullLoop = 2 * Math.PI;
+      const numberOfLoops = 50 - index;
+      const velocity = (oneFullLoop * numberOfLoops) / 900;
 
-    return {
-      color: `rgba(30, 45, 61, ${1 - index * 0.05})`,
-      velocity,
-      nextImpactTime: calculateNextImpactTime(startTime, velocity),
-    };
-  });
+      return {
+        color: `rgba(30, 45, 61, ${1 - index * 0.05})`,
+        velocity,
+        nextImpactTime: calculateNextImpactTime(startTime, velocity),
+      };
+    });
+  }, [startTime]);
 
   const draw = useCallback(() => {
     const pen = paper.current?.getContext("2d");

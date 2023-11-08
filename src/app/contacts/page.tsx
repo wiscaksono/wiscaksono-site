@@ -1,7 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { useMDXComponent } from "next-contentlayer/hooks";
 
 import {
   EMAILJS_PUBLIC_KEY,
@@ -51,12 +50,19 @@ export default function Contacts() {
       >
         <div className="w-[80%] space-y-2">
           <Label htmlFor="name">_name</Label>
-          <Input name="name" type="text" placeholder="John Doe" required />
+          <Input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="John Doe"
+            required
+          />
         </div>
 
         <div className="w-[80%] space-y-2">
           <Label htmlFor="email">_email</Label>
           <Input
+            id="email"
             name="email"
             type="email"
             placeholder="johndoe@gmail.com"
@@ -67,6 +73,7 @@ export default function Contacts() {
         <div className="w-[80%] space-y-2">
           <Label htmlFor="message">_message</Label>
           <Textarea
+            id="message"
             name="message"
             placeholder="Hey! Just checked your website and it looks awesome!"
             required

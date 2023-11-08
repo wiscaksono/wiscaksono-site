@@ -1,20 +1,21 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 export default function CustomName() {
   const [text, setText] = useState("WISNU WICAKSONO");
-  const [intervalId, setIntervalId] = useState<NodeJS.Timer | null>(null);
+  const [intervalId] = useState<NodeJS.Timer | null>(null);
+  const ref = useRef<HTMLHeadingElement | null>(null);
 
   const handleMouseOver = () => {
     let iteration = 0;
 
     if (intervalId !== null) {
-      clearInterval(intervalId);
+      clearTimeout(intervalId);
     }
 
-    const newIntervalId = setInterval(() => {
+    const animate = () => {
       setText((prevText) =>
         prevText
           .split("")
@@ -22,33 +23,37 @@ export default function CustomName() {
             if (index < iteration) {
               return text[index];
             }
-
             return letters[Math.floor(Math.random() * 26)];
           })
-          .join("")
+          .join(""),
       );
 
-      if (iteration >= text.length) {
-        clearInterval(newIntervalId);
+      if (iteration < text.length) {
+        iteration += 1 / 3;
+        setTimeout(animate, 30);
       }
+    };
 
-      iteration += 1 / 3;
-    }, 30);
-
-    setIntervalId(newIntervalId);
+    animate();
   };
 
   useEffect(() => {
-    const h1Element = document.querySelector("h1");
-    h1Element?.addEventListener("mouseover", handleMouseOver);
+    if (ref.current) {
+      ref.current.addEventListener("mouseover", handleMouseOver);
+    }
 
     return () => {
-      h1Element?.removeEventListener("mouseover", handleMouseOver);
+      if (ref.current) {
+        ref.current.removeEventListener("mouseover", handleMouseOver);
+      }
     };
   }, []);
 
   return (
-    <h1 className="text-white md:text-6xl sm:text-4xl text-xl font-medium">
+    <h1
+      ref={ref}
+      className="text-white md:text-6xl sm:text-4xl text-xl font-medium"
+    >
       {text}
     </h1>
   );

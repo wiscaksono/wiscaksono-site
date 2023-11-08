@@ -26,6 +26,7 @@ const Card = ({ data }: { data: Projects }) => {
               placeholder="blur"
               quality={10}
               fill
+              sizes="100%"
               className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
               priority
             />
@@ -37,7 +38,7 @@ const Card = ({ data }: { data: Projects }) => {
           </figure>
 
           <div className="p-3">
-            <p className="line-clamp-3 text-off-white text-left">
+            <p className="line-clamp-5 text-off-white text-left text-sm">
               {data.summary}
             </p>
           </div>
