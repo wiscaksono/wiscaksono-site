@@ -21,7 +21,7 @@ export default async function GuestBooks() {
     <FadeIn className='p-5 space-y-2'>
       <form action={createPost} className='col-span-full flex items-center justify-between gap-x-2.5'>
         <div className='flex-1 relative'>
-          <Input name='desc' id='desc' />
+          <Input name='desc' id='desc' placeholder='This is really cool!' aria-labelledby='desc' />
         </div>
         {!session ? <SignInBtn /> : <SendBtn />}
       </form>
