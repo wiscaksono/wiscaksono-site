@@ -1,51 +1,38 @@
-import { allAbouts } from "contentlayer/generated";
-import { SiTypescript } from "react-icons/si";
+import { Suspense } from 'react'
+import { allAbouts } from 'contentlayer/generated'
+import { SiTypescript } from 'react-icons/si'
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import AsideLink from "@/components/ui/aside-link";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
+import { AsideLink } from '@/components/atoms/aside-link'
+import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
 
-export default function AboutLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="grid grid-cols-12 overflow-hidden h-full">
-      <aside className="col-span-2 border-r border-lines md:block hidden">
-        <Accordion type="single" collapsible defaultValue="about">
-          <AccordionItem value={"about"} defaultChecked>
-            <AccordionTrigger
-              className="border-b border-lines px-5 py-2.5"
-              event="About me accordion"
-            >
+    <section className='grid grid-cols-12 overflow-hidden h-full'>
+      <aside className='col-span-2 border-r border-lines md:block hidden'>
+        <Accordion type='single' collapsible defaultValue='about'>
+          <AccordionItem value={'about'} defaultChecked>
+            <AccordionTrigger className='border-b border-lines px-5 py-2.5' event='About me accordion'>
               About Me
             </AccordionTrigger>
-            <AccordionContent className="mt-5">
-              <ul className="space-y-1">
+            <AccordionContent className='mt-5 space-y-1'>
+              <FadeInStagger faster>
                 {allAbouts.map(({ title }) => (
-                  <AsideLink
-                    href={title}
-                    key={title}
-                    startWith="/about"
-                    title={title}
-                  >
-                    <SiTypescript className="w-4 h-4 shrink-0" />
-                    {title}
-                  </AsideLink>
+                  <FadeIn key={title}>
+                    <Suspense fallback={<>Loading...</>}>
+                      <AsideLink href={title} key={title} startWith='/about' title={title}>
+                        <SiTypescript className='w-4 h-4 shrink-0' />
+                        {title}
+                      </AsideLink>
+                    </Suspense>
+                  </FadeIn>
                 ))}
-              </ul>
+              </FadeInStagger>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
       </aside>
-      <section className="md:col-span-10 col-span-12 overflow-y-auto relative h-[80vh] md:h-auto">
-        {children}
-      </section>
+      <section className='md:col-span-10 col-span-12 overflow-y-auto relative h-[84vh] md:h-auto'>{children}</section>
     </section>
-  );
+  )
 }
