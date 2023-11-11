@@ -18,7 +18,7 @@ export const {
   handlers: { GET, POST },
   auth
 } = NextAuth({
-  secret: ENV.NEXTAUTH_SECRET,
+  secret: ENV.AUTH_SECRET,
   adapter: PrismaAdapter(db),
   providers: [
     GitHub({

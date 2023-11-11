@@ -8,7 +8,7 @@ export const ENV = {
 
   GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
   GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-  NEXTAUTH_SECRET: '',
+  AUTH_SECRET: process.env.AUTH_SECRET || 'some-secret',
 
   NODE_ENV: process.env.NODE_ENV || 'development'
 }
