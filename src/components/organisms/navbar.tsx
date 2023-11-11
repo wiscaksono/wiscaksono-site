@@ -67,8 +67,8 @@ const navMenu = [
     ]
   },
   {
-    name: '_contacts',
-    path: '/contacts',
+    name: '_guest-book',
+    path: '/guest-book',
     child: [
       {
         name: 'Email',
@@ -138,7 +138,7 @@ const MobileSheets = () => {
                 {menu.child && (
                   <AccordionContent className='text-left ml-2.5'>
                     {menu.child.map((child, i) => (
-                      <Link className='flex gap-x-2.5 items-center mb-2 last:mb-0' href={child.path} key={i} target={menu.name === '_contacts' ? '_blank' : '_self'}>
+                      <Link className='flex gap-x-2.5 items-center mb-2 last:mb-0' href={child.path} key={i} target={menu.name === '_guest-book' ? '_blank' : '_self'}>
                         {child.icon}
                         {child.name}
                       </Link>

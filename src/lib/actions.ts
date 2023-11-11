@@ -15,7 +15,7 @@ export const createPost = async (formData: FormData) => {
     }
   })
 
-  revalidatePath('/contacts')
+  revalidatePath('/guest-book')
 }
 
 export const deletePost = async (id: number) => {
@@ -25,5 +25,5 @@ export const deletePost = async (id: number) => {
     }
   })
 
-  revalidatePath('/contacts')
+  revalidatePath('/guest-book')
 }

@@ -6,7 +6,7 @@ import { db } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
 import { createPost } from '@/lib/actions'
 
-export default async function Contacts() {
+export default async function GuestBooks() {
   const session = await auth()
   const posts = await db.post.findMany({
     include: {
