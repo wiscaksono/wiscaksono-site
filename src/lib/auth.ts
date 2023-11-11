@@ -34,5 +34,8 @@ export const {
         id: user.id
       }
     })
+  },
+  pages: {
+    error: '/'
   }
 })
