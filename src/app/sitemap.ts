@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const activities = allActivity.map(activity => ({
-    url: `${WEBSITE_URL}/coding-activity/${activity.title.toLowerCase()}`,
+    url: `${WEBSITE_URL}/coding-activity/${activity.slug.toLowerCase()}`,
     lastModified: new Date().toISOString().split('T')[0]
   }))
 
