@@ -1,9 +1,16 @@
 import Link from 'next/link'
 import { BiGitBranch, BiRefresh, BiXCircle } from 'react-icons/bi'
 import { IoWarningOutline, IoLogoGithub } from 'react-icons/io5'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/atoms/tooltip'
+import { AiOutlineClockCircle } from 'react-icons/ai'
 
-export const Footer = () => {
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/atoms/tooltip'
+import { weeklyCodingActivity } from '@/lib/actions'
+
+export const Footer = async () => {
+  const { data } = await weeklyCodingActivity()
+  const today = new Date().toISOString().split('T')[0]
+  const todayData = data.find(item => item.range.date === today)
+
   return (
     <footer className='border-t text-off-white text-xs flex items-center justify-between select-none bg-layout relative z-10'>
       <div className='flex items-center border-r divide-x'>
@@ -30,6 +37,20 @@ export const Footer = () => {
               </div>
             </TooltipTrigger>
             <TooltipContent className='!border-none'>No problems</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href='/coding-activity' className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground'>
+                <AiOutlineClockCircle className='text-base' />
+                <p>{todayData?.grand_total.text}</p>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent className='!border-none'>
+              <p>Today coding activity</p>
+              <p className='text-sm text-muted-foreground'>click for more</p>
+            </TooltipContent>
           </Tooltip>
         </TooltipProvider>
         <div className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground'>

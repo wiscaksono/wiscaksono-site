@@ -10,7 +10,7 @@ type Props = {
   children: React.ReactNode
   startWith: string
   event?: string
-  title?: string
+  title?: string | null
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 export const AsideLink = ({ href, children, startWith, event, title, ...props }: Props) => {

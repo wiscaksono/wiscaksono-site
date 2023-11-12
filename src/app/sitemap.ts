@@ -7,7 +7,7 @@ import { ENV } from '@/lib/constants'
 export default function sitemap(): MetadataRoute.Sitemap {
   const WEBSITE_URL = ENV.NEXT_PUBLIC_WEBSITE_URL
 
-  const routes = ['', '/guest-book'].map(route => ({
+  const routes = ['', '/guest-book', '/coding-activity'].map(route => ({
     url: `${WEBSITE_URL}${route}`,
     lastModified: new Date().toISOString().split('T')[0]
   }))
