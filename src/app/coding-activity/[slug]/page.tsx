@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 
 import { ENV } from '@/lib/constants'
-import { components } from '../components'
+import { allActivity } from '../allActivities'
 
 type ParamsProps = {
   slug: string
@@ -10,7 +10,7 @@ type ParamsProps = {
 export const dynamic = 'force-static'
 
 export async function generateMetadata({ params }: { params: ParamsProps }) {
-  const data = components.find(component => component.slug === params.slug)
+  const data = allActivity.find(component => component.slug === params.slug)
 
   if (!data) return {}
 
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: ParamsProps }) {
 }
 
 export default async function ActivityDetails({ params }: { params: ParamsProps }) {
-  const data = components.find(component => component.slug === params.slug)
+  const data = allActivity.find(component => component.slug === params.slug)
 
   if (!data) redirect('/coding-activity')
 

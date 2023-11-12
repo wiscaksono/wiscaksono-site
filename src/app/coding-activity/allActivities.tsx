@@ -5,7 +5,7 @@ import { SiArchlinux } from 'react-icons/si'
 
 import * as Part from './partials'
 
-export const components = [
+export const allActivity = [
   {
     title: 'Languanges',
     slug: '',

@@ -1,13 +1,14 @@
 import { MetadataRoute } from 'next'
 import { allAbouts } from 'contentlayer/generated'
 import { allProjects } from 'contentlayer/generated'
+import { allActivity } from './coding-activity/allActivities'
 
 import { ENV } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const WEBSITE_URL = ENV.NEXT_PUBLIC_WEBSITE_URL
 
-  const routes = ['', '/guest-book', '/coding-activity'].map(route => ({
+  const routes = ['', '/guest-book'].map(route => ({
     url: `${WEBSITE_URL}${route}`,
     lastModified: new Date().toISOString().split('T')[0]
   }))
@@ -22,5 +23,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date().toISOString().split('T')[0]
   }))
 
-  return [...routes, ...abouts, ...projects]
+  const activities = allActivity.map(activity => ({
+    url: `${WEBSITE_URL}/coding-activity/${activity.title.toLowerCase()}`,
+    lastModified: new Date().toISOString().split('T')[0]
+  }))
+
+  return [...routes, ...abouts, ...projects, ...activities]
 }

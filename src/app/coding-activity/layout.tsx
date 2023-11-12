@@ -6,7 +6,7 @@ import { AsideLink } from '@/components/atoms/aside-link'
 import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
 import { ENV } from '@/lib/constants'
 
-import { components } from './components'
+import { allActivity } from './allActivities'
 
 const title = 'coding-activity'
 const description = 'coding-activity'
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 const data = [
   {
     title: 'Coding Activity',
-    list: [...components]
+    list: [...allActivity]
   }
 ]
 
