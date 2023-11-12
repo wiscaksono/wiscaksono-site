@@ -19,14 +19,6 @@ const nextConfig = {
         permanent: true
       }
     ]
-  },
-  headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders
-      }
-    ]
   }
 }
 
