@@ -14,7 +14,11 @@ export const NavLink = ({ href, children }: Props) => {
 
   return (
     <li className='relative group'>
-      <Link href={href} className={cn('w-full h-full block py-4 px-5 transition-colors', 'group-hover:text-foreground', isActive ? 'text-foreground' : 'text-muted-foreground')}>
+      <Link
+        href={href}
+        className={cn('w-full h-full block py-4 px-5 transition-colors', 'group-hover:text-foreground', isActive ? 'text-foreground' : 'text-muted-foreground')}
+        data-umami-event={`navbar/${href.slice(1)}`}
+      >
         {children}
       </Link>
       <div

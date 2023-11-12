@@ -18,11 +18,16 @@ export const Footer = async () => {
           target='_blank'
           href='https://github.com/wiscaksono/wiscaksono-site'
           className='flex items-center gap-x-2 px-2 py-1 hover:text-foreground text-muted-foreground transition-colors'
+          data-umami-event='GitHub link footer'
         >
           <BiGitBranch className='text-lg' />
           <p>main</p>
         </Link>
-        <button aria-label='refetch' className='items-center gap-x-2 px-2 py-1 md:flex hidden group hover:text-foreground text-muted-foreground transition-colors'>
+        <button
+          aria-label='refetch'
+          className='items-center gap-x-2 px-2 py-1 md:flex hidden group hover:text-foreground text-muted-foreground transition-colors'
+          data-umami-event='Refetch weekly coding activity'
+        >
           <BiRefresh className='text-xl group-active:rotate-180 transition-transform' />
         </button>
 
@@ -42,7 +47,7 @@ export const Footer = async () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href='/coding-activity' className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground'>
+              <Link href='/coding-activity' className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground' data-umami-event='Today coding activity'>
                 <AiOutlineClockCircle className='text-base' />
                 <p>{todayData?.grand_total.text}</p>
               </Link>
@@ -65,7 +70,7 @@ export const Footer = async () => {
             Yanka Darelova
           </Link>
         </div>
-        <a
+        <Link
           target='_blank'
           href='https://github.com/wiscaksono'
           className='flex items-center gap-x-1 px-2 py-1 hover:text-foreground text-muted-foreground transition-colors'
@@ -73,7 +78,7 @@ export const Footer = async () => {
         >
           <p>Wiscaksono</p>
           <IoLogoGithub className='text-lg' />
-        </a>
+        </Link>
       </div>
     </footer>
   )

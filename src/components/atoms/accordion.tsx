@@ -17,7 +17,6 @@ const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & {
     withIcon?: boolean
-    event?: string
   }
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Header className='flex'>

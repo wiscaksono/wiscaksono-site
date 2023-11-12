@@ -73,7 +73,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
         <Accordion type='single' collapsible defaultValue='item-0'>
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
-              <AccordionTrigger className='border-b border-lines px-5 py-2.5' event='Contact accordion'>
+              <AccordionTrigger className='border-b border-lines px-5 py-2.5' data-umami-event='Guest book accordion'>
                 {item.title}
               </AccordionTrigger>
               <AccordionContent className='mt-5 space-y-1'>
@@ -81,7 +81,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
                   {item.list.map((listItem, j) => (
                     <FadeIn key={j}>
                       <Suspense fallback={<>Loading...</>}>
-                        <AsideLink href={listItem.href} startWith='/about' event={`${listItem.title} link`}>
+                        <AsideLink href={listItem.href} startWith='/about' data-umami-event={`Guest book ${listItem.title} link`}>
                           <span className='shrink-0'>{listItem.icon}</span>
                           {listItem.title}
                         </AsideLink>

@@ -12,7 +12,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
       <aside className='col-span-2 border-r border-lines md:block hidden'>
         <Accordion type='single' collapsible defaultValue='about'>
           <AccordionItem value={'about'} defaultChecked>
-            <AccordionTrigger className='border-b border-lines px-5 py-2.5' event='About me accordion'>
+            <AccordionTrigger className='border-b border-lines px-5 py-2.5' data-umami-event='About me accordion'>
               About Me
             </AccordionTrigger>
             <AccordionContent className='mt-5 space-y-1'>
@@ -20,7 +20,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
                 {allAbouts.map(({ title }) => (
                   <FadeIn key={title}>
                     <Suspense fallback={<>Loading...</>}>
-                      <AsideLink href={title} key={title} startWith='/about' title={title}>
+                      <AsideLink href={title} key={title} startWith='/about' title={title} data-umami-event={`About me ${title} link`}>
                         <SiTypescript className='w-4 h-4 shrink-0' />
                         {title}
                       </AsideLink>
