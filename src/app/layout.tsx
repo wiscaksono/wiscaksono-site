@@ -15,12 +15,10 @@ export const metadata: Metadata = {
     default: 'Wiscaksono',
     template: '%s | Wiscaksono'
   },
-  description:
-    "I'm a passionate Front End Developer with a background in Electrical Engineering. With expertise in React.js and Next.js, I transform design masterpieces into flawless code. My skills in TailwindCSS ensure visually stunning and responsive websites. Get ready to witness the magic as I bring high-quality work to make the internet a brighter and funnier place!",
+  description: 'Wisnu Wicaksono personal website',
   openGraph: {
     title: 'Wiscaksono',
-    description:
-      "I'm a passionate Front End Developer with a background in Electrical Engineering. With expertise in React.js and Next.js, I transform design masterpieces into flawless code. My skills in TailwindCSS ensure visually stunning and responsive websites. Get ready to witness the magic as I bring high-quality work to make the internet a brighter and funnier place!",
+    description: 'Wisnu Wicaksono personal website',
     url: ENV.NEXT_PUBLIC_WEBSITE_URL,
     siteName: 'Wiscaksono',
     locale: 'en_US',
@@ -38,7 +36,7 @@ export const metadata: Metadata = {
     }
   },
   twitter: {
-    title: 'Wisnu Wicaksono',
+    title: 'Wiscaksono',
     card: 'summary_large_image'
   },
   verification: {

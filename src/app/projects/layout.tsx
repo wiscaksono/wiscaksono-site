@@ -42,7 +42,7 @@ const data = [
   }
 ]
 
-const title = 'Projects'
+const title = 'projects'
 const description = 'All my projects, including React, React Native, Next, and HTML.'
 const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/projects`
 const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/og?title=${title}`

@@ -1,3 +1,24 @@
+import { Metadata } from 'next'
+import { ENV } from '@/lib/constants'
+
+const title = '404'
+const description = 'Sorry, i couldn’t find the page you’re looking for.'
+const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/404`
+
+export const metadata: Metadata = {
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url
+  },
+  twitter: {
+    title,
+    description
+  }
+}
+
 export default function NotFound() {
   return (
     <section className='h-screen flex items-center justify-center flex-col'>

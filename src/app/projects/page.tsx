@@ -17,17 +17,7 @@ export default function ProjectPage({ searchParams }: SearchParamsProps) {
     <FadeInStagger className='grid md:grid-cols-3 2xl:grid-cols-4 gap-5 p-5' faster>
       <AnimatePresence mode='wait'>
         {filteredProjects.map(project => (
-          <FadeIn
-            layout
-            key={project.title}
-            // initial={{ opacity: 0 }}
-            // animate={{ opacity: 1 }}
-            // exit={{ opacity: 0 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
+          <FadeIn layout key={project.title} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
             <ProjectCard data={project} />
           </FadeIn>
         ))}

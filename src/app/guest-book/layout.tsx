@@ -11,7 +11,7 @@ import { ENV } from '@/lib/constants'
 
 const data = [
   {
-    title: 'My Personal Contact',
+    title: 'Guest Book',
     list: [
       {
         title: 'Email',
@@ -42,8 +42,8 @@ const data = [
   }
 ]
 
-const title = 'Guest Book'
-const description = 'Contact Wisnu Wicaksono via email, WhatsApp, LinkedIn, Instagram, or Upwork.'
+const title = 'guest-book'
+const description = 'Leave a message to me'
 const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/about/work`
 const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/og?title=${title}`
 

@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: ParamsProps }) {
 
   if (!project) return {}
 
-  const title = project.title
+  const title = project.title + ' | Wiscaksono'
   const description = project.summary
   const ogImage = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 

@@ -8,7 +8,7 @@ import { Button } from '@/components/atoms/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/atoms/dropdown-menu'
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme()
+  const { setTheme } = useTheme()
 
   return (
     <DropdownMenu>
