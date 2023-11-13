@@ -10,8 +10,6 @@ export const Footer = async () => {
   const { data } = await weeklyCodingActivity()
   const todayData = data[data.length - 1]
 
-  console.log(todayData)
-
   return (
     <footer className='border-t text-off-white text-xs flex items-center justify-between select-none bg-layout relative z-10'>
       <div className='flex items-center border-r divide-x'>
