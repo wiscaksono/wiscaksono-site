@@ -8,8 +8,9 @@ import { weeklyCodingActivity } from '@/lib/actions'
 
 export const Footer = async () => {
   const { data } = await weeklyCodingActivity()
-  const today = new Date().toISOString().split('T')[0]
-  const todayData = data.find(item => item.range.date === today)
+  const todayData = data[data.length - 1]
+
+  console.log(todayData)
 
   return (
     <footer className='border-t text-off-white text-xs flex items-center justify-between select-none bg-layout relative z-10'>
@@ -47,7 +48,12 @@ export const Footer = async () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href='/coding-activity' className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground' data-umami-event='Today coding activity'>
+              <Link
+                aria-label='Click for the detail'
+                href='/coding-activity'
+                className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground'
+                data-umami-event='Today coding activity'
+              >
                 <AiOutlineClockCircle className='text-base' />
                 <p>{todayData?.grand_total.text}</p>
               </Link>
