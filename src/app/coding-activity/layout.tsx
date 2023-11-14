@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description,
     url,
     images: {
-      url
+      url: image
     }
   },
   twitter: {
