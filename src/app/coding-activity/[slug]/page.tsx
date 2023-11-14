@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: ParamsProps }) {
 
   const title = data.slug + ' | Wiscaksono'
   const description = `My ${data.slug}`
-  const ogImage = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=My%20${data.slug}%20activity`
+  const ogImage = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
   return {
     title,
