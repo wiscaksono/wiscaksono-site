@@ -47,7 +47,7 @@ export const Footer = async () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                aria-label='Click for the detail'
+                aria-label={todayData?.grand_total.text}
                 href='/coding-activity'
                 className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground'
                 data-umami-event='Today coding activity'
