@@ -45,7 +45,7 @@ const data = [
 const title = 'guest-book'
 const description = 'Leave a message to me'
 const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/about/work`
-const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/og?title=${title}`
+const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
 export const metadata: Metadata = {
   title,

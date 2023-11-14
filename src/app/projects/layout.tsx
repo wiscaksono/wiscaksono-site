@@ -45,7 +45,7 @@ const data = [
 const title = 'projects'
 const description = 'All my projects, including React, React Native, Next, and HTML.'
 const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/projects`
-const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/og?title=${title}`
+const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
 export const metadata: Metadata = {
   title,
