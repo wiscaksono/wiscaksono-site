@@ -26,13 +26,30 @@ export default async function GuestBooks() {
         {!session ? <SignInBtn /> : <SendBtn />}
       </form>
 
-      <article>
+      <article className='divide-y lg:divide-y-0'>
         {posts.map((item, i) => (
-          <pre className='flex items-start gap-x-2' key={i}>
-            <code className='text-muted-foreground w-36 truncate shrink-0'>{item.user.name}</code>
-            <code>:</code>
+          <pre className='flex lg:flex-row flex-col items-start gap-x-2 py-2 lg:py-0' key={i}>
+            <code className='text-white lg:text-muted-foreground lg:w-36 truncate shrink-0 flex items-center justify-between w-full gap-x-2'>
+              {item.user.name}
+              <code className='text-muted-foreground shrink-0 flex items-center justify-center gap-x-2 lg:hidden'>
+                {session?.user?.id === item.user.id && <RemoveBtn id={item.id} />}
+                <code>
+                  {item.createdAt
+                    .toLocaleString('en-US', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })
+                    .replace(',', '')
+                    .replace(/\//g, '-')}
+                </code>
+              </code>
+            </code>
+            <code className='hidden lg:block'>:</code>
             <code className='flex-1 whitespace-pre-line'>{item.desc}</code>
-            <code className='text-muted-foreground shrink-0 flex items-center justify-center gap-x-2'>
+            <code className='text-muted-foreground shrink-0 lg:flex hidden items-center justify-center gap-x-2'>
               {session?.user?.id === item.user.id && <RemoveBtn id={item.id} />}
               <code>
                 {item.createdAt
