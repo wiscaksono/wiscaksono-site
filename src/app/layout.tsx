@@ -5,6 +5,8 @@ import { Fira_Code } from 'next/font/google'
 import { ThemeWrapper } from '@/components/atoms/theme-wrapper'
 import { Navbar } from '@/components/organisms/navbar'
 import { Footer } from '@/components/organisms/footer'
+import { ResponsiveIndicator } from '@/components/atoms/responsive-indicator'
+
 import { ENV } from '@/lib/constants'
 
 const firaCode = Fira_Code({ subsets: ['latin'] })
@@ -56,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
         </ThemeWrapper>
       </body>
+      <ResponsiveIndicator />
       {/* {ENV.NODE_ENV === 'development' && <Script async src='https://umami.wiscaksono.com/script.js' data-website-id='1f3b0505-7366-47bd-8757-95ad25395088' />} */}
     </html>
   )
