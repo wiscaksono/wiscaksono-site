@@ -29,4 +29,4 @@ Create a .env file similar to .env.example.
 
 ## Cloning / Forking
 
-lease review the [license](https://github.com/wiscaksono/wiscaksono-site/blob/main/LICENSE.txt) and remove all of my personal information (resume, blog posts, images, etc.) by running `pnpm run setup`.
+lease review the [license](https://github.com/wiscaksono/wiscaksono-site/blob/master/LICENSE.txt) and remove all of my personal content.
