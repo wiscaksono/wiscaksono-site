@@ -4,6 +4,7 @@ import { Fira_Code } from 'next/font/google'
 
 import { ThemeWrapper } from '@/components/atoms/theme-wrapper'
 import { Navbar } from '@/components/organisms/navbar'
+import { NavbarMobile, NavbarProvider } from '@/components/organisms/navbar-mobile'
 import { Footer } from '@/components/organisms/footer'
 import { ResponsiveIndicator } from '@/components/atoms/responsive-indicator'
 
@@ -52,7 +53,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={firaCode.className}>
         <ThemeWrapper attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
           <main>
-            <Navbar />
+            <NavbarProvider>
+              <Navbar />
+              <NavbarMobile />
+            </NavbarProvider>
             {children}
             <Footer />
           </main>

@@ -8,13 +8,33 @@ import { FaRegEnvelope } from 'react-icons/fa'
 import { BsWhatsapp, BsInstagram, BsLinkedin } from 'react-icons/bs'
 import { TbBrandUpwork } from 'react-icons/tb'
 
-import { Menu } from 'lucide-react'
 import { NavLink } from '@/components/atoms/nav-link'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/atoms/sheet'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 import { ThemeToggle } from '@/components/molecules/theme-toggler'
 
-const navMenu = [
+import { NavbarMobileBtn } from './navbar-mobile'
+
+export const Navbar = () => {
+  return (
+    <nav className='md:grid grid-cols-12 border-b flex items-center justify-between relative z-10 bg-background'>
+      <Link href='/' className='md:border-r md:px-5 px-2.5 py-4 text-muted-foreground md:col-span-3 lg:col-span-2 shrink-0 hover:text-foreground transition-colors'>
+        Wiscaksono
+      </Link>
+      <div className='md:col-span-9 lg:col-span-10 flex items-center justify-between'>
+        <ul className='md:flex items-center divide-x w-max border-r hidden shrink-0'>
+          {navMenu.map((menu, i) => (
+            <NavLink key={i} href={menu.path}>
+              {menu.name}
+            </NavLink>
+          ))}
+        </ul>
+        <ThemeToggle />
+        <NavbarMobileBtn />
+      </div>
+    </nav>
+  )
+}
+
+export const navMenu = [
   {
     name: '_hello',
     path: '/'
@@ -51,17 +71,17 @@ const navMenu = [
       },
       {
         name: 'React',
-        path: '/projects/react',
+        path: '/projects?tag=react',
         icon: <RiReactjsLine className='w-4 h-4' />
       },
       {
         name: 'Next',
-        path: '/projects/next',
+        path: '/projects?tag=next',
         icon: <TbBrandNextjs className='w-4 h-4' />
       },
       {
         name: 'HTML',
-        path: '/projects/html',
+        path: '/projects?tag=html',
         icon: <RiHtml5Fill className='w-4 h-4' />
       }
     ]
@@ -98,58 +118,3 @@ const navMenu = [
     ]
   }
 ]
-
-export const Navbar = () => {
-  return (
-    <nav className='md:grid grid-cols-12 border-b flex items-center justify-between relative z-10 bg-background'>
-      <Link href='/' className='md:border-r md:px-5 px-2.5 py-4 text-muted-foreground md:col-span-3 lg:col-span-2 shrink-0 hover:text-foreground transition-colors'>
-        Wiscaksono
-      </Link>
-      <div className='md:col-span-9 lg:col-span-10 flex items-center justify-between'>
-        <ul className='md:flex items-center divide-x w-max border-r hidden shrink-0'>
-          {navMenu.map((menu, i) => (
-            <NavLink key={i} href={menu.path}>
-              {menu.name}
-            </NavLink>
-          ))}
-        </ul>
-        <ThemeToggle />
-      </div>
-      <MobileSheets />
-    </nav>
-  )
-}
-
-const MobileSheets = () => {
-  return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <button className='text-muted-foreground ml-auto px-2.5 block md:hidden'>
-          <Menu />
-        </button>
-      </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle className='mb-10'>Wiscaksono</SheetTitle>
-          <Accordion type='multiple' className='space-y-4'>
-            {navMenu.map((menu, i) => (
-              <AccordionItem value={menu.name} key={i}>
-                <AccordionTrigger className='py-0'>{menu.name}</AccordionTrigger>
-                {menu.child && (
-                  <AccordionContent className='text-left ml-2.5'>
-                    {menu.child.map((child, i) => (
-                      <Link className='flex gap-x-2.5 items-center mb-2 last:mb-0' href={child.path} key={i} target={menu.name === '_guest-book' ? '_blank' : '_self'}>
-                        {child.icon}
-                        {child.name}
-                      </Link>
-                    ))}
-                  </AccordionContent>
-                )}
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </SheetHeader>
-      </SheetContent>
-    </Sheet>
-  )
-}

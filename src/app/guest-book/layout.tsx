@@ -69,11 +69,11 @@ export const metadata: Metadata = {
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className='grid grid-cols-12 overflow-hidden'>
-      <aside className='col-span-2 border-r border-lines hidden md:block'>
+      <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden'>
         <Accordion type='single' collapsible defaultValue='item-0'>
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
-              <AccordionTrigger className='border-b border-lines px-5 py-2.5' data-umami-event='Guest book accordion'>
+              <AccordionTrigger className='border-b border-lines px-5 py-2.5 text-left' data-umami-event='Guest book accordion'>
                 {item.title}
               </AccordionTrigger>
               <AccordionContent className='mt-5 space-y-1'>
@@ -94,7 +94,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
           ))}
         </Accordion>
       </aside>
-      <section className='md:col-span-10 col-span-12 overflow-y-auto relative'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative'>{children}</section>
     </section>
   )
 }

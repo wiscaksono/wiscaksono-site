@@ -9,10 +9,10 @@ import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className='grid grid-cols-12 overflow-hidden h-full'>
-      <aside className='col-span-2 border-r border-lines md:block hidden'>
+      <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden'>
         <Accordion type='single' collapsible defaultValue='about'>
           <AccordionItem value={'about'} defaultChecked>
-            <AccordionTrigger className='border-b border-lines px-5 py-2.5' data-umami-event='About me accordion'>
+            <AccordionTrigger className='border-b border-lines px-5 py-2.5 text-left' data-umami-event='About me accordion'>
               About Me
             </AccordionTrigger>
             <AccordionContent className='mt-5 space-y-1'>
@@ -32,7 +32,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
           </AccordionItem>
         </Accordion>
       </aside>
-      <section className='md:col-span-10 col-span-12 overflow-y-auto relative h-[84vh] md:h-auto'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84vh] md:h-auto'>{children}</section>
     </section>
   )
 }

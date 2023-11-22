@@ -11,7 +11,7 @@ export const Footer = async () => {
   const todayData = data[data.length - 1]
 
   return (
-    <footer className='border-t text-off-white text-xs flex items-center justify-between select-none bg-layout relative z-10'>
+    <footer className='border-t text-off-white text-xs flex items-center justify-between select-none bg-layout relative z-30'>
       <div className='flex items-center border-r divide-x'>
         <Link
           target='_blank'
