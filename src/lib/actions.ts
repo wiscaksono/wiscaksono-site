@@ -30,7 +30,7 @@ export const deletePost = async (id: number) => {
 }
 
 export const weeklyCodingActivity = async () => {
-  const res = await fetch('https://wakatime.com/share/@Wiscaksono/e9b713d4-e19b-4fd2-8c7b-437e9688057a.json')
+  const res = await fetch('https://wakatime.com/share/@Wiscaksono/27bef61d-5377-441a-b326-c868eb825328.json')
   return res.json() as Promise<Wakatime.WeeklyCodingActivity>
 }
 
