@@ -8,8 +8,6 @@ type ParamsProps = {
   title: string
 }
 
-export const dynamic = 'force-static'
-
 async function getProjectFromParams(params: ParamsProps) {
   const post = allProjects.find(post => post.title.toLowerCase() === params.title)
   if (!post) null
@@ -25,7 +23,7 @@ export async function generateMetadata({ params }: { params: ParamsProps }) {
   const description = project.summary
   const ogImage = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
-  return {
+  const metadata = {
     title,
     description,
     openGraph: {
@@ -44,6 +42,16 @@ export async function generateMetadata({ params }: { params: ParamsProps }) {
       images: [ogImage]
     }
   }
+
+  return {
+    ...metadata
+  }
+}
+
+export async function generateStaticParams() {
+  return allProjects.map(post => ({
+    title: post.title.toLowerCase()
+  }))
 }
 
 export default async function ProjectDetail({ params }: { params: ParamsProps }) {

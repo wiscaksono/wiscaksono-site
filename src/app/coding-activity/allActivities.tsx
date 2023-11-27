@@ -7,9 +7,9 @@ import * as Part from './partials'
 
 export const allActivity = [
   {
-    title: 'Languanges',
-    slug: '',
-    component: Part.Languanges,
+    title: 'Languages',
+    slug: '/',
+    component: Part.Languages,
     icon: HiTerminal
   },
   {

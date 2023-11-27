@@ -7,8 +7,6 @@ type ParamsProps = {
   slug: string
 }
 
-export const dynamic = 'force-static'
-
 export async function generateMetadata({ params }: { params: ParamsProps }) {
   const data = allActivity.find(component => component.slug === params.slug)
 
@@ -18,7 +16,7 @@ export async function generateMetadata({ params }: { params: ParamsProps }) {
   const description = `My ${data.slug}`
   const ogImage = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
-  return {
+  const metadata = {
     title,
     description,
     openGraph: {
@@ -37,6 +35,16 @@ export async function generateMetadata({ params }: { params: ParamsProps }) {
       images: [ogImage]
     }
   }
+
+  return {
+    ...metadata
+  }
+}
+
+export async function generateStaticParams() {
+  return allActivity.map(component => ({
+    slug: component.slug
+  }))
 }
 
 export default async function ActivityDetails({ params }: { params: ParamsProps }) {
