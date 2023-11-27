@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import { Metadata } from 'next'
 import { RiReactjsLine, RiHtml5Fill } from 'react-icons/ri'
 import { TbBrandNextjs } from 'react-icons/tb'
 import { HiTerminal } from 'react-icons/hi'
@@ -8,63 +7,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { AsideLink } from '@/components/atoms/aside-link'
 import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
 import { ENV } from '@/lib/constants'
-
-const data = [
-  {
-    title: 'Projects',
-    list: [
-      {
-        title: 'All Projects',
-        href: '/projects',
-        icon: <HiTerminal className='w-4 h-4' />
-      },
-      {
-        title: 'React',
-        href: '/projects?tag=React',
-        icon: <RiReactjsLine className='w-4 h-4' />
-      },
-      {
-        title: 'React Native',
-        href: '/projects?tag=React Native',
-        icon: <RiReactjsLine className='w-4 h-4' />
-      },
-      {
-        title: 'Next',
-        href: '/projects?tag=Next',
-        icon: <TbBrandNextjs className='w-4 h-4' />
-      },
-      {
-        title: 'HTML',
-        href: '/projects?tag=HTML',
-        icon: <RiHtml5Fill className='w-4 h-4' />
-      }
-    ]
-  }
-]
+import { generateSEO } from '@/lib/generateSEO'
 
 const title = 'projects'
 const description = 'All my projects, including React, React Native, Next, and HTML.'
 const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/projects`
 const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: {
-    title,
-    description,
-    url,
-    images: {
-      url: image
-    }
-  },
-  twitter: {
-    title,
-    description,
-    card: 'summary_large_image',
-    images: [image]
-  }
-}
+export const metadata = generateSEO(title, description, image, url)
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -98,3 +48,36 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
     </section>
   )
 }
+
+const data = [
+  {
+    title: 'Projects',
+    list: [
+      {
+        title: 'All Projects',
+        href: '/projects',
+        icon: <HiTerminal className='w-4 h-4' />
+      },
+      {
+        title: 'React',
+        href: '/projects?tag=React',
+        icon: <RiReactjsLine className='w-4 h-4' />
+      },
+      {
+        title: 'React Native',
+        href: '/projects?tag=React Native',
+        icon: <RiReactjsLine className='w-4 h-4' />
+      },
+      {
+        title: 'Next',
+        href: '/projects?tag=Next',
+        icon: <TbBrandNextjs className='w-4 h-4' />
+      },
+      {
+        title: 'HTML',
+        href: '/projects?tag=HTML',
+        icon: <RiHtml5Fill className='w-4 h-4' />
+      }
+    ]
+  }
+]

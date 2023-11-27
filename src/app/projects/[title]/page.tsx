@@ -3,6 +3,7 @@ import { allProjects } from 'contentlayer/generated'
 
 import { MDXComponent } from '@/components/molecules/mdx-component'
 import { ENV } from '@/lib/constants'
+import { generateSEO } from '@/lib/generateSEO'
 
 type ParamsProps = {
   title: string
@@ -11,40 +12,20 @@ type ParamsProps = {
 async function getProjectFromParams(params: ParamsProps) {
   const post = allProjects.find(post => post.title.toLowerCase() === params.title)
   if (!post) null
+
   return post
 }
 
 export async function generateMetadata({ params }: { params: ParamsProps }) {
   const project = await getProjectFromParams(params)
-
   if (!project) return {}
 
   const title = project.title + ' | Wiscaksono'
   const description = project.summary
-  const ogImage = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
-
-  const metadata = {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      url: `${ENV.NEXT_PUBLIC_WEBSITE_URL}/projects/${title}`,
-      images: {
-        url: ogImage
-      }
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage]
-    }
-  }
+  const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title.split(' ')[0]}`
 
   return {
-    ...metadata
+    ...generateSEO(title, description, image, `/projects/${params.title}`)
   }
 }
 

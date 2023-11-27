@@ -3,6 +3,7 @@ import { allAbouts } from 'contentlayer/generated'
 
 import { MDXComponent } from '@/components/molecules/mdx-component'
 import { ENV } from '@/lib/constants'
+import { generateSEO } from '@/lib/generateSEO'
 
 type ParamsProps = {
   title: string
@@ -16,35 +17,14 @@ async function getContent(params: ParamsProps) {
 
 export async function generateMetadata({ params }: { params: ParamsProps }) {
   const about = await getContent(params)
-
   if (!about) return {}
 
   const title = about.title
   const description = about.summary
-  const ogImage = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
-
-  const metadata = {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      url: `${ENV.NEXT_PUBLIC_WEBSITE_URL}/projects/${title}`,
-      images: {
-        url: ogImage
-      }
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage]
-    }
-  }
+  const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
   return {
-    ...metadata
+    ...generateSEO(title, description, image, `/projects/${title}`)
   }
 }
 

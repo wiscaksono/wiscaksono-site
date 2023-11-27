@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 
 import { ENV } from '@/lib/constants'
+import { generateSEO } from '@/lib/generateSEO'
 import { allActivity } from '../allActivities'
 
 type ParamsProps = {
@@ -9,35 +10,14 @@ type ParamsProps = {
 
 export async function generateMetadata({ params }: { params: ParamsProps }) {
   const data = allActivity.find(component => component.slug === params.slug)
-
   if (!data) return {}
 
   const title = data.slug + ' | Wiscaksono'
-  const description = `My ${data.slug}`
-  const ogImage = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
-
-  const metadata = {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      url: `${ENV.NEXT_PUBLIC_WEBSITE_URL}/projects/${title}`,
-      images: {
-        url: ogImage
-      }
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage]
-    }
-  }
+  const description = `My ${data.title.toLowerCase()}`
+  const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title.split(' ')[0]}`
 
   return {
-    ...metadata
+    ...generateSEO(title, description, image, `/coding-activity/${params.slug}`)
   }
 }
 

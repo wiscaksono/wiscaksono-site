@@ -1,10 +1,10 @@
 import { Suspense } from 'react'
-import { Metadata } from 'next'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 import { AsideLink } from '@/components/atoms/aside-link'
 import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
 import { ENV } from '@/lib/constants'
+import { generateSEO } from '@/lib/generateSEO'
 
 import { allActivity } from './allActivities'
 
@@ -13,31 +13,7 @@ const description = 'coding-activity'
 const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/coding-activity`
 const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: {
-    title,
-    description,
-    url,
-    images: {
-      url: image
-    }
-  },
-  twitter: {
-    title,
-    description,
-    card: 'summary_large_image',
-    images: [image]
-  }
-}
-
-const data = [
-  {
-    title: 'Coding Activity',
-    list: [...allActivity]
-  }
-]
+export const metadata = generateSEO(title, description, image, url)
 
 export default function CodingActivityLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -71,3 +47,10 @@ export default function CodingActivityLayout({ children }: { children: React.Rea
     </section>
   )
 }
+
+const data = [
+  {
+    title: 'Coding Activity',
+    list: [...allActivity]
+  }
+]
