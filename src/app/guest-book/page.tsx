@@ -28,8 +28,8 @@ export default async function GuestBooks() {
 
       <article className='divide-y lg:divide-y-0'>
         {posts.map((item, i) => (
-          <pre className='flex lg:flex-row flex-col items-start gap-x-2 py-2 lg:py-0' key={i}>
-            <code className='text-white lg:text-muted-foreground lg:w-36 truncate shrink-0 flex items-center justify-between w-full gap-x-2'>
+          <pre className='flex lg:flex-row flex-col items-start gap-x-2 py-2 lg:py-0 md:!text-sm text-xs' key={i}>
+            <code className='text-muted-foreground lg:w-36 truncate shrink-0 flex items-center justify-between w-full gap-x-2'>
               {item.user.name}
               <code className='text-muted-foreground shrink-0 flex items-center justify-center gap-x-2 lg:hidden'>
                 {session?.user?.id === item.user.id && <RemoveBtn id={item.id} />}

@@ -9,14 +9,11 @@ export const Languages = async () => {
     <FadeIn>
       <article>
         <div className='md:space-y-2 mb-2.5 pb-2.5 border-b'>
-          <h1 className='md:text-3xl text-2xl font-semibold'>Code that i wrote this week</h1>
-          <h2 className='text-muted-foreground'>
-            From : {activity[0].range.text} - {activity[activity.length - 1].range.text}
-          </h2>
+          <h1 className='md:text-2xl text-xl font-semibold'>Code that i wrote this week</h1>
         </div>
         {data.map(item => (
-          <pre className='flex items-center' key={item.name}>
-            <code className='text-muted-foreground w-40 truncate shrink-0 flex items-center gap-x-2'>
+          <pre className='flex items-center justify-between' key={item.name}>
+            <code className='text-muted-foreground w-40 truncate shrink-0 flex items-center gap-x-2 !text-sm'>
               <div
                 className='w-1 h-1 rounded-full'
                 style={{
@@ -25,7 +22,7 @@ export const Languages = async () => {
               />
               {item.name}
             </code>
-            <div className='w-full h-1 bg-muted rounded'>
+            <div className='w-full h-1 bg-muted rounded md:block hidden'>
               <div
                 className='w-full h-1 bg-foreground rounded'
                 style={{
@@ -33,7 +30,7 @@ export const Languages = async () => {
                 }}
               />
             </div>
-            <code className='w-24 text-end text-muted-foreground'>{item.percent}%</code>
+            <code className='w-24 text-end text-muted-foreground shrink-0 !text-sm'>{item.percent}%</code>
           </pre>
         ))}
       </article>

@@ -52,7 +52,7 @@ export const AnimatedName = () => {
   }, [handleMouseOver, ref])
 
   return (
-    <h1 ref={ref} className='md:text-6xl sm:text-4xl text-xl font-medium'>
+    <h1 ref={ref} className='md:text-6xl sm:text-4xl text-3xl font-medium'>
       {text}
     </h1>
   )

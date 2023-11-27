@@ -42,7 +42,7 @@ const data = [
 export default function CodingActivityLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className='grid grid-cols-12 overflow-hidden h-full'>
-      <aside className='col-span-2 border-r border-lines md:block hidden'>
+      <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden'>
         <Accordion type='single' collapsible defaultValue='item-0'>
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
@@ -67,7 +67,7 @@ export default function CodingActivityLayout({ children }: { children: React.Rea
           ))}
         </Accordion>
       </aside>
-      <section className='md:col-span-10 col-span-12 overflow-y-auto relative h-[84vh] md:h-auto p-5'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84vh] md:h-auto p-5'>{children}</section>
     </section>
   )
 }

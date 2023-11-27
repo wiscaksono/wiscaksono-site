@@ -1,47 +1,48 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import remarkGfm from "remark-gfm";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import remarkGfm from 'remark-gfm'
+import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
-    type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx/, ""),
-  },
-};
+    type: 'string',
+    resolve: doc => doc._raw.sourceFileName.replace(/\.mdx/, '')
+  }
+}
 
 const About = defineDocumentType(() => ({
-  name: "About",
+  name: 'About',
   filePathPattern: `about/**/*.mdx`,
-  contentType: "mdx",
+  contentType: 'mdx',
   fields: {
-    title: { type: "string", required: true },
-    summary: { type: "string", required: true },
+    title: { type: 'string', required: true },
+    summary: { type: 'string', required: true }
   },
-  computedFields,
-}));
+  computedFields
+}))
 
 const Projects = defineDocumentType(() => ({
-  name: "Projects",
+  name: 'Projects',
   filePathPattern: `projects/**/*.mdx`,
-  contentType: "mdx",
+  contentType: 'mdx',
   fields: {
-    title: { type: "string", required: true },
-    summary: { type: "string", required: true },
-    image: { type: "string", required: true },
+    title: { type: 'string', required: true },
+    summary: { type: 'string', required: true },
+    image: { type: 'string', required: true },
     tag: {
-      type: "list",
-      of: { type: "string" },
-      required: true,
-    },
+      type: 'list',
+      of: { type: 'string' },
+      required: true
+    }
   },
-  computedFields,
-}));
+  computedFields
+}))
 
+/** @type {import('contentlayer/source-files').SourcePlugin} */
 export default makeSource({
-  contentDirPath: "./src/content",
+  contentDirPath: './src/content',
   documentTypes: [About, Projects],
   mdx: {
     remarkPlugins: [remarkGfm],
@@ -51,9 +52,13 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          lineNumbers: true,
-        },
-      ],
-    ],
-  },
-});
+          grid: true,
+          theme: {
+            dark: 'github-dark-dimmed',
+            light: 'github-light'
+          }
+        }
+      ]
+    ]
+  }
+})

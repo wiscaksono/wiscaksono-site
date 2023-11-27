@@ -68,7 +68,7 @@ export const Footer = async () => {
       </div>
 
       <div className='flex items-center divide-x divide border-l'>
-        <div className='items-center gap-x-2 px-2 py-1 md:flex hidden text-muted-foreground'>
+        <div className='items-center gap-x-2 px-2 py-1 lg:flex hidden text-muted-foreground'>
           <p>Special thanks to:</p>
           <Link href='https://www.behance.net/darelova' target='_blank' className='hover:text-foreground transition-colors' data-umami-event='Yanka Darelova link'>
             Yanka Darelova
