@@ -57,7 +57,7 @@
     @apply flex items-center justify-center h-screen w-full overflow-hidden;
   }
   main {
-    @apply md:h-[calc(100vh-10%)] md:w-[calc(100vw-5%)] h-[calc(100vh-10%)] w-[calc(100vw-10%)] bg-background backdrop-blur rounded-lg overflow-hidden border flex flex-col relative z-50 transition-all;
+    @apply md:h-[calc(100dvh-10%)] md:w-[calc(100dvw-5%)] h-[calc(100dvh-10%)] w-[calc(100dvw-10%)] bg-background backdrop-blur rounded-lg overflow-hidden border flex flex-col relative z-50 transition-all;
   }
   section {
     @apply flex-1;
