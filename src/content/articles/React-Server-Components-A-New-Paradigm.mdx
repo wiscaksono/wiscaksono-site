@@ -1,0 +1,89 @@
+---
+title: "React Server Components - A New Paradigm"
+summary: "Experience the epitome of digital innovation with Agenone, a dynamic agency landing website meticulously crafted using Next.js, Tailwind CSS, and GSAP technology. Dive into a visually stunning hero section, conveying the agency's core advantages, explore an exhaustive services segment showcasing their diverse offerings, grasp their expertise through an experience statistic, peruse a portfolio highlighting past triumphs, read glowing testimonials from satisfied clients, and find a compelling call-to-action beckoning potential clients to initiate contact. "
+tag: 
+- React
+---
+
+It has been quite a few years since React released hooks and over that time opinions have changed from super excited to extremley frustrated. Developers are becoming more and more frustrated with React hooks and that is almost entirely due to fetching data and more specifically the ***useEffect*** hook.
+
+Before React fetching data was a simple process you did on the server before rendering your pages, but with React pushing everything to the client this data fetching became infinitely more complex since you now had additional error and loading states to deal with. This is where server components come in. Server components are a new way of writing React applications and drastically simplifies the painful process of fetching data while retaining all the benefits of React.
+
+
+## What Are Server Components?
+The big thing that makes server component different than client components is that server components never render on the client and instead only render on the server. This may sound like a downside since these components are less flexible, but since these components never touch the client it makes data fetching a breeze. Here is a comparison of a client component and a server component.
+
+```js 
+function ClientComponent() {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [errr, setError] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    setData(undefined)
+    setError(false)
+
+    const controller = new AbortController()
+
+    fetch("/api/data", { signal: controller.signal })
+      .then(res => res.json())
+      .then(data => setData(data))
+      .catch(error => setError(true))
+
+    return () => controller.abort()
+  }, [])
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error</p>
+
+  return <p>{data}</p>
+}
+```
+---
+
+```js
+async function ServerComponent() {
+  try {
+    const data = await fetch("/api/data").then(res => res.json())
+  } catch (error) {
+    return <p>Error</p>
+  }
+
+  return <p>{data}</p>
+}
+```
+
+Even in this very simple example where the client component is fetching data in the simplest way possible you still have to write tons of complex React specific code. With server components, though, this code is much simpler to understand and write since it works like normal JavaScript code.
+
+The reason this code can be written so simply is because server components are rendered entirely on the server and the HTML output of that component is sent to the client as plain HTML. This means that when a user requests a page that renders a server component they will be sent down the HTML of that server component after it has already been rendered on the server. That HTML is then hydrated on the client and React takes over from there.
+
+## Benefits Of Server Components
+Server components are an incredible tool that makes data fetching much easier as we have already talked about, but there are tons of other amazing benefits that come with server components.
+
+### Security
+Since server components are run entirely on the server you can safely use secret API keys or fetch data directly from a database since the client will never see this code.
+```js
+async function ServerComponent() {
+  const user = await db.users.find({ name: "John" })
+
+  return <p>{user.name}</p>
+}
+```
+This may sound like a minor bonus, but this is actually a huge deal since it means you don’t need to create a seperate public API just to power your React application. You can just make all your database calls directly from your server components.
+
+
+## Performance
+There are actually multiple ways that server components increase the performance of your application.
+
+### Caching
+Since all your code is run on the server it means you can cache data between requests and between users. For example, if you have a list of blog articles that you know doesn’t change often you can cache that list of articles and serve it to every user without having to fetch it from the database every time.
+
+```js
+async function ServerComponent() {
+  // Cache for 1 minute across all requests
+  const articles = await cache(db.articles.findAll, { timeSec: 60 })
+
+  return <p>{articles.length}</p>
+}
+```
