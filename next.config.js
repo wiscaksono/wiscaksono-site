@@ -11,6 +11,11 @@ const nextConfig = {
       enabled: true
     }
   },
+  logging: {
+    fetches: {
+      fullUrl: true
+    }
+  },
   redirects() {
     return [
       {

@@ -44,7 +44,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
           ))}
         </Accordion>
       </aside>
-      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84vh] md:h-auto'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84dvh] md:h-auto'>{children}</section>
     </section>
   )
 }
