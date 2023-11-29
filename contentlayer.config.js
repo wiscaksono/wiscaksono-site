@@ -70,7 +70,7 @@ const Articles = defineDocumentType(() => ({
             text: content
           }
         })
-        return headings.filter(heading => heading.level !== 'one')
+        return headings.filter(heading => heading.level !== 'one' && heading.level !== 'three')
       }
     }
   }

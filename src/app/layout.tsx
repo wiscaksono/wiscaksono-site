@@ -1,6 +1,7 @@
 import './globals.css'
 import { Metadata } from 'next'
-import { Fira_Code } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/react'
 
 import { ThemeWrapper } from '@/components/atoms/theme-wrapper'
@@ -11,7 +12,7 @@ import { ResponsiveIndicator } from '@/components/atoms/responsive-indicator'
 
 import { ENV } from '@/lib/constants'
 
-const firaCode = Fira_Code({ subsets: ['latin'] })
+// const firaCode = Fira_Code({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(ENV.NEXT_PUBLIC_WEBSITE_URL),
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={firaCode.className}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} font-mono`}>
         <ThemeWrapper attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
           <main>
             <NavbarProvider>
