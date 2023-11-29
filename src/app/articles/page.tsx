@@ -33,7 +33,7 @@ export default function Articles({ searchParams }: SearchParamsProps) {
               <CardFooter className='p-5'>
                 <div className='flex items-center gap-x-1'>
                   <p className='text-sm text-muted-foreground'>Tags: </p>
-                  <Badge>React</Badge>
+                  <Badge>{articles.tag}</Badge>
                 </div>
                 <Button variant='outline' className='ml-auto' asChild>
                   <Link href={`/articles/${articles.slug.toLowerCase()}`} className='leading-normal'>

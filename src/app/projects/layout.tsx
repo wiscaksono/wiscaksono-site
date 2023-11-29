@@ -19,7 +19,7 @@ export const metadata = generateSEO(title, description, image, url)
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className='grid grid-cols-12 overflow-hidden h-full'>
-      <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden'>
+      <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden overflow-y-auto'>
         <Accordion type='single' collapsible defaultValue='item-0'>
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>

@@ -21,7 +21,7 @@ export default async function ArticleDetailLayout({ children, params }: { childr
 
   return (
     <section className='grid grid-cols-12 overflow-hidden h-full'>
-      <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden'>
+      <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden overflow-y-auto'>
         <Accordion type='single' collapsible defaultValue='table-of-contents'>
           <AccordionItem value='table-of-contents'>
             <AccordionTrigger className='border-b border-lines px-5 py-2.5 text-left'>Table of content</AccordionTrigger>
