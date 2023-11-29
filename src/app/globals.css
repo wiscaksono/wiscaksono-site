@@ -80,6 +80,9 @@
   code[data-line-numbers-max-digits='3'] > [data-line]::before {
     width: 3rem;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   html.light {
     @apply bg-gray-100;
   }

@@ -56,7 +56,24 @@ const Articles = defineDocumentType(() => ({
       required: true
     }
   },
-  computedFields
+  computedFields: {
+    ...computedFields,
+    headings: {
+      type: 'json',
+      resolve: async doc => {
+        const regXHeader = /\n(?<flag>#{1,6})\s+(?<content>.+)/g
+        const headings = Array.from(doc.body.raw.matchAll(regXHeader)).map(({ groups }) => {
+          const flag = groups?.flag
+          const content = groups?.content
+          return {
+            level: flag?.length == 1 ? 'one' : flag?.length == 2 ? 'two' : 'three',
+            text: content
+          }
+        })
+        return headings.filter(heading => heading.level !== 'one')
+      }
+    }
+  }
 }))
 
 /** @type {import('rehype-pretty-code').Options} */

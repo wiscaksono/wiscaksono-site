@@ -1,6 +1,8 @@
+'use client'
 import { RiReactjsLine } from 'react-icons/ri'
 import { LiaBookSolid } from 'react-icons/lia'
 import { Suspense } from 'react'
+import { useParams } from 'next/navigation'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 import { AsideLink } from '@/components/atoms/aside-link'
@@ -8,6 +10,9 @@ import { AsideLink } from '@/components/atoms/aside-link'
 import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
 
 export default function ArticleLayout({ children }: { children: React.ReactNode }) {
+  const params = useParams()
+  if (params.slug) return children
+
   return (
     <section className='grid grid-cols-12 overflow-hidden h-full'>
       <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden'>

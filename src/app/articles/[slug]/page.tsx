@@ -38,53 +38,6 @@ export default async function ArticleDetail({ params }: { params: ParamsProps })
   const content = await getContent(params)
   if (!content) return notFound()
 
-  // # 1.0## 1.1### 1.1.1### 1.1.2# 2.0## 2.1### 2.1.1
-
-  // const input =  "# 1.0## 1.1### 1.1.1### 1.1.2# 2.0## 2.1### 2.1.1"
-  // const expected = [
-  //   {
-  //     title: '1.0',
-  //     href: '#1-0',
-  //     children: [
-  //       {
-  //         title: '1.1',
-  //         href: '#1-1',
-  //         children: [
-  //           {
-  //             title: '1.1.1',
-  //             href: '#1-1-1',
-  //             children: []
-  //           },
-  //           {
-  //             title: '1.1.2',
-  //             href: '#1-1-2',
-  //             children: []
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     title: '2.0',
-  //     href: '#2-0',
-  //     children: [
-  //       {
-  //         title: '2.1',
-  //         href: '#2-1',
-  //         children: [
-  //           {
-  //             title: '2.1.1',
-  //             href: '#2-1-1',
-  //             children: []
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   }
-  // ]
-
-  const input = '# 1.0## 1.1### 1.1.1### 1.1.2# 2.0## 2.1### 2.1.1'
-
   return (
     <MDXComponent
       code={content.body.code}

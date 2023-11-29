@@ -5,6 +5,8 @@ tag:
 - React
 ---
 
+# React Server Components - A New Paradigm
+
 It has been quite a few years since React released hooks and over that time opinions have changed from super excited to extremley frustrated. Developers are becoming more and more frustrated with React hooks and that is almost entirely due to fetching data and more specifically the ***useEffect*** hook.
 
 Before React fetching data was a simple process you did on the server before rendering your pages, but with React pushing everything to the client this data fetching became infinitely more complex since you now had additional error and loading states to deal with. This is where server components come in. Server components are a new way of writing React applications and drastically simplifies the painful process of fetching data while retaining all the benefits of React.
@@ -87,3 +89,128 @@ async function ServerComponent() {
   return <p>{articles.length}</p>
 }
 ```
+
+### Bundle Size
+Another huge benefit is that since server components are rendered on the server you don’t need to send any JS code to the client for those components. This drastically reduces the bundle size of your application and makes it much faster to load.
+
+### Page Load Speeds
+Since server components are rendered on the server it means that the HTML for those components is sent to the client as soon as the user requests the page. This means that the user will see the content of the page much faster than if you were using client components since the client components need to wait for the JS to load before they can render. This is very important for SEO since Google highly values page load speeds.
+
+### SEO
+Speaking of SEO, server components are also much better for SEO since the HTML for those components is sent to the client immediatley without having to wait for JS to load. This helps search engines index your pages and makes them easier to find on Google.
+
+## Downsides of Server Components
+Just like eveything in life if it sounds too good to be true it probably is. Server components are no exception and there are a few downsides with using them.
+
+### No Interactivity
+Since server components are rendered on the server it is impossible for you to have any interactivity in your server components. This means you cannot use React hooks, event listeners, or any other code that involves user interaction.
+
+This may sound like a deal breaker, but since you can easily nest normal client components inside server components this is really not a problem.
+
+```js
+async function ServerComponent() {
+  const articles = await db.articles.findAll()
+
+  return articles.map(article => <Article article={article} />)
+}
+```
+
+```js
+"use client"
+
+// This is a normal client component so you can use hooks and event listeners
+function Article() {
+  const [likes, setLikes] = useState(0)
+
+  return (
+    <div>
+      <p>{article.title}</p>
+      <p>{article.content}</p>
+      <button onClick={() => setLikes(l => l + 1)}>Like</button>
+      <p>{likes}</p>
+    </div>
+  )
+}
+```
+
+
+>You may have noticed the "use client" string at the top of the client component file. This is a feature of Next.js specifically and is used to tell Next.js that this file is a client component. Other frameworks may have different ways of doing this, but the concept is the same.
+
+As you can see in the above code we are able to use server components to fetch our data and then use client components to add interactivity to that data. This is a very powerful pattern and makes it much easier to write complex applications.
+
+### No Browser APIs
+Another downside is you cannot use any browser APIs in server components since they are rendered on the server and have no access to client APIs. This means things like localStorage, navigator, and window are all unavailable in server components. This again isn’t a major problem since you can just use nested client components to access these APIs.
+
+### Cannot Easily Be Nested In Client Components
+Server components cannot be nested inside clients components. This is somewhat obvious as a client component is rendered on the client so you cannot also have a server component inside of it.
+
+```js
+function ServerComponent() {
+  return <p>Hello Server</p>
+}
+```
+
+```js
+"use client"
+
+function ClientComponent() {
+  return (
+    <div>
+      <p>Hello Client</p>
+      {/* This will not work */}
+      <ServerComponent />
+    </div>
+  )
+}
+```
+You can partially get around this problem (at least in Next.js) by passing the server component as a prop to the client component and then rendering it inside the client component.
+
+```js
+function ServerComponent() {
+  return <p>Hello Server</p>
+}
+```
+---
+
+```js
+"use client"
+
+function ClientComponent({ children }) {
+  return (
+    <div>
+      <p>Hello Client</p>
+      {children}
+    </div>
+  )
+}
+```
+---
+
+```js
+function AnotherServerComponent() {
+  return (
+    <ClientComponent>
+      {/* This will work */}
+      <ServerComponent />
+    </ClientComponent>
+  )
+}
+```
+For the most part this is not often something you need to do, but if you find yourself in this situation this is a good workaround.
+
+## How To Use Server Components
+Server components are still very experimental and thus are not able to be used directly inside of React. Instead you must use a framework that implements server components to use them. Currently the only framework that implements server components is Next.js, but many other frameworks are experimenting with implementing server components.
+
+In Next.js specifically all components you create are server components by default. In order to use a client component you must opt into it by adding the ***use client*** string at the top of the file.
+```js
+"use client"
+
+// This is a client component
+function ClientComponent() {
+  return <p>Hello Client</p>
+}
+```
+The reason for this server first approach is because server components are almost always better to use unless you specifically need interactivity or browser APIs.
+
+## Conclusion
+Server components are a new way of writing React applications that make it easier than ever to create complex applications since they solve many of the complexities around data fetching and performance. Although, Server components are still very experimental, frameworks like Next.js make server components accessible in a stable way.

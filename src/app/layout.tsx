@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </main>
         </ThemeWrapper>
-        <Analytics />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
       <ResponsiveIndicator />
     </html>
