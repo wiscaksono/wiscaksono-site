@@ -50,6 +50,7 @@ const Articles = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     summary: { type: 'string', required: true },
+    publishedDate: { type: 'string', required: true },
     tag: {
       type: 'list',
       of: { type: 'string' },
