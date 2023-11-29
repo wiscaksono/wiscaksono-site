@@ -1,5 +1,5 @@
 'use client'
-import { RiReactjsLine } from 'react-icons/ri'
+import { RiReactjsLine, RiArticleLine } from 'react-icons/ri'
 import { LiaBookSolid } from 'react-icons/lia'
 import { Suspense } from 'react'
 import { useParams } from 'next/navigation'
@@ -49,6 +49,11 @@ const TAGS = [
   {
     title: 'Article Tags',
     list: [
+      {
+        title: 'All article',
+        href: '/articles',
+        icon: RiArticleLine
+      },
       {
         title: 'React',
         href: '/articles?tag=React',
