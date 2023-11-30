@@ -1,27 +1,23 @@
+'use client'
+import { RiReactjsLine, RiArticleLine } from 'react-icons/ri'
+import { LiaBookSolid } from 'react-icons/lia'
 import { Suspense } from 'react'
-import { RiReactjsLine, RiHtml5Fill } from 'react-icons/ri'
-import { TbBrandNextjs } from 'react-icons/tb'
-import { HiTerminal } from 'react-icons/hi'
+import { useParams } from 'next/navigation'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 import { AsideLink } from '@/components/atoms/aside-link'
+
 import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
-import { ENV } from '@/lib/constants'
-import { generateSEO } from '@/lib/generateSEO'
 
-const title = 'projects'
-const description = 'All my projects, including React, React Native, Next, and HTML.'
-const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/projects`
-const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
+export default function ArticleLayout({ children }: { children: React.ReactNode }) {
+  const params = useParams()
+  if (params.slug) return children
 
-export const metadata = generateSEO(title, description, image, url)
-
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className='grid grid-cols-12 overflow-hidden h-full'>
       <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden overflow-y-auto'>
         <Accordion type='single' collapsible defaultValue='item-0'>
-          {data.map((item, i) => (
+          {TAGS.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
               <AccordionTrigger className='border-b border-lines px-5 py-2.5 text-left' data-umami-event='Projects accordion'>
                 {item.title}
@@ -32,7 +28,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
                     <FadeIn key={j}>
                       <Suspense fallback={<>Loading...</>}>
                         <AsideLink href={listItem.href} startWith='/projects' title={listItem.title} data-umami-event={`Projects ${listItem.title} link`}>
-                          {listItem.icon}
+                          <listItem.icon className='w-4 h-4' />
                           {listItem.title}
                         </AsideLink>
                       </Suspense>
@@ -44,39 +40,29 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
           ))}
         </Accordion>
       </aside>
-      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84dvh] md:h-auto'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84vh] md:h-auto'>{children}</section>
     </section>
   )
 }
 
-const data = [
+const TAGS = [
   {
-    title: 'Projects',
+    title: 'Article Tags',
     list: [
       {
-        title: 'All Projects',
-        href: '/projects',
-        icon: <HiTerminal className='w-4 h-4' />
+        title: 'All article',
+        href: '/articles',
+        icon: RiArticleLine
       },
       {
         title: 'React',
-        href: '/projects?tag=React',
-        icon: <RiReactjsLine className='w-4 h-4' />
+        href: '/articles?tag=React',
+        icon: RiReactjsLine
       },
       {
-        title: 'React Native',
-        href: '/projects?tag=React Native',
-        icon: <RiReactjsLine className='w-4 h-4' />
-      },
-      {
-        title: 'Next',
-        href: '/projects?tag=Next',
-        icon: <TbBrandNextjs className='w-4 h-4' />
-      },
-      {
-        title: 'HTML',
-        href: '/projects?tag=HTML',
-        icon: <RiHtml5Fill className='w-4 h-4' />
+        title: 'Non Technical',
+        href: '/articles?tag=Non Technical',
+        icon: LiaBookSolid
       }
     ]
   }
