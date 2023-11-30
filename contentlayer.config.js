@@ -66,12 +66,37 @@ const Articles = defineDocumentType(() => ({
         const headings = Array.from(doc.body.raw.matchAll(regXHeader)).map(({ groups }) => {
           const flag = groups?.flag
           const content = groups?.content
+          let level = ''
+
+          switch (flag?.length) {
+            case 1:
+              level = 'one'
+              break
+            case 2:
+              level = 'two'
+              break
+            case 3:
+              level = 'three'
+              break
+            case 4:
+              level = 'four'
+              break
+            case 5:
+              level = 'five'
+              break
+            case 6:
+              level = 'six'
+              break
+            default:
+              level = 'unknown'
+          }
+
           return {
-            level: flag?.length == 1 ? 'one' : flag?.length == 2 ? 'two' : 'three',
+            level: level,
             text: content
           }
         })
-        return headings.filter(heading => heading.level !== 'one' && heading.level !== 'three')
+        return headings
       }
     }
   }

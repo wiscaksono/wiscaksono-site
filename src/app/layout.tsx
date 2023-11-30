@@ -12,8 +12,6 @@ import { ResponsiveIndicator } from '@/components/atoms/responsive-indicator'
 
 import { ENV } from '@/lib/constants'
 
-// const firaCode = Fira_Code({ subsets: ['latin'] })
-
 export const metadata: Metadata = {
   metadataBase: new URL(ENV.NEXT_PUBLIC_WEBSITE_URL),
   title: {

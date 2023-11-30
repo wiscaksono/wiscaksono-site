@@ -42,7 +42,7 @@ export default async function ArticleDetail({ params }: { params: ParamsProps })
     <MDXComponent
       code={content.body.code}
       className={
-        '!p-5 font-sans prose-h1:text-foreground prose-h2:text-foreground prose-h3:text-foreground prose-p:text-muted-foreground prose-a:text-foreground prose-li:text-muted-foreground prose-img:w-2/3 prose-img:mx-auto prose-strong:text-foreground prose-h4:text-foreground prose-a:no-underline'
+        '!p-5 font-sans prose-figcaption:text-center prose-img:first-of-type:mt-0 prose-h1:text-foreground prose-h2:text-foreground prose-h3:text-foreground prose-p:text-muted-foreground prose-a:text-foreground prose-li:text-muted-foreground prose-img:w-2/3 prose-img:mx-auto prose-strong:text-foreground prose-h4:text-foreground prose-a:no-underline'
       }
     />
   )

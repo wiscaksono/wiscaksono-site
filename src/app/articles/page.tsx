@@ -41,7 +41,7 @@ export default function Articles({ searchParams }: SearchParamsProps) {
               <CardContent className='py-0 px-5 text-sm text-muted-foreground line-clamp-4'>{articles.summary}</CardContent>
               <CardFooter className='p-5'>
                 <div className='space-y-1'>
-                  <p className='text-xs text-muted-foreground'>{articles.publishedDate}</p>
+                  <p className='text-xs text-muted-foreground hidden md:block'>{articles.publishedDate}</p>
                   <div className='flex items-center gap-x-1'>
                     <p className='text-sm text-muted-foreground'>Tags: </p>
                     <Badge>{articles.tag}</Badge>

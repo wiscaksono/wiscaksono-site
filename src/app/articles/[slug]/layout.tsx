@@ -35,7 +35,7 @@ export default async function ArticleDetailLayout({ children, params }: { childr
                         startWith={`/projects/${params.slug}`}
                         title={heading.text}
                         data-level={heading.level}
-                        className='data-[level=three]:pl-8 text-xs'
+                        className='data-[level=three]:pl-8 data-[level=four]:pl-10 text-xs'
                       >
                         {heading.text}
                       </AsideLink>
