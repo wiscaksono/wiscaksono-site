@@ -124,6 +124,10 @@ export const navMenu = [
     path: '/guest-book'
   },
   {
+    name: '_articles',
+    path: '/articles'
+  },
+  {
     name: '_coding-activity',
     child: [
       {
