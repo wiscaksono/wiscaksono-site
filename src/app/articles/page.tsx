@@ -5,12 +5,21 @@ import { Card, CardHeader, CardTitle, CardFooter, CardContent } from '@/componen
 import { Badge } from '@/components/atoms/badge'
 import { Button } from '@/components/atoms/button'
 import { FadeInStagger, FadeIn, AnimatePresence } from '@/components/atoms/fade-in'
+import { generateSEO } from '@/lib/generateSEO'
+import { ENV } from '@/lib/constants'
 
 type SearchParamsProps = {
   searchParams: {
     tag: string
   }
 }
+
+const title = 'articles'
+const description = 'Read my articles'
+const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/articles`
+const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
+
+export const metadata = generateSEO(title, description, image, url)
 
 export default function Articles({ searchParams }: SearchParamsProps) {
   const { tag } = searchParams
