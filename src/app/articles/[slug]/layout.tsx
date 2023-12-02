@@ -1,6 +1,4 @@
 import { allArticles } from 'contentlayer/generated'
-import { RiReactjsLine } from 'react-icons/ri'
-import { LiaBookSolid } from 'react-icons/lia'
 import { Suspense } from 'react'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
@@ -47,7 +45,7 @@ export default async function ArticleDetailLayout({ children, params }: { childr
           </AccordionItem>
         </Accordion>
       </aside>
-      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[83vh] md:h-auto'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[83vh] md:h-auto scroll-smooth'>{children}</section>
     </section>
   )
 }
