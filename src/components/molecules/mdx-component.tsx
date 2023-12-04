@@ -9,7 +9,7 @@ const components = {
   Image
 }
 
-export function MDXComponent({ code, className }: { code: string; className?: ClassValue }) {
+export function MDXComponent({ code, className, transparentBg = true }: { code: string; className?: ClassValue; transparentBg?: boolean }) {
   const Component = useMDXComponent(code)
 
   return (
@@ -17,7 +17,8 @@ export function MDXComponent({ code, className }: { code: string; className?: Cl
       <article
         className={cn(
           className,
-          'prose min-w-full p-2.5 prose-pre:my-0 prose-pre:!bg-transparent prose-pre:p-0 prose-pre:focus-visible:!ring-0 prose-pre:!outline-0 prose-img:aspect-video prose-img:object-cover prose-img:object-center'
+          transparentBg ? 'prose-pre:!bg-transparent' : '',
+          'prose min-w-full p-2.5 prose-pre:my-0  prose-pre:p-0 prose-pre:focus-visible:!ring-0 prose-pre:!outline-0 prose-img:aspect-video prose-img:object-cover prose-img:object-center'
         )}
       >
         <Component className='bg-red-500' components={components} />

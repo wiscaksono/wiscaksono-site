@@ -41,8 +41,9 @@ export default async function ArticleDetail({ params }: { params: ParamsProps })
   return (
     <MDXComponent
       code={content.body.code}
+      transparentBg={false}
       className={
-        '!p-5 font-sans prose-figcaption:text-center prose-img:first-of-type:mt-0 prose-h1:text-foreground prose-h2:text-foreground prose-h3:text-foreground prose-p:text-muted-foreground prose-a:text-foreground prose-li:text-muted-foreground prose-img:mx-auto prose-img:w-full prose-img:md:w-2/3  prose-strong:text-foreground prose-h4:text-foreground prose-a:no-underline'
+        '!p-5 prose-code:p-2 font-sans prose-figcaption:text-center prose-img:first-of-type:mt-0 prose-h1:text-foreground prose-h2:text-foreground prose-h3:text-foreground prose-p:text-muted-foreground prose-a:text-foreground prose-li:text-muted-foreground prose-img:mx-auto prose-img:w-full prose-img:md:w-2/3  prose-strong:text-foreground prose-h4:text-foreground prose-a:no-underline'
       }
     />
   )
