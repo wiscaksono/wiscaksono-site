@@ -41,6 +41,9 @@ dependencies:
   '@vercel/og':
     specifier: ^0.5.20
     version: 0.5.20
+  '@vercel/speed-insights':
+    specifier: ^1.0.0
+    version: 1.0.0
   autoprefixer:
     specifier: 10.4.16
     version: 10.4.16(postcss@8.4.31)
@@ -2077,6 +2080,11 @@ packages:
       '@resvg/resvg-wasm': 2.6.0
       satori: 0.10.9
       yoga-wasm-web: 0.3.3
+    dev: false
+
+  /@vercel/speed-insights@1.0.0:
+    resolution: {integrity: sha512-5blmCVGGPn+3BqwBPb1jc3OnzRozNuLgJVr7xH6XjxCTvocs7z/Bml7lo+JzLKUXR1Q35qI/PlEllmNbZmP9Ew==}
+    requiresBuild: true
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.11.2):
