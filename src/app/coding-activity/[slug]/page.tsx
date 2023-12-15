@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: ParamsProps }) {
   if (!data) return {}
 
   const title = data.slug + ' | Wiscaksono'
-  const description = `My ${data.title.toLowerCase()}`
+  const description = data.desc
   const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title.split(' ')[0]}`
 
   return {

@@ -1,9 +1,8 @@
 import { FadeIn } from '@/components/atoms/fade-in'
-import { weeklyCodingLanguanges, weeklyCodingActivity } from '@/lib/actions'
+import { weeklyCodingLanguanges } from '@/lib/actions'
 
 export const Languages = async () => {
   const { data } = await weeklyCodingLanguanges()
-  const { data: activity } = await weeklyCodingActivity()
 
   return (
     <FadeIn>

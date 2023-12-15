@@ -9,7 +9,8 @@ import { generateSEO } from '@/lib/generateSEO'
 import { allActivity } from './allActivities'
 
 const title = 'coding-activity'
-const description = 'coding-activity'
+const description =
+  'Dive into my coding activity page to discover insights into my work hours, coding time, preferred text editors, and the current programming languages in focus this week. Get a transparent glimpse into my coding routine, offering a quick snapshot of the tools and dedication that drive my passion for development.'
 const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/coding-activity`
 const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 

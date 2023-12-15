@@ -15,7 +15,8 @@ type SearchParamsProps = {
 }
 
 const title = 'articles'
-const description = 'Read my articles'
+const description =
+  "Embark on a journey through a diverse collection of articles, ranging from React deep-dives to engaging non-technical discussions. Whether you're exploring the entire repository or seeking insights on a specific tag, our articles cover a spectrum of topics to cater to both technical enthusiasts and those looking for non-technical perspectives. Discover thought-provoking content and immerse yourself in the world of insights and ideas."
 const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/articles`
 const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
