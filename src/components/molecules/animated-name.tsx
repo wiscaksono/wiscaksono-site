@@ -6,9 +6,13 @@ const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 export const AnimatedName = () => {
   const [text, setText] = useState('WISNU WICAKSONO')
   const [intervalId] = useState<number | null>(null)
+  const [isAnimating, setIsAnimating] = useState(false)
+
   const ref = useRef<HTMLHeadingElement | null>(null)
 
   const handleMouseOver = useCallback(() => {
+    if (isAnimating) return
+
     let iteration = 0
 
     if (intervalId !== null) {
@@ -16,6 +20,7 @@ export const AnimatedName = () => {
     }
 
     const animate = () => {
+      setIsAnimating(true)
       setText(prevText =>
         prevText
           .split('')
@@ -31,11 +36,13 @@ export const AnimatedName = () => {
       if (iteration < text.length) {
         iteration += 1 / 3
         setTimeout(animate, 30)
+      } else {
+        setIsAnimating(false)
       }
     }
 
     animate()
-  }, [intervalId, text])
+  }, [intervalId, isAnimating, text])
 
   useEffect(() => {
     const currentRef = ref.current
