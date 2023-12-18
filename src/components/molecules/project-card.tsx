@@ -8,7 +8,7 @@ import { Projects } from 'contentlayer/generated'
 export const ProjectCard = ({ data }: { data: Projects }) => {
   return (
     <Dialog>
-      <DialogTrigger data-umami-event={`${data.title} Card`}>
+      <DialogTrigger>
         <article className='rounded-md overflow-hidden group hover:shadow-2xl transition-shadow duration-500 border hover:shadow-secondary'>
           <figure className='relative aspect-video overflow-hidden'>
             <Image

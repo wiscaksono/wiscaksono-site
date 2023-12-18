@@ -23,15 +23,13 @@ export default function CodingActivityLayout({ children }: { children: React.Rea
         <Accordion type='single' collapsible defaultValue='item-0'>
           {data.map((item, i) => (
             <AccordionItem value={`item-${i}`} key={i}>
-              <AccordionTrigger className='border-b border-lines px-5 py-2.5 text-left' data-umami-event='Coding activity accordion'>
-                {item.title}
-              </AccordionTrigger>
+              <AccordionTrigger className='border-b border-lines px-5 py-2.5 text-left'>{item.title}</AccordionTrigger>
               <AccordionContent className='mt-5 space-y-1'>
                 <FadeInStagger faster>
                   {item.list.map((listItem, j) => (
                     <FadeIn key={j}>
                       <Suspense fallback={<>Loading...</>}>
-                        <AsideLink href={`/coding-activity/${listItem.slug}`} startWith='/coding-activity' title={listItem.slug} data-umami-event={`Coding ${listItem.title} link`}>
+                        <AsideLink href={`/coding-activity/${listItem.slug}`} startWith='/coding-activity' title={listItem.slug}>
                           <listItem.icon />
                           {listItem.title}
                         </AsideLink>

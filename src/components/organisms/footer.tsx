@@ -17,16 +17,11 @@ export const Footer = async () => {
           target='_blank'
           href='https://github.com/wiscaksono/wiscaksono-site'
           className='flex items-center gap-x-2 px-2 py-1 hover:text-foreground text-muted-foreground transition-colors'
-          data-umami-event='GitHub link footer'
         >
           <BiGitBranch className='text-lg' />
           <p>main</p>
         </Link>
-        <button
-          aria-label='refetch'
-          className='items-center gap-x-2 px-2 py-1 md:flex hidden group hover:text-foreground text-muted-foreground transition-colors'
-          data-umami-event='Refetch weekly coding activity'
-        >
+        <button aria-label='refetch' className='items-center gap-x-2 px-2 py-1 md:flex hidden group hover:text-foreground text-muted-foreground transition-colors'>
           <BiRefresh className='text-xl group-active:rotate-180 transition-transform' />
         </button>
 
@@ -50,7 +45,6 @@ export const Footer = async () => {
                 aria-label={todayData?.grand_total.text}
                 href='/coding-activity'
                 className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground hover:text-foreground transition-colors'
-                data-umami-event='Today coding activity'
               >
                 <AiOutlineClockCircle className='text-base' />
                 <p>{todayData?.grand_total.text}</p>
@@ -75,16 +69,11 @@ export const Footer = async () => {
       <div className='flex items-center divide-x divide border-l'>
         <div className='items-center gap-x-2 px-2 py-1 lg:flex hidden text-muted-foreground'>
           <p>Special thanks to:</p>
-          <Link href='https://www.behance.net/darelova' target='_blank' className='hover:text-foreground transition-colors' data-umami-event='Yanka Darelova link'>
+          <Link href='https://www.behance.net/darelova' target='_blank' className='hover:text-foreground transition-colors'>
             Yanka Darelova
           </Link>
         </div>
-        <Link
-          target='_blank'
-          href='https://github.com/wiscaksono'
-          className='flex items-center gap-x-1 px-2 py-1 hover:text-foreground text-muted-foreground transition-colors'
-          data-umami-event='GitHub link footer'
-        >
+        <Link target='_blank' href='https://github.com/wiscaksono' className='flex items-center gap-x-1 px-2 py-1 hover:text-foreground text-muted-foreground transition-colors'>
           <p>Wiscaksono</p>
           <IoLogoGithub className='text-lg' />
         </Link>

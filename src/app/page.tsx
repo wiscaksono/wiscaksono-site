@@ -22,12 +22,7 @@ export default function Home() {
             <p className='text-muted-foreground'>{`// you can also see it on my Github page`}</p>
             <p className='text-muted-foreground'>
               <span className='text-purple'>const</span> <span className='text-green'>githubLink</span> ={' '}
-              <a
-                target='_blank'
-                href='https://github.com/wiscaksono/wiscaksono-site'
-                className='text-light-brown hover:underline hover:text-foreground transition-colors'
-                data-umami-event='GitHub link'
-              >
+              <a target='_blank' href='https://github.com/wiscaksono/wiscaksono-site' className='text-light-brown hover:underline hover:text-foreground transition-colors'>
                 &apos;https://github.com/wiscaksono/wiscaksono-site&apos;
               </a>
             </p>
