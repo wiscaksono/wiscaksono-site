@@ -3,9 +3,10 @@ import { FaRegEnvelope } from 'react-icons/fa'
 import { BsWhatsapp, BsInstagram, BsLinkedin } from 'react-icons/bs'
 import { TbBrandUpwork } from 'react-icons/tb'
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 import { AsideLink } from '@/components/atoms/aside-link'
 import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
+
 import { ENV } from '@/lib/constants'
 import { generateSEO } from '@/lib/generateSEO'
 
@@ -52,7 +53,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
 
 const data = [
   {
-    title: 'Guest Book',
+    title: 'Contacts',
     list: [
       {
         title: 'Email',

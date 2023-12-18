@@ -40,7 +40,7 @@ export const Footer = async () => {
                 <p>0</p>
               </div>
             </TooltipTrigger>
-            <TooltipContent className='!border-none'>No problems</TooltipContent>
+            <TooltipContent>No problems</TooltipContent>
           </Tooltip>
         </TooltipProvider>
         <TooltipProvider>
@@ -49,22 +49,27 @@ export const Footer = async () => {
               <Link
                 aria-label={todayData?.grand_total.text}
                 href='/coding-activity'
-                className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground'
+                className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground hover:text-foreground transition-colors'
                 data-umami-event='Today coding activity'
               >
                 <AiOutlineClockCircle className='text-base' />
                 <p>{todayData?.grand_total.text}</p>
               </Link>
             </TooltipTrigger>
-            <TooltipContent className='!border-none'>
+            <TooltipContent>
               <p>Today coding activity</p>
               <p className='text-sm text-muted-foreground'>click for more</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-        <div className='items-center gap-x-1 px-2 py-1 md:flex hidden text-muted-foreground'>
-          <p>--NORMAL--</p>
-        </div>
+        <Link
+          href='mailto:wwicaksono96@gmail.com'
+          target='_blank'
+          className='items-center gap-x-1.5 px-2 py-1 md:flex hidden text-muted-foreground hover:text-foreground transition-colors'
+        >
+          <div className='w-2 h-2 bg-green-500 rounded-full animate-pulse' />
+          <span>Available for a work!</span>
+        </Link>
       </div>
 
       <div className='flex items-center divide-x divide border-l'>
