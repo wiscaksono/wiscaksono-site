@@ -55,7 +55,7 @@
   }
 
   body {
-    @apply flex items-center justify-center h-screen w-full overflow-hidden;
+    @apply flex items-center justify-center h-dvh w-full overflow-hidden;
   }
 
   main {
