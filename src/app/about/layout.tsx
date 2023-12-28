@@ -12,7 +12,9 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
       <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden overflow-y-auto'>
         <Accordion type='single' collapsible defaultValue='about'>
           <AccordionItem value={'about'} defaultChecked>
-            <AccordionTrigger className='border-b border-lines px-5 py-2.5 text-left'>About Me</AccordionTrigger>
+            <AccordionTrigger className='border-b border-lines px-5 py-2.5 text-left' data-umami-event='accordion-about'>
+              About Me
+            </AccordionTrigger>
             <AccordionContent className='mt-5 space-y-1'>
               <FadeInStagger faster>
                 {allAbouts.map(({ title }) => (

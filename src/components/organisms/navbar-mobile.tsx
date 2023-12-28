@@ -35,7 +35,7 @@ export const NavbarMobileBtn: React.FC = () => {
   const { toggleNavbar } = useNavbarMobile()
 
   return (
-    <button className='text-muted-foreground ml-auto px-2.5 block md:hidden' onClick={toggleNavbar}>
+    <button className='text-muted-foreground ml-auto px-2.5 block md:hidden' onClick={toggleNavbar} data-umami-event='navbar-mobile-trigger'>
       <Menu />
     </button>
   )
@@ -53,7 +53,9 @@ export const NavbarMobile = () => {
               {menu.child ? (
                 <Accordion type='single' collapsible>
                   <AccordionItem value={menu.name}>
-                    <AccordionTrigger className='text-2xl font-normal text-foreground'>{menu.name}</AccordionTrigger>
+                    <AccordionTrigger className='text-2xl font-normal text-foreground' data-umami-event={`navbar-accordion-${menu.name}`}>
+                      {menu.name}
+                    </AccordionTrigger>
                     <AccordionContent className='pl-5 divide-y'>
                       {menu.child.map((child, j) => (
                         <Link href={child.path} key={j} className='block text-xl py-2 first:pt-0 last:pb-0 border-b last:border-0 text-muted-foreground' onClick={toggleNavbar}>

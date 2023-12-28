@@ -10,7 +10,7 @@ import { deletePost } from '@/lib/actions'
 
 export const SignInBtn = () => {
   return (
-    <Button variant='secondary' className='flex items-center gap-x-2' onClick={() => signIn('github')} type='button'>
+    <Button variant='secondary' className='flex items-center gap-x-2' onClick={() => signIn('github')} type='button' data-umami-event='github-signin'>
       <GitHubIcon />
       Sign in
     </Button>
@@ -20,7 +20,7 @@ export const SignInBtn = () => {
 export const SendBtn = () => {
   const { pending } = useFormStatus()
   return (
-    <Button variant='secondary' type='submit' disabled={pending}>
+    <Button variant='secondary' type='submit' disabled={pending} data-umami-event='send-message'>
       Send Message
       {pending && <Loader2 className={`${pending ? 'w-4 ml-2' : 'w-0 ml-0'} h-4 animate-spin text-muted-foreground transition-all`} />}
     </Button>
@@ -40,7 +40,7 @@ export const RemoveBtn = ({ id }: { id: number }) => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <button type='button' className='hover:text-destructive transition-colors' onClick={() => handleDelete()}>
+          <button type='button' className='hover:text-destructive transition-colors' onClick={() => handleDelete()} data-umami-event='delete-message'>
             {isLoading ? <Loader2 size={16} className='animate-spin text-muted-foreground transition-all' /> : <X size={16} />}
           </button>
         </TooltipTrigger>

@@ -21,7 +21,11 @@ export const Footer = async () => {
           <BiGitBranch className='text-lg' />
           <p>main</p>
         </Link>
-        <button aria-label='refetch' className='items-center gap-x-2 px-2 py-1 md:flex hidden group hover:text-foreground text-muted-foreground transition-colors'>
+        <button
+          aria-label='refetch'
+          className='items-center gap-x-2 px-2 py-1 md:flex hidden group hover:text-foreground text-muted-foreground transition-colors'
+          data-umami-event='footer-refresh-btn'
+        >
           <BiRefresh className='text-xl group-active:rotate-180 transition-transform' />
         </button>
 
