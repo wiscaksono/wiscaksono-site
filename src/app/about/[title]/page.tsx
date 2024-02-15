@@ -5,9 +5,7 @@ import { MDXComponent } from '@/components/molecules/mdx-component'
 import { ENV } from '@/lib/constants'
 import { generateSEO } from '@/lib/generateSEO'
 
-type ParamsProps = {
-  title: string
-}
+type ParamsProps = { title: string }
 
 async function getContent(params: ParamsProps) {
   const post = allAbouts.find(post => post.title === params.title)

@@ -9,7 +9,7 @@ type SearchParamsProps = {
   }
 }
 
-export default function ProjectPage({ searchParams }: SearchParamsProps) {
+export default async function ProjectPage({ searchParams }: SearchParamsProps) {
   const { tag } = searchParams
   let filteredProjects = tag ? allProjects.filter(project => project.tag.includes(tag)) : allProjects
 

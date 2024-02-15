@@ -61,3 +61,16 @@ export const ProjectCard = ({ data }: { data: Projects }) => {
     </Dialog>
   )
 }
+
+export const ProjectCardSkeleton = ({ delay }: { delay: number }) => {
+  return (
+    <div className='w-full h-full rounded bg-muted/20 border overflow-hidden'>
+      <div className='aspect-video bg-muted/30 animate-pulse' style={{ animationDelay: `${delay * 0.1}s` }} />
+      <div className='p-3 space-y-2.5'>
+        {[...Array(4)].map((_, i) => (
+          <div className='w-full h-4 bg-muted/30 rounded animate-pulse' key={i} style={{ animationDelay: `${i * 0.2}s` }} />
+        ))}
+      </div>
+    </div>
+  )
+}

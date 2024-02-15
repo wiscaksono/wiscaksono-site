@@ -3,12 +3,16 @@ import { FaRegEnvelope } from 'react-icons/fa'
 import { BsWhatsapp, BsInstagram, BsLinkedin } from 'react-icons/bs'
 import { TbBrandUpwork } from 'react-icons/tb'
 
+import { Input } from '@/components/atoms/input'
 import { AsideLink } from '@/components/atoms/aside-link'
 import { FadeInStagger, FadeIn } from '@/components/atoms/fade-in'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 
+import { auth } from '@/lib/auth'
 import { ENV } from '@/lib/constants'
+import { createPost } from '@/lib/actions'
 import { generateSEO } from '@/lib/generateSEO'
+import { SignInBtn, SendBtn } from './action-buttons'
 
 const title = 'guest-book'
 const description =
@@ -18,7 +22,8 @@ const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
 export const metadata = generateSEO(title, description, image, url)
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
+export default async function AboutLayout({ children }: { children: React.ReactNode }) {
+  const session = await auth()
   return (
     <section className='grid grid-cols-12 overflow-hidden'>
       <aside className='md:col-span-3 lg:col-span-2 border-r border-lines md:block hidden overflow-y-auto'>
@@ -46,7 +51,17 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
           ))}
         </Accordion>
       </aside>
-      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84dvh] md:h-auto'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84dvh] md:h-auto'>
+        <FadeIn className='p-5 space-y-2'>
+          <form action={createPost} className='col-span-full flex items-center justify-between gap-x-2.5'>
+            <div className='flex-1 relative'>
+              <Input name='desc' id='desc' placeholder='This is really cool!' aria-labelledby='desc' />
+            </div>
+            {!session ? <SignInBtn /> : <SendBtn />}
+          </form>
+          {children}
+        </FadeIn>
+      </section>
     </section>
   )
 }
