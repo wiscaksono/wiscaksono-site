@@ -39,7 +39,7 @@ export const ProjectCard = ({ data }: { data: Projects }) => {
             <figure className='relative aspect-video overflow-hidden rounded-md mb-5'>
               <Image src={data.image} alt={data.title} fill className='object-cover object-top group-hover:scale-105 transition-transform duration-500' />
             </figure>
-            <ul className='flex items-center gap-x-2 border-y py-2'>
+            <ul className='md:flex hidden items-center gap-x-2 border-y py-2'>
               <li className='text-foreground'>Technologies :</li>
               {data.tag && (
                 <li className='space-x-1'>
@@ -49,7 +49,24 @@ export const ProjectCard = ({ data }: { data: Projects }) => {
                 </li>
               )}
             </ul>
-            <p className='whitespace-pre-line mt-2'>{data.summary}</p>
+            <ul className='flex md:hidden items-center gap-x-2 border-y py-2'>
+              <li className='text-foreground'>Technologies :</li>
+              {data.tag.length > 3 ? (
+                <li className='space-x-1'>
+                  {data.tag.slice(0, 3).map((tech, i) => (
+                    <Badge key={i}>{tech}</Badge>
+                  ))}
+                  <Badge>+{data.tag.length - 3}</Badge>
+                </li>
+              ) : (
+                <li className='space-x-1'>
+                  {data.tag.map((tech, i) => (
+                    <Badge key={i}>{tech}</Badge>
+                  ))}
+                </li>
+              )}
+            </ul>
+            <p className='whitespace-pre-line mt-2 text-left'>{data.summary}</p>
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
