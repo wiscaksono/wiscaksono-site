@@ -45,7 +45,7 @@ export default async function ArticleDetailLayout({ children, params }: { childr
           </AccordionItem>
         </Accordion>
       </aside>
-      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[83vh] md:h-auto scroll-smooth'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[80dvh] md:h-auto scroll-smooth'>{children}</section>
     </section>
   )
 }

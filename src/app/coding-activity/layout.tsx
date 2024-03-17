@@ -42,7 +42,7 @@ export default function CodingActivityLayout({ children }: { children: React.Rea
           ))}
         </Accordion>
       </aside>
-      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84vh] md:h-auto p-5'>{children}</section>
+      <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84dvh] md:h-auto p-5'>{children}</section>
     </section>
   )
 }
