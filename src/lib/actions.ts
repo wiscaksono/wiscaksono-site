@@ -10,22 +10,14 @@ export const createPost = async (formData: FormData) => {
   const desc = formData.get('desc') as string
   if (!session || !desc) return
   await db.post.create({
-    data: {
-      desc: desc,
-      userId: session.user.id
-    }
+    data: { desc: desc, userId: session.user.id }
   })
 
   revalidatePath('/guest-book')
 }
 
 export const deletePost = async (id: number) => {
-  await db.post.delete({
-    where: {
-      id: id
-    }
-  })
-
+  await db.post.delete({ where: { id: id } })
   revalidatePath('/guest-book')
 }
 
