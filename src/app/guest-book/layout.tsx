@@ -54,9 +54,7 @@ export default async function AboutLayout({ children }: { children: React.ReactN
       <section className='md:col-span-9 lg:col-span-10 col-span-12 overflow-y-auto relative h-[84dvh] md:h-auto'>
         <FadeIn className='p-5 space-y-2'>
           <form action={createPost} className='col-span-full flex items-center justify-between gap-x-2.5'>
-            <div className='flex-1 relative'>
-              <Input name='desc' id='desc' placeholder='This is really cool!' aria-labelledby='desc' required />
-            </div>
+            <Input name='desc' id='desc' placeholder='This is really cool!' aria-labelledby='desc' required className='flex-1' />
             {!session ? <SignInBtn /> : <SendBtn />}
           </form>
           {children}
