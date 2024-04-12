@@ -27,8 +27,6 @@ export const ResizableWrapper = ({ sidebarTitle, sidebarMenu, children }: Resiza
   const defaultSize = JSON.parse(localStorage.getItem('react-resizable-panels:size') ?? '[16.6,83.4]')
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed)
 
-  // return children
-
   return (
     <TooltipProvider>
       <ResizablePanelGroup

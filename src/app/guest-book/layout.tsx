@@ -5,7 +5,6 @@ import { BsWhatsapp, BsInstagram, BsLinkedin } from 'react-icons/bs'
 import { Input } from '@/components/atoms/input'
 import { FadeIn } from '@/components/atoms/fade-in'
 
-import { getDefaultPanelConf } from '@/lib/actions'
 import { ResizableWrapper, SidebarMenu } from '@/components/organisms/resizable-wrapper'
 
 import { auth } from '@/lib/auth'

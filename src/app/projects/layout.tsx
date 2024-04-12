@@ -4,7 +4,6 @@ import { RiReactjsLine, RiHtml5Fill } from 'react-icons/ri'
 
 import { ENV } from '@/lib/constants'
 import { generateSEO } from '@/lib/generateSEO'
-import { getDefaultPanelConf } from '@/lib/actions'
 import { ResizableWrapper, SidebarMenu } from '@/components/organisms/resizable-wrapper'
 
 const title = 'projects'
