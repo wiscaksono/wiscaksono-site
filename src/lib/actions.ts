@@ -1,4 +1,5 @@
 'use server'
+import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 
 import { db } from './prisma'
@@ -45,4 +46,14 @@ export const weeklyOperatingSystems = async () => {
     cache: 'no-store'
   })
   return res.json() as Promise<Wakatime.WeeklyCodeEditor>
+}
+
+export const getDefaultPanelConf = async () => {
+  const layout = cookies().get(`react-resizable-panels:size`)
+  const collapsed = cookies().get(`react-resizable-panels:collapsed`)
+
+  const defaultSize = layout ? (JSON.parse(layout.value) as number[]) : undefined
+  const defaultCollapsed = collapsed ? (JSON.parse(collapsed.value) as boolean) : undefined
+
+  return { defaultSize, defaultCollapsed }
 }
