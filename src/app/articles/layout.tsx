@@ -1,12 +1,9 @@
 import { LiaBookSolid } from 'react-icons/lia'
 import { RiReactjsLine, RiArticleLine } from 'react-icons/ri'
 
-import { getDefaultPanelConf } from '@/lib/actions'
 import { ResizableWrapper, SidebarMenu } from '@/components/organisms/resizable-wrapper'
 
 export default async function ArticleLayout({ children }: { children: React.ReactNode }) {
-  const { defaultSize, defaultCollapsed } = await getDefaultPanelConf()
-
   const sidebarMenu: SidebarMenu[] = [
     {
       title: 'All article',
@@ -26,7 +23,7 @@ export default async function ArticleLayout({ children }: { children: React.Reac
   ]
 
   return (
-    <ResizableWrapper defaultSize={defaultSize} defaultCollapsed={defaultCollapsed} sidebarTitle='Article Tags' sidebarMenu={sidebarMenu}>
+    <ResizableWrapper sidebarTitle='Article Tags' sidebarMenu={sidebarMenu}>
       {children}
     </ResizableWrapper>
   )

@@ -11,8 +11,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { cn } from '@/lib/utils'
 
 interface ResizableWrapperProps {
-  defaultSize?: number[]
-  defaultCollapsed?: boolean
   sidebarTitle: string
   sidebarMenu: SidebarMenu[]
   children: React.ReactNode
@@ -24,8 +22,12 @@ export interface SidebarMenu {
   icon: JSX.Element
 }
 
-export const ResizableWrapper = ({ defaultSize = [16.63, 100 - 16.63], defaultCollapsed = false, sidebarTitle, sidebarMenu, children }: ResizableWrapperProps) => {
+export const ResizableWrapper = ({ sidebarTitle, sidebarMenu, children }: ResizableWrapperProps) => {
+  const defaultCollapsed = JSON.parse(localStorage.getItem('react-resizable-panels:collapsed') || 'false')
+  const defaultSize = JSON.parse(localStorage.getItem('react-resizable-panels:size') ?? '[16.6,83.4]')
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed)
+
+  // return children
 
   return (
     <TooltipProvider>
@@ -33,24 +35,22 @@ export const ResizableWrapper = ({ defaultSize = [16.63, 100 - 16.63], defaultCo
         tagName='section'
         direction='horizontal'
         onLayout={(sizes: number[]) => {
-          console.log(sizes)
-          document.cookie = `react-resizable-panels:size=${JSON.stringify(sizes)}; path=/`
-          document.cookie = `kontol=${JSON.stringify(sizes)}; path=/`
+          localStorage.setItem('react-resizable-panels:size', JSON.stringify(sizes))
         }}
       >
         <ResizablePanel
           defaultSize={defaultSize[0]}
-          minSize={3}
+          minSize={4}
           maxSize={50}
           tagName='aside'
           collapsible
           onCollapse={() => {
             setIsCollapsed(true)
-            document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(true)}; path=/`
+            localStorage.setItem('react-resizable-panels:collapsed', JSON.stringify(true))
           }}
           onExpand={() => {
             setIsCollapsed(false)
-            document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(false)}; path=/`
+            localStorage.setItem('react-resizable-panels:collapsed', JSON.stringify(false))
           }}
           className='min-w-9'
         >
@@ -79,7 +79,7 @@ export const ResizableWrapper = ({ defaultSize = [16.63, 100 - 16.63], defaultCo
                             </TooltipTrigger>
                             {isCollapsed && <TooltipContent align='start'>{title}</TooltipContent>}
                           </Tooltip>
-                          {!isCollapsed && title}
+                          {!isCollapsed && <span className='whitespace-nowrap'>{title}</span>}
                         </AsideLink>
                       </Suspense>
                     </FadeIn>

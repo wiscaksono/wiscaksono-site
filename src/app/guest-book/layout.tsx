@@ -24,7 +24,6 @@ export const metadata = generateSEO(title, description, image, url)
 
 export default async function AboutLayout({ children }: { children: React.ReactNode }) {
   const session = await auth()
-  const { defaultSize, defaultCollapsed } = await getDefaultPanelConf()
 
   const sidebarMenu: SidebarMenu[] = [
     {
@@ -55,7 +54,7 @@ export default async function AboutLayout({ children }: { children: React.ReactN
   ]
 
   return (
-    <ResizableWrapper defaultSize={defaultSize} defaultCollapsed={defaultCollapsed} sidebarTitle='Contacts' sidebarMenu={sidebarMenu}>
+    <ResizableWrapper sidebarTitle='Contacts' sidebarMenu={sidebarMenu}>
       <FadeIn className='p-5 space-y-2'>
         <form action={createPost} className='col-span-full flex items-center justify-between gap-x-2.5'>
           <Input name='desc' id='desc' placeholder='This is really cool!' aria-labelledby='desc' required className='flex-1' />

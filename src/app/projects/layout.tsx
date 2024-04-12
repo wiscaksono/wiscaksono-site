@@ -16,8 +16,6 @@ const image = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 export const metadata = generateSEO(title, description, image, url)
 
 export default async function AboutLayout({ children }: { children: React.ReactNode }) {
-  const { defaultSize, defaultCollapsed } = await getDefaultPanelConf()
-
   const sidebarMenu: SidebarMenu[] = [
     {
       title: 'All Projects',
@@ -47,7 +45,7 @@ export default async function AboutLayout({ children }: { children: React.ReactN
   ]
 
   return (
-    <ResizableWrapper defaultSize={defaultSize} defaultCollapsed={defaultCollapsed} sidebarTitle='Projects' sidebarMenu={sidebarMenu}>
+    <ResizableWrapper sidebarTitle='Projects' sidebarMenu={sidebarMenu}>
       {children}
     </ResizableWrapper>
   )
