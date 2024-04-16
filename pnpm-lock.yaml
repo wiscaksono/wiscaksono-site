@@ -87,8 +87,8 @@ dependencies:
     specifier: ^4.12.0
     version: 4.12.0(react@18.2.0)
   react-resizable-panels:
-    specifier: ^1.0.5
-    version: 1.0.5(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.0.17
+    version: 2.0.17(react-dom@18.2.0)(react@18.2.0)
   rehype-autolink-headings:
     specifier: ^7.1.0
     version: 7.1.0
@@ -5753,8 +5753,8 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.37)(react@18.2.0)
     dev: false
 
-  /react-resizable-panels@1.0.5(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-OP0whNQCko+f4BgoptGaeIc7StBRyeMeJ+8r/7rXACBDf9W5EcMWuM32hfqPDMenS2HFy/eZVi/r8XqK+ZIEag==}
+  /react-resizable-panels@2.0.17(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-MhnHUjYB6NCZ7rmTXuTg/8+IKaj0PkQP8dm+r3Riljd+lGPElqbTX+mfqr0HJBDWJF0JH30cwe6CnuiNG6RIIg==}
     peerDependencies:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
