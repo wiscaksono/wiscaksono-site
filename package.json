@@ -37,7 +37,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.12.0",
-    "react-resizable-panels": "^1.0.5",
+    "react-resizable-panels": "^2.0.18",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.10.2",
     "rehype-slug": "^6.0.0",
