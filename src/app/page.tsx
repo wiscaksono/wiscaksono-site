@@ -12,7 +12,7 @@ export default function Home() {
             <AnimatedName />
             <h2 className='text-muted-foreground md:text-2xl sm:text-xl text-base'>
               <span className='animate-pulse'>&gt; </span>
-              Front-end developer
+              Web developer
             </h2>
 
             <div className='absolute w-full h-1/2 bg-muted-foreground/10 blur-2xl top-0 left-0 -z-10 rounded-full animate-pulse' />
