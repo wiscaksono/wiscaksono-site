@@ -11,7 +11,7 @@ type SearchParamsProps = {
 
 export default async function ProjectPage({ searchParams }: SearchParamsProps) {
   const { tag } = searchParams
-  let filteredProjects = tag ? allProjects.filter(project => project.tag.includes(tag)) : allProjects
+  let filteredProjects = tag ? allProjects.filter(project => project.tag.some(t => t.toLowerCase().includes(tag.toLowerCase()))) : allProjects
 
   return (
     <FadeInStagger className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-5' faster>
