@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata | un
 
   let { summary: description, image } = project.metadata
   const title = params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
-  let ogImage = image ? `${ENV.NEXT_PUBLIC_WEBSITE_URL}${image}` : `${ENV.NEXT_PUBLIC_WEBSITE_URL}/og?title=${title}`
+  let ogImage = image ? `${ENV.NEXT_PUBLIC_WEBSITE_URL}${image}` : `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
   return {
     title,
