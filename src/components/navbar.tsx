@@ -2,13 +2,15 @@
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
 
-import { WeeklyCodingActivity } from '@/types/wakatime'
+import type { WeeklyCodingActivity } from '@/types/wakatime'
+import type { UmamiStats } from '@/types/umami'
 
 interface Props {
   todayData: WeeklyCodingActivity['data'][0]
+  pageViews: UmamiStats['pageviews']
 }
 
-export const Navbar = ({ todayData }: Props) => {
+export const Navbar = ({ todayData, pageViews }: Props) => {
   const segment = useSelectedLayoutSegment()
 
   return (
@@ -37,7 +39,15 @@ export const Navbar = ({ todayData }: Props) => {
             main
           </a>
         </div>
-        <p>-- VIEW --</p>
+        <div className='flex items-center gap-x-2'>
+          <p>-- VIEW --</p>
+          <span>|</span>
+          {pageViews && (
+            <a href='https://umami.wiscaksono.com/share/gO4ZH0hMg8m2KbHw/wiscaksono.com' target='_blank'>
+              {pageViews.value} Views today
+            </a>
+          )}
+        </div>
       </div>
       <div className='flex items-center justify-between gap-20 overflow-x-auto px-2 pb-3 leading-none lg:px-0 lg:pb-0'>
         <ul className='flex items-center'>
@@ -86,3 +96,8 @@ const menu = [
     href: '/articles'
   }
 ]
+
+console.log(
+  '%cHello there! 👋 \nI see you are looking at my code. If you have any questions or want to chat, feel free to reach out to me on Twitter @wiscaksono. I would love to hear from you! 😊. Also, I am open to freelance job opportunities. Have a great day! 🚀',
+  'font-size: 20px;'
+)

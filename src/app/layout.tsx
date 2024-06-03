@@ -9,7 +9,7 @@ import { Navbar } from '@/components/navbar'
 import { ResponsiveIndicator } from '@/components/responsive-indicator'
 
 import { ENV } from '@/lib/constants'
-import { weeklyCodingActivity } from '@/lib/actions'
+import { weeklyCodingActivity, umamiStats } from '@/lib/actions'
 
 export const metadata: Metadata = {
   metadataBase: new URL(ENV.NEXT_PUBLIC_WEBSITE_URL),
@@ -53,8 +53,11 @@ interface Props {
 }
 
 export default async function RootLayout({ children }: Readonly<Props>) {
-  const { data } = await weeklyCodingActivity()
+  const [weeklyData, umamiData] = await Promise.all([weeklyCodingActivity(), umamiStats()])
+  const data = weeklyData.data
   const todayData = data[data.length - 1]
+
+  const { pageviews } = umamiData
 
   return (
     <html lang='en'>
@@ -63,7 +66,7 @@ export default async function RootLayout({ children }: Readonly<Props>) {
         <main className='z-30 flex h-[95dvh] w-[90dvw] flex-col overflow-hidden rounded-2xl bg-gradient-to-tr from-[#080808] to-[#242424] text-[#898989]/90 transition-all lg:h-[80dvh] lg:w-[80dvw]'>
           <Header />
           <section className='relative flex-1 overflow-y-auto px-2 md:px-3 lg:px-4'>{children}</section>
-          <Navbar todayData={todayData} />
+          <Navbar todayData={todayData} pageViews={pageviews} />
           <ResponsiveIndicator />
         </main>
         <div

@@ -3,8 +3,10 @@ import { revalidatePath } from 'next/cache'
 
 import { db } from './prisma'
 import { auth } from './auth'
+import { ENV } from './constants'
 
-import * as Wakatime from '@/types/wakatime'
+import type * as Wakatime from '@/types/wakatime'
+import type { UmamiStats } from '@/types/umami'
 
 export const createPost = async (formData: FormData) => {
   const session = await auth()
@@ -43,4 +45,15 @@ export const weeklyOperatingSystems = async () => {
     cache: 'no-store'
   })
   return res.json() as Promise<Wakatime.WeeklyCodeEditor>
+}
+
+export const umamiStats = async () => {
+  const res = await fetch(ENV.UMAMI_URL, {
+    method: 'GET',
+    headers: {
+      'x-umami-share-token': ENV.UMAMI_SHARE_TOKEN
+    }
+  })
+
+  return res.json() as Promise<UmamiStats>
 }

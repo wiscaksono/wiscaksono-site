@@ -6,5 +6,8 @@ export const ENV = {
   GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
   AUTH_SECRET: process.env.AUTH_SECRET || 'some-secret',
 
+  UMAMI_SHARE_TOKEN: process.env.UMAMI_SHARE_TOKEN || '',
+  UMAMI_URL: process.env.UMAMI_URL || '',
+
   NODE_ENV: process.env.NODE_ENV || 'development'
 }
