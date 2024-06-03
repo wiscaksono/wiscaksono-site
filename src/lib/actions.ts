@@ -22,7 +22,9 @@ export const deletePost = async (id: number) => {
 }
 
 export const weeklyCodingActivity = async () => {
-  const res = await fetch('https://wakatime.com/share/@Wiscaksono/27bef61d-5377-441a-b326-c868eb825328.json')
+  const res = await fetch('https://wakatime.com/share/@Wiscaksono/27bef61d-5377-441a-b326-c868eb825328.json', {
+    cache: 'no-store'
+  })
   return res.json() as Promise<Wakatime.WeeklyCodingActivity>
 }
 
@@ -57,7 +59,8 @@ export const umamiStats = async () => {
     method: 'GET',
     headers: {
       'x-umami-share-token': ENV.UMAMI_SHARE_TOKEN
-    }
+    },
+    cache: 'no-store'
   })
 
   return res.json() as Promise<UmamiStats>
