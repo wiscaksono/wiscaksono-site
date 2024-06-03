@@ -104,6 +104,8 @@ export function getFileIcon(name: string) {
       return <Go />
     case 'react':
       return <React />
+    case 'react-native':
+      return <React />
     case 'next':
       return <Next />
     case 'html':

@@ -32,8 +32,12 @@ const menu = [
     href: '/projects?tag=React'
   },
   {
-    title: 'next.js',
-    href: '/projects?tag=Next.JS'
+    title: 'react-native',
+    href: '/projects?tag=React-Native'
+  },
+  {
+    title: 'next',
+    href: '/projects?tag=Next'
   },
   {
     title: 'html',
