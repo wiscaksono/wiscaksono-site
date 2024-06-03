@@ -3,16 +3,14 @@ import { revalidatePath } from 'next/cache'
 
 import { db } from './prisma'
 import { auth } from './auth'
-import * as Wakatime from '@/types/wakatimeResponse'
+
+import * as Wakatime from '@/types/wakatime'
 
 export const createPost = async (formData: FormData) => {
   const session = await auth()
   const desc = formData.get('desc') as string
   if (!session || !desc) return
-  await db.post.create({
-    data: { desc: desc, userId: session.user.id }
-  })
-
+  await db.post.create({ data: { desc: desc, userId: session.user.id } })
   revalidatePath('/guest-book')
 }
 

@@ -1,16 +1,13 @@
 import './globals.css'
-import Script from 'next/script'
 import { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 
-import { Navbar } from '@/components/organisms/navbar'
-import { Footer } from '@/components/organisms/footer'
-import { ThemeWrapper } from '@/components/atoms/theme-wrapper'
-import { ResponsiveIndicator } from '@/components/atoms/responsive-indicator'
-import { NavbarMobile, NavbarProvider } from '@/components/organisms/navbar-mobile'
+import { Navbar } from '@/components/navbar'
+import { ResponsiveIndicator } from '@/components/responsive-indicator'
 
 import { ENV } from '@/lib/constants'
+import { weeklyCodingActivity } from '@/lib/actions'
 
 export const metadata: Metadata = {
   metadataBase: new URL(ENV.NEXT_PUBLIC_WEBSITE_URL),
@@ -49,22 +46,41 @@ export const metadata: Metadata = {
   }
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode
+}
+
+export default async function RootLayout({ children }: Readonly<Props>) {
+  const { data } = await weeklyCodingActivity()
+  const todayData = data[data.length - 1]
+
   return (
-    <html lang='en' suppressHydrationWarning>
-      <body className={`${GeistSans.variable} ${GeistMono.variable} font-mono`}>
-        <ThemeWrapper attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
-          <main>
-            <NavbarProvider>
-              <Navbar />
-              <NavbarMobile />
-            </NavbarProvider>
-            {children}
-            <Footer />
-          </main>
-        </ThemeWrapper>
-        {process.env.NODE_ENV === 'production' && <Script async src='https://umami.wiscaksono.com/script.js' data-website-id='1f3b0505-7366-47bd-8757-95ad25395088' />}
-        <ResponsiveIndicator />
+    <html lang='en'>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} grid h-dvh place-items-center bg-[#3D3D3D] font-mono`}>
+        <div className='absolute left-1/2 top-1/2 z-20 h-[calc(95dvh+3px)] w-[calc(90dvw+3px)] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-gradient-to-tr from-transparent to-[#898989]/50 blur-[2px] transition-all lg:h-[calc(80dvh+3px)] lg:w-[calc(80dvw+3px)]' />
+        <main className='z-30 flex h-[95dvh] w-[90dvw] flex-col overflow-hidden rounded-2xl bg-gradient-to-tr from-[#080808] to-[#242424] text-[#898989]/90 transition-all lg:h-[80dvh] lg:w-[80dvw]'>
+          <header className='relative flex items-center justify-between px-4 py-3'>
+            <div className='absolute space-x-2'>
+              <button className='h-3 w-3 rounded-full bg-[#898989]' aria-label='Close' />
+              <button className='h-3 w-3 rounded-full bg-[#898989]' aria-label='Minimize' />
+              <button className='h-3 w-3 rounded-full bg-[#898989]' aria-label='Maximize' />
+            </div>
+            <p className='mx-auto select-none font-semibold'>iTerm</p>
+          </header>
+
+          <section className='relative flex-1 overflow-y-auto px-2 md:px-3 lg:px-4'>{children}</section>
+
+          <Navbar todayData={todayData} />
+          <ResponsiveIndicator />
+        </main>
+        <div
+          className='absolute left-0 top-0 z-20 h-full w-full rounded-2xl bg-gradient-to-tr from-[#010101] to-[#242424] opacity-[4%]'
+          style={{
+            backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')",
+            backgroundRepeat: 'repeat'
+          }}
+        />
+        <div className='grid-pattern absolute left-0 top-0 h-full w-full' />
       </body>
     </html>
   )

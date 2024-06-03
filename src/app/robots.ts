@@ -1,13 +1,14 @@
 import { ENV } from '@/lib/constants'
 
 export default function robots() {
+  const URL = ENV.NEXT_PUBLIC_WEBSITE_URL
   return {
     rules: [
       {
         userAgent: '*'
       }
     ],
-    sitemap: `${ENV.NEXT_PUBLIC_WEBSITE_URL}/sitemap.xml`,
-    host: ENV.NEXT_PUBLIC_WEBSITE_URL
+    sitemap: `${URL}/sitemap.xml`,
+    host: URL
   }
 }

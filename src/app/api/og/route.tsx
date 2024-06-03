@@ -3,13 +3,11 @@ import { NextRequest } from 'next/server'
 
 import { ENV } from '@/lib/constants'
 
-export const runtime = 'edge'
-
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl
   const postTitle = searchParams.get('title')
 
-  const font = fetch(new URL('../../../../public/fonts/outfit-semibold.ttf', import.meta.url)).then(res => res.arrayBuffer())
+  const font = fetch('https://cdn.jsdelivr.net/fontsource/fonts/geist-mono@latest/latin-400-normal.ttf').then(res => res.arrayBuffer())
   const fontData = await font
 
   return new ImageResponse(
@@ -20,35 +18,33 @@ export async function GET(req: NextRequest) {
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',
           justifyContent: 'center',
+          alignItems: 'center',
           backgroundImage: `url(${ENV.NEXT_PUBLIC_WEBSITE_URL}/og-bg.png)`
         }}
       >
-        <div
+        <p
           style={{
-            marginLeft: 190,
-            marginRight: 190,
+            marginLeft: 205,
+            marginRight: 205,
             display: 'flex',
-            fontSize: 130,
-            fontFamily: 'Outfit',
-            letterSpacing: '-0.05em',
+            fontSize: 100,
+            fontFamily: 'Geist Mono',
             fontStyle: 'normal',
-            color: 'white',
-            lineHeight: '120px',
-            whiteSpace: 'pre-wrap'
+            textAlign: 'center',
+            color: '#C6C6C6'
           }}
         >
           {postTitle}
-        </div>
+        </p>
       </div>
     ),
     {
-      width: 1920,
-      height: 1080,
+      width: 1200,
+      height: 620,
       fonts: [
         {
-          name: 'Outfit',
+          name: 'Geist Mono',
           data: fontData,
           style: 'normal'
         }

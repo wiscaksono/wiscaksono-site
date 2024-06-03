@@ -1,32 +1,21 @@
-import { Metadata } from 'next'
-import { ENV } from '@/lib/constants'
-
-const title = '404'
-const description = 'Sorry, i couldn’t find the page you’re looking for.'
-const url = `${ENV.NEXT_PUBLIC_WEBSITE_URL}/404`
-
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: {
-    title,
-    description,
-    url
-  },
-  twitter: {
-    title,
-    description
-  }
-}
-
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
-    <section className='h-dvh flex items-center justify-center flex-col'>
-      <div className='relative text-center'>
-        <h1 className='mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-5xl'>Page not found :(</h1>
-        <p className='mt-6 text-base leading-7 text-off-white'>Sorry, i couldn’t find the page you’re looking for.</p>
-        <div className='absolute w-full h-full bg-secondary blur-2xl top-0 left-0 -z-10 rounded-full' />
-      </div>
-    </section>
+    <pre className='flex h-full flex-col items-center justify-center space-y-5 whitespace-pre-wrap'>
+      <code className='text-[1.4dvh] leading-[0.9] tracking-[-0.1em]'>{ascii}</code>
+      <code className='text-center'>
+        <p>Page not found</p>
+        <p>Sorry, the page you are looking for could not be found.</p>
+      </code>
+    </pre>
   )
 }
+
+const ascii = `
+    ___    _______     ___   
+   /   )  (  __   )   /   )  
+  / /) |  | (  )  |  / /) |  
+ / (_) (_ | | /   | / (_) (_ 
+(____   _)| (/ /) |(____   _)
+     ) (  |   / | |     ) (  
+     | |  |  (__) |     | |  
+     (_)  (_______)     (_) `

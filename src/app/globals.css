@@ -2,109 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-  }
+main {
+  box-shadow:
+    0px 0px 0px 1px rgba(165, 165, 165, 0.04),
+    -9px 9px 9px -0.5px rgba(0, 0, 0, 0.04),
+    -18px 18px 18px -1.5px rgba(0, 0, 0, 0.08),
+    -37px 37px 37px -3px rgba(0, 0, 0, 0.16),
+    -75px 75px 75px -6px rgba(0, 0, 0, 0.24),
+    -150px 150px 150px -12px rgba(0, 0, 0, 0.48);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+.grid-pattern {
+  background-size: 5vh 5vh;
+  background-image: linear-gradient(to right, #444444 2px, transparent 2px), linear-gradient(to bottom, #444444 2px, transparent 2px);
+  background-position: center;
+}
 
-  body {
-    @apply flex items-center justify-center h-dvh w-full overflow-hidden;
-  }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
 
-  main {
-    @apply md:h-[calc(100dvh-10%)] md:w-[calc(100dvw-5%)] h-[calc(100dvh-4%)] w-[calc(100dvw-5%)] bg-background backdrop-blur rounded-lg overflow-hidden border flex flex-col relative z-50 transition-all;
-  }
+::-webkit-scrollbar-thumb {
+  background-color: #444444;
+  border-radius: 10px;
+}
 
-  section {
-    @apply flex-1;
-  }
+::-moz-selection {
+  /* Code for Firefox */
+  color: #ffffffb3;
+  background: #4444444d;
+}
 
-  code {
-    counter-reset: line;
-  }
+::selection {
+  color: #ffffffb3;
+  background: #4444444d;
+}
 
-  code>[data-line]::before {
-    counter-increment: line;
-    content: counter(line);
-    display: inline-block;
-    width: 1rem;
-    margin-right: 2rem;
-    text-align: right;
-    color: gray;
-  }
+code {
+  counter-reset: line;
+}
 
-  code[data-line-numbers-max-digits='2']>[data-line]::before {
-    width: 2rem;
-  }
+code > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
 
-  code[data-line-numbers-max-digits='3']>[data-line]::before {
-    width: 3rem;
-  }
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1.5rem;
+  text-align: right;
+  color: gray;
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+code[data-line-numbers-max-digits='2'] > [data-line]::before {
+  width: 2rem;
+}
 
-  html.light {
-    @apply bg-gray-100;
-  }
-
-  html.light [data-theme='dark'] {
-    display: none;
-  }
-
-  html.dark [data-theme='light'] {
-    display: none;
-  }
-
-  [data-radix-popper-content-wrapper] {
-    border: 0;
-  }
+code[data-line-numbers-max-digits='3'] > [data-line]::before {
+  width: 3rem;
 }

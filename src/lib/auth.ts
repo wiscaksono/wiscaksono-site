@@ -19,11 +19,12 @@ export const {
   auth
 } = NextAuth({
   secret: ENV.AUTH_SECRET,
+  // @ts-ignore
   adapter: PrismaAdapter(db),
   providers: [
     GitHub({
-      clientId: ENV.GITHUB_CLIENT_ID,
-      clientSecret: ENV.GITHUB_CLIENT_SECRET
+      clientId: ENV.GITHUB_CLIENT_ID || '',
+      clientSecret: ENV.GITHUB_CLIENT_SECRET || ''
     })
   ],
   callbacks: {

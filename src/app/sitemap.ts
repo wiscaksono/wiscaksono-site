@@ -1,38 +1,28 @@
-import { MetadataRoute } from 'next'
-import { allAbouts } from 'contentlayer/generated'
-import { allProjects } from 'contentlayer/generated'
-import { allActivity } from './coding-activity/allActivities'
-import { allArticles } from 'contentlayer/generated'
-
 import { ENV } from '@/lib/constants'
+import { getContents } from '@/lib/contents'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const WEBSITE_URL = ENV.NEXT_PUBLIC_WEBSITE_URL
+export default async function sitemap() {
+  const URL = ENV.NEXT_PUBLIC_WEBSITE_URL
 
-  const routes = ['', '/guest-book'].map(route => ({
-    url: `${WEBSITE_URL}${route}`,
+  const routes = ['', '/guest-book', '/articles', '/coding-activity', '/coding-activity/activity', '/coding-activity/editor', '/coding-activity/operating-systems'].map(route => ({
+    url: `${URL}${route}`,
     lastModified: new Date().toISOString().split('T')[0]
   }))
 
-  const abouts = allAbouts.map(about => ({
-    url: `${WEBSITE_URL}/about/${about.title}`,
+  const aboutRoutes = getContents('abouts').map(route => ({
+    url: `${URL}/abouts/${route.slug}`,
     lastModified: new Date().toISOString().split('T')[0]
   }))
 
-  const projects = allProjects.map(project => ({
-    url: `${WEBSITE_URL}/projects/${project.title.toLowerCase()}`,
+  const projectsRoutes = getContents('projects').map(route => ({
+    url: `${URL}/projects/${route.slug}`,
     lastModified: new Date().toISOString().split('T')[0]
   }))
 
-  const activities = allActivity.map(activity => ({
-    url: `${WEBSITE_URL}/coding-activity/${activity.slug.toLowerCase()}`,
+  const articleRoutes = getContents('articles').map(route => ({
+    url: `${URL}/articles/${route.slug}`,
     lastModified: new Date().toISOString().split('T')[0]
   }))
 
-  const articles = allArticles.map(article => ({
-    url: `${WEBSITE_URL}/articles/${article.slug.toLowerCase()}`,
-    lastModified: new Date().toISOString().split('T')[0]
-  }))
-
-  return [...routes, ...abouts, ...projects, ...activities, ...articles]
+  return [...routes, ...aboutRoutes, ...projectsRoutes, ...articleRoutes]
 }
