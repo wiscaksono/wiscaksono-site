@@ -48,7 +48,12 @@ export const weeklyOperatingSystems = async () => {
 }
 
 export const umamiStats = async () => {
-  const res = await fetch(ENV.UMAMI_URL, {
+  const now = new Date()
+  const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
+  const endAt = now.getTime()
+  const url = `${ENV.UMAMI_URL}?startAt=${startOfDay}&endAt=${endAt}`
+
+  const res = await fetch(url, {
     method: 'GET',
     headers: {
       'x-umami-share-token': ENV.UMAMI_SHARE_TOKEN
