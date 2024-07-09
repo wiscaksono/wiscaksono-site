@@ -13,7 +13,7 @@
     "@auth/prisma-adapter": "^2.4.1",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@prisma/client": "^5.15.1",
+    "@prisma/client": "^5.16.1",
     "@rehype-pretty/transformers": "^0.13.2",
     "@types/mdx": "^2.0.13",
     "@vercel/og": "^0.6.2",
