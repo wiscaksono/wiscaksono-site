@@ -25,6 +25,7 @@ export const LennyFace = () => {
         alert(alertMsgs[warningCount])
         if (warningCount === 3) {
           window.close()
+          setWarningCount(0)
           return 0
         }
         setWarningCount(prev => prev + 1)
