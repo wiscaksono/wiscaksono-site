@@ -97,10 +97,10 @@ const menu = [
   }
 ]
 
-// {
-//   process.env.NODE_ENV === 'production' &&
-//     console.log(
-//       '%cHello there! 👋 \nI see you are looking at my code. If you have any questions or want to chat, feel free to reach out to me on Twitter @wiscaksono. I would love to hear from you! 😊. Also, I am open to freelance job opportunities. Have a great day! 🚀',
-//       'font-size: 20px;'
-//     )
-// }
+{
+  process.env.NODE_ENV === 'production' &&
+    console.log(
+      '%cHello there! 👋 \nI see you are looking at my code. If you have any questions or want to chat, feel free to reach out to me on Twitter @wiscaksono. I would love to hear from you! 😊. Also, I am open to freelance job opportunities. Have a great day! 🚀',
+      'font-size: 20px;'
+    )
+}
