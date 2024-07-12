@@ -1,3 +1,14 @@
+export const Heart = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg width='14' height='14' viewBox='0 0 14 14' fill='none' {...props}>
+    <path
+      d='M11.0832 8.16667C11.9523 7.315 12.8332 6.29417 12.8332 4.95833C12.8332 4.10743 12.4952 3.29138 11.8935 2.6897C11.2918 2.08802 10.4757 1.75 9.62484 1.75C8.59817 1.75 7.87484 2.04167 6.99984 2.91667C6.12484 2.04167 5.4015 1.75 4.37484 1.75C3.52393 1.75 2.70788 2.08802 2.1062 2.6897C1.50452 3.29138 1.1665 4.10743 1.1665 4.95833C1.1665 6.3 2.0415 7.32083 2.9165 8.16667L6.99984 12.25L11.0832 8.16667Z'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
 export const Typescript = (props: React.SVGProps<SVGSVGElement>) => (
   <svg width='14' height='14' fill='none' viewBox='0 0 14 14' {...props}>
     <path

@@ -77,7 +77,7 @@ export default async function RootLayout({ children }: Readonly<Props>) {
           }}
         />
         <div className='grid-pattern absolute left-0 top-0 h-full w-full' />
-        <Script defer src='https://umami.wiscaksono.com/script.js' data-website-id='1f3b0505-7366-47bd-8757-95ad25395088' />
+        {process.env.NODE_ENV === 'production' && <Script defer src='https://umami.wiscaksono.com/script.js' data-website-id='1f3b0505-7366-47bd-8757-95ad25395088' />}
       </body>
     </html>
   )

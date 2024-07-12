@@ -2,11 +2,13 @@ import { db } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
 import { createPost } from '@/lib/actions'
 
-import { SignIn, Delete, Submit } from './_components/buttons'
+import { SignIn, Delete, Submit, Like } from './_components/buttons'
 
 export default async function GuestBook() {
-  const posts = await db.post.findMany({ include: { user: true }, orderBy: { createdAt: 'desc' } })
-  const session = await auth()
+  const [posts, session] = await Promise.all([
+    db.post.findMany({ include: { user: true, like: { select: { user: { select: { id: true } } } }, _count: { select: { like: true } } }, orderBy: { createdAt: 'desc' } }),
+    auth()
+  ])
 
   return (
     <>
@@ -31,14 +33,17 @@ export default async function GuestBook() {
       </form>
       <ul className='flex flex-col gap-y-2 divide-y divide-[#898989]/20 text-sm lg:divide-y-0'>
         {posts.map(item => (
-          <li key={item.id} className='flex flex-col gap-1 py-1 lg:flex-row lg:gap-2 lg:border-y-0 lg:py-0'>
+          <li key={item.id} className='flex flex-col gap-1 py-1 lg:flex-row lg:gap-2 lg:border-y-0 lg:py-0 group'>
             <p className='flex-1 truncate lg:w-36 lg:flex-none'>
               <span className='text-[#5de4c7]'>~</span>/{item.user.name.toLowerCase().replace(/\s/g, '-')}
             </p>
             <p className='block lg:hidden'>{item.desc}</p>
             <p className='hidden lg:block'>:</p>
             <p className='hidden flex-1 lg:block'>{item.desc}</p>
-            <div className='hidden lg:block'>{item.user.id === session?.user.id && <Delete id={item.id} />}</div>
+            <div className='flex items-start mt-1 gap-x-1'>
+              {session && <Like postID={item.id} userID={session.user.id} likeCount={item._count.like} likedBy={item.like.map(like => like.user.id)} />}
+              {item.user.id === session?.user.id && <Delete postID={item.id} userID={session.user.id} />}
+            </div>
             <p className='hidden lg:block'>
               {item.createdAt
                 .toLocaleString('en-US', {
