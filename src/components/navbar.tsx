@@ -39,7 +39,7 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
             main
           </a>
         </div>
-        <div className='flex items-center gap-x-2'>
+        <div className='flex items-center gap-x-2 not-sr-only'>
           <p>-- VIEW --</p>
           <span>|</span>
           {pageViews && (
@@ -51,7 +51,7 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
       </div>
       <div className='flex items-center justify-between gap-20 overflow-x-auto px-2 pb-3 leading-none lg:px-0 lg:pb-0'>
         <ul className='flex items-center'>
-          <li className='mr-1 bg-[#898989] px-2 py-0.5 leading-none text-[#131313]'>tmux</li>
+          <li className='mr-1 bg-[#898989] px-2 py-0.5 leading-none text-[#131313] not-sr-only'>tmux</li>
           {menu.map(item => {
             const isActived = segment === item.href.split('/')[1] || (segment === null && item.href === '/')
             return (
@@ -63,7 +63,7 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
             )
           })}
         </ul>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 not-sr-only'>
           <Link href='/coding-activity' className='shrink-0'>
             {todayData.grand_total.text}
           </Link>

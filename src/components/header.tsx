@@ -44,7 +44,7 @@ export const Header = () => {
         <button className='h-3 w-3 rounded-full bg-[#898989]' aria-label='Minimize' onClick={handleMinimize} />
         <button className='h-3 w-3 rounded-full bg-[#898989]' aria-label='Maximize' onClick={handleFullscreen} />
       </div>
-      <p className='mx-auto select-none font-semibold'>iTerm</p>
+      <p className='mx-auto select-none font-semibold not-sr-only'>iTerm</p>
       <LennyFace />
     </header>
   )
