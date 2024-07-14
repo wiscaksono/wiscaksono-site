@@ -12,7 +12,11 @@ export const Nav = () => {
       {menu.map(item => {
         const isActive = params.get('tag')?.toLowerCase() === item.title || (!params.get('tag') && item.title === 'all-projects')
         return (
-          <Link key={item.title} href={item.href} className={`flex shrink-0 items-center gap-1.5 px-3 py-0.5 leading-none transition-all ${isActive && 'bg-[#898989] text-black'}`}>
+          <Link
+            key={item.title}
+            href={item.href}
+            className={`flex shrink-0 items-center gap-1.5 px-3 py-0.5 leading-none transition-all ${isActive ? 'bg-[#969696] text-black' : 'text-[#BDBDBDE6]'}`}
+          >
             {getFileIcon(item.title)}
             {item.title}
           </Link>

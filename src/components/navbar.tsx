@@ -17,7 +17,7 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
     <nav className='select-none overflow-x-auto text-sm md:text-base lg:px-4 lg:py-3'>
       <div className='flex items-center justify-between gap-2 px-2 lg:px-0'>
         <div className='flex items-center gap-2'>
-          <div className='h-4 w-1.5 bg-[#898989]' />
+          <div className='h-4 w-1.5 bg-[#969696]' />
           <a className='flex items-center' href='https://github.com/wiscaksono/wiscaksono-site' target='_blank' rel='norreferrer'>
             <svg
               className='mr-1 h-3 w-3'
@@ -51,12 +51,12 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
       </div>
       <div className='flex items-center justify-between gap-20 overflow-x-auto px-2 pb-3 leading-none lg:px-0 lg:pb-0'>
         <ul className='flex items-center'>
-          <li className='mr-1 bg-[#898989] px-2 py-0.5 leading-none text-[#131313] not-sr-only'>tmux</li>
+          <li className='mr-1 bg-[#969696] px-2 py-0.5 leading-none text-black not-sr-only'>tmux</li>
           {menu.map(item => {
             const isActived = segment === item.href.split('/')[1] || (segment === null && item.href === '/')
             return (
               <li key={item.title} className='shrink-0'>
-                <Link href={item.href} className={`flex items-center gap-1.5 px-2 py-0.5 leading-none transition-all ${isActived && 'bg-[#898989] text-[#131313]'}`}>
+                <Link href={item.href} className={`flex items-center gap-1.5 px-2 py-0.5 leading-none transition-all ${isActived && 'bg-[#969696] text-black'}`}>
                   {item.title}
                 </Link>
               </li>
@@ -67,7 +67,7 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
           <Link href='/coding-activity' className='shrink-0'>
             {todayData.grand_total.text}
           </Link>
-          <p className='shrink-0 bg-[#898989] px-2 py-0.5 leading-none text-[#131313]'>Macbook-Pro-M3</p>
+          <p className='shrink-0 bg-[#969696] px-2 py-0.5 leading-none text-black'>Macbook-Pro-M3</p>
         </div>
       </div>
     </nav>
