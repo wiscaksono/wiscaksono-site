@@ -1,6 +1,6 @@
 'use server'
 import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, unstable_cache } from 'next/cache'
 
 import { db } from './prisma'
 import { auth } from './auth'
@@ -47,12 +47,12 @@ export const unlikePost = async (postID: number, userID: string) => {
   })
 }
 
-export const weeklyCodingActivity = async () => {
+export const weeklyCodingActivity = unstable_cache(async () => {
   const res = await fetch('https://wakatime.com/share/@Wiscaksono/27bef61d-5377-441a-b326-c868eb825328.json', {
     cache: 'no-store'
   })
   return res.json() as Promise<Wakatime.WeeklyCodingActivity>
-}
+}, ['wakatime-weekly-coding-activity'])
 
 export const weeklyCodingLanguanges = async () => {
   const res = await fetch('https://wakatime.com/share/@Wiscaksono/bcd5d5b7-4aa6-48cb-83ee-4de7b6815f2d.json', {
@@ -75,7 +75,7 @@ export const weeklyOperatingSystems = async () => {
   return res.json() as Promise<Wakatime.WeeklyCodeEditor>
 }
 
-export const umamiStats = async () => {
+export const umamiStats = unstable_cache(async () => {
   const now = new Date()
   const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
   const endAt = now.getTime()
@@ -90,4 +90,4 @@ export const umamiStats = async () => {
   })
 
   return res.json() as Promise<UmamiStats>
-}
+}, ['umami-stats'])
