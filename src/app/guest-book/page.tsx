@@ -4,8 +4,6 @@ import { createPost } from '@/lib/actions'
 
 import { SignIn, Delete, Submit, Like } from './_components/buttons'
 
-export const dynamic = 'force-static'
-
 export default async function GuestBook() {
   const [posts, session] = await Promise.all([
     db.post.findMany({ include: { user: true, like: { select: { user: { select: { id: true } } } }, _count: { select: { like: true } } }, orderBy: { createdAt: 'desc' } }),

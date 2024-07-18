@@ -8,8 +8,6 @@ interface Props {
   }
 }
 
-export const dynamic = 'force-static'
-
 export default function Projects({ searchParams }: Props) {
   const technology = searchParams.tag
   const projects = technology ? getContents('projects').filter(project => project.metadata.technology?.includes(technology)) : getContents('projects')

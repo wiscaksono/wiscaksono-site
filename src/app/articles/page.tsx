@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import { getContents } from '@/lib/contents'
 
-export const dynamic = 'force-static'
-
 export default function Articles() {
   const articles = getContents('articles')
   return (

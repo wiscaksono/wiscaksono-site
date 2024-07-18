@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: 'My coding activity for this week.'
 }
 
-export const dynamic = 'force-static'
-
 export default async function ActivityPage() {
   const { data } = await weeklyCodingActivity()
 

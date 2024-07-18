@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: 'This week I spent my time using these operating systems.'
 }
 
-export const dynamic = 'force-static'
-
 export default async function EditorPage() {
   const { data } = await weeklyOperatingSystems()
 
