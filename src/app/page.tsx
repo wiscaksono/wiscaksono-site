@@ -1,3 +1,5 @@
+export const dynamic = 'force-static'
+
 export default function Home() {
   return (
     <pre className='flex h-full flex-col items-center justify-center space-y-2.5 whitespace-pre-wrap md:space-y-5'>

@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: 'This week I spent my time coding in these code editors.'
 }
 
+export const dynamic = 'force-static'
+
 export default async function EditorPage() {
   const { data } = await weeklyCodeEditor()
 

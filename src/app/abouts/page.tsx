@@ -1,4 +1,4 @@
-import { notFound, redirect } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 
 import { getContents } from '@/lib/contents'
 
@@ -7,5 +7,5 @@ export default function About() {
 
   if (!content) notFound()
 
-  return redirect(`/abouts/${content[0].slug}`)
+  return permanentRedirect(`/abouts/${content[0].slug}`)
 }

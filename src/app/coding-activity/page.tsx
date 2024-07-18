@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: 'This week I spent my time coding in these languages.'
 }
 
+export const dynamic = 'force-static'
+
 export default async function CodingActivity() {
   const { data } = await weeklyCodingLanguanges()
 
