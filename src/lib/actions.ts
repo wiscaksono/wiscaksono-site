@@ -47,12 +47,16 @@ export const unlikePost = async (postID: number, userID: string) => {
   })
 }
 
-export const weeklyCodingActivity = unstable_cache(async () => {
-  const res = await fetch('https://wakatime.com/share/@Wiscaksono/27bef61d-5377-441a-b326-c868eb825328.json', {
-    cache: 'no-store'
-  })
-  return res.json() as Promise<Wakatime.WeeklyCodingActivity>
-}, ['wakatime-weekly-coding-activity'])
+export const weeklyCodingActivity = unstable_cache(
+  async () => {
+    const res = await fetch('https://wakatime.com/share/@Wiscaksono/27bef61d-5377-441a-b326-c868eb825328.json', {
+      cache: 'no-store'
+    })
+    return res.json() as Promise<Wakatime.WeeklyCodingActivity>
+  },
+  ['wakatime-weekly-coding-activity'],
+  { revalidate: 3600 } // 1 hours
+)
 
 export const weeklyCodingLanguanges = async () => {
   const res = await fetch('https://wakatime.com/share/@Wiscaksono/bcd5d5b7-4aa6-48cb-83ee-4de7b6815f2d.json', {
@@ -75,19 +79,23 @@ export const weeklyOperatingSystems = async () => {
   return res.json() as Promise<Wakatime.WeeklyCodeEditor>
 }
 
-export const umamiStats = unstable_cache(async () => {
-  const now = new Date()
-  const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
-  const endAt = now.getTime()
-  const url = `${ENV.UMAMI_URL}?startAt=${startOfDay}&endAt=${endAt}`
+export const umamiStats = unstable_cache(
+  async () => {
+    const now = new Date()
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
+    const endAt = now.getTime()
+    const url = `${ENV.UMAMI_URL}?startAt=${startOfDay}&endAt=${endAt}`
 
-  const res = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'x-umami-share-token': ENV.UMAMI_SHARE_TOKEN
-    },
-    cache: 'no-store'
-  })
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'x-umami-share-token': ENV.UMAMI_SHARE_TOKEN
+      },
+      cache: 'no-store'
+    })
 
-  return res.json() as Promise<UmamiStats>
-}, ['umami-stats'])
+    return res.json() as Promise<UmamiStats>
+  },
+  ['umami-stats'],
+  { revalidate: 3600 } // 1 hours
+)
