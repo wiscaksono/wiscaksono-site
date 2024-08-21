@@ -15,7 +15,7 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
 
   return (
     <nav className='select-none overflow-x-auto text-sm md:text-base lg:px-4 lg:py-3'>
-      <div className='flex items-center justify-between gap-2 px-2 lg:px-0'>
+      <div className='items-center justify-between gap-2 px-2 lg:px-0 hidden lg:flex'>
         <div className='flex items-center gap-2'>
           <div className='h-4 w-1.5 bg-[#969696]' />
           <a className='flex items-center' href='https://github.com/wiscaksono/wiscaksono-site' target='_blank' rel='norreferrer'>
@@ -49,7 +49,7 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
           )}
         </div>
       </div>
-      <div className='flex items-center justify-between gap-20 overflow-x-auto px-2 pb-3 leading-none lg:px-0 lg:pb-0'>
+      <div className='flex items-center justify-between gap-20 overflow-x-auto px-2 py-3 leading-none lg:px-0 lg:py-0'>
         <ul className='flex items-center'>
           <li className='mr-1 bg-[#969696] px-2 py-0.5 leading-none text-black not-sr-only'>tmux</li>
           {menu.map(item => {
@@ -63,7 +63,7 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
             )
           })}
         </ul>
-        <div className='flex items-center gap-2 not-sr-only'>
+        <div className='lg:flex hidden items-center gap-2 not-sr-only'>
           <Link href='/coding-activity' className='shrink-0'>
             {todayData.grand_total.text}
           </Link>
@@ -96,11 +96,3 @@ const menu = [
     href: '/articles'
   }
 ]
-
-{
-  process.env.NODE_ENV === 'production' &&
-    console.log(
-      '%cHello there! 👋 \nI see you are looking at my code. If you have any questions or want to chat, feel free to reach out to me on Twitter @wiscaksono. I would love to hear from you! 😊. Also, I am open to freelance job opportunities. Have a great day! 🚀',
-      'font-size: 20px;'
-    )
-}

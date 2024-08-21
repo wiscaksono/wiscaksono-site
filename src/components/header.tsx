@@ -50,7 +50,8 @@ export const Header = () => {
           <div className='h-3 w-3 rounded-full bg-[#898989] group-hover:bg-[#2BC840] transition-colors' />
         </button>
       </div>
-      <p className='mx-auto select-none font-semibold not-sr-only'>iTerm</p>
+      <p className='mx-auto select-none font-semibold not-sr-only hidden lg:block'>iTerm</p>
+      <p className='mx-auto select-none font-semibold not-sr-only lg:hidden block'>Wiscaksono</p>
       <LennyFace />
     </header>
   )
