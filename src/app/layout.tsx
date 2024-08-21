@@ -1,6 +1,7 @@
 import './globals.css'
 import { Metadata } from 'next'
 import Script from 'next/script'
+import { Suspense } from 'react'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 
@@ -62,9 +63,11 @@ export default async function RootLayout({ children }: Readonly<Props>) {
   return (
     <html lang='en'>
       <body className={`${GeistSans.variable} ${GeistMono.variable} grid h-dvh place-items-center bg-[#3D3D3D] font-mono`}>
-        <div className='absolute left-1/2 top-1/2 z-20 h-[calc(95dvh+3px)] w-[calc(90dvw+3px)] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-gradient-to-tr from-transparent to-[#898989]/50 blur-[2px] transition-all lg:h-[calc(80dvh+3px)] lg:w-[calc(80dvw+3px)]' />
-        <main className='z-30 flex h-[95dvh] w-[90dvw] flex-col overflow-hidden rounded-2xl bg-gradient-to-tr from-[#080808] to-[#242424] text-[#898989]/90 transition-all lg:h-[80dvh] lg:w-[80dvw]'>
-          <Header />
+        <div className='absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-gradient-to-tr from-transparent to-[#898989]/50 blur-[2px] transition-all h-[calc(80dvh+3px)] w-[calc(80dvw+3px)] hidden lg:block' />
+        <main className='z-30 flex h-dvh w-dvw flex-col overflow-hidden lg:rounded-2xl bg-gradient-to-tr from-[#080808] to-[#242424] text-[#898989]/90 transition-all lg:h-[80dvh] lg:w-[80dvw]'>
+          <Suspense fallback={null}>
+            <Header />
+          </Suspense>
           <section className='relative flex-1 overflow-y-auto px-2 md:px-3 lg:px-4'>{children}</section>
           <Navbar todayData={todayData} pageViews={pageviews} />
           <ResponsiveIndicator />
