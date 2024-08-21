@@ -4,7 +4,11 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 
 import { LennyFace } from './lenny-face'
 
-export const Header = forwardRef<HTMLDivElement, HTMLAttributes<HTMLElement>>((props, ref) => {
+interface HeaderProps extends HTMLAttributes<HTMLElement> {
+  fullscreen: boolean
+}
+
+export const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -38,7 +42,7 @@ export const Header = forwardRef<HTMLDivElement, HTMLAttributes<HTMLElement>>((p
   }
 
   return (
-    <header className='relative flex items-center justify-between px-4 py-3' ref={ref} {...props}>
+    <header className={`relative flex items-center justify-between px-4 py-3 ${props.fullscreen ? '' : 'cursor-grab active:cursor-grabbing'}`} ref={ref} {...props}>
       <div className='absolute lg:flex items-center top-1/2 -translate-y-1/2 group hidden'>
         <button className='h-6 w-6 rounded-full grid place-items-center' onClick={handleClose} aria-label='Close'>
           <div className='h-3 w-3 rounded-full bg-[#898989] group-hover:bg-[#FF6057] transition-colors' />
