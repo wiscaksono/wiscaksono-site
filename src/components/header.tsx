@@ -42,7 +42,11 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ isFullscreen, .
   }
 
   return (
-    <header className={`relative flex items-center justify-between px-4 py-3 ${isFullscreen ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'}`} ref={ref} {...props}>
+    <header
+      className={`relative flex items-center justify-between px-4 py-3 cursor-default ${isFullscreen ? 'lg:cursor-pointer' : 'lg:cursor-grab lg:active:cursor-grabbing'}`}
+      ref={ref}
+      {...props}
+    >
       <div className='absolute lg:flex items-center top-1/2 -translate-y-1/2 group hidden'>
         <button className='h-6 w-6 rounded-full grid place-items-center' onClick={handleClose} aria-label='Close'>
           <div className='h-3 w-3 rounded-full bg-[#898989] group-hover:bg-[#FF6057] transition-colors' />

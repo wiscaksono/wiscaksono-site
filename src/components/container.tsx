@@ -93,7 +93,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
     <main
       ref={containerRef}
-      className={`z-30 flex flex-col overflow-hidden text-[#898989]/90 lg:h-[80dvh] lg:w-[80dvw] ${isFullscreen ? 'h-dvh w-dvh rounded-none bg-[#161616]' : 'lg:rounded-xl bg-gradient-to-tr from-[#080808] to-[#242424] '}`}
+      className={`z-30 h-dvh w-dvw flex flex-col overflow-hidden text-[#898989]/90 lg:h-[80dvh] lg:w-[80dvw] ${isFullscreen ? 'rounded-none bg-[#161616]' : 'lg:rounded-xl bg-gradient-to-tr from-[#080808] to-[#242424]'}`}
       style={{ transform: `translate(${position.x}px, ${position.y}px)`, transition: dragging ? 'none' : 'transform 0.2s ease-out' }}
     >
       <Header onMouseDown={handleMouseDown} isFullscreen={isFullscreen} onDoubleClick={toggleFullscreen} />
