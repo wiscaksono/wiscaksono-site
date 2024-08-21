@@ -10,7 +10,12 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export const SignIn = (props: Props) => {
   return (
-    <button type='button' onClick={() => signIn('github')} className='flex w-[160px] items-center justify-center gap-2 bg-[#898989] px-2 py-0.5 text-[#131313]' {...props}>
+    <button
+      type='button'
+      onClick={() => signIn('github')}
+      className='flex lg:w-[160px] w-full items-center justify-center gap-2 bg-[#898989] px-2 py-0.5 text-[#131313]'
+      {...props}
+    >
       <GitHub />
       SignIn
     </button>
@@ -67,7 +72,7 @@ export const Like = ({ postID, userID, likeCount, likedBy, ...props }: Props & {
       onClick={handleLike}
       aria-label='Delete'
       disabled={pending || props.disabled}
-      className={`flex items-center gap-x-1 group-hover:opacity-100 opacity-0 transition-opacity ${pending ? 'cursor-not-allowed !opacity-100' : ''} ${props.className ? props.className : ''} `}
+      className={`flex items-center gap-x-1 group-hover:opacity-100 lg:opacity-0 opacity-100 transition-opacity ${pending ? 'cursor-not-allowed !opacity-100' : ''} ${props.className ? props.className : ''} `}
       {...props}
     >
       <span className='leading-none text-xs'>{likeCount}</span>{' '}

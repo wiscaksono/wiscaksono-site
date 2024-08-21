@@ -12,7 +12,8 @@ export default async function GuestBook() {
 
   return (
     <>
-      <form className='mb-2 flex flex-col gap-2 text-sm lg:flex-row lg:items-center' action={createPost}>
+      {/*                                                                                                     v Add key to reset form after submitting */}
+      <form className='mb-2 flex flex-col gap-2 text-sm lg:flex-row lg:items-center' action={createPost} key={+new Date()}>
         <p className='truncate lg:w-36'>
           <span className='text-[#5de4c7]'>~</span>/{session ? session?.user?.name?.toLowerCase().replace(/\s/g, '-') : 'guest'}
         </p>
@@ -40,10 +41,12 @@ export default async function GuestBook() {
             <p className='block lg:hidden'>{item.desc}</p>
             <p className='hidden lg:block'>:</p>
             <p className='hidden flex-1 lg:block'>{item.desc}</p>
-            <div className='flex items-start mt-1 gap-x-1'>
-              {session && <Like postID={item.id} userID={session.user.id} likeCount={item._count.like} likedBy={item.like.map(like => like.user.id)} />}
-              {item.user.id === session?.user.id && <Delete postID={item.id} userID={session.user.id} />}
-            </div>
+            {session && (
+              <div className='flex items-start mt-1 gap-x-1'>
+                {<Like postID={item.id} userID={session.user.id} likeCount={item._count.like} likedBy={item.like.map(like => like.user.id)} />}
+                {item.user.id === session?.user.id && <Delete postID={item.id} userID={session.user.id} />}
+              </div>
+            )}
             <p className='hidden lg:block'>
               {item.createdAt
                 .toLocaleString('en-US', {
