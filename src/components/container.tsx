@@ -8,11 +8,12 @@ import { debounceFunc } from '@/lib/utils'
 export const Container = ({ children }: { children: React.ReactNode }) => {
   const containerRef = useRef<HTMLElement>(null)
 
+  const [isMobile, setIsMobile] = useState(false)
   const [dragging, setDragging] = useState(false)
-  const [fullscreen, setFullscreen] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(false)
+
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isMobile, setIsMobile] = useState(window.matchMedia('(max-width: 768px)').matches)
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -38,13 +39,13 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
   const handleMouseUp = () => setDragging(false)
 
   const toggleFullscreen = useCallback(() => {
-    if (!fullscreen) {
+    if (!isFullscreen) {
       containerRef.current?.requestFullscreen()
     } else {
-      document.exitFullscreen?.()
+      document.exitFullscreen()
     }
-    setFullscreen(prev => !prev)
-  }, [fullscreen])
+    setIsFullscreen(prev => !prev)
+  }, [isFullscreen])
 
   const updateMobileState = useCallback(() => {
     const mobile = window.matchMedia('(max-width: 768px)').matches
@@ -81,7 +82,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      if (!document.fullscreenElement) setFullscreen(false)
+      if (!document.fullscreenElement) setIsFullscreen(false)
     }
 
     document.addEventListener('fullscreenchange', handleFullscreenChange)
@@ -92,11 +93,11 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
     <main
       ref={containerRef}
-      className={`z-30 flex flex-col overflow-hidden bg-gradient-to-tr from-[#080808] to-[#242424] text-[#898989]/90 lg:h-[80dvh] lg:w-[80dvw] ${fullscreen ? 'h-dvh w-dvh rounded-none' : 'lg:rounded-2xl'}`}
+      className={`z-30 flex flex-col overflow-hidden text-[#898989]/90 lg:h-[80dvh] lg:w-[80dvw] ${isFullscreen ? 'h-dvh w-dvh rounded-none bg-[#161616]' : 'lg:rounded-xl bg-gradient-to-tr from-[#080808] to-[#242424] '}`}
       style={{ transform: `translate(${position.x}px, ${position.y}px)`, transition: dragging ? 'none' : 'transform 0.2s ease-out' }}
       onDoubleClick={toggleFullscreen}
     >
-      <Header onMouseDown={handleMouseDown} fullscreen={fullscreen} />
+      <Header onMouseDown={handleMouseDown} isFullscreen={isFullscreen} />
       {children}
     </main>
   )

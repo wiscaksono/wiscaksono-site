@@ -69,10 +69,7 @@ export default async function RootLayout({ children }: Readonly<Props>) {
         <ResponsiveIndicator />
         <div
           className='absolute left-0 top-0 z-20 h-full w-full rounded-2xl bg-gradient-to-tr from-[#010101] to-[#242424] opacity-[4%]'
-          style={{
-            backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')",
-            backgroundRepeat: 'repeat'
-          }}
+          style={{ backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')", backgroundRepeat: 'repeat' }}
         />
         <div className='grid-pattern absolute left-0 top-0 h-full w-full' />
         {process.env.NODE_ENV === 'production' && <Script defer src='https://umami.wiscaksono.com/script.js' data-website-id='1f3b0505-7366-47bd-8757-95ad25395088' />}
