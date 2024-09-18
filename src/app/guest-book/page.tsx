@@ -27,6 +27,7 @@ export default async function GuestBook() {
           autoFocus
           required
           minLength={3}
+          maxLength={140}
           autoComplete='off'
           disabled={!session}
         />
