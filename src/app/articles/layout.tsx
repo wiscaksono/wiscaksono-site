@@ -11,5 +11,5 @@ interface Props {
 }
 
 export default function ArticlesLayout({ children }: Readonly<Props>) {
-  return { children }
+  return children
 }

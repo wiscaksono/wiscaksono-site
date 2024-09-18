@@ -3,6 +3,7 @@ import { getContents } from '@/lib/contents'
 
 export default function Articles() {
   const articles = getContents('articles')
+
   return (
     <div className='grid gap-2 lg:grid-cols-2'>
       {articles.map(article => (
