@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import Script from 'next/script'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import { ViewTransitions } from 'next-view-transitions'
 
 import { Navbar } from '@/components/navbar'
 import { Container } from '@/components/container'
@@ -60,20 +61,22 @@ export default async function RootLayout({ children }: Readonly<Props>) {
   const { pageviews } = umamiData
 
   return (
-    <html lang='en'>
-      <body className={`${GeistSans.variable} ${GeistMono.variable} grid h-dvh place-items-center bg-[#3D3D3D] font-mono overflow-hidden`}>
-        <Container>
-          <section className='relative flex-1 overflow-y-auto px-2 md:px-3 lg:px-4'>{children}</section>
-          <Navbar todayData={todayData} pageViews={pageviews} />
-        </Container>
-        <ResponsiveIndicator />
-        <div
-          className='absolute left-0 top-0 z-20 h-full w-full rounded-2xl bg-gradient-to-tr from-[#010101] to-[#242424] opacity-[4%]'
-          style={{ backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')", backgroundRepeat: 'repeat' }}
-        />
-        <div className='grid-pattern absolute left-0 top-0 h-full w-full' />
-        {process.env.NODE_ENV === 'production' && <Script defer src='https://umami.wiscaksono.com/script.js' data-website-id='1f3b0505-7366-47bd-8757-95ad25395088' />}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang='en'>
+        <body className={`${GeistSans.variable} ${GeistMono.variable} grid h-dvh place-items-center bg-[#3D3D3D] font-mono overflow-hidden`}>
+          <Container>
+            <section className='relative flex-1 overflow-y-auto px-2 md:px-3 lg:px-4'>{children}</section>
+            <Navbar todayData={todayData} pageViews={pageviews} />
+          </Container>
+          <ResponsiveIndicator />
+          <div
+            className='absolute left-0 top-0 z-20 h-full w-full rounded-2xl bg-gradient-to-tr from-[#010101] to-[#242424] opacity-[4%]'
+            style={{ backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')", backgroundRepeat: 'repeat' }}
+          />
+          <div className='grid-pattern absolute left-0 top-0 h-full w-full' />
+          {process.env.NODE_ENV === 'production' && <Script defer src='https://umami.wiscaksono.com/script.js' data-website-id='1f3b0505-7366-47bd-8757-95ad25395088' />}
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }
