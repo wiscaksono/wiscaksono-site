@@ -34,7 +34,7 @@
 		"sharp": "^0.33.5"
 	},
 	"devDependencies": {
-		"@faker-js/faker": "^8.4.1",
+		"@faker-js/faker": "^9.0.3",
 		"@tailwindcss/typography": "^0.5.14",
 		"@types/node": "^22.5.5",
 		"@types/react": "^18.3.4",
