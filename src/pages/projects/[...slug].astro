@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const projectEntries = await getCollection('projects');
+  return projectEntries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+export const prerender = true;
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={entry.data.title + ' - Projects'} description={entry.data.summary} openGraphImage={entry.data.image.src}>
+  <article
+    class="prose prose-neutral prose-invert mx-auto font-sans prose-headings:text-[#C6C6C6] prose-p:text-[#898989] prose-a:text-[#C6C6C6] prose-strong:text-[#C6C6C6] prose-img:mt-0"
+  >
+    <Content />
+  </article>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+
+import Icons from '@/components/Icons.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const aboutEntries = await getCollection('abouts');
+  return aboutEntries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+export const prerender = true;
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const aboutEntries = await getCollection('abouts');
+const menu = aboutEntries.map((entry) => ({ title: entry.data.title, slug: entry.slug, icon: entry.data.icon }));
+
+const pathname = new URL(Astro.request.url).pathname;
+const isActive = (href: string) => pathname.endsWith(href);
+---
+
+<BaseLayout title={entry.id.split('.')[0]! + ' - Abouts'} description={entry.data.summary}>
+  <nav class="sticky top-0 z-50 mb-2 flex select-none items-center overflow-x-auto bg-[#232323]">
+    {
+      menu.map((item) => (
+        <a
+          href={item.slug}
+          class={`flex shrink-0 items-center gap-1.5 px-3 py-0.5 leading-none transition-all ${isActive(item.slug) ? 'bg-[#969696] text-black' : 'text-[#BDBDBDE6]'}`}
+        >
+          <Icons name={item.icon as 'typescript' | 'go' | 'react' | 'react-native' | 'next' | 'html'} />
+          {item.title}
+        </a>
+      ))
+    }
+  </nav>
+  <Content />
+</BaseLayout>

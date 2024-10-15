@@ -1,0 +1,22 @@
+---
+import { actions } from 'astro:actions';
+import Icons from '@/components/Icons.astro';
+
+interface Props {
+  postID: number;
+  userID: string;
+  likeCount: number;
+  likedBy: string[];
+}
+
+const { postID, userID, likeCount, likedBy } = Astro.props;
+const isLiked = likedBy.includes(userID);
+---
+
+<form method="POST" action={actions.likeUnlikePost}>
+  <input type="hidden" value={postID} name="postID" />
+  <button type="submit" class="flex items-center gap-x-1 group-hover:opacity-100 lg:opacity-0 opacity-100 transition-opacity">
+    <span class="leading-none text-xs">{likeCount}</span>{' '}
+    <Icons name="heart" class={`stroke-[#898989]/90 ${isLiked && 'fill-[#898989]'}`} />
+  </button>
+</form>

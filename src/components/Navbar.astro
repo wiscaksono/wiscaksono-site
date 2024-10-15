@@ -1,0 +1,77 @@
+---
+const menu = [
+  {
+    title: 'home',
+    href: '/',
+  },
+  {
+    title: 'abouts',
+    href: '/abouts',
+  },
+  {
+    title: 'projects',
+    href: '/projects',
+  },
+  {
+    title: 'guest-book',
+    href: '/guest-book',
+  },
+  {
+    title: 'articles',
+    href: '/articles',
+  },
+] as const;
+
+const pathname = new URL(Astro.request.url).pathname;
+
+const isActive = (href: string) => {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+};
+---
+
+<nav class="select-none overflow-x-auto text-sm md:text-base lg:px-4 lg:py-3">
+  <div class="items-center justify-between gap-2 px-2 lg:px-0 hidden lg:flex">
+    <div class="flex items-center gap-2">
+      <div class="h-4 w-1.5 bg-[#969696]"></div>
+      <a class="flex items-center" href="https://github.com/wiscaksono/wiscaksono-site" target="_blank" rel="norreferrer">
+        <svg
+          class="mr-1 h-3 w-3"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="6" x2="6" y1="3" y2="15"></line>
+          <circle cx="18" cy="6" r="3"></circle>
+          <circle cx="6" cy="18" r="3"></circle>
+          <path d="M18 9a9 9 0 0 1-9 9"></path>
+        </svg>
+        main
+      </a>
+    </div>
+    <div class="flex items-center gap-x-2 not-sr-only">
+      <p>-- VIEW --</p>
+    </div>
+  </div>
+  <div class="flex items-center justify-between gap-20 overflow-x-auto px-2 py-3 leading-none lg:px-0 lg:py-0">
+    <ul class="flex items-center">
+      <li class="mr-1 bg-[#969696] px-2 py-0.5 leading-none text-black not-sr-only">tmux</li>
+      {
+        menu.map((item) => (
+          <li class="shrink-0">
+            <a href={item.href} class={`flex items-center gap-1.5 px-2 py-0.5 leading-none transition-all ${isActive(item.href) && 'bg-[#969696] text-black'}`}>
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="shrink-0 bg-[#969696] px-2 py-0.5 leading-none text-black">Macbook-Pro-M3</p>
+  </div>
+</nav>

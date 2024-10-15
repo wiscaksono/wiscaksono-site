@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const projects = await getCollection('projects');
+---
+
+<BaseLayout
+  title="Projects"
+  description="Discover the interactive brilliance of my projects, peruse my polished portfolio, and delve into a sneak peek of my formidable technical prowess. Uncover a world where innovation meets functionality, showcased through a meticulously crafted Next.js application. Elevate your digital experience with a seamless blend of creativity and technical finesse."
+>
+  <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {
+      projects.map((project) => (
+        <a href={`/projects/${project.slug}`} class="divide-y divide-[#898989]/20 overflow-hidden border border-[#898989]/20">
+          <figure class="group relative aspect-video">
+            <Image src={project.data.image} alt={project.data.title} class="aspect-video" />
+            <div class="absolute left-0 top-0 grid h-full w-full place-items-center bg-[#080808]/90 transition-opacity duration-500 group-hover:opacity-0">
+              <p class="text-center text-3xl font-semibold uppercase">{project.data.title}</p>
+            </div>
+            <ul class="absolute left-1 bottom-1 text-xs flex items-center gap-1 group-hover:opacity-0 transition-opacity">
+              {project.data.technologies?.map((tag: string, index: number) => (
+                <li>
+                  {tag}
+                  {index < project.data.technologies.length - 1 && '|'}{' '}
+                </li>
+              ))}
+            </ul>
+            <div class="absolute left-0 top-0 h-full w-full opacity-[2%] group-hover:opacity-0" style={{ backgroundImage: "url('/noise.png')", backgroundRepeat: 'repeat' }} />
+          </figure>
+          <div class="p-2">
+            <p class="line-clamp-4 text-sm">{project.data.summary}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</BaseLayout>

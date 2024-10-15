@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export const prerender = true;
+
+const ascii = ` _______  _______  _______ 
+|       ||  _    ||  _    |
+|   ____|| | |   || | |   |
+|  |____ | | |   || | |   |
+|_____  || |_|   || |_|   |
+ _____| ||       ||       |
+|_______||_______||_______|`;
+---
+
+<BaseLayout>
+  <pre
+    class="flex h-full flex-col items-center justify-center space-y-5 whitespace-pre-wrap">
+      <code class='text-[1.4dvh] leading-[0.9] tracking-[-0.1em]'>{ascii}</code>
+      <code class='text-center'>
+        <span>Something went wrong</span>
+        <span>Sorry, an error occurred while processing your request.</span>
+      </code>
+    </pre>
+</BaseLayout>

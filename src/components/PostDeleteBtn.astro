@@ -1,0 +1,17 @@
+---
+import { actions } from 'astro:actions';
+import Icons from '@/components/Icons.astro';
+
+interface Props {
+  postID: number;
+}
+
+const { postID } = Astro.props;
+---
+
+<form method="POST" action={actions.deletePost}>
+  <input type="hidden" value={postID} name="postID" />
+  <button type="submit">
+    <Icons name="close" />
+  </button>
+</form>

@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const articleEntries = await getCollection('articles');
+  return articleEntries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+export const prerender = true;
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={entry.data.title + ' - Articles'} description={entry.data.summary}>
+  <article
+    class="prose prose-neutral prose-invert mx-auto font-sans prose-headings:text-[#C6C6C6] prose-p:text-[#898989] prose-a:text-[#C6C6C6] prose-strong:text-[#C6C6C6] prose-img:mt-0 prose-img:w-full min-h-[346px] prose-pre:!bg-[#1b1e28]/50"
+  >
+    <Content />
+  </article>
+</BaseLayout>

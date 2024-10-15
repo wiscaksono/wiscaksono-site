@@ -1,0 +1,68 @@
+---
+import '@fontsource/geist-mono';
+import '@fontsource/geist-sans';
+import '@/styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+
+import Header from '@/components/Header.astro';
+import Navbar from '@/components/Navbar.astro';
+import ReponsiveIndicator from '@/components/ReponsiveIndicator.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  openGraphImage?: string;
+}
+
+const { title, description, openGraphImage } = Astro.props;
+
+const defaultTitle = title ?? 'Wiscaksono';
+const defaultDescription =
+  description ??
+  "Get to know me, Wisnu Wicaksono, through this website! I'm a passionate frontend developer and electrical engineering student, and I've poured my skills and creativity into building this site with Next.js and Tailwind CSS. Explore my interactive projects, clean portfolio, and a glimpse into my technical expertise. If you're seeking a talented developer for your next project or simply looking for inspiration, feel free to get in touch!";
+
+const defaultOpenGraphImage = openGraphImage ?? `${import.meta.env.APP_URL}/api/open-graph.png?text=${defaultTitle}`;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{defaultTitle}</title>
+    <meta name="description" content={defaultDescription} />
+
+    <meta property="og:url" content="https://wiscaksono.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={defaultTitle} />
+    <meta property="og:description" content={defaultDescription} />
+    <meta property="og:image" content={defaultOpenGraphImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="wiscaksono.com" />
+    <meta property="twitter:url" content="https://wiscaksono.com" />
+    <meta name="twitter:title" content={defaultTitle} />
+    <meta name="twitter:description" content={defaultDescription} />
+    <meta name="twitter:image" content={defaultOpenGraphImage} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <ViewTransitions />
+  </head>
+  <body class="font-mono grid h-dvh place-items-center bg-[#3D3D3D] overflow-hidden">
+    <main class="z-30 h-dvh w-dvw flex flex-col overflow-hidden text-[#898989]/90 lg:h-[80dvh] lg:w-[80dvw] lg:rounded-xl bg-gradient-to-tr from-[#080808] to-[#242424]">
+      <Header />
+      <section class="relative flex-1 overflow-y-auto px-2 md:px-3 lg:px-4">
+        <slot />
+      </section>
+      <Navbar />
+    </main>
+    <ReponsiveIndicator />
+    <div class="grid-pattern absolute left-0 top-0 h-full w-full"></div>
+    <div
+      class="absolute left-0 top-0 z-20 h-full w-full rounded-2xl bg-gradient-to-tr from-[#010101] to-[#242424] opacity-[4%]"
+      style={{ backgroundImage: "url('/noise.png')", backgroundRepeat: 'repeat' }}
+    >
+    </div>
+    {import.meta.env.MODE === 'production' && <script is:inline src={`${import.meta.env.UMAMI_URL}/script.js`} data-website-id={`${import.meta.env.UMAMI_WEBSITE_ID}`} />}
+  </body>
+</html>
