@@ -6,13 +6,14 @@ import { ENV } from '@/lib/constants'
 import { getContents } from '@/lib/contents'
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata | undefined> {
-  let project = getContents('articles').find(post => post.slug.toLowerCase() === params.slug.toLowerCase())
+  const { slug } = await params
+  let project = getContents('articles').find(post => post.slug.toLowerCase() === slug.toLowerCase())
   if (!project) return
 
   let { title, summary: description, image } = project.metadata
@@ -46,8 +47,9 @@ export async function generateStaticParams() {
   return projects.map(project => ({ slug: project.slug.toLowerCase() }))
 }
 
-export default function ArticlePage({ params }: Props) {
-  const project = getContents('articles').find(project => project.slug.toLowerCase() === params.slug.toLowerCase())
+export default async function ArticlePage({ params }: Props) {
+  const { slug } = await params
+  const project = getContents('articles').find(project => project.slug.toLowerCase() === slug.toLowerCase())
   if (!project) notFound()
 
   return <MDXRenderer source={project.content} />

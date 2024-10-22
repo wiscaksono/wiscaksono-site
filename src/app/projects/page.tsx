@@ -3,14 +3,14 @@ import { Link } from 'next-view-transitions'
 import { getContents } from '@/lib/contents'
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     tag?: string
-  }
+  }>
 }
 
-export default function Projects({ searchParams }: Props) {
-  const technology = searchParams.tag
-  const projects = technology ? getContents('projects').filter(project => project.metadata.technology?.includes(technology)) : getContents('projects')
+export default async function Projects({ searchParams }: Props) {
+  const { tag } = await searchParams
+  const projects = tag ? getContents('projects').filter(project => project.metadata.technology?.includes(tag)) : getContents('projects')
 
   return (
     <div className='grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>

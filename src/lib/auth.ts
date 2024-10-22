@@ -19,7 +19,6 @@ export const {
   auth
 } = NextAuth({
   secret: ENV.AUTH_SECRET,
-  // @ts-ignore
   adapter: PrismaAdapter(db),
   providers: [
     GitHub({

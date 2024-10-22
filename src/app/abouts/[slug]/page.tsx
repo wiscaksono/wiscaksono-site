@@ -6,17 +6,18 @@ import { ENV } from '@/lib/constants'
 import { getContents } from '@/lib/contents'
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata | undefined> {
-  let project = getContents('abouts').find(post => post.slug === params.slug)
+  const { slug } = await params
+  let project = getContents('abouts').find(post => post.slug === slug)
   if (!project) return
 
   let { summary: description, image } = project.metadata
-  const title = params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
+  const title = slug.charAt(0).toUpperCase() + slug.slice(1)
   let ogImage = image ? `${ENV.NEXT_PUBLIC_WEBSITE_URL}${image}` : `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
   return {
@@ -47,8 +48,9 @@ export async function generateStaticParams() {
   return projects.map(project => ({ slug: project.slug }))
 }
 
-export default function AboutPage({ params }: Props) {
-  const project = getContents('abouts').find(project => project.slug === params.slug)
+export default async function AboutPage({ params }: Props) {
+  const { slug } = await params
+  const project = getContents('abouts').find(project => project.slug === slug)
   if (!project) notFound()
 
   return (
