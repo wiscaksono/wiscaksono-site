@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import React, { useState, useEffect, useRef, memo } from 'react'
+import React, { useState, useEffect, useRef, memo, useCallback } from 'react'
 
 interface PupilPosition {
   x: number
@@ -95,7 +95,7 @@ const Eye: React.FC = memo(() => {
     }
   }, [])
 
-  const updatePupilPosition = (mouseX: number, mouseY: number) => {
+  const updatePupilPosition = useCallback((mouseX: number, mouseY: number) => {
     if (!eyeRef.current) return
 
     const eyeRect = eyeRef.current.getBoundingClientRect()
@@ -109,7 +109,7 @@ const Eye: React.FC = memo(() => {
     const y = 50 + ((Math.sin(angle) * distance) / (eyeRect.height / 2)) * 100
 
     targetPositionRef.current = { x, y }
-  }
+  }, [])
 
   return (
     <div ref={eyeRef} className='size-3.5 border rounded-full bg-transparent border-[#898989] grid place-items-center'>

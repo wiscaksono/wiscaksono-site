@@ -2,15 +2,7 @@
 import { Link } from 'next-view-transitions'
 import { useSelectedLayoutSegment } from 'next/navigation'
 
-import type { WeeklyCodingActivity } from '@/types/wakatime'
-import type { UmamiStats } from '@/types/umami'
-
-interface Props {
-  todayData: WeeklyCodingActivity['data'][0]
-  pageViews: UmamiStats['pageviews']
-}
-
-export const Navbar = ({ todayData, pageViews }: Props) => {
+export const Navbar = () => {
   const segment = useSelectedLayoutSegment()
 
   return (
@@ -41,12 +33,6 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
         </div>
         <div className='flex items-center gap-x-2 not-sr-only'>
           <p>-- VIEW --</p>
-          <span>|</span>
-          {pageViews && (
-            <a href='https://umami.wiscaksono.com/share/gO4ZH0hMg8m2KbHw/wiscaksono.com' target='_blank'>
-              {pageViews.value} Views today
-            </a>
-          )}
         </div>
       </div>
       <div className='flex items-center justify-between gap-20 overflow-x-auto px-2 py-3 leading-none lg:px-0 lg:py-0'>
@@ -64,9 +50,6 @@ export const Navbar = ({ todayData, pageViews }: Props) => {
           })}
         </ul>
         <div className='lg:flex hidden items-center gap-2 not-sr-only'>
-          <Link href='/coding-activity' className='shrink-0'>
-            {todayData.grand_total.text}
-          </Link>
           <p className='shrink-0 bg-[#969696] px-2 py-0.5 leading-none text-black'>Macbook-Pro-M3</p>
         </div>
       </div>

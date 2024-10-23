@@ -1,5 +1,5 @@
 'use client'
-import { forwardRef, HTMLAttributes } from 'react'
+import { forwardRef, HTMLAttributes, Suspense } from 'react'
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 
 import { LennyFace } from './lenny-face'
@@ -60,7 +60,9 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ isFullscreen, .
       </div>
       <p className='mx-auto select-none font-semibold not-sr-only hidden lg:block'>iTerm</p>
       <p className='mx-auto select-none font-semibold not-sr-only lg:hidden block'>Wiscaksono</p>
-      <LennyFace />
+      <Suspense fallback={null}>
+        <LennyFace />
+      </Suspense>
     </header>
   )
 })

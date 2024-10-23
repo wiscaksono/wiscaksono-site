@@ -54,19 +54,13 @@ interface Props {
 }
 
 export default async function RootLayout({ children }: Readonly<Props>) {
-  const [weeklyData, umamiData] = await Promise.all([weeklyCodingActivity(), umamiStats()])
-  const data = weeklyData.data
-  const todayData = data[data.length - 1]
-
-  const { pageviews } = umamiData
-
   return (
     <ViewTransitions>
       <html lang='en'>
         <body className={`${GeistSans.variable} ${GeistMono.variable} grid h-dvh place-items-center bg-[#3D3D3D] font-mono overflow-hidden`}>
           <Container>
             <section className='relative flex-1 overflow-y-auto px-2 md:px-3 lg:px-4'>{children}</section>
-            <Navbar todayData={todayData} pageViews={pageviews} />
+            <Navbar />
           </Container>
           <ResponsiveIndicator />
           <div
