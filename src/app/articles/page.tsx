@@ -1,7 +1,7 @@
 import { Link } from 'next-view-transitions'
 import { getContents } from '@/lib/contents'
 
-export default function Articles() {
+export default async function Articles() {
   const articles = getContents('articles')
 
   return (
