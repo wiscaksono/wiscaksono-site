@@ -10,7 +10,6 @@ import { Container } from '@/components/container'
 import { ResponsiveIndicator } from '@/components/responsive-indicator'
 
 import { ENV } from '@/lib/constants'
-import { weeklyCodingActivity, umamiStats } from '@/lib/actions'
 
 export const metadata: Metadata = {
   metadataBase: new URL(ENV.NEXT_PUBLIC_WEBSITE_URL),
