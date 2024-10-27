@@ -1,10 +1,11 @@
 import { getRandomWidth } from '@/lib/utils'
 
-export default function Loader() {
+export default function Loading() {
   return (
     <div className='grid gap-2 lg:grid-cols-2'>
       {[...Array(2)].map((_, index) => (
         <div
+          key={index}
           className='flex flex-col gap-y-2 border border-[#898989]/10 p-2 md:gap-y-2.5 lg:gap-y-5'
           style={{
             animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',

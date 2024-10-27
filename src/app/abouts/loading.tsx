@@ -1,4 +1,4 @@
-export default function CodeBlockLoader() {
+export default function Loading() {
   const lines = [
     { width: '70%', indent: 0, hasEqual: true },
     { width: '0%', indent: 0 },

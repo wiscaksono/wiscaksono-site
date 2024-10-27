@@ -18,6 +18,11 @@ main {
   background-position: center;
 }
 
+.bg-radial {
+  background: #5d5d5d;
+  background: linear-gradient(225deg, #5d5d5d, #3d3d3d);
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

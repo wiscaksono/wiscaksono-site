@@ -1,10 +1,11 @@
 import { getRandomWidth } from '@/lib/utils'
 
-export default function Loader() {
+export default function Loading() {
   return (
     <ul className='flex flex-col gap-y-2 divide-y divide-[#898989]/20 text-sm lg:divide-y-0'>
       {[...Array(50)].map((_, index) => (
         <li
+          key={index}
           className='flex flex-col gap-1 py-1 lg:flex-row lg:gap-2 lg:border-y-0 lg:py-0'
           style={{ animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite', animationDelay: `${index * 100}ms` }}
         >

@@ -8,7 +8,16 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
         mono: ['var(--font-geist-mono)']
-      }
+      },
+      keyframes: {
+        'animate-grain': {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '10%, 30%, 50%, 70%, 90%': { transform: 'translate(-5%, -10%)' },
+          '20%, 40%, 60%, 80%, 100%': { transform: 'translate(-15%, -20%)' }
+        }
+      },
+      animation: { grain: 'animate-grain 8s steps(10) infinite' },
+      backgroundImage: { 'grain-noise': "url('/grain.webp')" }
     }
   },
   plugins: [require('@tailwindcss/typography')]

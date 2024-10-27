@@ -62,10 +62,7 @@ export default async function RootLayout({ children }: Readonly<Props>) {
             <Navbar />
           </Container>
           <ResponsiveIndicator />
-          <div
-            className='absolute left-0 top-0 z-20 h-full w-full rounded-2xl bg-gradient-to-tr from-[#010101] to-[#242424] opacity-[4%]'
-            style={{ backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')", backgroundRepeat: 'repeat' }}
-          />
+          <div className='fixed h-[300%] w-[300%] bg-grain-noise opacity-5 animate-grain pointer-events-none top-0' aria-hidden='true' />
           <div className='grid-pattern absolute left-0 top-0 h-full w-full' />
           {process.env.NODE_ENV === 'production' && <Script defer src='https://umami.wiscaksono.com/script.js' data-website-id='1f3b0505-7366-47bd-8757-95ad25395088' />}
         </body>

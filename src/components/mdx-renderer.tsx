@@ -23,7 +23,7 @@ export const MDXRenderer = ({ source, components, limitWidth = true }: Props) =>
         <Image
           src={src!}
           alt={alt!}
-          className='mx-auto my-0 object-cover object-center md:max-w-[80%] bg-[#898989]'
+          className='mx-auto my-0 object-cover object-center md:max-w-[80%] bg-[#898989]/10'
           priority
           width={820}
           height={492}
