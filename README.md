@@ -28,6 +28,7 @@ pnpm dev
 
 Create a .env file similar to .env.example.
 
-## Cloning / Forking
-
-Please review the [license](https://github.com/wiscaksono/wiscaksono-site/blob/master/LICENSE.txt) and remove all of my personal content.
+## License
+1. You are free to use this code as inspiration.
+2. Please do not copy it directly.
+3. Crediting the author is appreciated.
