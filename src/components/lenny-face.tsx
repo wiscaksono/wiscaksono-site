@@ -1,6 +1,4 @@
 'use client'
-
-import { useSearchParams } from 'next/navigation'
 import React, { useState, useEffect, useRef, memo, useCallback } from 'react'
 
 interface PupilPosition {
@@ -8,37 +6,12 @@ interface PupilPosition {
   y: number
 }
 
-const alertMsgs = ['Hey! Please stop clicking me!', 'I told you to stop!', 'You are annoying! Fxck off!']
-
 export const LennyFace = () => {
-  const [_, setClickCount] = useState(0)
-  const [warningCount, setWarningCount] = useState(0)
-  const [maxCount, setMaxCount] = useState(Math.floor(Math.random() * 5) + 1)
-
-  const searchParams = useSearchParams()
-  const isFxck = searchParams.get('fxck')
-
-  const handleClick = () => {
-    setClickCount(prevCount => {
-      const newCount = prevCount + 1
-      if (newCount === maxCount) {
-        alert(alertMsgs[warningCount])
-        if (warningCount === 3) {
-          window.close()
-          setWarningCount(0)
-          return 0
-        }
-        setWarningCount(prev => prev + 1)
-        setMaxCount(Math.floor(Math.random() * 5) + prevCount + 5)
-        return 0
-      }
-      return newCount
-    })
-  }
+  const [clicked, setClicked] = useState(false)
 
   return (
-    <div className='lg:flex items-center absolute top-1/2 -translate-y-1/2 right-4 select-none not-sr-only hidden' onClick={handleClick}>
-      {isFxck && <p className='mb-1.5 mr-2'>╭∩╮</p>}
+    <div className='lg:flex items-center absolute top-1/2 -translate-y-1/2 right-4 select-none not-sr-only hidden' onClick={() => setClicked(!clicked)}>
+      {clicked && <p className='mb-1.5 mr-2'>╭∩╮</p>}
       <div className='flex items-center space-x-1.5'>
         <Eye />
         <span className='mt-1.5'>‿</span>
@@ -48,7 +21,7 @@ export const LennyFace = () => {
   )
 }
 
-const Eye: React.FC = memo(() => {
+const Eye = memo(() => {
   const [pupilPosition, setPupilPosition] = useState<PupilPosition>({ x: 50, y: 50 })
   const eyeRef = useRef<HTMLDivElement>(null)
   const rafRef = useRef<number | null>(null)

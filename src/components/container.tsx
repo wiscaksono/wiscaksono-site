@@ -43,15 +43,16 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
       containerRef.current?.requestFullscreen()
     } else {
       document.exitFullscreen()
+      setOffset({ x: 0, y: 0 })
+      setPosition({ x: 0, y: 0 })
+      setIsFullscreen(false)
     }
     setIsFullscreen(prev => !prev)
   }, [isFullscreen])
 
   const updateMobileState = useCallback(() => {
     const mobile = window.matchMedia('(max-width: 768px)').matches
-    if (mobile && !isMobile) {
-      setPosition({ x: 0, y: 0 })
-    }
+    if (mobile && !isMobile) setPosition({ x: 0, y: 0 })
     setIsMobile(mobile)
   }, [isMobile])
 
@@ -84,9 +85,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
     const handleFullscreenChange = () => {
       if (!document.fullscreenElement) setIsFullscreen(false)
     }
-
     document.addEventListener('fullscreenchange', handleFullscreenChange)
-
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange)
   }, [])
 
@@ -97,7 +96,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
       style={{ transform: `translate(${position.x}px, ${position.y}px)`, transition: dragging ? 'none' : 'transform 0.2s ease-out' }}
     >
       <Suspense fallback={null}>
-        <Header onMouseDown={handleMouseDown} isFullscreen={isFullscreen} onDoubleClick={toggleFullscreen} />
+        <Header onMouseDown={handleMouseDown} isFullscreen={isFullscreen} onDoubleClick={toggleFullscreen} toggleFullscreen={toggleFullscreen} />
       </Suspense>
       {children}
     </main>

@@ -12,7 +12,6 @@ export default async function GuestBook() {
 
   return (
     <>
-      {/*                                                                                                     v Add key to reset form after submitting */}
       <form className='mb-2 flex flex-col gap-2 text-sm lg:flex-row lg:items-center' action={createPost} key={+new Date()}>
         <p className='truncate lg:w-36'>
           <span className='text-[#5de4c7]'>~</span>/{session ? session?.user?.name?.toLowerCase().replace(/\s/g, '-') : 'guest'}

@@ -9,3 +9,5 @@ export const debounceFunc = (func: Function, wait: number) => {
     timeout = setTimeout(() => func.apply(this, args), wait)
   }
 }
+
+export const getRandomWidth = (min: number, max: number) => `${Math.floor(Math.random() * (max - min + 1) + min)}%`

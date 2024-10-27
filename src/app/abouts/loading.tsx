@@ -23,8 +23,8 @@ export default function CodeBlockLoader() {
               <div className='flex items-center gap-2'>
                 {line.width !== '0%' && (
                   <>
-                    <div className='h-4 animate-pulse rounded bg-[#898989]/20' style={{ width: line.width }} />
-                    {line.hasEqual && <div className='h-4 w-4 animate-pulse rounded bg-[#898989]/20' />}
+                    <div className='h-4 animate-pulse rounded bg-[#898989]/10' style={{ width: line.width }} />
+                    {line.hasEqual && <div className='h-4 w-4 animate-pulse rounded bg-[#898989]/10' />}
                   </>
                 )}
               </div>
