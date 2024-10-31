@@ -2,7 +2,8 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   experimental: {
-    reactCompiler: true
+    reactCompiler: true,
+    nextScriptWorkers: true
   },
   logging: {
     fetches: {
