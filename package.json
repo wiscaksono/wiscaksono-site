@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"@builder.io/partytown": "^0.10.2",
-		"@faker-js/faker": "^8.4.1",
+		"@faker-js/faker": "^9.2.0",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/node": "^22.8.1",
 		"@types/react": "npm:types-react@19.0.0-rc.1",
