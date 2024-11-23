@@ -13,14 +13,14 @@
 		"seed": "tsx prisma/seed.ts"
 	},
 	"dependencies": {
-		"@auth/prisma-adapter": "^2.7.2",
+		"@auth/prisma-adapter": "^2.7.4",
 		"@mdx-js/loader": "^3.1.0",
 		"@mdx-js/react": "^3.1.0",
-		"@prisma/client": "^5.21.1",
+		"@prisma/client": "^5.22.0",
 		"@rehype-pretty/transformers": "^0.13.2",
 		"@types/mdx": "^2.0.13",
-		"@vercel/og": "^0.6.3",
-		"babel-plugin-react-compiler": "0.0.0-experimental-23b8160-20240916",
+		"@vercel/og": "^0.6.4",
+		"babel-plugin-react-compiler": "19.0.0-beta-0dec889-20241115",
 		"geist": "^1.3.1",
 		"next": "15.0.3",
 		"next-auth": "5.0.0-beta.25",
@@ -28,28 +28,28 @@
 		"next-view-transitions": "^0.3.2",
 		"react": "19.0.0-rc-65a56d0e-20241020",
 		"react-dom": "19.0.0-rc-65a56d0e-20241020",
-		"rehype-pretty-code": "^0.13.2",
+		"rehype-pretty-code": "^0.14.0",
 		"rehype-slug": "^6.0.0",
 		"remark-gfm": "^4.0.0",
 		"sharp": "^0.33.5",
-		"shiki": "^1.22.1"
+		"shiki": "^1.23.0"
 	},
 	"devDependencies": {
 		"@builder.io/partytown": "^0.10.2",
-		"@faker-js/faker": "^8.4.1",
+		"@faker-js/faker": "^9.2.0",
 		"@tailwindcss/typography": "^0.5.15",
-		"@types/node": "^22.8.1",
+		"@types/node": "^22.9.3",
 		"@types/react": "npm:types-react@19.0.0-rc.1",
 		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-		"eslint": "^9.13.0",
-		"eslint-config-next": "15.0.1",
-		"postcss": "^8.4.47",
+		"eslint": "^9.15.0",
+		"eslint-config-next": "15.0.3",
+		"postcss": "^8.4.49",
 		"prettier": "^3.3.3",
-		"prettier-plugin-tailwindcss": "^0.6.8",
-		"prisma": "^5.21.1",
-		"tailwindcss": "^3.4.14",
+		"prettier-plugin-tailwindcss": "^0.6.9",
+		"prisma": "^5.22.0",
+		"tailwindcss": "^3.4.15",
 		"tsx": "^4.19.2",
-		"typescript": "^5.6.3"
+		"typescript": "^5.7.2"
 	},
 	"pnpm": {
 		"overrides": {
