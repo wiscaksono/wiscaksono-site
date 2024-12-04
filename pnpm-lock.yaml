@@ -1080,10 +1080,6 @@ packages:
     resolution: {integrity: sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==}
     engines: {node: '>= 0.6'}
 
-  cross-spawn@7.0.3:
-    resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
-    engines: {node: '>= 8'}
-
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -3842,12 +3838,6 @@ snapshots:
 
   cookie@0.7.1: {}
 
-  cross-spawn@7.0.3:
-    dependencies:
-      path-key: 3.1.1
-      shebang-command: 2.0.0
-      which: 2.0.2
-
   cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
@@ -4400,7 +4390,7 @@ snapshots:
 
   foreground-child@3.3.0:
     dependencies:
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
   fsevents@2.3.3:
