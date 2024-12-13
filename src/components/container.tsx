@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { Header } from './header'
 import { debounceFunc } from '@/lib/utils'
@@ -15,30 +15,24 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
-  const handleMouseDown = useCallback(
-    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      if (!isMobile) {
-        setDragging(true)
-        setOffset({ x: e.clientX - position.x, y: e.clientY - position.y })
-      }
-    },
-    [isMobile, position]
-  )
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!isMobile) {
+      setDragging(true)
+      setOffset({ x: e.clientX - position.x, y: e.clientY - position.y })
+    }
+  }
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (dragging) {
-        const newX = e.clientX - offset.x
-        const newY = e.clientY - offset.y
-        setPosition({ x: newX, y: newY })
-      }
-    },
-    [dragging, offset]
-  )
+  const handleMouseMove = (e: MouseEvent) => {
+    if (dragging) {
+      const newX = e.clientX - offset.x
+      const newY = e.clientY - offset.y
+      setPosition({ x: newX, y: newY })
+    }
+  }
 
   const handleMouseUp = () => setDragging(false)
 
-  const toggleFullscreen = useCallback(() => {
+  const toggleFullscreen = () => {
     if (!isFullscreen) {
       containerRef.current?.requestFullscreen()
     } else {
@@ -48,13 +42,13 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
       setIsFullscreen(false)
     }
     setIsFullscreen(prev => !prev)
-  }, [isFullscreen])
+  }
 
-  const updateMobileState = useCallback(() => {
+  const updateMobileState = () => {
     const mobile = window.matchMedia('(max-width: 768px)').matches
     if (mobile && !isMobile) setPosition({ x: 0, y: 0 })
     setIsMobile(mobile)
-  }, [isMobile])
+  }
 
   useEffect(() => {
     const handleResize = debounceFunc(updateMobileState, 200)
@@ -95,9 +89,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
       className={`z-30 h-dvh w-dvw flex flex-col overflow-hidden text-[#898989]/90 lg:h-[80dvh] lg:w-[80dvw] ${isFullscreen ? 'rounded-none bg-[#161616]' : 'lg:rounded-xl bg-gradient-to-tr from-[#080808] to-[#242424]'}`}
       style={{ transform: `translate(${position.x}px, ${position.y}px)`, transition: dragging ? 'none' : 'transform 0.2s ease-out' }}
     >
-      <Suspense fallback={null}>
-        <Header onMouseDown={handleMouseDown} isFullscreen={isFullscreen} onDoubleClick={toggleFullscreen} toggleFullscreen={toggleFullscreen} />
-      </Suspense>
+      <Header onMouseDown={handleMouseDown} isFullscreen={isFullscreen} onDoubleClick={toggleFullscreen} toggleFullscreen={toggleFullscreen} />
       {children}
     </main>
   )

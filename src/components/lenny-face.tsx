@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect, useRef, memo, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 interface PupilPosition {
   x: number
@@ -21,7 +21,7 @@ export const LennyFace = () => {
   )
 }
 
-const Eye = memo(() => {
+const Eye = () => {
   const [pupilPosition, setPupilPosition] = useState<PupilPosition>({ x: 50, y: 50 })
   const eyeRef = useRef<HTMLDivElement>(null)
   const rafRef = useRef<number | null>(null)
@@ -68,7 +68,7 @@ const Eye = memo(() => {
     }
   }, [])
 
-  const updatePupilPosition = useCallback((mouseX: number, mouseY: number) => {
+  const updatePupilPosition = (mouseX: number, mouseY: number) => {
     if (!eyeRef.current) return
 
     const eyeRect = eyeRef.current.getBoundingClientRect()
@@ -82,7 +82,7 @@ const Eye = memo(() => {
     const y = 50 + ((Math.sin(angle) * distance) / (eyeRect.height / 2)) * 100
 
     targetPositionRef.current = { x, y }
-  }, [])
+  }
 
   return (
     <div ref={eyeRef} className='size-3.5 border rounded-full bg-transparent border-[#898989] grid place-items-center'>
@@ -98,5 +98,5 @@ const Eye = memo(() => {
       </div>
     </div>
   )
-})
+}
 Eye.displayName = 'Eye'
