@@ -3,12 +3,21 @@ import { auth } from '@/lib/auth'
 import { createPost } from '@/lib/actions'
 
 import { SignIn, Delete, Submit, Like } from './_components/buttons'
+import { unstable_cache } from 'next/cache'
+
+const getPosts = unstable_cache(
+  () => {
+    return db.post.findMany({
+      include: { user: true, like: { select: { user: { select: { id: true } } } }, _count: { select: { like: true } } },
+      orderBy: { createdAt: 'desc' }
+    })
+  },
+  ['posts'],
+  { revalidate: 3600, tags: ['posts'] }
+)
 
 export default async function GuestBook() {
-  const [posts, session] = await Promise.all([
-    db.post.findMany({ include: { user: true, like: { select: { user: { select: { id: true } } } }, _count: { select: { like: true } } }, orderBy: { createdAt: 'desc' } }),
-    auth()
-  ])
+  const [posts, session] = await Promise.all([getPosts(), auth()])
 
   return (
     <>

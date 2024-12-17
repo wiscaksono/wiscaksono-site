@@ -1,6 +1,6 @@
 'use server'
 import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 import { db } from './prisma'
 import { auth } from './auth'
@@ -11,6 +11,7 @@ export const createPost = async (formData: FormData) => {
   if (!session || !desc) return redirect('/guest-book')
   await db.post.create({ data: { desc: desc, userId: session.user.id } })
   revalidatePath('/guest-book')
+  revalidateTag('posts')
 }
 
 export const deletePost = async (postID: number, userID: string) => {
