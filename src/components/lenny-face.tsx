@@ -12,7 +12,7 @@ export const LennyFace = () => {
 
   return (
     <div
-      className={`lg:flex items-center absolute top-1/2 -translate-y-1/2 right-4 select-none not-sr-only hidden transition-transform duration-500 ${
+      className={`lg:flex items-center absolute top-1/2 -translate-y-1/2 right-4 select-none not-sr-only hidden transition-transform duration-300 ${
         visible ? '-translate-y-1/2 opacity-100' : 'translate-y-full opacity-0'
       }`}
       onClick={() => setClicked(!clicked)}
