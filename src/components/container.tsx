@@ -11,7 +11,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
 
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isMobile, setIsMobile] = useState(window.matchMedia('(max-width: 768px)').matches)
+  const [isMobile, setIsMobile] = useState(false)
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (isMobile) return
@@ -30,6 +30,8 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
   }
 
   React.useLayoutEffect(() => {
+    setIsMobile(window.matchMedia('(max-width: 768px)').matches)
+
     const handleMouseUp = () => (draggingRef.current = false)
 
     const handleResize = debounceFunc(() => {
