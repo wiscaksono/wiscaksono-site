@@ -1,20 +1,27 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react'
 
-interface PupilPosition {
-  x: number
-  y: number
-}
-
 export const LennyFace = () => {
   const [clicked, setClicked] = useState(false)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setVisible(true), 0)
+    return () => clearTimeout(timeout)
+  }, [])
 
   return (
-    <div className='lg:flex items-center absolute top-1/2 -translate-y-1/2 right-4 select-none not-sr-only hidden' onClick={() => setClicked(!clicked)}>
-      {clicked && <p className='mb-1.5 mr-2'>╭∩╮</p>}
+    <div
+      className={`lg:flex items-center absolute top-1/2 -translate-y-1/2 right-4 select-none not-sr-only hidden transition-transform duration-500 ${
+        visible ? '-translate-y-1/2 opacity-100' : 'translate-y-full opacity-0'
+      }`}
+      onClick={() => setClicked(!clicked)}
+      onDoubleClick={e => e.stopPropagation()}
+    >
+      {clicked && <p className='mb-1.5 mr-1'>╭∩╮</p>}
       <div className='flex items-center space-x-1.5'>
         <Eye />
-        <span className='mt-1.5'>‿</span>
+        <span className={`${clicked ? 'rotate-180 mt-5' : 'mt-2.5'} transition-all`}>‿</span>
         <Eye />
       </div>
     </div>
@@ -22,42 +29,92 @@ export const LennyFace = () => {
 }
 
 const Eye = () => {
-  const [pupilPosition, setPupilPosition] = useState<PupilPosition>({ x: 50, y: 50 })
-  const eyeRef = useRef<HTMLDivElement>(null)
   const rafRef = useRef<number | null>(null)
-  const targetPositionRef = useRef<PupilPosition>({ x: 50, y: 50 })
+  const pupilRef = useRef({ x: 50, y: 50 })
+  const targetRef = useRef({ x: 50, y: 50 })
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
-    const animate = () => {
-      setPupilPosition(prev => {
-        const dx = (targetPositionRef.current.x - prev.x) * 0.1
-        const dy = (targetPositionRef.current.y - prev.y) * 0.1
-        return {
-          x: prev.x + dx,
-          y: prev.y + dy
-        }
-      })
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext('2d')
+    const width = 40
+    const height = 40
+    if (!canvas || !ctx) return
 
+    // Set canvas size
+    canvas.width = 40
+    canvas.height = 40
+
+    // Calculate offsets and limits
+    const borderWidth = 2
+    const pupilRadius = Math.min(width, height) * 0.15
+    const eyeRadius = Math.min(width, height) / 2 - borderWidth
+
+    // Render eye
+    const drawEye = () => {
+      ctx.clearRect(0, 0, width, height)
+
+      // Eye border
+      ctx.strokeStyle = '#898989'
+      ctx.lineWidth = 3
+      ctx.beginPath()
+      ctx.ellipse(width / 2, height / 2, eyeRadius, eyeRadius, 0, 0, Math.PI * 2)
+      ctx.stroke()
+
+      // Pupil
+      ctx.fillStyle = '#898989'
+
+      // Calculate constrained pupil position
+      const pupilX = (pupilRef.current.x / 100) * width
+      const pupilY = (pupilRef.current.y / 100) * height
+
+      ctx.beginPath()
+      ctx.ellipse(pupilX, pupilY, pupilRadius, pupilRadius, 0, 0, Math.PI * 2)
+      ctx.fill()
+    }
+
+    // Animation
+    const animate = () => {
+      const current = pupilRef.current
+      const target = targetRef.current
+
+      current.x += (target.x - current.x) * 0.1
+      current.y += (target.y - current.y) * 0.1
+
+      drawEye()
       rafRef.current = requestAnimationFrame(animate)
     }
 
+    // Start animation
     rafRef.current = requestAnimationFrame(animate)
 
     return () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current)
-      }
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
   }, [])
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      updatePupilPosition(event.clientX, event.clientY)
+      if (!canvasRef.current) return
+
+      const rect = canvasRef.current.getBoundingClientRect()
+      const eyeCenterX = rect.left + rect.width / 2
+      const eyeCenterY = rect.top + rect.height / 2
+
+      const angle = Math.atan2(event.clientY - eyeCenterY, event.clientX - eyeCenterX)
+
+      const maxMovementRadius = rect.width / 4
+      const distanceFromCenter = Math.hypot(event.clientX - eyeCenterX, event.clientY - eyeCenterY)
+
+      const clampedDistance = Math.min(distanceFromCenter, maxMovementRadius)
+
+      const x = 50 + ((Math.cos(angle) * clampedDistance) / (rect.width / 2)) * 45
+      const y = 50 + ((Math.sin(angle) * clampedDistance) / (rect.height / 2)) * 45
+
+      targetRef.current = { x: Math.max(25, Math.min(75, x)), y: Math.max(25, Math.min(75, y)) }
     }
 
-    const handleMouseLeave = () => {
-      targetPositionRef.current = { x: 50, y: 50 }
-    }
+    const handleMouseLeave = () => (targetRef.current = { x: 50, y: 50 })
 
     window.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseleave', handleMouseLeave)
@@ -68,35 +125,7 @@ const Eye = () => {
     }
   }, [])
 
-  const updatePupilPosition = (mouseX: number, mouseY: number) => {
-    if (!eyeRef.current) return
-
-    const eyeRect = eyeRef.current.getBoundingClientRect()
-    const eyeCenterX = eyeRect.left + eyeRect.width / 2
-    const eyeCenterY = eyeRect.top + eyeRect.height / 2
-
-    const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX)
-    const distance = Math.min(eyeRect.width / 4, Math.hypot(mouseX - eyeCenterX, mouseY - eyeCenterY))
-
-    const x = 50 + ((Math.cos(angle) * distance) / (eyeRect.width / 2)) * 100
-    const y = 50 + ((Math.sin(angle) * distance) / (eyeRect.height / 2)) * 100
-
-    targetPositionRef.current = { x, y }
-  }
-
-  return (
-    <div ref={eyeRef} className='size-3.5 border rounded-full bg-transparent border-[#898989] grid place-items-center'>
-      <div className='relative w-[50%] h-[50%] rounded-full'>
-        <div
-          className='size-1 absolute bg-white/50 rounded-full'
-          style={{
-            top: `${pupilPosition.y}%`,
-            left: `${pupilPosition.x}%`,
-            transform: 'translate(-50%, -50%)'
-          }}
-        />
-      </div>
-    </div>
-  )
+  return <canvas ref={canvasRef} className='size-3.5' />
 }
+
 Eye.displayName = 'Eye'

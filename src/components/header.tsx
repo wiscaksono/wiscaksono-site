@@ -11,7 +11,7 @@ interface HeaderProps extends HTMLAttributes<HTMLElement> {
 export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ isFullscreen, toggleFullscreen, ...props }, ref) => {
   return (
     <header
-      className={`relative flex items-center justify-between px-4 py-3 cursor-default ${isFullscreen ? 'lg:cursor-pointer' : 'lg:cursor-grab lg:active:cursor-grabbing'}`}
+      className={`relative flex items-center justify-between px-4 py-3 cursor-default overflow-hidden ${isFullscreen ? 'lg:cursor-pointer' : 'lg:cursor-grab lg:active:cursor-grabbing'}`}
       ref={ref}
       {...props}
     >
