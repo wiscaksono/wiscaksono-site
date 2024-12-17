@@ -21,6 +21,7 @@ export const deletePost = async (postID: number, userID: string) => {
 
     await db.post.delete({ where: { id: postID } })
     revalidatePath('/guest-book')
+    revalidateTag('posts')
   })
 }
 
@@ -31,6 +32,7 @@ export const likePost = async (postID: number, userID: string) => {
 
     await prisma.like.create({ data: { user: { connect: { id: userID } }, post: { connect: { id: postID } } } })
     revalidatePath('/guest-book')
+    revalidateTag('posts')
   })
 }
 
@@ -41,5 +43,6 @@ export const unlikePost = async (postID: number, userID: string) => {
 
     await db.like.deleteMany({ where: { postId: postID, userId: userID } })
     revalidatePath('/guest-book')
+    revalidateTag('posts')
   })
 }

@@ -17,7 +17,8 @@ const getPosts = unstable_cache(
 )
 
 export default async function GuestBook() {
-  const [posts, session] = await Promise.all([getPosts(), auth()])
+  const session = await auth()
+  const posts = await getPosts()
 
   return (
     <>
