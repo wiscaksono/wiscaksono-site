@@ -10,6 +10,7 @@ import { Container } from '@/components/container'
 import { ResponsiveIndicator } from '@/components/responsive-indicator'
 
 import { ENV } from '@/lib/constants'
+import { Particles } from '@/components/particles'
 
 export const metadata: Metadata = {
   metadataBase: new URL(ENV.NEXT_PUBLIC_WEBSITE_URL),
@@ -61,6 +62,7 @@ export default async function RootLayout({ children }: Readonly<Props>) {
             <section className='relative flex-1 overflow-y-auto px-2 md:px-3 lg:px-4'>{children}</section>
             <Navbar />
           </Container>
+          <Particles />
           <ResponsiveIndicator />
           <div className='fixed h-[300%] w-[300%] bg-grain-noise opacity-5 animate-grain pointer-events-none top-0' aria-hidden='true' />
           <div className='grid-pattern absolute left-0 top-0 h-full w-full' />
