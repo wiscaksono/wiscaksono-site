@@ -1,6 +1,6 @@
 'use client'
-import { forwardRef, HTMLAttributes } from 'react'
 
+import { HTMLAttributes } from 'react'
 import { LennyFace } from './lenny-face'
 
 interface HeaderProps extends HTMLAttributes<HTMLElement> {
@@ -8,11 +8,10 @@ interface HeaderProps extends HTMLAttributes<HTMLElement> {
   toggleFullscreen: () => void
 }
 
-export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ isFullscreen, toggleFullscreen, ...props }, ref) => {
+export const Header = ({ isFullscreen, toggleFullscreen, ...props }: HeaderProps) => {
   return (
     <header
       className={`relative flex items-center justify-between px-4 py-3 cursor-default overflow-hidden ${isFullscreen ? 'lg:cursor-pointer' : 'lg:cursor-grab lg:active:cursor-grabbing'}`}
-      ref={ref}
       {...props}
     >
       <div className='absolute lg:flex items-center top-1/2 -translate-y-1/2 group hidden'>
@@ -31,4 +30,4 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ isFullscreen, t
       <LennyFace />
     </header>
   )
-})
+}

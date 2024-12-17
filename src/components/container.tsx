@@ -1,93 +1,81 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
-
-import { Header } from './header'
+import React, { useState, useRef } from 'react'
 import { debounceFunc } from '@/lib/utils'
+import { Header } from './header'
 
 export const Container = ({ children }: { children: React.ReactNode }) => {
+  const draggingRef = useRef(false)
+  const offsetRef = useRef({ x: 0, y: 0 })
   const containerRef = useRef<HTMLElement>(null)
 
-  const [isMobile, setIsMobile] = useState(false)
-  const [dragging, setDragging] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
-
-  const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(window.matchMedia('(max-width: 768px)').matches)
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!isMobile) {
-      setDragging(true)
-      setOffset({ x: e.clientX - position.x, y: e.clientY - position.y })
-    }
+    if (isMobile) return
+    draggingRef.current = true
+    offsetRef.current = { x: e.clientX - position.x, y: e.clientY - position.y }
   }
-
-  const handleMouseMove = (e: MouseEvent) => {
-    if (dragging) {
-      const newX = e.clientX - offset.x
-      const newY = e.clientY - offset.y
-      setPosition({ x: newX, y: newY })
-    }
-  }
-
-  const handleMouseUp = () => setDragging(false)
 
   const toggleFullscreen = () => {
     if (!isFullscreen) {
       containerRef.current?.requestFullscreen()
     } else {
       document.exitFullscreen()
-      setOffset({ x: 0, y: 0 })
       setPosition({ x: 0, y: 0 })
-      setIsFullscreen(false)
     }
     setIsFullscreen(prev => !prev)
   }
 
-  const updateMobileState = () => {
-    const mobile = window.matchMedia('(max-width: 768px)').matches
-    if (mobile && !isMobile) setPosition({ x: 0, y: 0 })
-    setIsMobile(mobile)
-  }
+  React.useLayoutEffect(() => {
+    const handleMouseUp = () => (draggingRef.current = false)
 
-  useEffect(() => {
-    const handleResize = debounceFunc(updateMobileState, 200)
+    const handleResize = debounceFunc(() => {
+      const mobile = window.matchMedia('(max-width: 768px)').matches
+      if (mobile !== isMobile) {
+        setIsMobile(mobile)
+        if (mobile) setPosition({ x: 0, y: 0 }) // Reset position on mobile
+      }
+    }, 200)
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (draggingRef.current) {
+        const newX = e.clientX - offsetRef.current.x
+        const newY = e.clientY - offsetRef.current.y
+        setPosition({ x: newX, y: newY })
+      }
+    }
+
     window.addEventListener('resize', handleResize)
-    updateMobileState() // Initial check
+    window.addEventListener('mouseup', handleMouseUp)
+    window.addEventListener('mousemove', handleMouseMove)
 
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [updateMobileState])
-
-  useEffect(() => {
-    if (dragging) {
-      window.addEventListener('mousemove', handleMouseMove)
-      window.addEventListener('mouseup', handleMouseUp)
-    } else {
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseup', handleMouseUp)
-    }
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseup', handleMouseUp)
-    }
-  }, [dragging, handleMouseMove, handleMouseUp])
-
-  useEffect(() => {
+    // Fullscreen change listener
     const handleFullscreenChange = () => {
       if (!document.fullscreenElement) setIsFullscreen(false)
     }
     document.addEventListener('fullscreenchange', handleFullscreenChange)
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseup', handleMouseUp)
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
+    }
   }, [])
 
   return (
     <main
       ref={containerRef}
-      className={`z-30 h-dvh w-dvw flex flex-col overflow-hidden text-[#898989]/90 lg:h-[80dvh] lg:w-[80dvw] ${isFullscreen ? 'rounded-none bg-[#161616]' : 'lg:rounded-xl bg-gradient-to-tr from-[#080808] to-[#242424]'}`}
-      style={{ transform: `translate(${position.x}px, ${position.y}px)`, transition: dragging ? 'none' : 'transform 0.2s ease-out' }}
+      className={`z-30 h-dvh w-dvw flex flex-col overflow-hidden text-[#898989]/90 lg:h-[80dvh] lg:w-[80dvw] ${
+        isFullscreen ? 'rounded-none bg-[#161616]' : 'lg:rounded-xl bg-gradient-to-tr from-[#080808] to-[#242424]'
+      }`}
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        transition: draggingRef.current ? 'none' : 'transform 0.2s ease-out'
+      }}
     >
       <Header onMouseDown={handleMouseDown} isFullscreen={isFullscreen} onDoubleClick={toggleFullscreen} toggleFullscreen={toggleFullscreen} />
       {children}
