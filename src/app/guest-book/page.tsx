@@ -58,7 +58,7 @@ export default async function GuestBook() {
               </div>
             )}
             <p className='hidden lg:block'>
-              {item.createdAt
+              {new Date(item.createdAt)
                 .toLocaleString('en-US', {
                   year: 'numeric',
                   month: '2-digit',
