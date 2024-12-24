@@ -1,5 +1,5 @@
 'use client'
-import { Link } from 'next-view-transitions'
+import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
 
 export const Navbar = () => {
