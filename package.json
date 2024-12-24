@@ -36,7 +36,7 @@
     "shiki": "^1.24.2"
   },
   "devDependencies": {
-    "@builder.io/partytown": "^0.10.2",
+    "@builder.io/partytown": "^0.10.3",
     "@faker-js/faker": "^9.3.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.10.2",
