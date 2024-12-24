@@ -6,7 +6,7 @@ import { signIn } from 'next-auth/react'
 import { deletePost, likePost, unlikePost } from '@/lib/actions'
 import { GitHub, Loading, Close, Heart } from '@/components/icons'
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export const SignIn = (props: Props) => {
   return (
@@ -95,7 +95,6 @@ export const Like = ({ postID, userID, likeCount, likedBy, ...props }: LikeProps
     <button
       onClick={handleLike}
       aria-label={isLiked ? 'Unlike' : 'Like'}
-      disabled={props.disabled}
       className={`flex items-center gap-x-1 group-hover:opacity-100 lg:opacity-0 opacity-100 transition-opacity ${props.className || ''}`}
     >
       <span className='leading-none text-xs'>{optimisticLikes.count}</span> <Heart className={`stroke-[#898989]/90 ${isLiked ? 'fill-[#898989]' : ''}`} />
