@@ -17,12 +17,11 @@ const getPosts = unstable_cache(
 )
 
 export default async function GuestBook() {
-  const session = await auth()
-  const posts = await getPosts()
+  const [posts, session] = await Promise.all([getPosts(), auth()]) // feels like not cached because of the session
 
   return (
     <>
-      <form className='mb-2 flex flex-col gap-2 text-sm lg:flex-row lg:items-center' action={createPost} key={+new Date()}>
+      <form className='mb-2 flex flex-col gap-2 text-sm lg:flex-row lg:items-center' action={createPost}>
         <p className='truncate lg:w-36'>
           <span className='text-[#5de4c7]'>~</span>/{session ? session?.user?.name?.toLowerCase().replace(/\s/g, '-') : 'guest'}
         </p>

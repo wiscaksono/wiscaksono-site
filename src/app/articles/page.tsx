@@ -1,4 +1,4 @@
-import { Link } from 'next-view-transitions'
+import Link from 'next/link'
 import { getContents } from '@/lib/contents'
 
 export default async function Articles() {
