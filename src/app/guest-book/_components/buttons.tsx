@@ -1,12 +1,12 @@
 'use client'
-import { useTransition } from 'react'
+import { useOptimistic, useTransition } from 'react'
 import { useFormStatus } from 'react-dom'
 import { signIn } from 'next-auth/react'
 
 import { deletePost, likePost, unlikePost } from '@/lib/actions'
 import { GitHub, Loading, Close, Heart } from '@/components/icons'
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
 
 export const SignIn = (props: Props) => {
   return (
@@ -53,16 +53,40 @@ export const Submit = (props: Props) => {
   )
 }
 
-export const Like = ({ postID, userID, likeCount, likedBy, ...props }: Props & { postID: number; userID: string; likeCount: number; likedBy: string[] }) => {
-  const [pending, startTransition] = useTransition()
-  const isLiked = likedBy.includes(userID)
+interface LikeProps extends Props {
+  postID: number
+  userID: string
+  likeCount: number
+  likedBy: string[]
+}
+
+interface LikeState {
+  count: number
+  likedBy: string[]
+}
+
+export const Like = ({ postID, userID, likeCount, likedBy, ...props }: LikeProps) => {
+  const [, startTransition] = useTransition()
+  const [optimisticLikes, addOptimisticLike] = useOptimistic<LikeState, boolean>({ count: likeCount, likedBy }, (state, liked) => ({
+    count: liked ? state.count + 1 : state.count - 1,
+    likedBy: liked ? [...state.likedBy, userID] : state.likedBy.filter(id => id !== userID)
+  }))
+
+  const isLiked = optimisticLikes.likedBy.includes(userID)
 
   const handleLike = () => {
     startTransition(async () => {
-      if (isLiked) {
-        await unlikePost(postID, userID)
-      } else {
-        await likePost(postID, userID)
+      const willBeLiked = !isLiked
+      addOptimisticLike(willBeLiked)
+
+      try {
+        if (willBeLiked) {
+          await likePost(postID, userID)
+        } else {
+          await unlikePost(postID, userID)
+        }
+      } catch (error) {
+        console.error('Like action failed:', error)
       }
     })
   }
@@ -70,13 +94,11 @@ export const Like = ({ postID, userID, likeCount, likedBy, ...props }: Props & {
   return (
     <button
       onClick={handleLike}
-      aria-label='Delete'
-      disabled={pending || props.disabled}
-      className={`flex items-center gap-x-1 group-hover:opacity-100 lg:opacity-0 opacity-100 transition-opacity ${pending ? 'cursor-not-allowed !opacity-100' : ''} ${props.className ? props.className : ''} `}
-      {...props}
+      aria-label={isLiked ? 'Unlike' : 'Like'}
+      disabled={props.disabled}
+      className={`flex items-center gap-x-1 group-hover:opacity-100 lg:opacity-0 opacity-100 transition-opacity ${props.className || ''}`}
     >
-      <span className='leading-none text-xs'>{likeCount}</span>{' '}
-      {pending ? <Loading className='animate-spin' /> : <Heart className={`stroke-[#898989]/90 ${isLiked ? 'fill-[#898989]' : ''}`} />}
+      <span className='leading-none text-xs'>{optimisticLikes.count}</span> <Heart className={`stroke-[#898989]/90 ${isLiked ? 'fill-[#898989]' : ''}`} />
     </button>
   )
 }
