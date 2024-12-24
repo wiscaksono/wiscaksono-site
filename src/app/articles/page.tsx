@@ -14,7 +14,7 @@ export default async function Articles() {
           <p className='line-clamp-4 flex-1 text-sm'>{article.metadata.summary}</p>
           <div className='flex flex-wrap items-center justify-between gap-2 text-sm'>
             <p>Published on {article.metadata.publishedDate}</p>
-            <Link href={`/articles/${article.slug.toLowerCase()}`} className='flex items-center justify-center gap-2 gap-x-2 bg-[#898989] px-2.5 py-0.5 text-[#131313]'>
+            <Link href={`/articles/${article.slug.toLowerCase()}`} className='flex items-center justify-center gap-2 gap-x-2 bg-[#898989] px-2.5 py-0.5 text-[#131313] select-none'>
               Read more &gt;&gt;
             </Link>
           </div>

@@ -15,7 +15,7 @@ export default async function Projects({ searchParams }: Props) {
   return (
     <div className='grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {projects.map(project => (
-        <Link href={`/projects/${project.slug}`} key={project.slug} className='divide-y divide-[#898989]/20 overflow-hidden border border-[#898989]/20'>
+        <Link href={`/projects/${project.slug}`} key={project.slug} className='divide-y divide-[#898989]/20 overflow-hidden border border-[#898989]/20 select-none'>
           <figure className='group relative aspect-video'>
             <Image
               src={project.metadata.image!}
