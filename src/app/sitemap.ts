@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const articleRoutes = getContents('articles').map(route => ({
-    url: `${URL}/articles/${route.slug}`,
+    url: `${URL}/articles/${route.slug.toLowerCase()}`,
     lastModified: new Date().toISOString()
   }))
 
