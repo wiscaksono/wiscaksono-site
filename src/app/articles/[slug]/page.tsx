@@ -13,10 +13,10 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata | undefined> {
   const { slug } = await params
-  let project = getContents('articles').find(post => post.slug.toLowerCase() === slug.toLowerCase())
-  if (!project) return
+  let articles = getContents('articles').find(post => post.slug.toLowerCase() === slug.toLowerCase())
+  if (!articles) return
 
-  let { title, summary: description, image } = project.metadata
+  let { title, summary: description, image } = articles.metadata
   let ogImage = image ? `${ENV.NEXT_PUBLIC_WEBSITE_URL}${image}` : `${ENV.NEXT_PUBLIC_WEBSITE_URL}/api/og?title=${title}`
 
   return {
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata | un
       title,
       description,
       type: 'article',
-      url: `${ENV.NEXT_PUBLIC_WEBSITE_URL}/articles/${project.slug.toLowerCase()}`,
+      url: `${ENV.NEXT_PUBLIC_WEBSITE_URL}/articles/${articles.slug.toLowerCase()}`,
       images: [
         {
           url: ogImage
@@ -43,14 +43,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata | un
 }
 
 export async function generateStaticParams() {
-  const projects = getContents('projects')
-  return projects.map(project => ({ slug: project.slug.toLowerCase() }))
+  const articles = getContents('articles')
+  return articles.map(article => ({ slug: article.slug.toLowerCase() }))
 }
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params
-  const project = getContents('articles').find(project => project.slug.toLowerCase() === slug.toLowerCase())
-  if (!project) notFound()
+  const article = getContents('articles').find(article => article.slug.toLowerCase() === slug.toLowerCase())
+  if (!article) notFound()
 
-  return <MDXRenderer source={project.content} />
+  return <MDXRenderer source={article.content} />
 }
