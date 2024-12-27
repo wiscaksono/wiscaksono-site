@@ -23,7 +23,7 @@ export const MDXRenderer = ({ source, components, limitWidth = true }: Props) =>
         <Image
           src={src!}
           alt={alt!}
-          className='mx-auto my-0 object-cover object-center md:max-w-[80%] bg-[#898989]/10'
+          className='mx-auto my-0 object-cover object-center md:w-full bg-[#898989]/10'
           priority
           width={820}
           height={492}
@@ -38,7 +38,7 @@ export const MDXRenderer = ({ source, components, limitWidth = true }: Props) =>
 
   return (
     <article
-      className={`prose prose-neutral prose-invert mx-auto font-sans prose-headings:text-[#C6C6C6] prose-p:text-[#898989] prose-a:text-[#C6C6C6] prose-ul:text-[#898989] prose-ol:text-[#898989] prose-strong:text-[#C6C6C6] ${limitWidth ? 'max-w-5xl' : 'max-w-none'} `}
+      className={`prose prose-neutral prose-invert mx-auto font-sans prose-headings:text-[#C6C6C6] prose-p:text-[#898989] prose-a:text-[#C6C6C6] prose-ul:text-[#898989] prose-ol:text-[#898989] prose-strong:text-[#C6C6C6] ${limitWidth ? 'max-w-4xl' : 'max-w-none'} `}
     >
       <MDXRemote {...mdxSource} />
     </article>
