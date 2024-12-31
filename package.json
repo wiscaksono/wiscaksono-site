@@ -32,7 +32,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "sharp": "^0.33.5",
-    "shiki": "^1.24.2"
+    "shiki": "^1.24.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
