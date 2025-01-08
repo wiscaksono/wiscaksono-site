@@ -20,11 +20,10 @@ export default async function Projects({ searchParams }: Props) {
             <Image
               src={project.metadata.image!}
               alt={project.metadata.title}
-              quality={10}
+              quality={75}
               fill
-              sizes='100%'
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               className='object-cover object-center grayscale-[50%] transition-all duration-500 group-hover:grayscale-0'
-              priority
             />
             <div className='absolute left-0 top-0 grid h-full w-full place-items-center bg-[#080808]/90 transition-opacity duration-500 group-hover:opacity-0'>
               <p className='text-center text-3xl font-semibold uppercase'>{project.metadata.title}</p>

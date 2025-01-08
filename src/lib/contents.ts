@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { cache } from 'react'
 
 type Metadata = {
   title: string
@@ -51,6 +52,6 @@ function getMDXData(dir: string) {
 
 export type ContentDir = 'articles' | 'projects' | 'abouts'
 
-export function getContents(contentDir: ContentDir) {
+export const getContents = cache((contentDir: ContentDir) => {
   return getMDXData(path.join(process.cwd(), 'src/contents', contentDir))
-}
+})

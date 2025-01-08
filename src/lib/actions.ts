@@ -15,34 +15,23 @@ export const createPost = async (formData: FormData) => {
 }
 
 export const deletePost = async (postID: number, userID: string) => {
-  await db.$transaction(async prisma => {
-    const user = await prisma.user.findUnique({ where: { id: userID } })
-    if (!user) return redirect('/guest-book')
-
-    await db.post.delete({ where: { id: postID } })
-    revalidatePath('/guest-book')
-    revalidateTag('posts')
-  })
+  const result = await db.post.deleteMany({ where: { id: postID, userId: userID } })
+  if (result.count === 0) return { error: 'Post not found or you do not have permission to delete it' }
+  revalidatePath('/guest-book')
+  revalidateTag('posts')
+  return { success: true }
 }
 
 export const likePost = async (postID: number, userID: string) => {
-  await db.$transaction(async prisma => {
-    const user = await prisma.user.findUnique({ where: { id: userID } })
-    if (!user) return redirect('/guest-book')
-
-    await prisma.like.create({ data: { user: { connect: { id: userID } }, post: { connect: { id: postID } } } })
-    revalidatePath('/guest-book')
-    revalidateTag('posts')
-  })
+  await db.like.create({ data: { userId: userID, postId: postID } })
+  revalidatePath('/guest-book')
+  revalidateTag('posts')
+  return { success: true }
 }
 
 export const unlikePost = async (postID: number, userID: string) => {
-  await db.$transaction(async prisma => {
-    const user = await prisma.user.findUnique({ where: { id: userID } })
-    if (!user) return redirect('/guest-book')
-
-    await db.like.deleteMany({ where: { postId: postID, userId: userID } })
-    revalidatePath('/guest-book')
-    revalidateTag('posts')
-  })
+  const result = await db.like.deleteMany({ where: { postId: postID, userId: userID } })
+  if (result.count === 0) return { error: 'Like not found' }
+  revalidatePath('/guest-book')
+  revalidateTag('posts')
 }
