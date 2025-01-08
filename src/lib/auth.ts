@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import NextAuth from 'next-auth'
 import GitHub from 'next-auth/providers/github'
 import { PrismaAdapter } from '@auth/prisma-adapter'
@@ -14,9 +15,11 @@ declare module 'next-auth' {
   }
 }
 
-export const {
-  handlers: { GET, POST },
-  auth
+const {
+  auth: uncachedAuth,
+  handlers,
+  signIn,
+  signOut
 } = NextAuth({
   secret: ENV.AUTH_SECRET,
   adapter: PrismaAdapter(db),
@@ -39,3 +42,7 @@ export const {
     error: '/'
   }
 })
+
+const auth = cache(uncachedAuth)
+
+export { auth, handlers, signIn, signOut }
