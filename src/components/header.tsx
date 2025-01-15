@@ -25,7 +25,7 @@ export const Header = ({ isFullscreen, toggleFullscreen, ...props }: HeaderProps
           <div className='h-3 w-3 rounded-full bg-[#898989] group-hover:bg-[#2BC840] transition-colors' />
         </button>
       </div>
-      <p className='mx-auto select-none font-semibold not-sr-only hidden lg:block'>Alacritty</p>
+      <p className='mx-auto select-none font-semibold not-sr-only hidden lg:block'>Ghostty</p>
       <p className='mx-auto select-none font-semibold not-sr-only lg:hidden block'>Wiscaksono</p>
       <LennyFace />
     </header>
