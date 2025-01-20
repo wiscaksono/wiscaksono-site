@@ -139,16 +139,18 @@ export const Particles = ({ quantity = 500, size = 0.4, vx = 0, vy = 0 }: Partic
     const canvas = canvasRef.current
     if (!canvas) return
 
+    const { signal, abort } = new AbortController()
+
     context.current = canvas.getContext('2d')
     initCanvas()
     animate()
 
     const handleResize = () => initCanvas()
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize, { signal })
 
     return () => {
       if (rafID.current != null) window.cancelAnimationFrame(rafID.current)
-      window.removeEventListener('resize', handleResize)
+      abort()
     }
   }, [])
 

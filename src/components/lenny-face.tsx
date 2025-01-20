@@ -94,6 +94,8 @@ const Eye = () => {
   }, [])
 
   useEffect(() => {
+    const { signal, abort } = new AbortController()
+
     const handleMouseMove = (event: MouseEvent) => {
       if (!canvasRef.current) return
 
@@ -116,13 +118,10 @@ const Eye = () => {
 
     const handleMouseLeave = () => (targetRef.current = { x: 50, y: 50 })
 
-    window.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseleave', handleMouseLeave)
+    window.addEventListener('mousemove', handleMouseMove, { signal })
+    document.addEventListener('mouseleave', handleMouseLeave, { signal })
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseleave', handleMouseLeave)
-    }
+    return () => abort()
   }, [])
 
   return <canvas ref={canvasRef} className='size-3.5' />
