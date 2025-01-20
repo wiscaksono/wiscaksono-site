@@ -32,6 +32,8 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
   React.useLayoutEffect(() => {
     setIsMobile(window.matchMedia('(max-width: 768px)').matches)
 
+    const { signal, abort } = new AbortController()
+
     const handleMouseUp = () => (draggingRef.current = false)
 
     const handleResize = debounceFunc(() => {
@@ -50,22 +52,17 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
       }
     }
 
-    window.addEventListener('resize', handleResize)
-    window.addEventListener('mouseup', handleMouseUp)
-    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('resize', handleResize, { signal })
+    window.addEventListener('mouseup', handleMouseUp, { signal })
+    window.addEventListener('mousemove', handleMouseMove, { signal })
 
     // Fullscreen change listener
     const handleFullscreenChange = () => {
       if (!document.fullscreenElement) setIsFullscreen(false)
     }
-    document.addEventListener('fullscreenchange', handleFullscreenChange)
+    document.addEventListener('fullscreenchange', handleFullscreenChange, { signal })
 
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseup', handleMouseUp)
-      document.removeEventListener('fullscreenchange', handleFullscreenChange)
-    }
+    return () => abort()
   }, [])
 
   return (
