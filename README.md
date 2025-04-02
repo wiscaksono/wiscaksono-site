@@ -2,31 +2,25 @@
 
 ## Preview
 
-![Preview 1](./public/preview-1.png)
-![Preview 2](./public/preview-2.png)
-![Preview 3](./public/preview-3.png)
-![Preview 4](./public/preview-4.png)
-![Preview 5](./public/preview-5.png)
+![Preview 1](./static/preview-1.png)
 
 ## Stack
 
-- [NextJS 15](https://nextjs.org) - Next.js is a React framework for building full-stack web applications
-- [TailwindCSS](https://tailwindcss.com) - A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
-- [Next Auth](https://next-auth.js.org) - NextAuth.js is a complete open-source authentication solution for Next.js applications.
-- [Prisma](https://www.prisma.io) - an open-source ORM that drastically simplifies data modeling, migrations, and data access for SQL databases in Node.js and TypeScript.
+- [Svelte Kit](https://svelte.dev/) - The fastest way to build Svelte apps.
+- [Lucia Auth](https://lucia-auth.com/) - Authentication from scratch.
+- [mdsvex](https://mdsvex.pngwn.io/) - Markdown preprocessor.
+- [Drizzle ORM](https://orm.drizzle.team/) - Drizzle ORM is a headless TypeScript ORM with a head. 🐲
+- [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
 
 ## Running Locally
 
-This application requires Node.js v18.17+.
-
 ```bash
-git clone https://github.com/wiscaksono/wiscaksono-site
-cd wiscaksono-site
+git clone https://github.com/wiscaksono/wiscaksono-sv
+cd wiscaksono-sv
+cp .env.example .env
 pnpm install
 pnpm dev
 ```
-
-Create a .env file similar to .env.example.
 
 ## License
 1. You are free to use this code as inspiration.

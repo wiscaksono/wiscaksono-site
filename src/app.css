@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+@import '@fontsource/commit-mono';
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-mono: 'Commit Mono';
+
+	--color-ash-50: #f0f0f0;
+	--color-ash-100: #e0e0e0;
+	--color-ash-200: #c2c2c2;
+	--color-ash-300: #a3a3a3;
+	--color-ash-400: #858585;
+	--color-ash-500: #636363;
+	--color-ash-600: #454545;
+	--color-ash-700: #262626;
+	--color-ash-800: #080808;
+	--color-ash-900: #050505;
+	--color-ash-950: #030303;
+	--color-cyan: #5de4c7;
+}
+
+button:not(:disabled),
+[role='button']:not(:disabled) {
+	cursor: pointer;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #444444;
+	border-radius: 10px;
+}
+
+::-moz-selection {
+	/* Code for Firefox */
+	color: #ffffffb3;
+	background: #4444444d;
+}
+
+::selection {
+	color: #ffffffb3;
+	background: #4444444d;
+}
