@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import { blur } from 'svelte/transition';
 
 	import Eye from './eye.svelte';
 
@@ -22,7 +22,7 @@
 		aria-pressed={clicked}
 		aria-label="Face expression toggle"
 		class="not-sr-only absolute top-1/2 right-4 hidden -translate-y-1/2 items-center transition-transform duration-300 select-none lg:flex"
-		in:fly|global={{ duration: 300 }}
+		in:blur
 	>
 		<div class="flex items-center space-x-1.5">
 			<Eye />

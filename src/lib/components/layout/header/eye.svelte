@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	let pupilPos = $state({ x: 50, y: 50 });
@@ -18,7 +17,7 @@
 	const pupilRadius = Math.min(width, height) * 0.15;
 	const eyeRadius = Math.min(width, height) / 2 - borderWidth;
 
-	onMount(() => {
+	$effect(() => {
 		if (!canvasEl || isMobile) return;
 
 		const controller = new AbortController();
