@@ -22,7 +22,7 @@
 			title: 'articles',
 			href: '/articles'
 		}
-	];
+	] as const;
 
 	let currentPath = $derived(page.url.pathname);
 
@@ -58,13 +58,10 @@
 				main
 			</a>
 		</div>
-		<div class="not-sr-only flex items-center gap-x-2">
-			<p>-- VIEW --</p>
-		</div>
+		<p>-- VIEW --</p>
 	</div>
 	<div class="flex items-center justify-between gap-20 overflow-x-auto px-2 py-3 leading-none lg:px-0 lg:py-0">
 		<ul class="flex items-center">
-			<li class="bg-ash-300 not-sr-only mr-1 px-2 py-0.5 leading-none text-black">tmux</li>
 			{#each menu as { title, href }, i (i)}
 				<li class="shrink-0">
 					<a
@@ -79,7 +76,7 @@
 			{/each}
 		</ul>
 		<div class="not-sr-only hidden items-center gap-2 lg:flex">
-			<p class="bg-ash-300 shrink-0 px-2 py-0.5 leading-none text-black">Wiscaksono</p>
+			<a class="bg-ash-300 shrink-0 px-2 py-0.5 leading-none text-black" href="https://github.com/wiscaksono" target="_blank" rel="noreferrer">Wiscaksono</a>
 		</div>
 	</div>
 </nav>

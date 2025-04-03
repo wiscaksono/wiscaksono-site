@@ -5,42 +5,63 @@
 @theme {
 	--font-mono: 'Commit Mono';
 
-	--color-ash-50: #f0f0f0;
-	--color-ash-100: #e0e0e0;
-	--color-ash-200: #c2c2c2;
-	--color-ash-300: #a3a3a3;
-	--color-ash-400: #858585;
-	--color-ash-500: #636363;
-	--color-ash-600: #454545;
-	--color-ash-700: #262626;
-	--color-ash-800: #080808;
-	--color-ash-900: #050505;
-	--color-ash-950: #030303;
-	--color-cyan: #5de4c7;
+	--color-ash-50: oklch(0.96 0 0);
+	--color-ash-100: oklch(0.91 0 0);
+	--color-ash-200: oklch(0.81 0 0);
+	--color-ash-300: oklch(0.72 0 0);
+	--color-ash-400: oklch(0.62 0 0);
+	--color-ash-500: oklch(0.5 0 0);
+	--color-ash-600: oklch(0.39 0 0);
+	--color-ash-700: oklch(0.27 0 0);
+	--color-ash-800: oklch(0.13 0 0);
+	--color-ash-900: oklch(0.11 0 0);
+	--color-ash-950: oklch(0.1 0 0);
+	--color-cyan: oklch(0.84 0.1253 176.45);
 }
 
-button:not(:disabled),
-[role='button']:not(:disabled) {
-	cursor: pointer;
-}
+@layer base {
+	* {
+		@apply border-ash-700;
+	}
 
-::-webkit-scrollbar {
-	width: 6px;
-	height: 6px;
-}
+	button:not(:disabled),
+	[role='button']:not(:disabled) {
+		cursor: pointer;
+	}
 
-::-webkit-scrollbar-thumb {
-	background-color: #444444;
-	border-radius: 10px;
-}
+	::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
 
-::-moz-selection {
-	/* Code for Firefox */
-	color: #ffffffb3;
-	background: #4444444d;
-}
+	::-webkit-scrollbar-thumb {
+		background-color: #444444;
+		border-radius: 10px;
+	}
 
-::selection {
-	color: #ffffffb3;
-	background: #4444444d;
+	::-moz-selection {
+		/* Code for Firefox */
+		color: #ffffffb3;
+		background: #4444444d;
+	}
+
+	::selection {
+		color: #ffffffb3;
+		background: #4444444d;
+	}
+
+	code {
+		counter-reset: step;
+		counter-increment: step 0;
+	}
+
+	code .line::before {
+		content: counter(step);
+		counter-increment: step;
+		width: 1rem;
+		margin-right: 1.5rem;
+		display: inline-block;
+		text-align: right;
+		color: var(--color-ash-600);
+	}
 }

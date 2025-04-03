@@ -60,25 +60,24 @@
 	{/if}
 </svelte:head>
 
-<div class="bg-ash-600 text-ash-300 grid h-dvh place-items-center overflow-hidden font-mono antialiased">
-	<main
-		bind:this={containerElement}
-		class={`from-ash-800 to-ash-700 z-10 flex h-dvh w-dvw flex-col overflow-hidden bg-gradient-to-tr lg:h-[75dvh] lg:w-[70dvw] ${isFullscreen || isMobile ? 'rounded-none' : 'rounded-xl'}`}
-		class:container-shadow={!isFullscreen || !isMobile}
-		style:transform="translate({position.x}px, {position.y}px)"
-		style:transition={dragging ? 'none' : 'all 0.2s ease-out'}
-	>
-		<Header {isFullscreen} {onMouseDown} {toggleFullscreen} />
-		{@render children()}
-		<Navbar />
-	</main>
+<main
+	bind:this={containerElement}
+	class={`from-ash-800 to-ash-700 z-10 flex h-dvh w-dvw flex-col overflow-hidden bg-gradient-to-tr lg:h-[75dvh] lg:w-[70dvw] ${isFullscreen || isMobile ? 'rounded-none' : 'rounded-xl'}`}
+	class:container-shadow={!isFullscreen || !isMobile}
+	style:transform="translate({position.x}px, {position.y}px)"
+	style:transition={dragging ? 'none' : 'all 0.2s ease-out'}
+>
+	<Header {isFullscreen} {onMouseDown} {toggleFullscreen} />
+	{@render children()}
+	<Navbar />
+</main>
 
-	<div class="grid-pattern absolute top-0 left-0 h-full w-full" aria-hidden="true"></div>
-	<div class="grain-noise pointer-events-none fixed top-0 size-[300%]" aria-hidden="true"></div>
-	{#await import('$lib/components/layout/particle.svelte') then { default: Particle }}
-		<Particle />
-	{/await}
-</div>
+<div class="grid-pattern absolute top-0 left-0 h-full w-full" aria-hidden="true"></div>
+<div class="grain-noise pointer-events-none fixed top-0 size-[300%]" aria-hidden="true"></div>
+
+{#await import('$lib/components/layout/particle.svelte') then { default: Particle }}
+	<Particle />
+{/await}
 
 <style>
 	.grid-pattern {

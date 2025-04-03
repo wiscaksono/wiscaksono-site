@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { blur } from 'svelte/transition';
 	import { browser } from '$app/environment';
 
 	// Type definition for a particle
@@ -157,6 +158,6 @@
 	});
 </script>
 
-<div class="pointer-events-none absolute top-0 left-0 h-dvh w-dvw" bind:this={canvasContainer} aria-hidden="true">
+<div class="pointer-events-none absolute top-0 left-0 h-dvh w-dvw" bind:this={canvasContainer} aria-hidden="true" transition:blur={{ duration: 1000 }}>
 	<canvas bind:this={canvas} class="size-full"></canvas>
 </div>

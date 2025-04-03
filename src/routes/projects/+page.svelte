@@ -27,7 +27,7 @@
 <main class="grid flex-1 flex-grow gap-2 overflow-y-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 	{#each articles as article, i (i)}
 		<a
-			href={`/projects/${article.slug}`}
+			href={`/projects/${article.slug}` + (activeTechstack ? `?techstack=${activeTechstack}` : '')}
 			class="divide-ash-700 border-ash-700 divide-y overflow-hidden border select-none"
 			aria-label={`View details for project: ${article.title}`}
 			data-sveltekit-preload-code="eager"
