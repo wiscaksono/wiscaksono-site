@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { flip } from 'svelte/animate';
 	import Metadata from '$lib/components/metadata.svelte';
 
 	import type { PageProps } from './$types';
@@ -118,7 +119,7 @@
 
 	<ul class="divide-ash-700 flex flex-col gap-y-1 divide-y text-sm lg:divide-y-0">
 		{#each guestBooks as item (item.id)}
-			<li class="group flex flex-col gap-1 py-1 lg:flex-row lg:gap-2 lg:border-y-0 lg:py-0" class:animate-pulse={item.id < 0}>
+			<li animate:flip={{ duration: 200 }} class="group flex flex-col gap-1 py-1 lg:flex-row lg:gap-2 lg:border-y-0 lg:py-0" class:animate-pulse={item.id < 0}>
 				<p class="flex-1 truncate lg:w-36 lg:flex-none">
 					<span class="text-cyan">~</span>/{item.username.toLowerCase().replace(/\s/g, '-')}
 				</p>
