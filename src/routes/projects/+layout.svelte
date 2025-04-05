@@ -7,7 +7,11 @@
 	let { children, data }: LayoutProps = $props();
 
 	// State to hold the active techstack, only updated client-side
-	let activeTechstack = $derived(page.url.searchParams.get('techstack') ?? '');
+	let activeTechstack = $state<string>('');
+
+	$effect(() => {
+		activeTechstack = page.url.searchParams.get('techstack') || '';
+	});
 </script>
 
 <main class="flex-1 flex-grow overflow-y-auto px-3 lg:px-4">
