@@ -33,8 +33,6 @@
 	}
 
 	$effect(() => {
-		if (isMobile) return;
-
 		const controller = new AbortController();
 
 		const handleMouseUp = () => (dragging = false);
@@ -52,6 +50,12 @@
 		document.addEventListener('fullscreenchange', handleFullscreenChange, { signal: controller.signal });
 
 		return () => controller.abort();
+	});
+
+	$effect(() => {
+		if (!isMobile) return;
+
+		position = { x: 0, y: 0 };
 	});
 </script>
 
