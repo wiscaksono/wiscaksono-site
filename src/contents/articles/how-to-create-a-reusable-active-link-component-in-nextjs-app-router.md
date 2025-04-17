@@ -8,12 +8,15 @@ poster: /articles/activelink-nextjs/preview.gif
 Providing a seamless and intuitive navigation experience is crucial for building engaging web applications. One way to achieve this is by implementing an active link component that visually highlights the current page, helping users effortlessly track their location within the application. In this tutorial, we'll dive into creating a reusable active link component for a Next.js application, enhancing overall usability and user experience.
 
 ## Prerequisites
+
 Before we begin, ensure that you have a basic understanding of Next.js and React. Additionally, make sure that Node.js is installed on your machine.
 
 ## Getting Started
+
 Let's kickstart the process by setting up a new Next.js project and installing the necessary dependencies.
 
 ### Step 1: Create a New Next.js Project
+
 Open your terminal and run the following command to create a new Next.js project:
 
 ```bash
@@ -32,113 +35,104 @@ Next, install the required dependencies:
 npm install tailwind-merge clsx
 ```
 
-
 ### Step 2: Set Up Components Folder
 
-Create a new folder named components inside the ***src*** directory. Within this folder, create a file named ***active-link.tsx*** to house our active link component.
+Create a new folder named components inside the **_src_** directory. Within this folder, create a file named **_active-link.tsx_** to house our active link component.
 
 ### Step 3: Implement Classnames Utility
-In the utils folder, create a file named ***cn.ts*** to define a utility function for handling class names. Insert the following code:
+
+In the utils folder, create a file named **_cn.ts_** to define a utility function for handling class names. Insert the following code:
 
 ```ts
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+	return twMerge(clsx(inputs));
 }
 ```
+
 This utility function will help us manage class names more efficiently and make it easier to apply conditional styles to our components.
 
-
 ### Step 4: Develop the Active Link Component
-Inside ***active-link.tsx***, build the active link component using the provided code snippet. Ensure to mark the file as client due to the usage of the ***usePathname*** hook, which is only available on the client side.
+
+Inside **_active-link.tsx_**, build the active link component using the provided code snippet. Ensure to mark the file as client due to the usage of the **_usePathname_** hook, which is only available on the client side.
 
 ```tsx
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import { cn } from "~/utils/cn";
+import { cn } from '~/utils/cn';
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Link> {
-  className?: string;
-  activeClassName?: string;
+	className?: string;
+	activeClassName?: string;
 }
 
 export const ActiveLink = (props: Props) => {
-  const pathname = usePathname();
-  const isActive = pathname === props.href;
-  const activeClassName = props.activeClassName ?? "text-red-500";
+	const pathname = usePathname();
+	const isActive = pathname === props.href;
+	const activeClassName = props.activeClassName ?? 'text-red-500';
 
-  return (
-    <Link
-      {...props}
-      className={cn(props.className, isActive && activeClassName)}
-    />
-  );
+	return <Link {...props} className={cn(props.className, isActive && activeClassName)} />;
 };
 ```
 
-In this component, we're using the ***usePathname*** hook from Next.js to get the current URL path. We then compare this path with the ***href*** prop passed to the component to determine if the link is currently active or not. Based on this condition, we apply the ***activeClassName*** style to the link, allowing us to visually distinguish the active link from the rest.
+In this component, we're using the **_usePathname_** hook from Next.js to get the current URL path. We then compare this path with the **_href_** prop passed to the component to determine if the link is currently active or not. Based on this condition, we apply the **_activeClassName_** style to the link, allowing us to visually distinguish the active link from the rest.
 
-The ***cn*** utility function we created earlier is used to merge the ***className*** prop with the ***activeClassName*** conditionally, making it easier to manage and apply multiple class names.
+The **_cn_** utility function we created earlier is used to merge the **_className_** prop with the **_activeClassName_** conditionally, making it easier to manage and apply multiple class names.
 
 ### Step 5: Integrate Active Link in Layout
-To use the ***ActiveLink*** component within your application, you'll need to import it and employ it to create navigational links. The component will automatically apply the designated active styling when the link corresponds to the current path.
 
-Here's an example of how you can integrate the ***ActiveLink*** component in your application layout file (***layout.tsx***):
+To use the **_ActiveLink_** component within your application, you'll need to import it and employ it to create navigational links. The component will automatically apply the designated active styling when the link corresponds to the current path.
+
+Here's an example of how you can integrate the **_ActiveLink_** component in your application layout file (**_layout.tsx_**):
 
 ```tsx
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
-import { ActiveLink } from "~/components/active-link"; // Import the ActiveLink component
+import { ActiveLink } from '~/components/active-link'; // Import the ActiveLink component
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Create Next App",
-  description: "Generated by create next app",
+	title: 'Create Next App',
+	description: 'Generated by create next app'
 };
 
 export default function RootLayout({
-  children,
+	children
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <nav className="flex items-center justify-center gap-10 container mx-auto py-10">
-          {/* Use the ActiveLink component */}
-          {[...Array(10)].map((_, i) => (
-            <ActiveLink
-              key={i}
-              href={`/${i}`}
-              className="py-1 px-2"
-              activeClassName="bg-blue-500 !text-white"
-            >
-              Link {i}
-            </ActiveLink>
-          ))}
-        </nav>
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={inter.className}>
+				<nav className="container mx-auto flex items-center justify-center gap-10 py-10">
+					{/* Use the ActiveLink component */}
+					{[...Array(10)].map((_, i) => (
+						<ActiveLink key={i} href={`/${i}`} className="px-2 py-1" activeClassName="bg-blue-500 !text-white">
+							Link {i}
+						</ActiveLink>
+					))}
+				</nav>
+				{children}
+			</body>
+		</html>
+	);
 }
 ```
 
-In this example, we're using the ***ActiveLink*** component to create ten navigation links. The ***className*** prop sets the default styles for the links, while the ***activeClassName*** prop defines the styles to be applied when a link is active. In this case, the active link will have a blue background and white text color.
-
+In this example, we're using the **_ActiveLink_** component to create ten navigation links. The **_className_** prop sets the default styles for the links, while the **_activeClassName_** prop defines the styles to be applied when a link is active. In this case, the active link will have a blue background and white text color.
 
 ## Conclusion
+
 Incorporating a reusable active link component into your Next.js application can significantly enhance the navigation experience for your users. By providing clear visual cues for the current page, users can effortlessly track their location within the application, leading to increased engagement and satisfaction.
 
 With the step-by-step guide provided in this tutorial, you now have the knowledge and tools to implement an active link component and take your Next.js application to new heights of usability and accessibility.
 
 For further learning and exploration, consider checking out the official Next.js documentation and other relevant resources on building user-friendly and intuitive web applications.
-

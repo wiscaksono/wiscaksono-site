@@ -5,7 +5,6 @@ publishedDate: December 28, 2024
 poster: /articles/coding-saved-me/me.webp
 ---
 
-
 Have you ever felt like your own thoughts were out to get you? Like no matter what you do, your brain just won’t stop running in circles? That was me for the longest time. I’d overthink everything—whether I was lying in bed, walking around, or just trying to relax. My mind always found something to obsess over. It was exhausting.
 
 And then coding came into my life. Looking back, it almost feels like a natural progression for me. Ever since I was a kid, I loved tinkering with computers—figuring out how they worked, both hardware and software. That curiosity always kept me wondering what else I could learn or create.
@@ -49,4 +48,3 @@ Another thing I love about coding is the community. Whether it’s chatting in f
 Coding didn’t just distract me from overthinking; it gave me a whole new way to approach life. It taught me to focus, be patient, and enjoy the process of creating. And honestly, it’s just fun.
 
 If you’re feeling stuck in your own head, maybe give coding a shot. You don’t have to become an expert or make it your career. Just try building something—anything. You might find that, like me, it’s exactly what you need to quiet the noise and spark something new.
-

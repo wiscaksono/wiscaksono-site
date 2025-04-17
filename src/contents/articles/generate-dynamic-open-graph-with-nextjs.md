@@ -4,25 +4,31 @@ description: One powerful way to enhance your website's shareability on social m
 publishedDate: November 30, 2023
 poster: /opengraph-image.png
 ---
+
 One powerful way to enhance your website's shareability on social media platforms is by implementing dynamic Open Graph meta tags. In this comprehensive guide, we'll delve into how you can seamlessly achieve this with Next.js 14, empowering your site to stand out in the crowded digital space.
 
 ## Exciting Times for Next.js Enthusiasts
+
 Exciting times have arrived for Next.js enthusiasts! The release of Next.js 13 brought stability to the App Router, accompanied by a wave of innovative features and approaches. As developers, staying on the cutting edge is paramount, and this release propels us into a realm of possibilities.
 
 In this series of articles, we explore the new horizons that Next.js 13 unfolds. Today, our focus is on a crucial aspect of web development — SEO. With the introduction of Next.js 13, we bid farewell to the old 'Head.tsx' way of managing SEO. Instead, we embark on a journey to discover a fresh approach that aligns with the latest practices and elevates the way we optimize our websites.
 
 ## Introduction: Understanding Open Graph
+
 Before we dive into the implementation details, let's understand the significance of Open Graph. Developed by Facebook, Open Graph is an internet protocol that standardizes the incorporation of metadata on a webpage to represent its content. It enables the inclusion of information ranging from the page title to specific details like the duration of a video. Have you ever posted a link on social media?
 
 ## Implementing Dynamic Open Graph with Next.js
+
 Let's take a practical approach and see how we can implement dynamic Open Graph in Next.js. The following code snippet demonstrates how to generate dynamic Open Graph images based on a post title.
 
 ### Step 1: Create a new Next.js project
+
 Start by creating a new Next.js project. Open your terminal and run the following command:
 
 ```bash
 npx create-next-app@latest
 ```
+
 Here's how the terminal output should look like:
 
 ```bash
@@ -36,11 +42,15 @@ Here's how the terminal output should look like:
 √ Would you like to customize the default import alias (@/*)? … No / Yes
 √ What import alias would you like configured? … @/*
 ```
+
 And then change directory to the newly created project:
+
 ```bash
 cd dynamic-opengraph-demo
 ```
+
 Here's the project structure:
+
 ```
 .
 ├── README.md
@@ -58,7 +68,7 @@ Here's the project structure:
 ├── src
 │   └── app
 │       ├── api // I created this folder to store my api routes
-│       │   └── og 
+│       │   └── og
 │       │       └── route.tsx // Here is my og route
 │       ├── favicon.ico
 │       ├── globals.css
@@ -67,10 +77,13 @@ Here's the project structure:
 ├── tailwind.config.ts
 └── tsconfig.json
 ```
-As you can see, I created a folder called ***api*** to store my api routes. I also created a folder called ***fonts*** to store my fonts. You can use any font you want.
+
+As you can see, I created a folder called **_api_** to store my api routes. I also created a folder called **_fonts_** to store my fonts. You can use any font you want.
 
 ### Step 2: Implement the Dynamic Open Graph Route
+
 Now, let's delve into the code. Here's how you can implement the dynamic Open Graph route in your Next.js project:
+
 ```jsx
 // Import required modules and constants
 import { ImageResponse } from "next/og";
@@ -138,7 +151,9 @@ export async function GET(req: NextRequest) {
   );
 }
 ```
+
 #### Code Explanation
+
 1. Import Modules and Constants: Import the necessary modules and constants.
 2. Set Runtime: Declare runtime as 'edge'.
 3. Handle GET Requests: Define an asynchronous function to handle GET requests.
@@ -147,16 +162,19 @@ export async function GET(req: NextRequest) {
 6. Set ImageResponse Options: Specify options for the ImageResponse, including width, height, and font details.
 
 ### Step 3: Test Your Dynamic Open Graph Route
+
 Now, let's test your dynamic Open Graph route. Follow these steps:
-1. Start your Next.js development server with ***npm run dev***
+
+1. Start your Next.js development server with **_npm run dev_**
 2. Open your browser and navigate to http://localhost:3000/api/og?title=YourDynamicTitle. Replace "YourDynamicTitle" with the desired title for your Open Graph image.
 
 ### Step 4: Implement the Dynamic Open Graph Meta Tags
+
 Next14 uses an object called metadata to describe the page’s SEO attributes including OG attributes. (can be placed in layout.js / page.js)
 
 ```jsx
 import { Metadata } from 'next'; // if using TypeScript
- 
+
 export const metadata: Metadata = {
   openGraph: {
     title: 'Next.js',
@@ -181,7 +199,7 @@ export const metadata: Metadata = {
   },
 };
 
- 
+
 export default function Page() {}
 ```
 
@@ -204,8 +222,8 @@ the above code will generate the following meta tags:
 ```
 
 ## Conclusion
+
 With these steps, you've successfully implemented and tested dynamic Open Graph in your Next.js project. This feature enhances your website's shareability on social media platforms and provides a visually appealing representation of your content.
 
 For more information, check out the official documentation on [Open Graph](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image).
 or check out on my [Github](https://github.com/wiscaksono/wiscaksono-site/blob/master/src/app/api/og/route.tsx)
-
