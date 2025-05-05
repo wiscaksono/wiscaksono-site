@@ -17,7 +17,7 @@
 		"db:studio": "drizzle-kit studio"
 	},
 	"devDependencies": {
-		"@eslint/compat": "^1.2.5",
+		"@eslint/compat": "^1.2.9",
 		"@eslint/js": "^9.18.0",
 		"@sveltejs/adapter-vercel": "^5.5.2",
 		"@sveltejs/kit": "^2.16.0",
