@@ -17,6 +17,12 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 		}
 	}
 
+	articles.sort((a, b) => {
+		const dateA = new Date(a.publishedDate);
+		const dateB = new Date(b.publishedDate);
+		return dateB.getTime() - dateA.getTime();
+	});
+
 	setHeaders({ 'Cache-Control': 'public, max-age=3600, s-maxage=86400' });
 
 	return { articles };
