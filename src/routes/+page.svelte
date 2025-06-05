@@ -17,7 +17,7 @@
 !________!!__!!_____!!_____!!__!__!!__!__!!_____!!_____!!__!__!!_____!`}
 	</code>
 
-	<h1 class="sr-only">Wisnu Wicaksono</h1>
+	<p class="sr-only">Wisnu Wicaksono</p>
 
 	<div class="text-center">
 		<p>Self taught web developer</p>
