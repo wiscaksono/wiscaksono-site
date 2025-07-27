@@ -1,16 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { browser } from '$app/environment';
 	import Metadata from '$lib/components/metadata.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 
-	let activeTechstack = $state<string>('');
-
-	$effect(() => {
-		activeTechstack = page.url.searchParams.get('techstack') || '';
-	});
-
+	let activeTechstack = $derived(browser ? (page.url.searchParams.get('techstack') ?? '') : '');
 	let articles = $derived.by(() => {
 		if (activeTechstack === '') return data.items;
 		return data.items.filter((item) => item.techstack?.includes(activeTechstack));
