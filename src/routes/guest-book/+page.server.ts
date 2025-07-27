@@ -8,24 +8,26 @@ import type { Actions, PageServerLoad } from './$types';
 
 export const prerender = false;
 
+const getGuestBooksPrepared = db
+	.select({
+		id: table.guestBook.id,
+		content: table.guestBook.content,
+		userId: table.guestBook.userId,
+		username: table.user.username,
+		createdAt: table.guestBook.createdAt,
+		likeCount: count(table.guestBookLike.userId).mapWith(Number),
+		liked: sql<number>`count(case when ${table.guestBookLike.userId} = ${sql.placeholder('currentUserId')} then 1 end)`.mapWith((val) => val > 0)
+	})
+	.from(table.guestBook)
+	.innerJoin(table.user, eq(table.guestBook.userId, table.user.id))
+	.leftJoin(table.guestBookLike, eq(table.guestBookLike.guestBookId, table.guestBook.id))
+	.groupBy(table.guestBook.id, table.user.username)
+	.orderBy(desc(table.guestBook.createdAt))
+	.prepare('get_guest_books');
+
 export const load: PageServerLoad = async (event) => {
 	const currentUserId = event.locals.user?.id ?? null;
-
-	const guestBooks = await db
-		.select({
-			id: table.guestBook.id,
-			content: table.guestBook.content,
-			userId: table.guestBook.userId,
-			username: table.user.username,
-			createdAt: table.guestBook.createdAt,
-			likeCount: count(table.guestBookLike.userId).mapWith(Number),
-			liked: sql<number>`count(case when ${table.guestBookLike.userId} = ${currentUserId} then 1 end)`.mapWith((val) => val > 0)
-		})
-		.from(table.guestBook)
-		.innerJoin(table.user, eq(table.guestBook.userId, table.user.id))
-		.leftJoin(table.guestBookLike, eq(table.guestBookLike.guestBookId, table.guestBook.id))
-		.groupBy(table.guestBook.id, table.user.username)
-		.orderBy(desc(table.guestBook.createdAt));
+	const guestBooks = await getGuestBooksPrepared.execute({ currentUserId });
 
 	return { user: event.locals.user, guestBooks };
 };
