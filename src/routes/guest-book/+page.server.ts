@@ -48,12 +48,7 @@ export const actions: Actions = {
 				createdAt: table.guestBook.createdAt
 			});
 
-			const returnedEntry = {
-				...newEntry,
-				username: event.locals.user.username,
-				liked: false,
-				likeCount: 0
-			};
+			const returnedEntry = { ...newEntry, username: event.locals.user.username, liked: false, likeCount: 0 };
 
 			return { success: true, newEntry: returnedEntry };
 		} catch (error) {
@@ -67,19 +62,14 @@ export const actions: Actions = {
 		const formData = await event.request.formData();
 		const guestBookId = parseInt(formData.get('guestBookId') as string);
 
-		if (isNaN(guestBookId)) return fail(400); // Validate ID
+		if (isNaN(guestBookId)) return fail(400);
 
 		try {
 			await db.transaction(async (tx) => {
 				const [exist] = await tx
-					.select({ id: table.guestBookLike.guestBookId }) // Select specific column
+					.select({ id: table.guestBookLike.guestBookId })
 					.from(table.guestBookLike)
-					.where(
-						and(
-							eq(table.guestBookLike.guestBookId, guestBookId),
-							eq(table.guestBookLike.userId, event.locals.user!.id) // Check current user's like
-						)
-					);
+					.where(and(eq(table.guestBookLike.guestBookId, guestBookId), eq(table.guestBookLike.userId, event.locals.user!.id)));
 
 				if (exist) {
 					await tx
@@ -87,10 +77,7 @@ export const actions: Actions = {
 						.where(and(eq(table.guestBookLike.guestBookId, guestBookId), eq(table.guestBookLike.userId, event.locals.user!.id)));
 				} else {
 					const [guestBookExists] = await tx.select({ id: table.guestBook.id }).from(table.guestBook).where(eq(table.guestBook.id, guestBookId));
-					if (!guestBookExists) {
-						console.warn(`Attempted to like non-existent guestbook entry: ${guestBookId}`);
-						return;
-					}
+					if (!guestBookExists) return;
 					await tx.insert(table.guestBookLike).values({ guestBookId: guestBookId, userId: event.locals.user!.id });
 				}
 			});

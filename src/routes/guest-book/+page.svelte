@@ -3,28 +3,108 @@
 	import { flip } from 'svelte/animate';
 	import Metadata from '$lib/components/metadata.svelte';
 
-	import type { PageProps } from './$types';
-
-	interface NewEntry {
-		username: string;
-		liked: boolean;
-		likeCount: number;
-		id: number;
-		content: string;
-		userId: number;
-		createdAt: Date;
-	}
+	import type { PageProps, SubmitFunction } from './$types';
 
 	let { data }: PageProps = $props();
 
 	let insertContent = $state('');
-	let guestBooks = $state(structuredClone(data.guestBooks));
+	let guestBooks = $derived(structuredClone(data.guestBooks));
 
 	// Keep local state in sync with server data when it updates
 	// This runs AFTER the enhance callback finishes and update() triggers a load
 	$effect(() => {
 		guestBooks = structuredClone(data.guestBooks);
 	});
+
+	const handleInsert: SubmitFunction = ({ formData }) => {
+		const content = formData.get('content') as string;
+		if (!data.user || !content) return;
+
+		// Use a negative random number for temporary ID to avoid potential clashes with real positive IDs
+		const tempId = -Math.floor(Math.random() * 1000000);
+
+		const optimisticEntry: (typeof guestBooks)[0] = {
+			id: tempId,
+			content,
+			createdAt: new Date(),
+			likeCount: 0,
+			liked: false,
+			userId: data.user.id,
+			username: data.user.username
+		};
+
+		// Optimistically update UI
+		guestBooks = [optimisticEntry, ...guestBooks];
+		const originalInsertContent = insertContent; // Store original content for potential revert
+		insertContent = '';
+
+		return async ({ result, update }) => {
+			if (result.type === 'success' && result.data && 'success' in result.data && 'newEntry' in result.data) {
+				const realEntry = result.data.newEntry;
+				const index = guestBooks.findIndex((gb) => gb.id === tempId);
+				if (index !== -1) {
+					guestBooks[index] = realEntry;
+					guestBooks = [...guestBooks];
+				} else {
+					await update({ reset: false });
+				}
+			} else if (result.type === 'error' || result.type === 'failure') {
+				guestBooks = guestBooks.filter((entry) => entry.id !== tempId);
+				insertContent = originalInsertContent;
+				console.error('Insert failed:', result);
+			} else {
+				await update({ reset: false });
+			}
+		};
+	};
+
+	const handleLike: SubmitFunction = ({ formData }) => {
+		const guestBookId = parseInt(formData.get('guestBookId') as string);
+		if (guestBookId < 0) return;
+
+		const itemIndex = guestBooks.findIndex((gb) => gb.id === guestBookId);
+		if (itemIndex === -1) return;
+
+		const originalLiked = guestBooks[itemIndex].liked;
+		const originalLikeCount = guestBooks[itemIndex].likeCount;
+
+		// Optimistically update UI
+		guestBooks[itemIndex].liked = !originalLiked;
+		guestBooks[itemIndex].likeCount += originalLiked ? -1 : 1;
+		guestBooks = [...guestBooks]; // Trigger reactivity
+
+		return async ({ result }) => {
+			if (result.type === 'error' || result.type === 'failure') {
+				// Revert
+				const revertIndex = guestBooks.findIndex((gb) => gb.id === guestBookId);
+				if (revertIndex !== -1) {
+					guestBooks[revertIndex].liked = originalLiked;
+					guestBooks[revertIndex].likeCount = originalLikeCount;
+					guestBooks = [...guestBooks]; // Trigger reactivity
+				}
+				console.error('Like failed:', result);
+			}
+		};
+	};
+
+	const handleDelete: SubmitFunction = ({ formData }) => {
+		const guestBookId = parseInt(formData.get('guestBookId') as string);
+		if (guestBookId < 0) return;
+
+		const itemIndex = guestBooks.findIndex((gb) => gb.id === guestBookId);
+		if (itemIndex === -1) return;
+
+		const deletedItem = guestBooks[itemIndex];
+
+		guestBooks = guestBooks.filter((gb) => gb.id !== guestBookId);
+
+		return async ({ result }) => {
+			if (result.type === 'error' || result.type === 'failure') {
+				guestBooks = [...guestBooks.slice(0, itemIndex), deletedItem, ...guestBooks.slice(itemIndex)];
+				console.error('Delete failed:', result);
+			}
+		};
+	};
 </script>
 
 <Metadata
@@ -35,53 +115,7 @@
 <h1 class="sr-only">Wisnu Wicaksono's Guest Book</h1>
 
 <section class="flex-1 flex-grow space-y-1 overflow-y-auto px-3 lg:px-4">
-	<form
-		action="?/insert"
-		method="POST"
-		class="flex flex-col gap-2 text-sm lg:flex-row lg:items-center"
-		use:enhance={({ formData }) => {
-			const content = formData.get('content') as string;
-			if (!data.user || !content) return;
-
-			// Use a negative random number for temporary ID to avoid potential clashes with real positive IDs
-			const tempId = -Math.floor(Math.random() * 1000000);
-
-			const optimisticEntry = {
-				id: tempId,
-				content,
-				createdAt: new Date(),
-				likeCount: 0,
-				liked: false,
-				userId: data.user.id,
-				username: data.user.username
-			};
-
-			// Optimistically update UI
-			guestBooks = [optimisticEntry, ...guestBooks];
-			const originalInsertContent = insertContent; // Store original content for potential revert
-			insertContent = ''; // Clear input optimistically
-
-			return async ({ result, update }) => {
-				if (result.type === 'success' && result.data?.newEntry) {
-					const realEntry = result.data.newEntry as NewEntry;
-					const index = guestBooks.findIndex((gb) => gb.id === tempId);
-					if (index !== -1) {
-						guestBooks[index] = realEntry;
-						guestBooks = [...guestBooks];
-					} else {
-						await update({ reset: false });
-					}
-				} else if (result.type === 'error' || result.type === 'failure') {
-					// Revert: Remove the optimistic entry
-					guestBooks = guestBooks.filter((entry) => entry.id !== tempId);
-					insertContent = originalInsertContent; // Restore input content
-					console.error('Insert failed:', result);
-				} else {
-					await update({ reset: false });
-				}
-			};
-		}}
-	>
+	<form action="?/insert" method="POST" class="flex flex-col gap-2 text-sm lg:flex-row lg:items-center" use:enhance={handleInsert}>
 		<p class="truncate lg:w-36">
 			<span class="text-cyan">~</span>/{data.user ? data.user?.username?.toLowerCase().replace(/\s/g, '-') : 'guest'}
 		</p>
@@ -128,42 +162,7 @@
 				<p class="hidden flex-1 lg:block">{item.content}</p>
 				{#if data.user && item.id > 0}
 					<div class="flex items-center justify-center gap-x-1">
-						<form
-							action="?/like"
-							method="POST"
-							use:enhance={({ formData }) => {
-								const guestBookId = parseInt(formData.get('guestBookId') as string);
-								// Prevent liking temporary items before they get real ID
-								if (guestBookId < 0) {
-									console.warn('Attempted to like an item with a temporary ID.');
-									return; // Do nothing if ID is temporary
-								}
-
-								const itemIndex = guestBooks.findIndex((gb) => gb.id === guestBookId);
-								if (itemIndex === -1) return;
-
-								const originalLiked = guestBooks[itemIndex].liked;
-								const originalLikeCount = guestBooks[itemIndex].likeCount;
-
-								// Optimistically update UI
-								guestBooks[itemIndex].liked = !originalLiked;
-								guestBooks[itemIndex].likeCount += originalLiked ? -1 : 1;
-								guestBooks = [...guestBooks]; // Trigger reactivity
-
-								return async ({ result }) => {
-									if (result.type === 'error' || result.type === 'failure') {
-										// Revert
-										const revertIndex = guestBooks.findIndex((gb) => gb.id === guestBookId);
-										if (revertIndex !== -1) {
-											guestBooks[revertIndex].liked = originalLiked;
-											guestBooks[revertIndex].likeCount = originalLikeCount;
-											guestBooks = [...guestBooks]; // Trigger reactivity
-										}
-										console.error('Like failed:', result);
-									}
-								};
-							}}
-						>
+						<form action="?/like" method="POST" use:enhance={handleLike}>
 							<input type="hidden" name="guestBookId" value={item.id} />
 							<button
 								class="flex items-center gap-x-1 opacity-100 transition-opacity group-hover:opacity-100 lg:opacity-0"
@@ -183,32 +182,7 @@
 							</button>
 						</form>
 						{#if item.userId === data.user.id}
-							<form
-								action="?/delete"
-								method="POST"
-								use:enhance={({ formData }) => {
-									const guestBookId = parseInt(formData.get('guestBookId') as string);
-									if (guestBookId < 0) {
-										console.warn('Attempted to delete an item with a temporary ID.');
-										return; // Do nothing if ID is temporary
-									}
-
-									const itemIndex = guestBooks.findIndex((gb) => gb.id === guestBookId);
-									if (itemIndex === -1) return;
-
-									const deletedItem = guestBooks[itemIndex]; // Store for potential revert
-
-									// Optimistically update UI
-									guestBooks = guestBooks.filter((gb) => gb.id !== guestBookId);
-
-									return async ({ result }) => {
-										if (result.type === 'error' || result.type === 'failure') {
-											guestBooks = [...guestBooks.slice(0, itemIndex), deletedItem, ...guestBooks.slice(itemIndex)];
-											console.error('Delete failed:', result);
-										}
-									};
-								}}
-							>
+							<form action="?/delete" method="POST" use:enhance={handleDelete}>
 								<input type="hidden" name="guestBookId" value={item.id} />
 								<button aria-label="Delete" class="flex items-center justify-center">
 									<svg width="14" height="14" fill="none" viewBox="0 0 14 14">
