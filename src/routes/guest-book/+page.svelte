@@ -10,12 +10,6 @@
 	let insertContent = $state('');
 	let guestBooks = $derived(structuredClone(data.guestBooks));
 
-	// Keep local state in sync with server data when it updates
-	// This runs AFTER the enhance callback finishes and update() triggers a load
-	$effect(() => {
-		guestBooks = structuredClone(data.guestBooks);
-	});
-
 	const handleInsert: SubmitFunction = ({ formData }) => {
 		const content = formData.get('content') as string;
 		if (!data.user || !content) return;
@@ -38,50 +32,42 @@
 		const originalInsertContent = insertContent; // Store original content for potential revert
 		insertContent = '';
 
-		return async ({ result, update }) => {
+		return async ({ result }) => {
 			if (result.type === 'success' && result.data && 'success' in result.data && 'newEntry' in result.data) {
 				const realEntry = result.data.newEntry;
 				const index = guestBooks.findIndex((gb) => gb.id === tempId);
 				if (index !== -1) {
 					guestBooks[index] = realEntry;
 					guestBooks = [...guestBooks];
-				} else {
-					await update({ reset: false });
 				}
 			} else if (result.type === 'error' || result.type === 'failure') {
 				guestBooks = guestBooks.filter((entry) => entry.id !== tempId);
 				insertContent = originalInsertContent;
 				console.error('Insert failed:', result);
-			} else {
-				await update({ reset: false });
 			}
 		};
 	};
 
 	const handleLike: SubmitFunction = ({ formData }) => {
 		const guestBookId = parseInt(formData.get('guestBookId') as string);
-		if (guestBookId < 0) return;
+		if (!data.user || guestBookId < 0) return;
 
 		const itemIndex = guestBooks.findIndex((gb) => gb.id === guestBookId);
 		if (itemIndex === -1) return;
 
-		const originalLiked = guestBooks[itemIndex].liked;
-		const originalLikeCount = guestBooks[itemIndex].likeCount;
+		const updatedItem = {
+			...guestBooks[itemIndex],
+			liked: !guestBooks[itemIndex].liked,
+			likeCount: guestBooks[itemIndex].likeCount + (guestBooks[itemIndex].liked ? -1 : 1)
+		};
 
-		// Optimistically update UI
-		guestBooks[itemIndex].liked = !originalLiked;
-		guestBooks[itemIndex].likeCount += originalLiked ? -1 : 1;
-		guestBooks = [...guestBooks]; // Trigger reactivity
+		guestBooks = guestBooks.map((item) => (item.id === guestBookId ? updatedItem : item));
 
 		return async ({ result }) => {
 			if (result.type === 'error' || result.type === 'failure') {
-				// Revert
-				const revertIndex = guestBooks.findIndex((gb) => gb.id === guestBookId);
-				if (revertIndex !== -1) {
-					guestBooks[revertIndex].liked = originalLiked;
-					guestBooks[revertIndex].likeCount = originalLikeCount;
-					guestBooks = [...guestBooks]; // Trigger reactivity
-				}
+				guestBooks = guestBooks.map((item) =>
+					item.id === guestBookId ? { ...item, liked: !updatedItem.liked, likeCount: item.likeCount + (updatedItem.liked ? 1 : -1) } : item
+				);
 				console.error('Like failed:', result);
 			}
 		};
