@@ -5,6 +5,19 @@ import { mdsvex, escapeSvelte } from 'mdsvex';
 import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
+/** @type {Promise<import('shiki').Highlighter> | null} */
+let highlighterPromise = null;
+
+function getSingletonHighlighter() {
+	if (!highlighterPromise) {
+		highlighterPromise = createHighlighter({
+			themes: ['poimandres'],
+			langs: ['javascript', 'typescript', 'bash', 'jsx', 'tsx', 'html']
+		});
+	}
+	return highlighterPromise;
+}
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	extensions: ['.svelte', '.md'],
@@ -14,7 +27,7 @@ const config = {
 			extensions: ['.md'],
 			highlight: {
 				highlighter: async (code, lang = 'text') => {
-					const highlighter = await createHighlighter({ themes: ['poimandres'], langs: ['javascript', 'typescript', 'bash', 'jsx', 'tsx', 'html'] });
+					const highlighter = await getSingletonHighlighter();
 					const html = escapeSvelte(
 						highlighter.codeToHtml(code, {
 							lang,
@@ -28,7 +41,6 @@ const config = {
 							]
 						})
 					);
-					highlighter.dispose();
 					return `{@html \`${html}\` }`;
 				}
 			},

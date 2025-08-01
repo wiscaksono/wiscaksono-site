@@ -1,6 +1,4 @@
 import { eq } from 'drizzle-orm';
-import { sha256 } from '@oslojs/crypto/sha2';
-import { encodeBase32, encodeHexLowerCase } from '@oslojs/encoding';
 
 import { db } from './';
 import * as table from './schema';
@@ -9,12 +7,13 @@ import type { RequestEvent } from '@sveltejs/kit';
 
 const EXPIRATION_TIME = 1000 * 60 * 60 * 24 * 30; // 30 days
 const REFRESH_INTERVAL = 1000 * 60 * 60 * 24 * 15; // 15 days
+const BASE32_ALPHABET = 'abcdefghijklmnopqrstuvwxyz234567';
 
 /**
  * Validates a session token.
  */
 export async function validateSessionToken(token: string) {
-	const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+	const sessionId = await sha256Hex(new TextEncoder().encode(token));
 
 	return await db.transaction(async (tx) => {
 		const [session] = await tx.select().from(table.session).where(eq(table.session.id, sessionId));
@@ -81,10 +80,36 @@ export function generateSessionToken(): string {
  * Creates a new session.
  */
 export async function createSession(token: string, userId: number) {
-	const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+	const sessionId = await sha256Hex(new TextEncoder().encode(token));
 	const [session] = await db
 		.insert(table.session)
 		.values({ id: sessionId, userId, expiresAt: new Date(Date.now() + EXPIRATION_TIME) })
 		.returning();
 	return session;
+}
+
+async function sha256Hex(input: Uint8Array) {
+	const hashBuffer = await crypto.subtle.digest('SHA-256', input);
+	return Array.from(new Uint8Array(hashBuffer))
+		.map((b) => b.toString(16).padStart(2, '0'))
+		.join('');
+}
+
+function encodeBase32(bytes: Uint8Array): string {
+	let bits = 0,
+		value = 0,
+		output = '';
+
+	for (let i = 0; i < bytes.length; i++) {
+		value = (value << 8) | bytes[i];
+		bits += 8;
+		while (bits >= 5) {
+			output += BASE32_ALPHABET[(value >>> (bits - 5)) & 31];
+			bits -= 5;
+		}
+	}
+
+	if (bits > 0) output += BASE32_ALPHABET[(value << (5 - bits)) & 31];
+
+	return output;
 }

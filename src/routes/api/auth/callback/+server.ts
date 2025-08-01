@@ -1,5 +1,4 @@
 import { github } from '$lib/server/oauth';
-import { ObjectParser } from '@pilcrowjs/object-parser';
 import { createUser, getUserFromGitHubId } from '$lib/server/db/user';
 import { createSession, generateSessionToken, setSessionTokenCookie } from '$lib/server/db/session';
 
@@ -33,14 +32,13 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	const githubUserData = await fetchGitHubApi<{ id: number; login: string }>(GITHUB_USER_API_URL, githubAccessToken);
 	if (!githubUserData) return createErrorResponse('Failed to fetch GitHub user data.');
 
-	const userParser = new ObjectParser(githubUserData);
-	const githubUserId = userParser.getNumber('id');
-	const username = userParser.getString('login');
+	const githubUserId = githubUserData.id;
+	const username = githubUserData.login;
 
 	// 4. Check if user exists
 	const existingUser = await getUserFromGitHubId(githubUserId);
 
-	// 5a. Existing user: Log them in
+	// 5. Existing user: Log them in
 	if (existingUser) return await handleSuccessfulLogin(event, existingUser.id);
 
 	try {
